@@ -1,0 +1,144 @@
+---
+title: "IAPWS95"
+author: "Benedito Dias Baptista Filho"
+date: "31/08/2016"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{IAPWS95}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This Vignette exemplifies the use of some functions of the Package IAPWS95, which calculates water thermodynamic and transport properties as function of different combinations of Temperature, Density, Pressure, Enthalphy and Entropy. The functions presented are used to return single values or generate tables of thermodynamic properties, being useful for scientists and engineers who analyze thermal and hydraulic experimental data or are involved with projects and equipment development, like turbines or nuclear reactors. This Vignette shows too few examples, but each function is documented with examples.
+
+The name IAPWS95 comes from the "IAPWS Formulation 1995 for the Thermodynamic Properties of Ordinary Water Substance for General and Scientific Use", a formulation developed by "The International Association for the Properties of Water and Steam", revised in 2014. <http://www.iapws.org/>
+
+IAPWS-95 formulation is based on the fundamental equation of Helmholtz free energy as a function of temperature and density, f = f(T, ρ). Other thermodynamic properties are obtained by differentiation and algebraic manipulation without the use of any other information. IAPWS-95 defines accurately the thermodynamic properties of the fluid phases of ordinary water substance, with complete thermodynamic consistency among these properties, over a wide range of states (pressures up to 1000 MPa and temperatures from the melting and sublimation temperatures to 1273 K). In this package the lower temperature limit is the triple point temperature, 273.16 K. The definition of properties includes those on the liquid–vapor equilibrium line.
+
+The transport properties programmed were based on different IAPWS Releases: "Release on the IAPWS Formulation 2011 for the Thermal Conductivity of Ordinary Water Substance"; "Release on the IAPWS Formulation 2008 for the Viscosity of Ordinary Water Substance"; "Revised Release on Surface Tension of Ordinary Water Substance" (2014). The melting pressure was based on the "Revised Release on the Pressure along the Melting and Sublimation Curves of Ordinary Water Substance" (2011).
+
+
+## Organizations involved
+
+This package was developed under a research project on water properties conducted at the "Energetic and Nuclear Research Institute (IPEN-CNEN-SP: <https://www.ipen.br/portal_por/portal/default.php>)", a Research Institute of the "Brazilian Nuclear Energy Commission" (CNEN), by the author, who is the Representative of Brazil, an Associate Member of IAPWS.
+
+This project was possible with the assistance of Dr. Allan Harvey, of the National Institute of Standards and Technology (NIST) and Chair of the Working Group of "Thermophysical Properties of Water and Steam " of the IAPWS.
+
+
+## Example of a Table generating Function: spTcteTab(p1, p2, dp, T)
+
+```{r, results = 'asis'}
+# Entropy Function of Pressure, with Temperature Constant
+library(IAPWS95)
+library(pander)
+# Initial Pressure
+p1 <- 10.
+# Final Pressure
+p2 <- 100.
+# Pressure increment
+dp <- 10.
+# Temperature
+T <- 450.
+capture.output( Tabs <- spTcteTab(p1, p2, dp, T), file='NUL')
+pander::pandoc.table(Tabs)
+```
+
+## Table of Saturation Properties: satTabvT(T1, T2, dT)
+
+```{r, results = 'asis'}
+# Saturation Properties Function of Temperature
+library(IAPWS95)
+library(pander)
+# Initial Temperature
+T1 <- 300.
+# Final Temperature
+T2 <- 400.
+# Temperature increment
+dT <- 10.
+capture.output( TabT <- satTabvT(T1, T2, dT), file='NUL')
+pander::pandoc.table(TabT)
+```
+
+
+## Functions of Temperature and Density
+
+```{r, results = 'asis'}
+# Dynamic Viscosity [ Pa s ]
+library(IAPWS95)
+# Temperature
+T <- 500.
+# Density
+D <- 838.025
+ViscTD(T,D)
+
+# Specific Enthalpy [ kJ kg-1 ]
+hTD(T,D)
+
+# Pressure [ MPa ]
+pTD(T,D)
+
+
+```
+
+
+## Functions of Temperature and Pressure
+
+```{r, results = 'asis'}
+# Specific Internal Energy [ kJ kg-1 ]
+library(IAPWS95)
+# Temperature
+T <- 500.
+# Pressure
+p <- 10.0003858
+uTp(T,p)
+
+# Specific Enthalpy [ kJ kg-1 ]
+hTp(T,p)
+
+```
+
+
+## Error Codes
+
+If the values given to any function is  out of validity range, represent incorrect inputs, or generate convergence problems, an error message is printed. The errors are defined in the table listed as: `errorCodes`.
+
+
+```{r, results = 'asis'}
+# Error Codes
+library(IAPWS95)
+library(pander)
+capture.output( errorT <- errorCodes, file='NUL')
+pander::pandoc.table(errorT)
+
+```
+
+
+## Graphics: An example of h-s Diagram for saturation line
+
+This package does not have any graphics function yet, but you can make use of any R graphic function or package.
+
+```{r, fig.show='hold'}
+library(IAPWS95)
+library(ggplot2)
+# Initial Temperature
+T1 <- 275.
+# Final Temperature
+T2 <- 647.
+# Temperature increment
+dT <- 3.
+capture.output( Tab <- satTabT(T1, T2, dT), file='NUL')
+x1 <- Tab[,6]
+x2 <- rev(Tab[,7])
+s <- append(x1, x2)
+y1 <- Tab[,4]
+y2 <- rev(Tab[,5])
+h <- append(y1, y2)
+# h- Graph
+plot(s,h, type = "o", pch=20)
+grid()
+
+dados <- as.data.frame(s)
+dados$h <- h
+ggplot2::ggplot(dados, ggplot2::aes(x=s, y=h)) + ggplot2::geom_line()
+
+```

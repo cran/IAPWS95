@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Benedito Dias Baptista Filho" />
+
+<meta name="date" content="2016-12-08" />
+
+<title>IAPWS95</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">IAPWS95</h1>
+<h4 class="author"><em>Benedito Dias Baptista Filho</em></h4>
+<h4 class="date"><em>31/08/2016</em></h4>
+
+
+
+<p>This Vignette exemplifies the use of some functions of the Package IAPWS95, which calculates water thermodynamic and transport properties as function of different combinations of Temperature, Density, Pressure, Enthalphy and Entropy. The functions presented are used to return single values or generate tables of thermodynamic properties, being useful for scientists and engineers who analyze thermal and hydraulic experimental data or are involved with projects and equipment development, like turbines or nuclear reactors. This Vignette shows too few examples, but each function is documented with examples.</p>
+<p>The name IAPWS95 comes from the “IAPWS Formulation 1995 for the Thermodynamic Properties of Ordinary Water Substance for General and Scientific Use”, a formulation developed by “The International Association for the Properties of Water and Steam”, revised in 2014. <a href="http://www.iapws.org/" class="uri">http://www.iapws.org/</a></p>
+<p>IAPWS-95 formulation is based on the fundamental equation of Helmholtz free energy as a function of temperature and density, f = f(T, ρ). Other thermodynamic properties are obtained by differentiation and algebraic manipulation without the use of any other information. IAPWS-95 defines accurately the thermodynamic properties of the fluid phases of ordinary water substance, with complete thermodynamic consistency among these properties, over a wide range of states (pressures up to 1000 MPa and temperatures from the melting and sublimation temperatures to 1273 K). In this package the lower temperature limit is the triple point temperature, 273.16 K. The definition of properties includes those on the liquid–vapor equilibrium line.</p>
+<p>The transport properties programmed were based on different IAPWS Releases: “Release on the IAPWS Formulation 2011 for the Thermal Conductivity of Ordinary Water Substance”; “Release on the IAPWS Formulation 2008 for the Viscosity of Ordinary Water Substance”; “Revised Release on Surface Tension of Ordinary Water Substance” (2014). The melting pressure was based on the “Revised Release on the Pressure along the Melting and Sublimation Curves of Ordinary Water Substance” (2011).</p>
+<div id="organizations-involved" class="section level2">
+<h2>Organizations involved</h2>
+<p>This package was developed under a research project on water properties conducted at the “Energetic and Nuclear Research Institute (IPEN-CNEN-SP: <a href="https://www.ipen.br/portal_por/portal/default.php" class="uri">https://www.ipen.br/portal_por/portal/default.php</a>)”, a Research Institute of the “Brazilian Nuclear Energy Commission” (CNEN), by the author, who is the Representative of Brazil, an Associate Member of IAPWS.</p>
+<p>This project was possible with the assistance of Dr. Allan Harvey, of the National Institute of Standards and Technology (NIST) and Chair of the Working Group of “Thermophysical Properties of Water and Steam” of the IAPWS.</p>
+</div>
+<div id="example-of-a-table-generating-function-sptctetabp1-p2-dp-t" class="section level2">
+<h2>Example of a Table generating Function: spTcteTab(p1, p2, dp, T)</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Entropy Function of Pressure, with Temperature Constant</span>
+<span class="kw">library</span>(IAPWS95)
+<span class="kw">library</span>(pander)
+<span class="co"># Initial Pressure</span>
+p1 &lt;-<span class="st"> </span><span class="dv">10</span>.
+<span class="co"># Final Pressure</span>
+p2 &lt;-<span class="st"> </span><span class="dv">100</span>.
+<span class="co"># Pressure increment</span>
+dp &lt;-<span class="st"> </span><span class="dv">10</span>.
+<span class="co"># Temperature</span>
+T &lt;-<span class="st"> </span><span class="dv">450</span>.
+<span class="kw">capture.output</span>( Tabs &lt;-<span class="st"> </span><span class="kw">spTcteTab</span>(p1, p2, dp, T), <span class="dt">file=</span><span class="st">'NUL'</span>)
+pander::<span class="kw">pandoc.table</span>(Tabs)</code></pre></div>
+<table style="width:38%;">
+<colgroup>
+<col width="13%"></col>
+<col width="23%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">p [MPa]</th>
+<th align="center">s [kJ kg-1 K-1]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">10</td>
+<td align="center">2.097</td>
+</tr>
+<tr class="even">
+<td align="center">20</td>
+<td align="center">2.084</td>
+</tr>
+<tr class="odd">
+<td align="center">30</td>
+<td align="center">2.072</td>
+</tr>
+<tr class="even">
+<td align="center">40</td>
+<td align="center">2.061</td>
+</tr>
+<tr class="odd">
+<td align="center">50</td>
+<td align="center">2.049</td>
+</tr>
+<tr class="even">
+<td align="center">60</td>
+<td align="center">2.039</td>
+</tr>
+<tr class="odd">
+<td align="center">70</td>
+<td align="center">2.028</td>
+</tr>
+<tr class="even">
+<td align="center">80</td>
+<td align="center">2.018</td>
+</tr>
+<tr class="odd">
+<td align="center">90</td>
+<td align="center">2.009</td>
+</tr>
+<tr class="even">
+<td align="center">100</td>
+<td align="center">1.999</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="table-of-saturation-properties-sattabvtt1-t2-dt" class="section level2">
+<h2>Table of Saturation Properties: satTabvT(T1, T2, dT)</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Saturation Properties Function of Temperature</span>
+<span class="kw">library</span>(IAPWS95)
+<span class="kw">library</span>(pander)
+<span class="co"># Initial Temperature</span>
+T1 &lt;-<span class="st"> </span><span class="dv">300</span>.
+<span class="co"># Final Temperature</span>
+T2 &lt;-<span class="st"> </span><span class="dv">400</span>.
+<span class="co"># Temperature increment</span>
+dT &lt;-<span class="st"> </span><span class="dv">10</span>.
+<span class="kw">capture.output</span>( TabT &lt;-<span class="st"> </span><span class="kw">satTabvT</span>(T1, T2, dT), <span class="dt">file=</span><span class="st">'NUL'</span>)
+pander::<span class="kw">pandoc.table</span>(TabT)</code></pre></div>
+<table style="width:62%;">
+<colgroup>
+<col width="5%"></col>
+<col width="12%"></col>
+<col width="9%"></col>
+<col width="8%"></col>
+<col width="6%"></col>
+<col width="9%"></col>
+<col width="9%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">T</th>
+<th align="center">vf</th>
+<th align="center">vg</th>
+<th align="center">hf</th>
+<th align="center">hg</th>
+<th align="center">sf</th>
+<th align="center">sg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">300</td>
+<td align="center">0.001003</td>
+<td align="center">39.08</td>
+<td align="center">112.6</td>
+<td align="center">2550</td>
+<td align="center">0.3931</td>
+<td align="center">8.517</td>
+</tr>
+<tr class="even">
+<td align="center">310</td>
+<td align="center">0.001007</td>
+<td align="center">22.9</td>
+<td align="center">154.4</td>
+<td align="center">2568</td>
+<td align="center">0.5301</td>
+<td align="center">8.316</td>
+</tr>
+<tr class="odd">
+<td align="center">320</td>
+<td align="center">0.001011</td>
+<td align="center">13.95</td>
+<td align="center">196.2</td>
+<td align="center">2586</td>
+<td align="center">0.6629</td>
+<td align="center">8.13</td>
+</tr>
+<tr class="even">
+<td align="center">330</td>
+<td align="center">0.001015</td>
+<td align="center">8.805</td>
+<td align="center">238</td>
+<td align="center">2603</td>
+<td align="center">0.7915</td>
+<td align="center">7.959</td>
+</tr>
+<tr class="odd">
+<td align="center">340</td>
+<td align="center">0.001021</td>
+<td align="center">5.734</td>
+<td align="center">279.9</td>
+<td align="center">2621</td>
+<td align="center">0.9165</td>
+<td align="center">7.801</td>
+</tr>
+<tr class="even">
+<td align="center">350</td>
+<td align="center">0.001027</td>
+<td align="center">3.842</td>
+<td align="center">321.8</td>
+<td align="center">2638</td>
+<td align="center">1.038</td>
+<td align="center">7.655</td>
+</tr>
+<tr class="odd">
+<td align="center">360</td>
+<td align="center">0.001034</td>
+<td align="center">2.641</td>
+<td align="center">363.8</td>
+<td align="center">2654</td>
+<td align="center">1.156</td>
+<td align="center">7.519</td>
+</tr>
+<tr class="even">
+<td align="center">370</td>
+<td align="center">0.001041</td>
+<td align="center">1.859</td>
+<td align="center">405.9</td>
+<td align="center">2671</td>
+<td align="center">1.271</td>
+<td align="center">7.392</td>
+</tr>
+<tr class="odd">
+<td align="center">380</td>
+<td align="center">0.001049</td>
+<td align="center">1.336</td>
+<td align="center">448.1</td>
+<td align="center">2686</td>
+<td align="center">1.384</td>
+<td align="center">7.274</td>
+</tr>
+<tr class="even">
+<td align="center">390</td>
+<td align="center">0.001058</td>
+<td align="center">0.9793</td>
+<td align="center">490.4</td>
+<td align="center">2701</td>
+<td align="center">1.494</td>
+<td align="center">7.163</td>
+</tr>
+<tr class="odd">
+<td align="center">400</td>
+<td align="center">0.001067</td>
+<td align="center">0.7302</td>
+<td align="center">533</td>
+<td align="center">2716</td>
+<td align="center">1.601</td>
+<td align="center">7.058</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="functions-of-temperature-and-density" class="section level2">
+<h2>Functions of Temperature and Density</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Dynamic Viscosity [ Pa s ]</span>
+<span class="kw">library</span>(IAPWS95)
+<span class="co"># Temperature</span>
+T &lt;-<span class="st"> </span><span class="dv">500</span>.
+<span class="co"># Density</span>
+D &lt;-<span class="st"> </span><span class="fl">838.025</span>
+<span class="kw">ViscTD</span>(T,D)</code></pre></div>
+<p>[1] 0.000119828393</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Specific Enthalpy [ kJ kg-1 ]</span>
+<span class="kw">hTD</span>(T,D)</code></pre></div>
+<p>[1] 977.181624</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pressure [ MPa ]</span>
+<span class="kw">pTD</span>(T,D)</code></pre></div>
+<p>[1] 10.0003858</p>
+</div>
+<div id="functions-of-temperature-and-pressure" class="section level2">
+<h2>Functions of Temperature and Pressure</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Specific Internal Energy [ kJ kg-1 ]</span>
+<span class="kw">library</span>(IAPWS95)
+<span class="co"># Temperature</span>
+T &lt;-<span class="st"> </span><span class="dv">500</span>.
+<span class="co"># Pressure</span>
+p &lt;-<span class="st"> </span><span class="fl">10.0003858</span>
+<span class="kw">uTp</span>(T,p)</code></pre></div>
+<p>[1] 965.248346</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Specific Enthalpy [ kJ kg-1 ]</span>
+<span class="kw">hTp</span>(T,p)</code></pre></div>
+<p>[1] 977.181624</p>
+</div>
+<div id="error-codes" class="section level2">
+<h2>Error Codes</h2>
+<p>If the values given to any function is out of validity range, represent incorrect inputs, or generate convergence problems, an error message is printed. The errors are defined in the table listed as: <code>errorCodes</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Error Codes</span>
+<span class="kw">library</span>(IAPWS95)
+<span class="kw">library</span>(pander)
+<span class="kw">capture.output</span>( errorT &lt;-<span class="st"> </span>errorCodes, <span class="dt">file=</span><span class="st">'NUL'</span>)
+pander::<span class="kw">pandoc.table</span>(errorT)</code></pre></div>
+<table style="width:60%;">
+<colgroup>
+<col width="18%"></col>
+<col width="41%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Error.code</th>
+<th align="center">Error.Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">-1001</td>
+<td align="center">Outside limits of Temperature</td>
+</tr>
+<tr class="even">
+<td align="center">-1101</td>
+<td align="center">Outside limits of Temperature in two phase routine: T<TTR or T>TC</td>
+</tr>
+<tr class="odd">
+<td align="center">-1028</td>
+<td align="center">Outside limits of Temperature in an inner routine</td>
+</tr>
+<tr class="even">
+<td align="center">-1002</td>
+<td align="center">Outside limits of pressure</td>
+</tr>
+<tr class="odd">
+<td align="center">-1112</td>
+<td align="center">Pressure difference pDIFF = 10-7 in calculation of pSAT for given s</td>
+</tr>
+<tr class="even">
+<td align="center">-1212</td>
+<td align="center">Outside Pressure-Temperature Range</td>
+</tr>
+<tr class="odd">
+<td align="center">-1003</td>
+<td align="center">Outside limits of Density</td>
+</tr>
+<tr class="even">
+<td align="center">-1103</td>
+<td align="center">Density did not converge in two phase routine</td>
+</tr>
+<tr class="odd">
+<td align="center">-1113</td>
+<td align="center">Density D &lt; DgTR</td>
+</tr>
+<tr class="even">
+<td align="center">-1004</td>
+<td align="center">Steam Quality did not converge in two phase routines</td>
+</tr>
+<tr class="odd">
+<td align="center">-1005</td>
+<td align="center">Outside limits of Entropy</td>
+</tr>
+<tr class="even">
+<td align="center">-1015</td>
+<td align="center">TDIFF = 10-7 in calculation of TSAT for given s</td>
+</tr>
+<tr class="odd">
+<td align="center">-1105</td>
+<td align="center">Entropy s = sC or s = sgTR in two phase routine</td>
+</tr>
+<tr class="even">
+<td align="center">-1555</td>
+<td align="center">Entropy s &gt; sgTR in a two phase routine</td>
+</tr>
+<tr class="odd">
+<td align="center">-1006</td>
+<td align="center">Enthalpy below minimum value</td>
+</tr>
+<tr class="even">
+<td align="center">-9999</td>
+<td align="center">Enthalpy over upper limit by Entropy</td>
+</tr>
+<tr class="odd">
+<td align="center">-1111</td>
+<td align="center">Enthalpy under lower limit by Entropy</td>
+</tr>
+<tr class="even">
+<td align="center">-1011</td>
+<td align="center">Temperature did not converge</td>
+</tr>
+<tr class="odd">
+<td align="center">-1013</td>
+<td align="center">Density did not converge</td>
+</tr>
+<tr class="even">
+<td align="center">-3001</td>
+<td align="center">Temperature T &lt; 50K (for sublimation pressure)</td>
+</tr>
+<tr class="odd">
+<td align="center">-3002</td>
+<td align="center">Temperature T &gt;715K (over temp. limits for melting pressure)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="graphics-an-example-of-h-s-diagram-for-saturation-line" class="section level2">
+<h2>Graphics: An example of h-s Diagram for saturation line</h2>
+<p>This package does not have any graphics function yet, but you can make use of any R graphic function or package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(IAPWS95)
+<span class="kw">library</span>(ggplot2)
+<span class="co"># Initial Temperature</span>
+T1 &lt;-<span class="st"> </span><span class="dv">275</span>.
+<span class="co"># Final Temperature</span>
+T2 &lt;-<span class="st"> </span><span class="dv">647</span>.
+<span class="co"># Temperature increment</span>
+dT &lt;-<span class="st"> </span><span class="dv">3</span>.
+<span class="kw">capture.output</span>( Tab &lt;-<span class="st"> </span><span class="kw">satTabT</span>(T1, T2, dT), <span class="dt">file=</span><span class="st">'NUL'</span>)
+x1 &lt;-<span class="st"> </span>Tab[,<span class="dv">6</span>]
+x2 &lt;-<span class="st"> </span><span class="kw">rev</span>(Tab[,<span class="dv">7</span>])
+s &lt;-<span class="st"> </span><span class="kw">append</span>(x1, x2)
+y1 &lt;-<span class="st"> </span>Tab[,<span class="dv">4</span>]
+y2 &lt;-<span class="st"> </span><span class="kw">rev</span>(Tab[,<span class="dv">5</span>])
+h &lt;-<span class="st"> </span><span class="kw">append</span>(y1, y2)
+<span class="co"># h- Graph</span>
+<span class="kw">plot</span>(s,h, <span class="dt">type =</span> <span class="st">&quot;o&quot;</span>, <span class="dt">pch=</span><span class="dv">20</span>)
+<span class="kw">grid</span>()
+
+dados &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(s)
+dados$h &lt;-<span class="st"> </span>h
+ggplot2::<span class="kw">ggplot</span>(dados, ggplot2::<span class="kw">aes</span>(<span class="dt">x=</span>s, <span class="dt">y=</span>h)) +<span class="st"> </span>ggplot2::<span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="data:image/png;base64,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" /><img src="data:image/png;base64,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" /></p>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
