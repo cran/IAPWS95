@@ -15,7 +15,7 @@ The saturated gas entropy: sg [kJ kg-1 K-1] and an Error
 }
 \description{
 The function \code{sgT(T)} returns the saturated gas entropy [kJ kg-1 K-1], 
-    sg, for given T [K]
+    sg, for given T [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 T <- 450.
-sgT(T)
+sg <- sgT(T)
+sg
 
 }
-

@@ -19,8 +19,8 @@ The sublimation pressure: pSubl [ MPa ], below triple point Temperature
 Error message (if an error occur)
 }
 \description{
-The function \code{pMeltT(T)} returns the water melting pressur,
-     pMelt [ MPa ], for a given T [K]
+The function \code{pMeltT(T)} returns the water melting pressure,
+     pMelt [ MPa ], for a given T [K].
 }
 \details{
 This function calls a Fortran DLL that solves the equations given at the
@@ -32,7 +32,7 @@ This function calls a Fortran DLL that solves the equations given at the
 }
 \examples{
 T <- 275.
-pMeltT(T)
+p_Melt <- pMeltT(T)
+p_Melt
 
 }
-

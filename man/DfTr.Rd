@@ -10,10 +10,10 @@ DfTr()
 Triple Point Liquid Density: DfTr [ kg m-3 ]
 }
 \description{
-The function \code{DfTr()} returns the Water Liquid Density at Triple Point
+The function \code{DfTr()} returns the Water Liquid Density at Triple Point.
 }
 \examples{
-DfTr()
+DfTrip <- DfTr()
+DfTrip
 
 }
-

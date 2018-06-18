@@ -17,7 +17,7 @@ The pressure derivative with respect to T: dp/dT [ MPa K-1 ] and an Error
 }
 \description{
 The function \code{dpdTTp(T,p)} returns the pressure derivative with 
-    respect to Temperature, dpdT, for given T [K] and p [MPa]
+    respect to Temperature, dpdT, for given T [K] and p [MPa].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -30,7 +30,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 \examples{
 T <- 500.
 p <- 10.0003858
-dpdTTp(T,p)
+dpdT <- dpdTTp(T,p)
+dpdT
 
 }
-

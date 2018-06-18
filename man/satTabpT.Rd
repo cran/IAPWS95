@@ -7,7 +7,7 @@
 satTabpT(T1, T2, dT)
 }
 \arguments{
-\item{T1}{Initial Temperature [K]}
+\item{T1}{First Temperature value [K]}
 
 \item{T2}{Final Temperature [K]}
 
@@ -18,7 +18,7 @@ A table of saturation pressures, function of T
 }
 \description{
 The function \code{satTabpT(T1, T2, dT)} returns a table of 
-    saturation pressures [MPa] for a Temperature interval, T1:T2 [K]
+    saturation pressures [MPa] for a Temperature interval, T1:T2 [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -32,12 +32,13 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 T1 <- 275.
 T2 <- 450.
 dT <- 5.
-satTabpT(T1, T2, dT)
+TabT <- satTabpT(T1, T2, dT)
+TabT
 
 T1 <- 300.
 T2 <- 500.
 dT <- 10.
 TabT <- satTabpT(T1, T2, dT)
+TabT
 
 }
-

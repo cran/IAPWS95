@@ -12,8 +12,8 @@ fTD(T, D)
 \item{D}{Density [ kg m-3 ]}
 }
 \value{
-The Helmholtz Free Energy: f [ kJ kg-1 ] and an Error Message 
-    (if an error occur:  \link{errorCodes})
+The Helmholtz Free Energy: f [ kJ kg-1 ] and an Error Message if an error occur:
+  \link{errorCodes}
 }
 \description{
 The function \code{fTD(T,D)} returns the Helmholtz Free Energy, f [ kJ kg-1 ],
@@ -30,7 +30,6 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 \examples{
 T <- 500.
 D <- 838.025
-fTD(T,D)
-
+f <- fTD(T,D)
+f
 }
-

@@ -7,9 +7,9 @@
 DpTcteTab(p1, p2, dp, T)
 }
 \arguments{
-\item{p1}{initial Pressure [ MPa ]}
+\item{p1}{first pressure value [ MPa ]}
 
-\item{p2}{final Pressure [ MPa ]}
+\item{p2}{final pressure [ MPa ]}
 
 \item{dp}{Pressure increment [ MPa ]}
 
@@ -37,13 +37,14 @@ p1 <- 1.0
 p2 <- 10.
 dp <- 1.
 T <- 500.
-DpTcteTab(p1, p2, dp, T)
+TabD <- DpTcteTab(p1, p2, dp, T)
+TabD
 
 p1 <- 10.
 p2 <- 100.
 dp <- 10.
 T <- 450.
 TabD <- DpTcteTab(p1, p2, dp, T)
+TabD
 
 }
-

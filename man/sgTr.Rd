@@ -10,10 +10,10 @@ sgTr()
 Triple Point Gas Entropy: sgTr [ kJ kg-1 K-1]
 }
 \description{
-The function \code{sgTr()} returns the Water Gas Entropy at Triple Point
+The function \code{sgTr()} returns the Water Gas Entropy at Triple Point.
 }
 \examples{
-sgTr()
+sgTrip <- sgTr()
+sgTrip
 
 }
-

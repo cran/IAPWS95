@@ -7,7 +7,7 @@
 satTabvT(T1, T2, dT)
 }
 \arguments{
-\item{T1}{Initial Temperature [K]}
+\item{T1}{First Temperature value [K]}
 
 \item{T2}{Final Temperature [K]}
 
@@ -19,7 +19,7 @@ A table of saturation v, h and s, function of T
 \description{
 The function \code{satTabvT(T1, T2, dT)} returns a table of 
     threee saturation properties for two phases: Specific Volume [ m3 kg-1 ], 
-    Enthalpy [kJ kg-1] and Entropy [kJ kg K-1] for a Temperature interval, T1:T2 [K]
+    Enthalpy [kJ kg-1] and Entropy [kJ kg K-1] for a Temperature interval, T1:T2 [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -33,12 +33,13 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 T1 <- 275.
 T2 <- 450.
 dT <- 5.
-satTabvT(T1, T2, dT)
+TabT <- satTabvT(T1, T2, dT)
+TabT
 
 T1 <- 300.
 T2 <- 500.
 dT <- 10.
 TabT <- satTabvT(T1, T2, dT)
+TabT
 
 }
-

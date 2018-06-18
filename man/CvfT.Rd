@@ -15,7 +15,7 @@ The Isochoric Heat Capacity of Fluid Phase: Cvf [kJ kg-1 K-1] and an Error
 }
 \description{
 The function \code{CvfT(T)} returns the Isochoric Heat Capacity 
-    of Fluid Phase [kJ kg-1 K-1],  Cvf, for given T [K]
+    of Fluid Phase [kJ kg-1 K-1],  Cvf, for given T [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 T <- 450.
-CvfT(T)
+Cvf <- CvfT(T)
+Cvf
 
 }
-

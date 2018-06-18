@@ -10,10 +10,10 @@ hCrit()
 The Water Critical Enthalpy: hc [ kJ kg-1 ]
 }
 \description{
-@description The function \code{hCrit()} returns the water enthalpy at the critical point [kJ kg-1]
+@description The function \code{hCrit()} returns the water enthalpy at the critical point [kJ kg-1].
 }
 \examples{
-hCrit()
+hC <- hCrit()
+hC
 
 }
-

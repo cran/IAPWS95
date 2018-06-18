@@ -33,7 +33,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 \examples{
 T <- 500.
 h <- 977.181624
-DTh(T,h)
+D_Th <- DTh(T,h)
+D_Th
 
 }
-

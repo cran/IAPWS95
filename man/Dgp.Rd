@@ -15,7 +15,7 @@ The saturated gas density: Dg [kg m-3] and an Error Message
 }
 \description{
 The function \code{Dgp(p)} returns the saturated gas density [kg m-3], 
-    Dg, for given p [ MPa ]
+    Dg, for given p [ MPa ].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 p <- 0.932203564
-Dgp(p)
+Dg <- Dgp(p)
+Dg
 
 }
-

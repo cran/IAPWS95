@@ -2,7 +2,7 @@
 #'
 #' @description The function \code{satTabT(T1, T2, dT)} returns a table of 
 #'     threee saturation properties for two phases: Density [kg/m3], 
-#'     Enthalpy [kJ kg-1] and Entropy [kJ kg K-1] for a Temperature interval, T1:T2 [K]
+#'     Enthalpy [kJ kg-1] and Entropy [kJ kg K-1] for a Temperature interval, T1:T2 [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -11,7 +11,7 @@
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param T1 Initial Temperature [K]
+#' @param T1 First Temperature value [K]
 #' @param T2 Final Temperature [K]
 #' @param dT Temperature increment [K]
 #' 
@@ -21,12 +21,14 @@
 #' T1 <- 275.
 #' T2 <- 450.
 #' dT <- 5.
-#' satTabT(T1, T2, dT)
+#' TabT <- satTabT(T1, T2, dT)
+#' TabT
 #' 
 #' T1 <- 300.
 #' T2 <- 500.
 #' dT <- 10.
 #' TabT <- satTabT(T1, T2, dT)
+#' TabT
 #' 
 #' @export
 #' 
@@ -44,22 +46,20 @@ satTabT <- function(T1, T2, dT) {
   y <- as.matrix(y)
   icode <- 0
   res <- .Fortran('satDhsofT', as.integer(n), Tv, y)
-#  out <- list(Temperature=T, SatTab=as.data.frame(res[[2]]), ErrorCode=res[[3]])
   colnames(res[[3]]) <- c("T", "Df", "Dg", "hf", "hg", "sf", "sg")
   out <- res[[3]]
+  return(out)
 #  options(digits=9)
 #  if (res[[3]] != 0) { 
 #    out[[4]] <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
 #  }
-#  class(out) <- "IAPWS95"
-  print(out)
 } 
 
 #' Table of Saturation Densities, Enthalpies and Entropies, Function of Pressure
 #'
 #' @description The function \code{satTabp(p1, p2, dp)} returns a table of 
 #'     threee saturation properties for two phases: Density [kg/m3], 
-#'     Enthalpy [kJ kg-1] and Entropy [kJ kg K-1] for a Pressure interval, p1:p2 [MPa]
+#'     Enthalpy [kJ kg-1] and Entropy [kJ kg K-1] for a Pressure interval, p1:p2 [MPa].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -68,7 +68,7 @@ satTabT <- function(T1, T2, dT) {
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param p1 Initial Pressure [MPa]
+#' @param p1 First Pressure value [MPa]
 #' @param p2 Final Pressure [MPa]
 #' @param dp Pressure increment [MPa]
 #' 
@@ -78,12 +78,14 @@ satTabT <- function(T1, T2, dT) {
 #' p1 <- 1.0
 #' p2 <- 10.
 #' dp <- 0.5
-#' satTabp(p1, p2, dp)
+#' Tabp <- satTabp(p1, p2, dp)
+#' Tabp
 #' 
 #' p1 <- 0.1
 #' p2 <- 10.
 #' dp <- 0.5
 #' Tabp <- satTabp(p1, p2, dp)
+#' Tabp
 #' 
 #' @export
 #' 
@@ -103,19 +105,18 @@ satTabp <- function(p1, p2, dp) {
   res <- .Fortran('satDhsofp', as.integer(n), pv, y)
   colnames(res[[3]]) <- c("p", "Df", "Dg", "hf", "hg", "sf", "sg")
   out <- res[[3]]
+  return(out)
   #  options(digits=9)
   #  if (res[[3]] != 0) { 
   #    out[[4]] <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
   #  }
-  #  class(out) <- "IAPWS95"
-  print(out)
 } 
 
 #' Table of Saturation Volumes, Enthalpies and Entropies, Function of of Temperature
 #'
 #' @description The function \code{satTabvT(T1, T2, dT)} returns a table of 
 #'     threee saturation properties for two phases: Specific Volume [ m3 kg-1 ], 
-#'     Enthalpy [kJ kg-1] and Entropy [kJ kg K-1] for a Temperature interval, T1:T2 [K]
+#'     Enthalpy [kJ kg-1] and Entropy [kJ kg K-1] for a Temperature interval, T1:T2 [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -124,7 +125,7 @@ satTabp <- function(p1, p2, dp) {
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param T1 Initial Temperature [K]
+#' @param T1 First Temperature value [K]
 #' @param T2 Final Temperature [K]
 #' @param dT Temperature increment [K]
 #' 
@@ -134,12 +135,14 @@ satTabp <- function(p1, p2, dp) {
 #' T1 <- 275.
 #' T2 <- 450.
 #' dT <- 5.
-#' satTabvT(T1, T2, dT)
+#' TabT <- satTabvT(T1, T2, dT)
+#' TabT
 #' 
 #' T1 <- 300.
 #' T2 <- 500.
 #' dT <- 10.
 #' TabT <- satTabvT(T1, T2, dT)
+#' TabT
 #' 
 #' @export
 #' 
@@ -157,22 +160,20 @@ satTabvT <- function(T1, T2, dT) {
   y <- as.matrix(y)
   icode <- 0
   res <- .Fortran('satvhsofT', as.integer(n), Tv, y)
-  #  out <- list(Temperature=T, SatTab=as.data.frame(res[[2]]), ErrorCode=res[[3]])
   colnames(res[[3]]) <- c("T", "vf", "vg", "hf", "hg", "sf", "sg")
   out <- res[[3]]
+  return(out)
   #  options(digits=9)
   #  if (res[[3]] != 0) { 
   #    out[[4]] <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
   #  }
-  #  class(out) <- "IAPWS95"
-  print(out)
 }
 
 #' Table of Saturation Volumes, Enthalpies and Entropies, Function of Pressure
 #'
 #' @description The function \code{satTabvp(p1, p2, dp)} returns a table of 
 #'     threee saturation properties for two phases: Specific Volume [ m3 kg-1 ], 
-#'     Enthalpy [kJ kg-1] and Entropy [kJ kg K-1] for a Pressure interval, p1:p2 [MPa]
+#'     Enthalpy [kJ kg-1] and Entropy [kJ kg K-1] for a Pressure interval, p1:p2 [MPa].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -181,7 +182,7 @@ satTabvT <- function(T1, T2, dT) {
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param p1 Initial Pressure [MPa]
+#' @param p1 First Pressure value [MPa]
 #' @param p2 Final Pressure [MPa]
 #' @param dp Pressure increment [MPa]
 #' 
@@ -191,12 +192,14 @@ satTabvT <- function(T1, T2, dT) {
 #' p1 <- 1.0
 #' p2 <- 10.
 #' dp <- 0.5
-#' satTabvp(p1, p2, dp)
+#' Tabp <- satTabvp(p1, p2, dp)
+#' Tabp
 #' 
 #' p1 <- 0.1
 #' p2 <- 10.
 #' dp <- 0.5
 #' Tabp <- satTabvp(p1, p2, dp)
+#' Tabp
 #' 
 #' @export
 #' 
@@ -216,18 +219,17 @@ satTabvp <- function(p1, p2, dp) {
   res <- .Fortran('satvhsofp', as.integer(n), pv, y)
   colnames(res[[3]]) <- c("p", "vf", "vg", "hf", "hg", "sf", "sg")
   out <- res[[3]]
+  return(out)
   #  options(digits=9)
   #  if (res[[3]] != 0) { 
   #    out[[4]] <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
   #  }
-  #  class(out) <- "IAPWS95"
-  print(out)
 } 
 
 #' Table of Saturation Pressures, Function of Temperature
 #'
 #' @description The function \code{satTabpT(T1, T2, dT)} returns a table of 
-#'     saturation pressures [MPa] for a Temperature interval, T1:T2 [K]
+#'     saturation pressures [MPa] for a Temperature interval, T1:T2 [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -236,7 +238,7 @@ satTabvp <- function(p1, p2, dp) {
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param T1 Initial Temperature [K]
+#' @param T1 First Temperature value [K]
 #' @param T2 Final Temperature [K]
 #' @param dT Temperature increment [K]
 #' 
@@ -246,12 +248,14 @@ satTabvp <- function(p1, p2, dp) {
 #' T1 <- 275.
 #' T2 <- 450.
 #' dT <- 5.
-#' satTabpT(T1, T2, dT)
+#' TabT <- satTabpT(T1, T2, dT)
+#' TabT
 #' 
 #' T1 <- 300.
 #' T2 <- 500.
 #' dT <- 10.
 #' TabT <- satTabpT(T1, T2, dT)
+#' TabT
 #' 
 #' @export
 #' 
@@ -267,18 +271,17 @@ satTabpT <- function(T1, T2, dT) {
   #  out <- list(Temperature=T, SatTab=as.data.frame(res[[2]]), ErrorCode=res[[3]])
   colnames(res[[3]]) <- c("T", "pSat")
   out <- res[[3]]
+  return(out)
   #  options(digits=9)
   #  if (res[[3]] != 0) { 
   #    out[[4]] <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
   #  }
-  #  class(out) <- "IAPWS95"
-  print(out)
 }
 
 #' Table of Saturation Temperatures, Function of Pressure
 #'
 #' @description The function \code{satTabTp(p1, p2, dp)} returns a table of 
-#'     Saturation Temperatures [K] for a Pressure interval, p1:p2 [MPa]
+#'     Saturation Temperatures [K] for a Pressure interval, p1:p2 [MPa].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -287,7 +290,7 @@ satTabpT <- function(T1, T2, dT) {
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param p1 Initial Pressure [MPa]
+#' @param p1 First Pressure value [MPa]
 #' @param p2 Final Pressure [MPa]
 #' @param dp Pressure increment [MPa]
 #' 
@@ -297,12 +300,14 @@ satTabpT <- function(T1, T2, dT) {
 #' p1 <- 1.0
 #' p2 <- 10.
 #' dp <- 0.5
-#' satTabTp(p1, p2, dp)
+#' Tabp <- satTabTp(p1, p2, dp)
+#' Tabp
 #' 
 #' p1 <- 0.1
 #' p2 <- 10.
 #' dp <- 0.5
 #' Tabp <- satTabTp(p1, p2, dp)
+#' Tabp
 #' 
 #' @export
 #' 
@@ -318,18 +323,17 @@ satTabTp <- function(p1, p2, dp) {
   #  out <- list(Temperature=T, SatTab=as.data.frame(res[[2]]), ErrorCode=res[[3]])
   colnames(res[[3]]) <- c("p", "TSat")
   out <- res[[3]]
+  return(out)
   #  options(digits=9)
   #  if (res[[3]] != 0) { 
   #    out[[4]] <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
   #  }
-  #  class(out) <- "IAPWS95"
-  print(out)
 }
 
 #' Table of Saturation Liquid Phase Enthalpies, Function of Temperature
 #'
 #' @description The function \code{satTabhT(T1, T2, dT)} returns a table of 
-#'     saturation liquid enthalpies [kJ kg-1 K-1] for a Temperature interval, T1:T2 [K]
+#'     saturation liquid enthalpies [kJ kg-1 K-1] for a Temperature interval, T1:T2 [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -338,7 +342,7 @@ satTabTp <- function(p1, p2, dp) {
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param T1 Initial Temperature [K]
+#' @param T1 First Temperature value [K]
 #' @param T2 Final Temperature [K]
 #' @param dT Temperature increment [K]
 #' 
@@ -348,12 +352,14 @@ satTabTp <- function(p1, p2, dp) {
 #' T1 <- 275.
 #' T2 <- 450.
 #' dT <- 5.
-#' satTabhT(T1, T2, dT)
+#' TabT <- satTabhT(T1, T2, dT)
+#' TabT
 #' 
 #' T1 <- 300.
 #' T2 <- 500.
 #' dT <- 10.
 #' TabT <- satTabhT(T1, T2, dT)
+#' TabT
 #' 
 #' @export
 #' 
@@ -366,13 +372,11 @@ satTabhT <- function(T1, T2, dT) {
   y <- as.matrix(y)
   icode <- 0
   res <- .Fortran('hfTTab', as.integer(n), Tv, y)
-  #  out <- list(Temperature=T, SatTab=as.data.frame(res[[2]]), ErrorCode=res[[3]])
   colnames(res[[3]]) <- c("T", "hf")
   out <- res[[3]]
+  return(out)
   #  options(digits=9)
   #  if (res[[3]] != 0) { 
   #    out[[4]] <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
   #  }
-  #  class(out) <- "IAPWS95"
-  print(out)
 }

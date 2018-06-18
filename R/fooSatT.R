@@ -1,7 +1,7 @@
 #' Saturation Pressure, Function of Temperature
 #'
 #' @description The function \code{pSatT(T)} returns the saturation pressure [MPa], 
-#'     pSat, for given T [K]
+#'     pSat, for given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -17,7 +17,8 @@
 #' 
 #' @examples
 #' T <- 450.
-#' pSatT(T)
+#' p_Sat <- pSatT(T)
+#' p_Sat
 #' 
 #' @export
 #' 
@@ -25,20 +26,18 @@ pSatT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('pSatT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, pSat=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
-} 
+  return(res[[2]])
+}
 
 #' Saturated Liquid Density, Function of Temperature
 #'
 #' @description The function \code{DfT(T)} returns the saturated liquid density [kg m-3], 
-#'     Df, for given T [K]
+#'     Df, for given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -54,7 +53,8 @@ pSatT <- function(T) {
 #' 
 #' @examples
 #' T <- 450.
-#' DfT(T)
+#' Df <- DfT(T)
+#' Df
 #' 
 #' @export
 #' 
@@ -62,20 +62,18 @@ DfT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('DfT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, Df=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 } 
 
 #' Saturated Gas Density, Function of Temperature
 #'
 #' @description The function \code{DgT(T)} returns the saturated gas density [kg m-3], 
-#'     Dg, for given T [K]
+#'     Dg, for given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -91,7 +89,8 @@ DfT <- function(T) {
 #' 
 #' @examples
 #' T <- 450.
-#' DgT(T)
+#' Dg <- DgT(T)
+#' Dg
 #' 
 #' @export
 #' 
@@ -99,20 +98,18 @@ DgT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('DgT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, Dg=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 } 
 
 #' Saturated Liquid Enthalpy, Function of Temperature
 #'
 #' @description The function \code{hfT(T)} returns the saturated liquid enthalpy [kJ kg-1], 
-#'     hf, for given T [K]
+#'     hf, for given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -128,7 +125,8 @@ DgT <- function(T) {
 #' 
 #' @examples
 #' T <- 450.
-#' hfT(T)
+#' hf <- hfT(T)
+#' hf
 #' 
 #' @export
 #' 
@@ -136,20 +134,18 @@ hfT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('hfT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, hf=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 } 
 
 #' Saturated Gas Enthalpy, Function of Temperature
 #'
 #' @description The function \code{hgT(T)} returns the saturated gas enthalpy [kJ kg-1], 
-#'     hg, for given T [K]
+#'     hg, for given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -165,7 +161,8 @@ hfT <- function(T) {
 #' 
 #' @examples
 #' T <- 450.
-#' hgT(T)
+#' hg <- hgT(T)
+#' hg
 #' 
 #' @export
 #' 
@@ -173,20 +170,18 @@ hgT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('hgT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, hg=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 } 
 
 #' Saturated Liquid Entropy, Function of Temperature
 #'
 #' @description The function \code{sfT(T)} returns the saturated liquid entropy [kJ kg-1 K-1], 
-#'     sf, for given T [K]
+#'     sf, for given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -202,7 +197,8 @@ hgT <- function(T) {
 #' 
 #' @examples
 #' T <- 450.
-#' sfT(T)
+#' sf <- sfT(T)
+#' sf
 #' 
 #' @export
 #' 
@@ -210,20 +206,18 @@ sfT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('sfT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, sf=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 } 
 
 #' Saturated Gas Entropy, Function of Temperature
 #'
 #' @description The function \code{sgT(T)} returns the saturated gas entropy [kJ kg-1 K-1], 
-#'     sg, for given T [K]
+#'     sg, for given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -239,7 +233,8 @@ sfT <- function(T) {
 #' 
 #' @examples
 #' T <- 450.
-#' sgT(T)
+#' sg <- sgT(T)
+#' sg
 #' 
 #' @export
 #' 
@@ -247,20 +242,18 @@ sgT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('sgT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, sg=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
    error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
    print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 } 
 
 #' Saturated Liquid Specific Internal Energy, Function of Temperature
 #'
-#' @description The function \code{ufT(T)} returns the saturated liquid internal energy [kJ kg-1], 
-#'     uf, for given T [K]
+#' @description The function \code{ufT(T).} returns the saturated liquid internal energy [kJ kg-1], 
+#'     uf, for given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -276,7 +269,8 @@ sgT <- function(T) {
 #' 
 #' @examples
 #' T <- 450.
-#' ufT(T)
+#' uf <- ufT(T)
+#' uf
 #' 
 #' @export
 #' 
@@ -284,20 +278,18 @@ ufT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('ufT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, uf=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 } 
 
 #' Saturated Gas Specific Internal Energy, Function of Temperature
 #'
 #' @description The function \code{ugT(T)} returns the saturated gas internal energy [kJ kg-1], 
-#'     ug, for given T [K]
+#'     ug, for given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -313,7 +305,8 @@ ufT <- function(T) {
 #' 
 #' @examples
 #' T <- 450.
-#' ugT(T)
+#' ug <- ugT(T)
+#' ug
 #' 
 #' @export
 #' 
@@ -321,20 +314,18 @@ ugT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('ugT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, ug=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 } 
 
 #' Specific Isochoric Heat Capacity of Fluid Phase, Function of Temperature
 #'
 #' @description The function \code{CvfT(T)} returns the Isochoric Heat Capacity 
-#'     of Fluid Phase [kJ kg-1 K-1],  Cvf, for given T [K]
+#'     of Fluid Phase [kJ kg-1 K-1],  Cvf, for given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -350,7 +341,8 @@ ugT <- function(T) {
 #' 
 #' @examples
 #' T <- 450.
-#' CvfT(T)
+#' Cvf <- CvfT(T)
+#' Cvf
 #' 
 #' @export
 #' 
@@ -358,20 +350,18 @@ CvfT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('CvfT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, Cvf=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 } 
 
 #' Specific Isochoric Heat Capacity of Gas Phase, Function of Temperature
 #'
 #' @description The function \code{CvgT(T)} returns the Isochoric Heat Capacity 
-#'     of Gas Phase [kJ kg-1 K-1],  Cvg, for given T [K]
+#'     of Gas Phase [kJ kg-1 K-1],  Cvg, for given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -387,7 +377,8 @@ CvfT <- function(T) {
 #' 
 #' @examples
 #' T <- 450.
-#' CvgT(T)
+#' Cvg <- CvgT(T)
+#' Cvg
 #' 
 #' @export
 #' 
@@ -395,20 +386,18 @@ CvgT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('CvgT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, Cvg=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 } 
 
 #' Specific Isobaric Heat Capacity of Fluid Phase, Function of Temperature
 #'
 #' @description The function \code{CpfT(T)} returns the Isobaric Heat Capacity 
-#'     of Fluid Phase [kJ kg-1 K-1],  Cpf, for given T [K]
+#'     of Fluid Phase [kJ kg-1 K-1],  Cpf, for given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -424,7 +413,8 @@ CvgT <- function(T) {
 #' 
 #' @examples
 #' T <- 450.
-#' CpfT(T)
+#' Cpf <- CpfT(T)
+#' Cpf
 #' 
 #' @export
 #' 
@@ -432,20 +422,18 @@ CpfT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('CpfT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, Cpf=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 } 
 
 #' Specific Isobaric Heat Capacity of Gas Phase, Function of Temperature
 #'
 #' @description The function \code{CpgT(T)} returns the Isobaric Heat Capacity 
-#'     of Gas Phase [kJ kg-1 K-1],  Cpg, for given T [K]
+#'     of Gas Phase [kJ kg-1 K-1],  Cpg, for given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -461,7 +449,8 @@ CpfT <- function(T) {
 #' 
 #' @examples
 #' T <- 450.
-#' CpgT(T)
+#' Cpg <- CpgT(T)
+#' Cpg
 #' 
 #' @export
 #' 
@@ -469,20 +458,18 @@ CpgT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('CpgT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, Cpg=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 } 
 
 #' Speed of Sound of Fluid Phase, Function of Temperature
 #'
 #' @description The function \code{wfT(T)} returns the Speed 
-#'     of Sound of Fluid Phase [m s-1],  wf, for given T [K]
+#'     of Sound of Fluid Phase [m s-1],  wf, for given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -498,7 +485,8 @@ CpgT <- function(T) {
 #' 
 #' @examples
 #' T <- 450.
-#' wfT(T)
+#' wf <- wfT(T)
+#' wf
 #' 
 #' @export
 #' 
@@ -506,20 +494,18 @@ wfT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('wfT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, wf=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 } 
 
 #' Speed of Sound of Gas Phase, Function of Temperature
 #'
 #' @description The function \code{wgT(T)} returns the Speed 
-#'     of Sound of Gas Phase [m s-1],  wg, for given T [K]
+#'     of Sound of Gas Phase [m s-1],  wg, for given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -535,7 +521,8 @@ wfT <- function(T) {
 #' 
 #' @examples
 #' T <- 450.
-#' wgT(T)
+#' wg <- wgT(T)
+#' wg
 #' 
 #' @export
 #' 
@@ -543,12 +530,10 @@ wgT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('wgT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, wg=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
    error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
    print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 } 

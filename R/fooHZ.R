@@ -1,7 +1,7 @@
 #' Ideal-Gas part of the Dimensionless Helmholtz Energy Equation, Function of Temperature and Density
 #'
 #' @description The function \code{phi0(T,D)} returns the Ideal-gas part of the
-#'      dimensionless Helmholtz Energy Equation, phi0, for given T [K] and D [kg/m3]
+#'      dimensionless Helmholtz Energy Equation, phi0, for given T [K] and D [kg/m3].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -19,7 +19,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' phi0(T,D)
+#' phi_0 <- phi0(T,D)
+#' phi_0
 #' 
 #' @export
 #' 
@@ -27,21 +28,19 @@
   y <- 0.
   icode <- 0
   res <- .Fortran('phi0TD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, Density=D, phi0=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
   }
 
 #' First Derivative of the Ideal-Gas part of the Dimensionless Helmholtz Energy
 #'      Equation with respect to Density, Function of Density
 #'
 #' @description The function \code{phi0D(D)} returns the First Derivative of the
-#'     Ideal-gas part of the dimensionless Helmholtz Energy Equation for a given D [kg/m3]
+#'     Ideal-gas part of the dimensionless Helmholtz Energy Equation for a given D [kg/m3]. 
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -50,36 +49,35 @@
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param D Density [ kg m-3 ]
+#' @param D Density [ kg m-3 ]  #' @param Opt: Option to not print the computed value (Opt = 0)
 #' 
 #' @return The First D Derivative of Ideal-gas part of the Helmholtz Energy: phi0D and an Error
 #'      Message (if an error occur: \link{errorCodes})
 #' 
 #' @examples
 #' D <- 838.025
-#' phi0D(D)
-#' 
+#' phi_0 <- phi0D(D)
+#' phi_0
+#'
 #' @export
 #' 
   phi0D <- function(D) {
   y <- 0.
   icode <- 0
   res <- .Fortran('phi0DD', as.double(D), as.double(y), as.integer(icode))
-#  out <- list(Density=D, phi0D=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 } 
   
 #' Second Derivative of the Ideal-Gas Part of the Dimensionless Helmholtz Energy Equation
 #'     with respect to Density, Function of Density
 #'
 #' @description The function \code{phi0DD(D)} returns the Second Derivative of the
-#'     Ideal-gas part of the dimensionless Helmholtz Energy Equation for a given D [kg/m3]
+#'     Ideal-gas part of the dimensionless Helmholtz Energy Equation for a given D [kg/m3].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -95,7 +93,8 @@
 #' 
 #' @examples
 #' D <- 838.025
-#' phi0DD(D)
+#' phi_0 <- phi0DD(D)
+#' phi_0
 #' 
 #' @export
 #' 
@@ -103,14 +102,12 @@
     y <- 0.
     icode <- 0
     res <- .Fortran('phi0DDD', as.double(D), as.double(y), as.integer(icode))
- #   out <- list(Density=D, phi0DD=res[[2]], ErrorCode=res[[3]])
     options(digits=9)
     if (res[[3]] != 0) { 
       error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
       print(error)
     }
-#    class(out) <- "IAPWS95"
-    print(res[[2]])
+    return(res[[2]])
   } 
   
 #' First Derivative of the Ideal-Gas Part of the Dimensionless Helmholtz Energy Equation
@@ -118,7 +115,7 @@
 #'
 #' @description The function \code{phi0T(T,D)} returns the First Derivative of the
 #'     Ideal-gas Part of the dimensionless Helmholtz Energy Equation with respect to 
-#'     Temperature, for given T [K] and D [kg/m3]
+#'     Temperature, for given T [K] and D [kg/m3].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -136,7 +133,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' phi0T(T,D)
+#' phi0_T <- phi0T(T,D)
+#' phi0_T
 #' 
 #' @export
 #'  
@@ -144,14 +142,12 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('phi0TTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, phi0T=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
-#   class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
 
 #' Second Derivative of the Ideal-Gas Part of the Dimensionless Helmholtz Energy Equation
@@ -159,7 +155,7 @@
 #'
 #' @description The function \code{phi0TT(T,D)} returns the Second Derivative of the
 #'     Ideal-gas Part of the Dimensionless Helmholtz Energy Equation with respect to 
-#'     Temperature, for given T [K] and D [kg/m3]
+#'     Temperature, for given T [K] and D [kg/m3].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -177,7 +173,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' phi0TT(T,D)
+#' phi0_TT <- phi0TT(T,D)
+#' phi0_TT
 #' 
 #' @export
 #'  
@@ -185,14 +182,12 @@
      y <- 0.
      icode <- 0
      res <- .Fortran('phi0TTTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#     out <- list(Temperature=T, Density=D, phi0TT=res[[3]], ErrorCode=res[[4]])
      options(digits=9)
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
        print(error)
      }
- #    class(out) <- "IAPWS95"
-     print(res[[3]])
+     return(res[[3]])
    }
    
 #' Second Derivative of the Ideal-Gas Part of the Dimensionless Helmholtz Energy Equation
@@ -200,7 +195,7 @@
 #'
 #' @description The function \code{phi0DT()} returns the Second Derivative of the
 #'     Ideal-gas Part of the Dimensionless Helmholtz Energy Equation with respect to 
-#'     Density and Temperature
+#'     Density and Temperature.
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -213,7 +208,8 @@
 #'      Message (if an error occur: \link{errorCodes})
 #' 
 #' @examples
-#' phi0DT()
+#' phi0_DT <- phi0DT()
+#' phi0_DT
 #' 
 #' @export
 #'  
@@ -221,21 +217,19 @@
      y <- 0.
      icode <- 0
      res <- .Fortran('phi0DT', as.double(y), as.integer(icode))
-#    out <- list(phi0DT=res[[1]], ErrorCode=res[[2]])
      options(digits=9)
      if (res[[2]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[2]]),2])
        print(error)
      }
-#     class(out) <- "IAPWS95"
-     print(res[[1]])
-   }
+     return(res[[1]])
+  }
    
 #' Residual-Gas Part of the Dimensionless Helmholtz Energy Equation, Function 
 #'     of Temperature and Density
 #'
 #' @description The function \code{phir(T,D)} returns the Residual-Gas Part of the Dimensionless 
-#'     Helmholtz Energy Equation for given T [K] and D [kg/m3]
+#'     Helmholtz Energy Equation for given T [K] and D [kg/m3].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -253,7 +247,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' phir(T,D)
+#' phir_TD <- phir(T,D)
+#' phir_TD
 #' 
 #' @export
 #' 
@@ -261,21 +256,19 @@
      y <- 0.
      icode <- 0
      res <- .Fortran('phiRTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#     out <- list(Temperature=T, Density=D, phir=res[[3]], ErrorCode=res[[4]])
      options(digits=9)
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
        print(error)
      }
-#     class(out) <- "IAPWS95"
-     print(res[[3]])
+     return(res[[3]])
    }
    
 #' First Derivative of the Residual-Gas part of the Dimensionless Helmholtz Energy Equation
 #'     with respect to Density, Function of Temperature and Density
 #' 
 #' @description The function \code{phirD(T,D)} returns the First Derivative of the 
-#'     Residual-Gas Part of the Dimensionless Helmholtz Energy Equation for given T [K] and D [kg/m3]
+#'     Residual-Gas Part of the Dimensionless Helmholtz Energy Equation for given T [K] and D [kg/m3].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -293,7 +286,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' phirD(T,D)
+#' phir_D <- phirD(T,D)
+#' phir_D
 #' 
 #' @export
 #' 
@@ -301,21 +295,19 @@
      y <- 0.
      icode <- 0
      res <- .Fortran('phiRDTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#     out <- list(Temperature=T, Density=D, phirD=res[[3]], ErrorCode=res[[4]])
      options(digits=9)
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
        print(error)
      }
-#     class(out) <- "IAPWS95"
-     print(res[[3]])
+     return(res[[3]])
    }
    
 #' Second Derivative of the Residual-Gas Part of the Dimensionless Helmholtz 
 #'     Energy Equation with respect to Density, Function of Temperature and Density
 #' 
 #' @description The function \code{phirDD(T,D)} returns the Second Derivative of the 
-#'     Residual-Gas Part of the Dimensionless Helmholtz Energy Equation for given T [K] and D [kg/m3]
+#'     Residual-Gas Part of the Dimensionless Helmholtz Energy Equation for given T [K] and D [kg/m3].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -333,7 +325,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' phirDD(T,D)
+#' phir_DD <- phirDD(T,D)
+#' phir_DD
 #' 
 #' @export
 #' 
@@ -341,14 +334,12 @@
      y <- 0.
      icode <- 0
      res <- .Fortran('phiRDDTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#     out <- list(Temperature=T, Density=D, phirDD=res[[3]], ErrorCode=res[[4]])
      options(digits=9)
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
        print(error)
      }
-#     class(out) <- "IAPWS95"
-     print(res[[3]])
+     return(res[[3]])
    }
    
 #' First Derivative of the Residual-Gas Part of the Dimensionless Helmholtz Energy Equation
@@ -356,7 +347,7 @@
 #' 
 #' @description The function \code{phirT(T,D)} returns the First Derivative of the 
 #'     Residual-Gas Part of the Dimensionless Helmholtz Energy Equation with respect to T,
-#'     for given T [K] and D [kg/m3]
+#'     for given T [K] and D [kg/m3].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -374,7 +365,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' phirT(T,D)
+#' phir_T <- phirT(T,D)
+#' phir_T
 #' 
 #' @export
 #' 
@@ -382,22 +374,20 @@
      y <- 0.
      icode <- 0
      res <- .Fortran('phiRTTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#     out <- list(Temperature=T, Density=D, phirT=res[[3]], ErrorCode=res[[4]])
      options(digits=9)
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
        print(error)
      }
-#     class(out) <- "IAPWS95"
-     print(res[[3]])
-   }
+     return(res[[3]])
+  }
    
 #' Second Derivative of the Residual-Gas Part of the Dimensionless Helmholtz Energy Equation
 #'     with respect to Temperature, Function of Temperature and Density
 #' 
 #' @description The function \code{phirTT(T,D)} returns the Second Derivative of the 
 #'     Residual-Gas Part of the Dimensionless Helmholtz Energy Equation with respect to T,
-#'     for given T [K] and D [kg/m3]
+#'     for given T [K] and D [kg/m3].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -416,7 +406,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' phirTT(T,D)
+#' phir_TT <- phirTT(T,D)
+#' phir_TT
 #' 
 #' @export
 #' 
@@ -424,14 +415,12 @@
      y <- 0.
      icode <- 0
      res <- .Fortran('phiRTTTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#     out <- list(Temperature=T, Density=D, phirTT=res[[3]], ErrorCode=res[[4]])
      options(digits=9)
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
        print(error)
      }
-#     class(out) <- "IAPWS95"
-     print(res[[3]])
+     return(res[[3]])
   }
   
 #' Second Derivative of the Residual-Gas Part of the Dimensionless Helmholtz Energy Equation
@@ -439,7 +428,7 @@
 #' 
 #' @description The function \code{phirDT(T,D)} returns the Second Derivative of the 
 #'     Residual-Gas Part of the Dimensionless Helmholtz Energy Equation with respect to D and T,
-#'     for given T [K] and D [kg/m3]
+#'     for given T [K] and D [kg/m3].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -458,7 +447,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' phirDT(T,D)
+#' phir_DT <- phirDT(T,D)
+#' phir_DT
 #' 
 #' @export
 #' 
@@ -466,13 +456,11 @@
     y <- 0.
     icode <- 0
     res <- .Fortran('phiRDTTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#    out <- list(Temperature=T, Density=D, phirDT=res[[3]], ErrorCode=res[[4]])
     options(digits=9)
     if (res[[4]] != 0) { 
       error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
       print(error)
     }
- #   class(out) <- "IAPWS95"
-    print(res[[3]])
+    return(res[[3]])
   }
   

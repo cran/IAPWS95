@@ -10,10 +10,10 @@ DCrit()
 The Water Critical Density: Dc [kg m-3]
 }
 \description{
-The function \code{DCrit()} returns the water density at the critical point [kg m-3]
+The function \code{DCrit()} returns the water density at the critical point [kg m-3].
 }
 \examples{
-DCrit()
+DC <- DCrit()
+DC
 
 }
-

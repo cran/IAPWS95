@@ -10,10 +10,10 @@ sCrit()
 The Water Critical Entropy: sc [ kJ kg-1 K-1 ]
 }
 \description{
-The function \code{sCrit()} returns the entropy at the critical point [kJ k-1 K-1 ]
+The function \code{sCrit()} returns the entropy at the critical point [kJ k-1 K-1 ].
 }
 \examples{
-sCrit()
+sC <- sCrit()
+sC
 
 }
-

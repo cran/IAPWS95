@@ -10,10 +10,10 @@ TCrit()
 The Water Critical Temperature: Tc [K]
 }
 \description{
-@description The function \code{TCrit()} returns the water critical temperature [K]
+@description The function \code{TCrit()} returns the water critical temperature [K].
 }
 \examples{
-TCrit()
+Tc <- TCrit()
+Tc
 
 }
-

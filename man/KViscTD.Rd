@@ -15,7 +15,7 @@ KViscTD(T, D)
 The Kinematic viscosity: [ m2 s-1 ] and an Error Message (if an error occur)
 }
 \description{
-The function \code{KViscTD(T,D)} calculates the Kinematic Viscosity
+The function \code{KViscTD(T,D)} computes the Kinematic Viscosity
      [ m2 s-1 ] for given T [K] and D [kg/m3], returning the calculated
      viscosity and an error message, if an error occur. \link{errorCodes}
 }
@@ -27,11 +27,7 @@ This function calculates the Kinematic Viscosity that is the relation
 \examples{
 T <- 500.
 D <- 838.025
-KViscTD(T,D)
-
-T <- 500.
-D <- 0.
-KViscTD(T,D)
+KVis <- KViscTD(T,D)
+KVis
 
 }
-

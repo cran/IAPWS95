@@ -13,7 +13,7 @@ SigmaT(T)
 The Surface Tension: Sigma [ mN m-1 ] and an Error Message (if an error occur)
 }
 \description{
-The function \code{SigmaT(T)} calculates the Surface Tension [ mN m-1 ]
+The function \code{SigmaT(T)} computes the Surface Tension [ mN m-1 ]
      for a given T [K], returning the calculated Surface Tension and an 
      error message, if an error occur. \link{errorCodes}
 }
@@ -25,10 +25,7 @@ This function calls a Fortran DLL that solves the equations developed by
 }
 \examples{
 T <- 500.
-SigmaT(T)
-
-T <- 700.
-SigmaT(T)
+Sig <- SigmaT(T)
+Sig
 
 }
-

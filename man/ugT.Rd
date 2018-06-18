@@ -15,7 +15,7 @@ The saturated gas internal energy: ug [kJ kg-1] and an Error
 }
 \description{
 The function \code{ugT(T)} returns the saturated gas internal energy [kJ kg-1], 
-    ug, for given T [K]
+    ug, for given T [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 T <- 450.
-ugT(T)
+ug <- ugT(T)
+ug
 
 }
-

@@ -15,7 +15,7 @@ The Isobaric Heat Capacity of Gas Phase: Cpg [kJ kg-1 K-1] and an Error
 }
 \description{
 The function \code{CpgT(T)} returns the Isobaric Heat Capacity 
-    of Gas Phase [kJ kg-1 K-1],  Cpg, for given T [K]
+    of Gas Phase [kJ kg-1 K-1],  Cpg, for given T [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 T <- 450.
-CpgT(T)
+Cpg <- CpgT(T)
+Cpg
 
 }
-

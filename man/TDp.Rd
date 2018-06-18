@@ -29,7 +29,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 \examples{
 D <- 838.025
 p <- 10.0003858
-TDp(D,p)
+T_Dp <- TDp(D,p)
+T_Dp
 
 }
-

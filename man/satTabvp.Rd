@@ -7,7 +7,7 @@
 satTabvp(p1, p2, dp)
 }
 \arguments{
-\item{p1}{Initial Pressure [MPa]}
+\item{p1}{First Pressure value [MPa]}
 
 \item{p2}{Final Pressure [MPa]}
 
@@ -19,7 +19,7 @@ A table of saturation v, h and s, function of p
 \description{
 The function \code{satTabvp(p1, p2, dp)} returns a table of 
     threee saturation properties for two phases: Specific Volume [ m3 kg-1 ], 
-    Enthalpy [kJ kg-1] and Entropy [kJ kg K-1] for a Pressure interval, p1:p2 [MPa]
+    Enthalpy [kJ kg-1] and Entropy [kJ kg K-1] for a Pressure interval, p1:p2 [MPa].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -33,12 +33,13 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 p1 <- 1.0
 p2 <- 10.
 dp <- 0.5
-satTabvp(p1, p2, dp)
+Tabp <- satTabvp(p1, p2, dp)
+Tabp
 
 p1 <- 0.1
 p2 <- 10.
 dp <- 0.5
 Tabp <- satTabvp(p1, p2, dp)
+Tabp
 
 }
-

@@ -15,7 +15,7 @@ The Isobaric Heat Capacity of Fluid Phase: Cpf [kJ kg-1 K-1] and an Error
 }
 \description{
 The function \code{CpfT(T)} returns the Isobaric Heat Capacity 
-    of Fluid Phase [kJ kg-1 K-1],  Cpf, for given T [K]
+    of Fluid Phase [kJ kg-1 K-1],  Cpf, for given T [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 T <- 450.
-CpfT(T)
+Cpf <- CpfT(T)
+Cpf
 
 }
-

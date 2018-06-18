@@ -15,7 +15,7 @@ The Speed of Sound of Fluid Phase: wf [ m s-1 ] and an Error
 }
 \description{
 The function \code{wfT(T)} returns the Speed 
-    of Sound of Fluid Phase [m s-1],  wf, for given T [K]
+    of Sound of Fluid Phase [m s-1],  wf, for given T [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 T <- 450.
-wfT(T)
+wf <- wfT(T)
+wf
 
 }
-

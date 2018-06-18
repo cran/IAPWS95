@@ -17,7 +17,7 @@ The Density derivative with respect to T: dD/dT [ kg m-3 K-1 ] and an Error
 }
 \description{
 The function \code{dDdTTp(T,p)} returns the Density derivative with 
-    respect to Temperature, dDdT, for given T [K] and p [MPa]
+    respect to Temperature, dDdT, for given T [K] and p [MPa].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -30,7 +30,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 \examples{
 T <- 500.
 p <- 10.0003858
-dDdTTp(T,p)
+dDdT <- dDdTTp(T,p)
+dDdT
 
 }
-

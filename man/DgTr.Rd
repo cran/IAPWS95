@@ -10,10 +10,10 @@ DgTr()
 Triple Gas Density: DgTr [ kg m-3 ]
 }
 \description{
-The function \code{DgTr()} returns the Water Gas Density at Triple Point
+The function \code{DgTr()} returns the Water Gas Density at Triple Point.
 }
 \examples{
-DgTr()
+DgTrip <- DgTr()
+DgTrip
 
 }
-

@@ -10,10 +10,10 @@ pTr()
 The Triple Point Pressure: pTr [ MPa ]
 }
 \description{
-The function \code{pTr()} returns the Water Pressure at Triple Point [MPa]
+The function \code{pTr()} returns the Water Pressure at Triple Point [MPa].
 }
 \examples{
-pTr()
+pTrip <- pTr()
+pTrip
 
 }
-

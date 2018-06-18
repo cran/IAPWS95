@@ -28,7 +28,7 @@ This function calls a Fortran DLL that computes the Prandt Number, valid from
 \examples{
 T <- 500.
 D <- 838.025
-PrandtTD(T,D)
+Pran <- PrandtTD(T,D)
+Pran
 
 }
-

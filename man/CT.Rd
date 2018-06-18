@@ -15,7 +15,7 @@ The second virial coefficient: C [ m3 kg-1 ]**2 and an Error Message
 }
 \description{
 The function \code{CT(T)} returns the third virial coefficient,
-     C [ m3 kg-1 ]**2, for a given T [K]
+     C [ m3 kg-1 ]**2, for a given T [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 T <- 500.
-CT(T)
+C_T <- CT(T)
+C_T
 
 }
-

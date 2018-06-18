@@ -15,11 +15,11 @@
 #' 
 #' @return The Density: D [ kg m-3 ] and an Error Message (if an error occur: \link{errorCodes})
 #' 
-#' 
 #' @examples
 #' T <- 500.
 #' p <- 10.0003858
-#' DTp(T,p)
+#' D <- DTp(T,p)
+#' D
 #' 
 #' @export
 #' 
@@ -27,15 +27,12 @@
   y <- 0.
   icode <- 0
   res <- .Fortran('DTp', as.double(T), as.double(p), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, Pressure=p, Density=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
-#     print(out[[5]])
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
   }
 
 #' Helmholtz Free Energy, Function of Temperature and Pressure
@@ -59,7 +56,8 @@
 #' @examples
 #' T <- 500.
 #' p <- 10.0003858
-#' fTp(T,p)
+#' f <- fTp(T,p)
+#' f
 #' 
 #' @export
 #' 
@@ -67,14 +65,12 @@
   y <- 0.
   icode <- 0
   res <- .Fortran('fTp', as.double(T), as.double(p), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, Pressure=p, f=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
 } 
  
 #' Specific Enthalpy, Function of Temperature and Pressure
@@ -98,7 +94,8 @@
 #' @examples
 #' T <- 500.
 #' p <- 10.0003858
-#' hTp(T,p)
+#' h <- hTp(T,p)
+#' h
 #' 
 #' @export
 #'  
@@ -106,14 +103,12 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('hTp', as.double(T), as.double(p), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, Enthalpy=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
-#   class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
  
 #' Specific Entropy, Function of Temperature and Pressure
@@ -137,7 +132,8 @@
 #' @examples
 #' T <- 500.
 #' p <- 10.0003858
-#' sTp(T,p)
+#' s <- sTp(T,p)
+#' s
 #' 
 #' @export
 #'  
@@ -145,14 +141,12 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('sTp', as.double(T), as.double(p), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, Entropy=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
-#   class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
  
 #' Specific Internal Energy, Function of Temperature and Pressure
@@ -176,7 +170,8 @@
 #' @examples
 #' T <- 500.
 #' p <- 10.0003858
-#' uTp(T,p)
+#' u <- uTp(T,p)
+#' u
 #' 
 #' @export
 #'  
@@ -184,14 +179,12 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('uTp', as.double(T), as.double(p), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, InternalEnergy=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
-#   class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
 
 #' Specific Isochoric Heat Capacity, Function of Temperature and Pressure
@@ -215,7 +208,8 @@
 #' @examples
 #' T <- 500.
 #' p <- 10.0003858
-#' CvTp(T,p)
+#' Cv <- CvTp(T,p)
+#' Cv
 #' 
 #' @export
 #'  
@@ -223,14 +217,12 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('CvTp', as.double(T), as.double(p), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, IsochoricHeatCapacity=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
-#   class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
  
 #' Specific Isobaric Heat Capacity, Function of Temperature and Pressure
@@ -254,7 +246,8 @@
 #' @examples
 #' T <- 500.
 #' p <- 10.0003858
-#' CpTp(T,p)
+#' Cp <- CpTp(T,p)
+#' Cp
 #' 
 #' @export
 #'  
@@ -262,14 +255,12 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('CpTp', as.double(T), as.double(p), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, IsobaricHeatCapacity=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
-#   class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
  
 #' Speed of Sound, Function of Temperature and Pressure
@@ -293,7 +284,8 @@
 #' @examples
 #' T <- 500.
 #' p <- 10.0003858
-#' wTp(T,p)
+#' w <- wTp(T,p)
+#' w
 #' 
 #' @export
 #'  
@@ -301,14 +293,12 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('wTp', as.double(T), as.double(p), as.double(y), as.integer(icode))
- #  out <- list(Temperature=T, Density=D, SoundSpeed=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
- #  class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
  
 #' Specific Gibbs Energy, Function of Temperature and Pressure
@@ -332,7 +322,8 @@
 #' @examples
 #' T <- 500.
 #' p <- 10.0003858
-#' GibbsTp(T,p)
+#' Gibbs <- GibbsTp(T,p)
+#' Gibbs
 #' 
 #' @export
 #'  
@@ -340,14 +331,12 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('GibbsTp', as.double(T), as.double(p), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, GibbsEnergy=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
-#   class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
  
 #' Fugacity, Function of Temperature and Pressure
@@ -371,7 +360,8 @@
 #' @examples
 #' T <- 500.
 #' p <- 10.0003858
-#' FugaTp(T,p)
+#' Fuga <- FugaTp(T,p)
+#' Fuga
 #' 
 #' @export
 #'  
@@ -379,14 +369,12 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('FugaTp', as.double(T), as.double(p), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, Fugacity=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
-#   class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
  
 #' Specific Volume, Function of Temperature and Pressure
@@ -408,22 +396,21 @@
 #'     (if an error occur: \link{errorCodes})
 #' 
 #' @examples
-#' T <- 500.
-#' p <- 10.0003858
-#' vTp(T,p)
-#' 
-#' @export
+ #' T <- 500.
+ #' p <- 10.0003858
+ #' v <- vTp(T,p)
+ #' v
+ #' 
+ #' @export
 #'  
  vTp <- function(T,p) {
    y <- 0.
    icode <- 0
    res <- .Fortran('vTp', as.double(T), as.double(p), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, SpecVolume=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
-#   class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }

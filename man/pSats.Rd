@@ -15,7 +15,7 @@ The saturation pressure: pSat [ MPa ] and an Error
 }
 \description{
 The function \code{pSats(s)} returns the saturation pressure [MPa], 
-    pSat, for given s [kJ kg-1 K-1]
+    pSat, for given s [kJ kg-1 K-1].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 s <- 2.10865845
-pSats(s)
+p_Sat <- pSats(s)
+p_Sat
 
 }
-

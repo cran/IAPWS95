@@ -19,7 +19,7 @@ The First T Derivative of Ideal-gas part of the Helmholtz Energy: phi0T and an E
 \description{
 The function \code{phi0T(T,D)} returns the First Derivative of the
     Ideal-gas Part of the dimensionless Helmholtz Energy Equation with respect to 
-    Temperature, for given T [K] and D [kg/m3]
+    Temperature, for given T [K] and D [kg/m3].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -32,7 +32,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 \examples{
 T <- 500.
 D <- 838.025
-phi0T(T,D)
+phi0_T <- phi0T(T,D)
+phi0_T
 
 }
-

@@ -17,7 +17,7 @@ The Ideal-gas part of the Helmholtz Energy Equation: phi0 and an Error
 }
 \description{
 The function \code{phi0(T,D)} returns the Ideal-gas part of the
-     dimensionless Helmholtz Energy Equation, phi0, for given T [K] and D [kg/m3]
+     dimensionless Helmholtz Energy Equation, phi0, for given T [K] and D [kg/m3].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -30,7 +30,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 \examples{
 T <- 500.
 D <- 838.025
-phi0(T,D)
+phi_0 <- phi0(T,D)
+phi_0
 
 }
-

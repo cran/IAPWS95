@@ -14,7 +14,7 @@ The Second DT Derivative of Ideal-gas Part of the Helmholtz Energy: phi0DT and a
 \description{
 The function \code{phi0DT()} returns the Second Derivative of the
     Ideal-gas Part of the Dimensionless Helmholtz Energy Equation with respect to 
-    Density and Temperature
+    Density and Temperature.
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -25,7 +25,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-phi0DT()
+phi0_DT <- phi0DT()
+phi0_DT
 
 }
-

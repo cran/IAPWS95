@@ -14,8 +14,8 @@ The saturated liquid internal energy: uf [kJ kg-1] and an Error
      Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{ufT(T)} returns the saturated liquid internal energy [kJ kg-1], 
-    uf, for given T [K]
+The function \code{ufT(T).} returns the saturated liquid internal energy [kJ kg-1], 
+    uf, for given T [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 T <- 450.
-ufT(T)
+uf <- ufT(T)
+uf
 
 }
-

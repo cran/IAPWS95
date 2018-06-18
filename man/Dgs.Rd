@@ -15,7 +15,7 @@ The saturated Gas density: Dg [kg m-3] and an Error Message
 }
 \description{
 The function \code{Dgs(s)} returns the saturated gas density [kg m-3], 
-    Dg, for given s [kJ kg-1 K-1]
+    Dg, for given s [kJ kg-1 K-1].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -26,11 +26,8 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-s <- 6.60921221
-Dgs(s)
-
-s <- 2.10865845
-Dgs(s)
+s <- 5.4731
+Dg <- Dgs(s)
+Dg
 
 }
-

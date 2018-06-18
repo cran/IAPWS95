@@ -17,7 +17,7 @@ The Isothermal Compressibility: Kapa [ MPa-1 ] and an Error
 }
 \description{
 The function \code{KapaTD(T,D)} returns the Isothermal Compressibility, Kapa, 
-    for given T [K] and D [kg m-3]
+    for given T [K] and D [kg m-3].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -30,7 +30,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 \examples{
 T <- 500.
 D <- 838.025
-KapaTD(T,D)
+Kapa <- KapaTD(T,D)
+Kapa
 
 }
-

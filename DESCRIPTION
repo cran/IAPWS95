@@ -1,6 +1,6 @@
 Package: IAPWS95
 Title: Thermophysical Properties of Water and Steam
-Version: 1.0.0
+Version: 1.1.0
 Authors@R: person("Benedito", "Baptista", email = "bene46@msn.com", role = c("aut", "cre"))
 Description: Functions for Water and Steam Properties based on the IAPWS Formulation
     1995 for the Thermodynamic Properties of Ordinary Water Substance for General and
@@ -10,13 +10,13 @@ Depends: R (>= 3.2.1)
 License: MIT + file LICENSE
 LazyData: true
 LinkingTo: Rcpp
-Imports: Rcpp, pander, ggplot2
-RoxygenNote: 5.0.1
+Imports: ggplot2, pander, Rcpp
+RoxygenNote: 6.0.1
 Suggests: knitr, rmarkdown, testthat
 VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2016-09-07 23:03:39 UTC; CLIENT
+Packaged: 2018-06-18 11:38:21 UTC; CLIENT
 Author: Benedito Baptista [aut, cre]
 Maintainer: Benedito Baptista <bene46@msn.com>
 Repository: CRAN
-Date/Publication: 2016-09-08 02:13:58
+Date/Publication: 2018-06-18 19:08:11 UTC

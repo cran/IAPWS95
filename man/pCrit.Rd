@@ -10,10 +10,10 @@ pCrit()
 The Water Critical Pressure: pc [MPa]
 }
 \description{
-This function \code{pCrit()} returns the water critical pressure [MPa]
+This function \code{pCrit()} returns the water critical pressure [MPa].
 }
 \examples{
-pCrit()
+pc <- pCrit()
+pc
 
 }
-

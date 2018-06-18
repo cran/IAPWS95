@@ -8,7 +8,7 @@
 phi0D(D)
 }
 \arguments{
-\item{D}{Density [ kg m-3 ]}
+\item{D}{Density [ kg m-3 ]  #' @param Opt: Option to not print the computed value (Opt = 0)}
 }
 \value{
 The First D Derivative of Ideal-gas part of the Helmholtz Energy: phi0D and an Error
@@ -16,7 +16,7 @@ The First D Derivative of Ideal-gas part of the Helmholtz Energy: phi0D and an E
 }
 \description{
 The function \code{phi0D(D)} returns the First Derivative of the
-    Ideal-gas part of the dimensionless Helmholtz Energy Equation for a given D [kg/m3]
+    Ideal-gas part of the dimensionless Helmholtz Energy Equation for a given D [kg/m3].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -28,7 +28,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 D <- 838.025
-phi0D(D)
+phi_0 <- phi0D(D)
+phi_0
 
 }
-

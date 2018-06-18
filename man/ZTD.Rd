@@ -30,7 +30,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 \examples{
 T <- 500.
 D <- 838.025
-ZTD(T,D)
+z <- ZTD(T,D)
+z
 
 }
-

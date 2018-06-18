@@ -15,7 +15,7 @@ The saturated gas enthalpy: hg [kJ kg-1] and an Error
 }
 \description{
 The function \code{hgT(T)} returns the saturated gas enthalpy [kJ kg-1], 
-    hg, for given T [K]
+    hg, for given T [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 T <- 450.
-hgT(T)
+hg <- hgT(T)
+hg
 
 }
-

@@ -733,7 +733,7 @@
       COMMON / CND2 /  Lambdao, qD1, Nicr, Gamacr, Csi0, Gamao0, TRbar, xMi, qC1, qD1v
 
      REAL(KIND=8) ::  Lambdao, qD1, Nicr, Gamacr, Csi0, Gamao0, TRbar, xMi, qC1, qD1v
-     REAL(KIND=8) ::  Lij, Lk, num, numT
+     REAL(KIND=8) ::  Lij, Lk, numT
      REAL(KIND=8) ::  pLim(5), Tlim(5)
      REAL(KIND=8) ::  TbarE(5), TbarI(5), rhobar1(6), um = 1.0d+0
      data Pi/3.1415926535d+0/
@@ -854,7 +854,7 @@
       COMMON / CND2 /  Lambdao, qD1, Nicr, Gamacr, Csi0, Gamao0, TRbar, xMi, qC1, qD1v
 
      REAL(KIND=8) ::  Lambdao, qD1, Nicr, Gamacr, Csi0, Gamao0, TRbar, xMi, qC1, qD1v
-     REAL(KIND=8) ::  Lij, Lk, Lw, num
+     REAL(KIND=8) ::  Lij, Lk, Lw
      REAL(KIND=8) ::  TbarE(5), TbarI(6), rhobar1(7), um=1.0d+0
      REAL(KIND=8) ::  shij(6,7), stb1(6)
      data Pi/3.1415926535d+0/
@@ -1200,7 +1200,7 @@
       if ( T .eq. TC ) then                
          T = T - 1.d-13
       end if
-       PHI0TTD = PhioT(T, D)
+       PHI0TTD = PhioT(T)
      endif
 
      fhizttd = PHI0TTD
@@ -1237,7 +1237,7 @@
          T = T - 1.d-13
        end if
 
-        PHI0TTTD = PhioTT(T, D)
+        PHI0TTTD = PhioTT(T)
 
      end if
 
@@ -1531,7 +1531,7 @@
      REAL(KIND=8) ::  a71=0.173683d+1, a72=-0.544606d-1, a73=0.806106d-7
      REAL(KIND=8) ::  e61=4.6d0
 
-     integer :: e31=60, e51=8, e71=-1, e72=5, e73=22                                           
+     integer :: e31=60, e51=8, e72=5, e73=22                                           
      integer icode, i
 
       COMMON / CRTR /   R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -2766,8 +2766,8 @@
 ! -----------------------------------------------------------------------------
 
       IMPLICIT REAL(KIND=8) (a-h, o-z)
-      integer :: icode, ic, imax=200
-      REAL(KIND=8) ::  EPS= 1.0D-9, meio= 0.5d+0
+      integer :: icode, imax=200
+      REAL(KIND=8) ::  EPS= 1.0D-9
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
      COMMON / ChsMax  / ChsMax1(4), ChsMax2(7)
@@ -2778,7 +2778,7 @@
                    shTcr1, sTcri2, shx11, shx12, shx01, shx02
      COMMON / LIMITES / Tmin, TMAXI, PMAXI
 
-     call hsLimites( h, s, hMax, hMin, hx0, hx1, icode )
+     call hsLimites( s, hMax, hMin, hx0, hx1, icode )
      T0  = TSats( s, Tsat, icode )
      hf0 = hfT( T0, hf, icode )
 
@@ -2912,8 +2912,11 @@
 
       IMPLICIT REAL(KIND=8) (a-h, o-z)
      integer icode
+     ! #######################
+     EPS = 1.D-08
+     ! #######################
 
-     call hsLimites( h, s, hMax, hMin, hx0, hx1, icode )
+     call hsLimites( s, hMax, hMin, hx0, hx1, icode )
      T0  = TSats( s, Tsat, icode )
      hf0 = hfT( T0, hf, icode )
 
@@ -4496,7 +4499,7 @@
                   - DELTA * TAU * PhirDT(T,D)) * (1.D0 + DELTA * PhirD(T,D)  &
                   - DELTA * TAU * PhirDT(T,D)) - TAU * TAU * (1.D0           &
                   + 2.D0 * DELTA * PhirD(T,D) + DELTA * DELTA * PhirDD(T,D)) &
-                  * (PhioTT(T,D) + PhirTT(T,D)))) / (R * D) * 1.D3
+                  * (PhioTT(T) + PhirTT(T,D)))) / (R * D) * 1.D3
 !     end if
 
       RETURN
@@ -4527,7 +4530,7 @@
 
      num     = 1.d0 + DELTA*( PhirD(T,D) - TAU * PhirDT(T,D) )
      den1    = num * num
-     den2    = - TAU*TAU * ( PhioTT(T,D) + PhirTT(T,D) ) *                     &
+     den2    = - TAU*TAU * ( PhioTT(T) + PhirTT(T,D) ) *                     &
                ( 1.D0 + 2.D0 * DELTA * PhirD(T,D) + DELTA * DELTA * PhirDD(T,D) )
      calcBeta= num/( D * R * 1.0d-3 * (den1 + den2) )
 
@@ -4611,7 +4614,7 @@
          calcs = -111.D0
       else
         TAU = TC / T
-         calcs = R * (TAU * (PhioT(T,D) + PhirT(T,D)) - (Phio(T,D) + Phir(T,D)))
+         calcs = R * (TAU * (PhioT(T) + PhirT(T,D)) - (Phio(T,D) + Phir(T,D)))
      end if
 
       RETURN
@@ -4642,7 +4645,7 @@
       else
         TAU = TC / T
         DELTA= D / DC
-        calch = R*T*(1.D0 + DELTA * PhirD(T,D) + TAU*(PhioT(T,D) + PhirT(T,D)))
+        calch = R*T*(1.D0 + DELTA * PhirD(T,D) + TAU*(PhioT(T) + PhirT(T,D)))
      end if
 
       RETURN
@@ -4698,7 +4701,7 @@
          calcu = -111.D0
       else
         TAU = TC / T
-        calcu = R * T * TAU * (PhioT(T,D) + PhirT(T,D))
+        calcu = R * T * TAU * (PhioT(T) + PhirT(T,D))
      end if
 
       RETURN
@@ -4726,7 +4729,7 @@
          calcCv = -111.D0
       else
         TAU = TC / T
-        calcCv = - R * TAU * TAU * (PhioTT(T,D) + PhirTT(T,D))
+        calcCv = - R * TAU * TAU * (PhioTT(T) + PhirTT(T,D))
      end if
 
       RETURN
@@ -4755,7 +4758,7 @@
       else
         TAU = TC / T
         DELTA = D / DC
-        calcCp = R * (- TAU * TAU * (PhioTT(T,D) + PhirTT(T,D))       &
+        calcCp = R * (- TAU * TAU * (PhioTT(T) + PhirTT(T,D))       &
                 + (1.D0 + DELTA * PhirD(T,D) - DELTA * TAU *        &
                 PhirDT(T,D)) * (1.D0 + DELTA * PhirD(T,D) - DELTA *    &
                 TAU * PhirDT(T,D)) / (1.D0 + 2.D0 * DELTA *        &
@@ -4792,7 +4795,7 @@
         WB2 = 1.D0 + 2.D0 * DELTA * PhirD(T,D) + DELTA * DELTA * PhirDD(T,D)  &
               - (1.D0 + DELTA * PhirD(T,D) - DELTA * TAU * PhirDT(T,D))      &
               * (1.D0 + DELTA * PhirD(T,D) - DELTA * TAU * PhirDT(T,D))      &
-              / (TAU * TAU * (PhioTT(T,D) + PhirTT(T,D)))
+              / (TAU * TAU * (PhioTT(T) + PhirTT(T,D)))
         IF(WB2 .GT. 0.D0) THEN
            calcw = DSQRT(WB2 * R * T * 1.D3)
         ELSE       
@@ -5068,7 +5071,7 @@
 ! -----------------------------------------------------------------------------
 !   
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D,DELTA,TAU, PhirD,PhirDD, PhirDT
+      REAL(KIND=8) ::  T,D,DELTA,TAU, PhirD, PhirDT
       REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -5208,14 +5211,13 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function PhioT(T,D)
+      REAL(KIND=8) function PhioT(T)
 ! -----------------------------------------------------------------------------
 !
 !  CALCULATION OF THE FIRST DERIVATIVE OF THE IDEAL GAS PART OF THE REDUCED 
 !   HELMHOLTZ ENERGY WITH RESPECT TO THE REDUCED TEPERATURE FUNCTION OF T AND D
 !
 !  INPUT:     T         TEMPERATURE [K]
-!             D         DENSITY [KG / M ** 3]
 !
 !  OUTPUT:    PhioT      FIRST DERIVATIVE OF THE REDUCED HELMHOLTZ ENERGY 
 !                       WITH RESPECT TO THE REDUCED TEMPERATURE [-]
@@ -5225,7 +5227,7 @@
       IMPLICIT NONE
       COMMON / EQUI / BNULL,BZ,B1,B2,B(18),TPOTI(18),NPOLI,NPEI,NI
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  T,D
+      REAL(KIND=8) ::  T
       REAL(KIND=8) ::  BNULL,BZ,B1,B2,B,TPOTI
       REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       REAL(KIND=8) ::  TAU
@@ -5264,14 +5266,13 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function PhioTT(T,D)
+      REAL(KIND=8) function PhioTT(T)
 ! -----------------------------------------------------------------------------
 !
 !  CALCULATION OF THE SECOND DERIVATIVE OF THE IDEAL GAS PART OF THE REDUCED 
 !  HELMHOLTZ ENERGY WITH RESPECT TO THE REDUCED TEMPERATURE FUNCTION OF T AND D
 !
 !  INPUT:     T         TEMPERATURE [K]
-!             D         DENSITY [KG / M ** 3]
 !
 !  OUTPUT:    PhioTT     SECOND DERIVATIVE OF THE REDUCED HELMHOLTZ ENERGY 
 !                        WITH RESPECT TO THE REDUCED TEMPERATURE [-]
@@ -5282,11 +5283,11 @@
       COMMON / EQUI / BNULL,BZ,B1,B2,B(18),TPOTI(18),NPOLI,NPEI,NI
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
-      REAL(KIND=8) ::  T,D, tpt
+      REAL(KIND=8) ::  T, tpt
       REAL(KIND=8) ::  BNULL,BZ,B1,B2,B,TPOTI
       REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       REAL(KIND=8) ::  TAU
-      INTEGER NI,NPOLI,NPEI,NSTART,I
+      INTEGER NI,NPOLI,NPEI,I
 
       TAU   = TC / T
 
@@ -5318,10 +5319,10 @@
       REAL(KIND=8) ::  A,DPOT,TPOT,GAMMA,ETA,EPSI,BETA,ALPHA
       REAL(KIND=8) ::  DELTA,TAU
       REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  EX,GBSTERM,AI,BETI,BI,CI,DI,EI,FI
+      REAL(KIND=8) ::  GBSTERM,AI,BETI,BI,CI,DI,EI,FI
       REAL(KIND=8) ::  DELNA1,DELNA2,DELNA,PSINA,DELM1,TAUM1
      REAL(KIND=8) ::  delta2, delta3, delta4, delta5, delta6
-     REAL(KIND=8) ::  ex1, ex2, ex3, ex4, ex5, ex6, X
+     REAL(KIND=8) ::  ex1, ex2, ex3, ex4, ex5, ex6
       INTEGER N,NPOL,NE1,NE2,NE3,NE4,NE5,NE6,NMBWR,NGBS,NNA,NASSO,I
 
       COMMON / EQUR / A(60),TPOT(60),DPOT(60),GAMMA(60),ETA(60),     &
@@ -5686,7 +5687,7 @@
       REAL(KIND=8) ::  A,DPOT,TPOT,GAMMA,ETA,EPSI,BETA,ALPHA
       REAL(KIND=8) ::  DELTA,TAU
       REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-     REAL(KIND=8) ::  delta2, delta3, delta4, delta5, delta6
+      REAL(KIND=8) ::  delta2, delta3, delta4, delta5, delta6
       REAL(KIND=8) ::  EX,EXPTERM,GBS1TERM,GBS2TERM,GBS3TERM
       REAL(KIND=8) ::  AI,BETI,BI,CI,DI,EI,FI
       REAL(KIND=8) ::  DELNA1,DELNA2,DELNA,PSINA,DELM1,DDDD,DDBDD,DPSDD
@@ -5920,7 +5921,7 @@
       REAL(KIND=8) ::  A,DPOT,TPOT,GAMMA,ETA,EPSI,BETA,ALPHA
       REAL(KIND=8) ::  DELTA,TAU
       REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  EX,GBS1TERM,GBS2TERM
+      REAL(KIND=8) ::  GBS1TERM,GBS2TERM
       REAL(KIND=8) ::  AI,BETI,BI,CI,DI,EI,FI
       REAL(KIND=8) ::  DELNA1,DELNA2,DELNA,PSINA,DELM1,DDBDT,DPSDT,TAUM1
      REAL(KIND=8) ::  delta2, delta3, delta4, delta5, delta6
@@ -6531,7 +6532,7 @@
       REAL(KIND=8) ::  DVN,DLN,PDVN,PDLN,PMN,ALPADL,ALPADV,DLV,PLV
       REAL(KIND=8) ::  AAA,BBB,CCC,EEE,VZTEST,VZW,DELTAL,DELTAV
       REAL(KIND=8) ::  T1,P1,D1,ABLTEST,DVMA,DVMB,DLMA,DLMB,X,PA,PB
-      REAL(KIND=8) ::  DVAT,DV1A,DV1B,PTEST1,PTEST2,DV1,DLAT,DL1A,DL1B,DL1
+      REAL(KIND=8) ::  DVAT,DV1A,DV1B,DV1,DLAT,DL1A,DL1B,DL1
       REAL(KIND=8) ::  P2,DV2A,DV2B,DL2A,DL2B,DV2,DL2,F1,F2,RES,DVITOLD
       REAL(KIND=8) ::  P3,DV3A,DV3B,DL3A,DL3B,DV3,DL3,F3,DDV,DDL,DD,PTEST
       REAL(KIND=8) ::  DPS,EPSCR,DVA,DVB,DLA,DLB,TSOLD,VPITOLD,DLITOLD
@@ -6883,9 +6884,9 @@
          IEQUAL = 0
       ENDIF
 
-320   CONTINUE
+! 320   CONTINUE
 
-      PTEST = calcp(T,DL1A)
+320   PTEST = calcp(T,DL1A)
       P1 = PTEST * 1.00001D+0
       IF (DL1A .GE. DL1B) THEN
          DL1B = DL1A * 1.05D0
@@ -8054,9 +8055,7 @@
          IEQUAL = 0
       ENDIF
 
-320   CONTINUE
-
-      PTEST = calcp(T,DL1A)
+320   PTEST = calcp(T,DL1A)
       PDEV = PTEST / P1
       IF ((ABS(PDEV) .GT. 10.D+0) .OR. (IEQUAL .EQ. 1)) THEN
             IF (PTEST .GT. 0.0D+0) THEN
@@ -8464,7 +8463,7 @@
       INTEGER I,IX
       INTEGER ISUBAKT,ISUBOLD
 
-      EXTERNAL DITPRES,TIPDRES,MXWDLRES
+      EXTERNAL DITPRES,TIPDRES,MXWDLRES,VPEQN,DVEQN,DLEQN
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / SUBIDENT / ISUBAKT
@@ -9576,8 +9575,7 @@
 !---------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  TZ,D,S,DV,DL,V1,V2,V,X,SL,SV,SH,calcs,P, eps
-     integer imax
+      REAL(KIND=8) ::  TZ,D,S,DV,DL,V1,V2,V,X,SL,SV,SH,calcs,P
 
       CALL TSATIT(TZ,DV,DL,P,1.D-6)
       V1 = 1.D0 / DL
@@ -9652,7 +9650,7 @@
 !---------------------------------------------------------------------
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  DVM,T,DLM,PM,DL , eps
+      REAL(KIND=8) ::  DVM,T,DLM,PM,DL
 
 ! ITERATION OF PHASE LIMITS FOR GIVEN TEMPERATURE
 
@@ -9679,10 +9677,7 @@
 !---------------------------------------------------------------------
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  DVM,T,DLM,PM,DV   , eps
-      common / imax1 / imax
-      integer imax
-
+      REAL(KIND=8) ::  DVM,T,DLM,PM,DV
 
 ! ITERATION PHASE LIMIT FOR GIVEN TEMPERATURE
 
@@ -9751,13 +9746,14 @@
       CALL TSATITZ(TSTART,DVSTART,DLSTART,PSTART,EPS)
 !      CALL TSATITZ(TSTART,DVSTART,DLSTART,PSTART,EPS, imax)
       SVSTART = calcs(TSTART,DVSTART)
+         SVOLD = SVSTART
       IF ((S .LE. SVSTART) .AND. (S .GE. SCRIT))THEN
          T1 = TC - 5.D-6
          T2 = TSTART
       ELSE
 100      CONTINUE
          TOLD = TSTART
-         SVOLD = SVSTART
+!         SVOLD = SVSTART
          TSTART = TSTART * 0.995D0
            IF (TSTART .LT. TTR) THEN
                TSTART = TTR
@@ -9983,6 +9979,7 @@
       SAVE TSOLD,PSOLD,DLOLD,DVOLD,SOLD
       DATA TSOLD / -1.D+0 /, PSOLD / -1.D+0 /, DLOLD / -1.D+0 /
       DATA DVOLD / -1.D+0 /, SOLD /1.D9/
+      DATA SVOLD / 1.D9/
 
       T = 0.0D0
       DV = 0.0D0 
@@ -10256,7 +10253,7 @@
 
 !******************************************************************************
 ! -----------------------------------------------------------------------------
-      SUBROUTINE hsLimites( h, s, hMax, hMin, hx0, hx1, icode )
+      SUBROUTINE hsLimites( s, hMax, hMin, hx0, hx1, icode )
 ! -----------------------------------------------------------------------------
 !
 !  ENTALPHY LIMITS FOR FUNCTIONS OF h AND s
@@ -10675,7 +10672,7 @@
       X1 = XB
       X2 = XA
 
-50    CONTINUE
+! 50    IX = 0
       IX = 0
 
       F1 = RES(X1,Y)
@@ -11151,7 +11148,7 @@
       IX = 0
       X = 0.0D+0
 
-50    CONTINUE
+!50    F1 = RES(X1,Y1,Y2)
       F1 = RES(X1,Y1,Y2)
       F2 = RES(X2,Y1,Y2)
 
@@ -11263,6 +11260,8 @@
       DATA DOLD / -1.D+0 /
       DATA TOLD / -1.D+0 /
       DATA SOLD / 1.D9 /
+      DATA S1 /1.D9/
+      DATA DFAK / 1.d0/
       DATA ISUBOLD / 0 /
 
       IF ((DABS(T-TOLD).LT.1.D-8) .AND. (DABS(S-SOLD).LT.1.D-8)    &
@@ -11975,8 +11974,7 @@
 ! CLOSE TO THE CRITICAL PRESSURE THE START VALUE WILL BE
 !  DETERMINED BY THE Van der Waals EQUATION
 
-50       CONTINUE
-         IF (D .LE. DCE) THEN
+50       IF (D .LE. DCE) THEN
             T1 = TVDW(P,D)
          ELSE
             T1 = TCE
@@ -12750,7 +12748,7 @@
       REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,DLEQN
       REAL(KIND=8) ::  D1,TH,T1,S1,calcs,TFAK,SDIFF1,T2,D2,S2,DH,SDIFF2
       REAL(KIND=8) ::  TS,DV,DL,SV,SL,DIT,TIT,TDIPSRES,V,X,TVPIT,DVEQN
-      REAL(KIND=8) ::  calcCp,CPTEST,P1,CACHE
+      REAL(KIND=8) ::  calcCp,CPTEST,P1
       REAL(KIND=8) ::  TCE,PCE,DCE,SLTEST,SVTEST,TOLD,DOLD,POLD,SOLD
       INTEGER IX,ISUBAKT,ISUBOLD
       EXTERNAL TDIPSRES
@@ -12763,6 +12761,12 @@
       DATA SOLD / 1.D9 /
       DATA POLD / 1.D9 /
       DATA ISUBOLD / 0 /
+      
+! #######################
+      DATA TFAK /1.D+0/
+      S1 = 0.99D+0 * S
+! #######################
+      
 
       IF ((DABS(S-SOLD).LT.1.D-8) .AND. (DABS(P-POLD).LT.1.D-8)    &
           .AND. (ISUBAKT .EQ. ISUBOLD)) THEN
@@ -13103,6 +13107,12 @@
       DATA HOLD /1.D9/
       DATA POLD /1.D9/
       DATA ISUBOLD /0/
+      
+! #######################
+      DATA TFAK /1.D+0/
+      H1 = H + 1.D+0
+! #######################
+
 
       IF ((DABS(H-HOLD).LT.1.D-8) .AND. (DABS(P-POLD).LT.1.D-8)      &
           .AND. (ISUBAKT .EQ. ISUBOLD)) THEN
@@ -13367,12 +13377,12 @@
       IMPLICIT NONE
       REAL(KIND=8) ::  H,T,S,D,EPS
       REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  calcs,DV,DL,P,TS,HSAT,calch,T2TEST
-      REAL(KIND=8) ::  D1,T1,D2,T2,DFAK,HDIFF1,HDIFF2,H1,H2,DSAT,TDIHS2RES
+      REAL(KIND=8) ::  calcs,DV,DL,P,calch,T2TEST
+      REAL(KIND=8) ::  D1,T1,D2,T2,DFAK,HDIFF1,HDIFF2,H1,H2,TDIHS2RES
       REAL(KIND=8) ::  TH,TDIHSRES,TIT,DIT,TFAK,DV2,DL2,P2,HL,HV,HOLD
       REAL(KIND=8) ::  SL,SV,X2,VV,VL,V,X,TCE,DCE,TOLD,DOLD,SOLD,TSMAX,TSMIN
       REAL(KIND=8) ::  ABLTEST,calcdpdD,HSAT2,TS2,HSAT3,HSAT1,P3,DL3,DV3
-      REAL(KIND=8) ::  TS3,P1,DL1,DV1,TS1,TS1OLD,HSAT4,DL4,DV4,P4,TS4
+      REAL(KIND=8) ::  TS3,P1,DL1,DV1,TS1,HSAT4,DL4,DV4,P4,TS4
       REAL(KIND=8) ::  SDIFF1,SDIFF2,S1,S2,HDIFF3,HSAT5,DL5,DV5,P5,TS5
       REAL(KIND=8) ::  TS8,D8,DLV8,P8
       REAL(KIND=8) ::  HHMAX,SHMAX,HSMAX,SSMAX,HSMIN,SSMIN,DSTART,HSTART,TSTART
@@ -13393,6 +13403,18 @@
       DATA SOLD /1.D9/
       DATA ISUBOLD /0/
       IFAK = 0
+! ########################      
+      IPHASE = 0
+      D2 = DC
+      D1 = DC
+      TSTART = TTR
+      DSTART = DVTR
+      HSTART = HC
+      S1 = S
+      DFAK = 1.D+0
+! ########################      
+      
+! ########################      
 
       IF ((DABS(S - SOLD) .LT. 1.D-8) .AND. (DABS(H - HOLD) .LT. 1.D-8)    &
           .AND. (ISUBAKT .EQ. ISUBOLD)) THEN
@@ -13432,8 +13454,7 @@
 
 ! ITERATION OF TEMPERATURE
 
-50       CONTINUE         
-         CALL DSITER(D1,S,TH,1.D-9)
+50    CALL DSITER(D1,S,TH,1.D-9)
          IF (TH .LT. 0.0D+0) THEN
           D1 = D1 * 1.05D+0            ! ERA *1.1
           GOTO 50
@@ -13451,8 +13472,8 @@
 
       HDIFF3 = 0.0D+0
       IDFAK = 0
-100      CONTINUE
-      D2 = D1 * DFAK
+! 100      CONTINUE
+100    D2 = D1 * DFAK
 
 ! ITERATION OF TEMPERATURE
          CALL DSITER(D2,S,TH,1.D-9)
@@ -13489,7 +13510,8 @@
              (DABS(HDIFF2) .GT. DABS(HDIFF1)))) .AND.             &
              (((SDIFF1 * SDIFF2) .LE. 0.D0) .OR.                &
               (DABS(SDIFF1) .LT. 1.D-10) .OR.                   &
-              (DABS(SDIFF2) .LT. 1.D-10)))         GOTO 101
+!              (DABS(SDIFF2) .LT. 1.D-10)))         GOTO 101
+              (DABS(SDIFF2) .LT. 1.D-10)))         GOTO 998
          H1 = H2
         S1 = S2
         SDIFF1 = SDIFF2
@@ -13499,8 +13521,8 @@
          T1 = T2
          GOTO 100
 
-101      CONTINUE
-         GOTO 998
+! 101      CONTINUE
+!         GOTO 998
 
 !  IF GIVEN ENTROPY IS SMALLER THAN THE ENTROPY OF LIQUID PHASE AT THE TRIPLE POINT,
 !   THE DENSITY OF LIQUID PHASE AT THE TRIPLE POINT IS USED AS START VALUE
@@ -13521,8 +13543,9 @@
             DFAK = 1.01D0
          ENDIF
          HDIFF1 = H - H1
-200      CONTINUE
-         D2 = D1 * DFAK
+! 200      CONTINUE
+!         D2 = D1 * DFAK
+200      D2 = D1 * DFAK
 
 ! ITERATION OF TEMPERATURE
          CALL DSITER(D2,S,TH,1.D-9)
@@ -13538,15 +13561,16 @@
 !            goto 1000
 !         ENDIF
          HDIFF2 = H - H2
-         IF ((HDIFF1 * HDIFF2) .LE. 0.D0) GOTO 201
+!         IF ((HDIFF1 * HDIFF2) .LE. 0.D0) GOTO 201
+         IF ((HDIFF1 * HDIFF2) .LE. 0.D0) GOTO 998
          H1 = H2
          HDIFF1 = HDIFF2
          D1 = D2
          T1 = T2
          GOTO 200
 
-201      CONTINUE
-         GOTO 998
+! 201      CONTINUE
+!         GOTO 998
 
 !  IF GIVEN ENTROPY IS LARGER THAN LIQUID PHASE ENTROPY ( 0.0 )AND SMALLER THAN THE VAPOR ENTROPY OF GAS PHASE
 !   AT TRIPLE POINT ( 9.15549341 ), THE LIMIT IS FROM FUNDAMENTAL EQUATION
@@ -13809,11 +13833,12 @@
           T1 = T2
           GOTO 400
 
-401       CONTINUE
+! 401       CONTINUE
 
 !  ITERATION OF TEMPERATURE IN THE TWO PHASE REGION
 
-          CALL ITPEG(T1,T2,TDIHS2RES,H,S,EPS,TIT,IX)
+401          CALL ITPEG(T1,T2,TDIHS2RES,H,S,EPS,TIT,IX)
+!          CALL ITPEG(T1,T2,TDIHS2RES,H,S,EPS,TIT,IX)
           IF (IX .LE. 3) THEN
               T = TIT
               CALL TSATIT(T,DV,DL,P, 1.d-9)
@@ -13847,8 +13872,8 @@
 
 !  ITERATION OF DENSITY AND TEMPERATURE IN HOMOGENEOUS REGION
 
-998   CONTINUE
-      CALL ITPEGZ(D1,T1,D2,T2,TDIHSRES,H,S,EPS,DIT,TIT,IX)
+! 998   CONTINUE
+998    CALL ITPEGZ(D1,T1,D2,T2,TDIHSRES,H,S,EPS,DIT,TIT,IX)
       IF (IX .LE. 3) THEN
           T = TIT
           D = DIT

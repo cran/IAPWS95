@@ -7,32 +7,28 @@
 CndTD(T, D)
 }
 \arguments{
-\item{T}{- Temperature [ K ]}
+\item{T}{Temperature [ K ]}
 
-\item{D}{- Density [ kg m-3 ]}
+\item{D}{Density [ kg m-3 ]}
 }
 \value{
-The calculated Thermal Conductivity: k [ W m-1 K-1 ] and an Error message
-     (if an error occur)
+The Thermal Conductivity: k [ W m-1 K-1 ] and an Error message if necessary
 }
 \description{
 The function \code{CndTD(T,D)} calculates the Thermal Conductivity,
-    k [ W m-1 K-1 ] for given T [K] and D [kg/m3], returning the calculated
-     thermal conductivity and an error message, if an error occur. \link{errorCodes}
+    k [ W m-1 K-1 ] for given T [K] and D [kg/m3], returning the computed
+     thermal conductivity and an error message if an error occur.
 }
 \details{
 This function calls a Fortran DLL that solves the equations developed by
     the International Association for the Properties of Water and Steam, valid from 
-    the triple point to the pressure of 1000 MPa and temperature of 1173.15K. \url{http://www.iapws.org/relguide/ThCond.html}
+    the triple point to the pressure of 1000 MPa and temperature of 1173.15K. 
+    \url{http://www.iapws.org/relguide/ThCond.html}
 }
 \examples{
 T <- 500.
 D <- 838.025
-CndTD(T,D)
-
-T <- 0.
-D <- 200.
-CndTD(T,D)
+Cond <- CndTD(T,D)
+Cond
 
 }
-

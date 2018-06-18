@@ -30,10 +30,11 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 D <- 890.341250
-pSatD(D)
+p_Sat <- pSatD(D)
+p_Sat
 
 D <- 999.887406
-pSatD(D)
+p_Sat <- pSatD(D)
+p_Sat
 
 }
-

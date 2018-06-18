@@ -15,8 +15,8 @@ ViscTD(T, D)
 The Dynamic viscosity: [ Pa s ] and an Error Message (if an error occur)
 }
 \description{
-The function \code{ViscTD(T,D)} calculates the Dynamic Viscosity
-     [ Pa s ] for given T [K] and D [kg/m3], returning the calculated
+The function \code{ViscTD(T,D)} computes the Dynamic Viscosity
+     [ Pa s ] for given T [K] and D [kg/m3], returning the computed
      viscosity and an error message, if an error occur. \link{errorCodes}
 }
 \details{
@@ -28,11 +28,7 @@ This function calls a Fortran DLL that solves the equations developed by
 \examples{
 T <- 500.
 D <- 838.025
-ViscTD(T,D)
-
-T <- 500.
-D <- 0.
-ViscTD(T,D)
+Vis <- ViscTD(T,D)
+Vis
 
 }
-

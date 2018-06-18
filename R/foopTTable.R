@@ -1,7 +1,7 @@
 #' Table of Densities, Function of Temperature for Fixed Pressure
 #'
 #' @description The function \code{DTpcteTab(T1, T2, dT, p)} returns a table of 
-#'     densities [kg m-3] for a fixed p [MPa] within a range of T [K]: T1:T2 [K]
+#'     densities [kg m-3] for a fixed p [MPa] within a range of T [K]: T1:T2 [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -10,7 +10,7 @@
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param T1 initial Temperature [ K ]
+#' @param T1 first Temperature value[ K ]
 #' @param T2 final Temperature [ K ]
 #' @param p Pressure [ MPa ]
 #' @param dT Temperature increment [ K ]
@@ -22,13 +22,15 @@
 #' T2 <- 450.
 #' dT <- 5.
 #' p <- 5.
-#' DTpcteTab(T1, T2, dT, p)
+#' TabD <- DTpcteTab(T1, T2, dT, p)
+#' TabD
 #' 
 #' T1 <- 300.
 #' T2 <- 500.
 #' dT <- 10.
 #' p <- 10.
 #' TabD <- DTpcteTab(T1, T2, dT, p)
+#' TabD
 #' 
 #' @export
 #' 
@@ -41,12 +43,12 @@ DTpcteTab <- function(T1, T2, dT, p) {
   y <- as.matrix(y)
   icode <- 0
   res <- .Fortran('DTpcteTab', as.integer(n), p, Tv, y)
-  #  out <- list(Temperature=T, DTab=as.data.frame(res[[2]]), ErrorCode=res[[3]])
-  colnames(res[[4]]) <- c("T [K]", "D [kg m-3]")
-  DTab <- res[[4]]
-  #  class(DTab) <- "IAPWS95"
-  print(paste(" p = ", p, "[MPa]"))
-  print(DTab)
+  
+  DTab <- as.data.frame(res[[4]])
+  DTab$p <- rep(p,nrow(DTab))
+  DTab <- DTab[,c(3,1,2)]
+  colnames(DTab) <- c("p [MPa]", "T [K]", "D [kg m-3]")
+  return(DTab)
 }
 
 #' Table of Enthalpies, Function of Temperature and Fixed Pressure
@@ -61,7 +63,7 @@ DTpcteTab <- function(T1, T2, dT, p) {
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param T1 initial Temperature [ K ]
+#' @param T1 first Temperature value [ K ]
 #' @param T2 final Temperature [ K ]
 #' @param p Pressure [ MPa ]
 #' @param dT Temperature increment [ K ]
@@ -73,13 +75,15 @@ DTpcteTab <- function(T1, T2, dT, p) {
 #' T2 <- 450.
 #' dT <- 5.
 #' p <- 5.
-#' hTpcteTab(T1, T2, dT, p)
+#'Tabh <-  hTpcteTab(T1, T2, dT, p)
+#'Tabh
 #' 
 #' T1 <- 300.
 #' T2 <- 500.
 #' dT <- 10.
 #' p <- 10.
 #' Tabh <- hTpcteTab(T1, T2, dT, p)
+#' Tabh
 #' 
 #' @export
 #' 
@@ -92,12 +96,12 @@ hTpcteTab <- function(T1, T2, dT, p) {
   y <- as.matrix(y)
   icode <- 0
   res <- .Fortran('hTpcteTab', as.integer(n), p, Tv, y)
-  #  out <- list(Temperature=T, DTab=as.data.frame(res[[2]]), ErrorCode=res[[3]])
-  colnames(res[[4]]) <- c("T [K]", "h [kJ kg-1]")
-  hTab <- res[[4]]
-  #  class(hTab) <- "IAPWS95"
-  print(paste(" p = ", p, "[MPa]"))
-  print(hTab)
+  
+  hTab <- as.data.frame(res[[4]])
+  hTab$p <- rep(p,nrow(hTab))
+  hTab <- hTab[,c(3,1,2)]
+  colnames(hTab) <- c("p [MPa]", "T [K]", "h [kJ kg-1]")
+  return(hTab)
 }
 
 #' Table of Entropies, Function of Temperature for a Fixed Pressure
@@ -112,7 +116,7 @@ hTpcteTab <- function(T1, T2, dT, p) {
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param T1 initial Temperature [ K ]
+#' @param T1 first Temperature value [ K ]
 #' @param T2 final Temperature [ K ]
 #' @param p Pressure [ MPa ]
 #' @param dT Temperature increment [ K ]
@@ -124,13 +128,15 @@ hTpcteTab <- function(T1, T2, dT, p) {
 #' T2 <- 450.
 #' dT <- 5.
 #' p <- 5.
-#' sTpcteTab(T1, T2, dT, p)
+#' Tabs <- sTpcteTab(T1, T2, dT, p)
+#' Tabs
 #' 
 #' T1 <- 300.
 #' T2 <- 500.
 #' dT <- 10.
 #' p <- 10.
 #' Tabs <- sTpcteTab(T1, T2, dT, p)
+#' Tabs
 #' 
 #' @export
 #' 
@@ -143,11 +149,12 @@ sTpcteTab <- function(T1, T2, dT, p) {
   y <- as.matrix(y)
   icode <- 0
   res <- .Fortran('sTpcteTab', as.integer(n), p, Tv, y)
-  colnames(res[[4]]) <- c("T [K]", "s [kJ kg-1 K-1]")
-  sTab <- res[[4]]
-  #  class(hTab) <- "IAPWS95"
-  print(paste(" p = ", p, "[MPa]"))
-  print(sTab)
+  
+  sTab <- as.data.frame(res[[4]])
+  sTab$p <- rep(p,nrow(sTab))
+  sTab <- sTab[,c(3,1,2)]
+  colnames(sTab) <- c("p [MPa]", "T [K]", "s [kJ kg-1 m K-1]")
+  return(sTab)
 }
 
 #' Table of Densities, Function of Pressure for a Fixed Temperature
@@ -164,8 +171,8 @@ sTpcteTab <- function(T1, T2, dT, p) {
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param p1 initial Pressure [ MPa ]
-#' @param p2 final Pressure [ MPa ]
+#' @param p1 first pressure value [ MPa ]
+#' @param p2 final pressure [ MPa ]
 #' @param dp Pressure increment [ MPa ]
 #' @param T Temperature [ K ]
 #' 
@@ -176,13 +183,15 @@ sTpcteTab <- function(T1, T2, dT, p) {
 #' p2 <- 10.
 #' dp <- 1.
 #' T <- 500.
-#' DpTcteTab(p1, p2, dp, T)
+#' TabD <- DpTcteTab(p1, p2, dp, T)
+#' TabD
 #' 
 #' p1 <- 10.
 #' p2 <- 100.
 #' dp <- 10.
 #' T <- 450.
 #' TabD <- DpTcteTab(p1, p2, dp, T)
+#' TabD
 #' 
 #' @export
 #' 
@@ -195,11 +204,12 @@ DpTcteTab <- function(p1, p2, dp, T) {
   y <- as.matrix(y)
   icode <- 0
   res <- .Fortran('DpTcteTab', as.integer(n), T, pv, y)
-  colnames(res[[4]]) <- c("p [MPa]", "D [kg m-3]")
-  DTab <- res[[4]]
-  #  class(DTab) <- "IAPWS95"
-  print(paste(" T = ", T, "[K]"))
-  print(DTab)
+  
+  DTab <- as.data.frame(res[[4]])
+  DTab$T<- rep(T,nrow(DTab))
+  DTab <- DTab[,c(3,1,2)]
+  colnames(DTab) <- c("T [K]", "p [K]", "D [kg m-3]")
+  return(DTab)
 }
 
 #' Table of Enthalpies, Function of Pressure for Fixed Temperature
@@ -214,8 +224,8 @@ DpTcteTab <- function(p1, p2, dp, T) {
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param p1 initial Pressure [ MPa ]
-#' @param p2 final Pressure [ MPa ]
+#' @param p1 first pressure value [ MPa ]
+#' @param p2 final pressure [ MPa ]
 #' @param dp Pressure increment [ MPa ]
 #' @param T Temperature [ K ]
 #' 
@@ -226,13 +236,15 @@ DpTcteTab <- function(p1, p2, dp, T) {
 #' p2 <- 10.
 #' dp <- 1.
 #' T <- 500.
-#' hpTcteTab(p1, p2, dp, T)
+#' Tabh <- hpTcteTab(p1, p2, dp, T)
+#' Tabh
 #' 
 #' p1 <- 10.
 #' p2 <- 100.
 #' dp <- 10.
 #' T <- 450.
 #' Tabh <- hpTcteTab(p1, p2, dp, T)
+#' Tabh
 #' 
 #' @export
 #' 
@@ -245,11 +257,12 @@ hpTcteTab <- function(p1, p2, dp, T) {
   y <- as.matrix(y)
   icode <- 0
   res <- .Fortran('hpTcteTab', as.integer(n), T, pv, y)
-  colnames(res[[4]]) <- c("p [MPa]", "h [kJ kg-1]")
-  hTab <- res[[4]]
-  #  class(hTab) <- "IAPWS95"
-  print(paste(" T = ", T, "[K]"))
-  print(hTab)
+  
+  hTab <- as.data.frame(res[[4]])
+  hTab$T<- rep(T,nrow(hTab))
+  hTab <- hTab[,c(3,1,2)]
+  colnames(hTab) <- c("T [K]", "p [K]", "h [kJ kg-1]")
+  return(hTab)
 }
 
 #' Table of Entropies, Function of Pressure for Fixed Temperature
@@ -264,8 +277,8 @@ hpTcteTab <- function(p1, p2, dp, T) {
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param p1 initial Pressure [ MPa ]
-#' @param p2 final Pressure [ MPa ]
+#' @param p1 "initial"first pressure value [ MPa ]
+#' @param p2 final pressure [ MPa ]
 #' @param dp Pressure increment [ MPa ]
 #' @param T Temperature [ K ]
 #' 
@@ -276,13 +289,15 @@ hpTcteTab <- function(p1, p2, dp, T) {
 #' p2 <- 10.
 #' dp <- 1.
 #' T <- 500.
-#' spTcteTab(p1, p2, dp, T)
+#' Tabs <- spTcteTab(p1, p2, dp, T)
+#' Tabs
 #' 
 #' p1 <- 10.
 #' p2 <- 100.
 #' dp <- 10.
 #' T <- 450.
 #' Tabs <- spTcteTab(p1, p2, dp, T)
+#' Tabs
 #' 
 #' @export
 #' 
@@ -295,9 +310,10 @@ spTcteTab <- function(p1, p2, dp, T) {
   y <- as.matrix(y)
   icode <- 0
   res <- .Fortran('spTcteTab', as.integer(n), T, pv, y)
-  colnames(res[[4]]) <- c("p [MPa]", "s [kJ kg-1 K-1]")
-  sTab <- res[[4]]
-  #  class(sTab) <- "IAPWS95"
-  print(paste(" T = ", T, "[K]"))
-  print(sTab)
+  
+  sTab <- as.data.frame(res[[4]])
+  sTab$T<- rep(T,nrow(sTab))
+  sTab <- sTab[,c(3,1,2)]
+  colnames(sTab) <- c("T [K]", "p [K]", "s [kJ kg-1 K-1]")
+  return(sTab)
 }

@@ -15,7 +15,7 @@ The saturated Liquid density: Df [kg m-3] and an Error Message
 }
 \description{
 The function \code{Dfs(s)} returns the saturated liquid density [kg m-3], 
-    Df, for given s [kJ kg-1 K-1]
+    Df, for given s [kJ kg-1 K-1].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 s <- 2.10865845
-Dfs(s)
+Df <- Dfs(s)
+Df
 
 }
-

@@ -1,7 +1,7 @@
 #' Pressure Derivative with Respect to Temperature, Function of Temperature and Density
 #'
 #' @description The function \code{dpdTTD(T,D)} returns the pressure derivative with 
-#'     respect to Temperature, dpdT, for given T [K] and D [kg/m3]
+#'     respect to Temperature, dpdT, for given T [K] and D [kg/m3].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -19,7 +19,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' dpdTTD(T,D)
+#' dpdT <- dpdTTD(T,D)
+#' dpdT
 #' 
 #' @export
 #' 
@@ -27,20 +28,18 @@
   y <- 0.
   icode <- 0
   res <- .Fortran('dpdTTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, Density=D, dpdT=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
   }
 
 #' Pressure Derivative with respect to Temperature, Function of Temperature and Pressure
 #'
 #' @description The function \code{dpdTTp(T,p)} returns the pressure derivative with 
-#'     respect to Temperature, dpdT, for given T [K] and p [MPa]
+#'     respect to Temperature, dpdT, for given T [K] and p [MPa].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -58,7 +57,8 @@
 #' @examples
 #' T <- 500.
 #' p <- 10.0003858
-#' dpdTTp(T,p)
+#' dpdT <- dpdTTp(T,p)
+#' dpdT
 #' 
 #' @export
 #' 
@@ -66,20 +66,18 @@
     y <- 0.
     icode <- 0
     res <- .Fortran('dpdTTp', as.double(T), as.double(p), as.double(y), as.integer(icode))
-#    out <- list(Temperature=T, Pressure=p, dpdT=res[[3]], ErrorCode=res[[4]])
     options(digits=9)
     if (res[[4]] != 0) { 
       error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
       print(error)
     }
-#    class(out) <- "IAPWS95"
-    print(res[[3]])
+    return(res[[3]])
   }
   
 #' Pressure Derivative with respect to Density, Function of Temperature and Density
 #'
 #' @description The function \code{dpdDTD(T,D)} returns the pressure derivative with 
-#'     respect to Density, dpdD, for given T [K] and D [kg m-3]
+#'     respect to Density, dpdD, for given T [K] and D [kg m-3].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -97,7 +95,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' dpdDTD(T,D)
+#' dpdD <- dpdDTD(T,D)
+#' dpdD
 #' 
 #' @export
 #' 
@@ -105,20 +104,18 @@
     y <- 0.
     icode <- 0
     res <- .Fortran('dpdDTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
- #   out <- list(Temperature=T, Density=D, dpdD=res[[3]], ErrorCode=res[[4]])
     options(digits=9)
     if (res[[4]] != 0) { 
       error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
       print(error)
     }
- #   class(out) <- "IAPWS95"
-    print(res[[3]])
+    return(res[[3]])
   }
   
 #' Pressure Derivative with respect to Density, Function of Temperature and Pressure
 #'
 #' @description The function \code{dpdDTp(T,p)} returns the pressure derivative with 
-#'     respect to Density, dpdD, for given T [K] and p [MPa]
+#'     respect to Density, dpdD, for given T [K] and p [MPa].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -136,7 +133,8 @@
 #' @examples
 #' T <- 500.
 #' p <- 10.0003858
-#' dpdDTp(T,p)
+#' dpdD <- dpdDTp(T,p)
+#' dpdD
 #' 
 #' @export
 #' 
@@ -144,20 +142,18 @@
      y <- 0.
      icode <- 0
      res <- .Fortran('dpdDTp', as.double(T), as.double(p), as.double(y), as.integer(icode))
- #    out <- list(Temperature=T, Pressure=p, dpdD=res[[3]], ErrorCode=res[[4]])
      options(digits=9)
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
        print(error)
      }
-#     class(out) <- "IAPWS95"
-     print(res[[3]])
+     return(res[[3]])
    }
 
 #' Density Derivative with respect to Temperature, Function of Temperature and Density
 #'
 #' @description The function \code{dDdTTD(T,D)} returns the pressure derivative with 
-#'     respect to Density, dpdD, for given T [K] and D [kg m-3]
+#'     respect to Density, dpdD, for given T [K] and D [kg m-3].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -175,7 +171,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' dDdTTD(T,D)
+#' dDdT <- dDdTTD(T,D)
+#' dDdT
 #' 
 #' @export
 #' 
@@ -183,20 +180,18 @@
      y <- 0.
      icode <- 0
      res <- .Fortran('dDdTTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
- #    out <- list(Temperature=T, Density=D, dDdT=res[[3]], ErrorCode=res[[4]])
      options(digits=9)
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
        print(error)
      }
- #    class(out) <- "IAPWS95"
-     print(res[[3]])
+     return(res[[3]])
    }
 
 #' Density Derivative with respect to Temperature, Function of Temperature and Pressure
 #'
 #' @description The function \code{dDdTTp(T,p)} returns the Density derivative with 
-#'     respect to Temperature, dDdT, for given T [K] and p [MPa]
+#'     respect to Temperature, dDdT, for given T [K] and p [MPa].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -214,7 +209,8 @@
 #' @examples
 #' T <- 500.
 #' p <- 10.0003858
-#' dDdTTp(T,p)
+#' dDdT <- dDdTTp(T,p)
+#' dDdT
 #' 
 #' @export
 #' 
@@ -222,20 +218,18 @@
      y <- 0.
      icode <- 0
      res <- .Fortran('dDdTTp', as.double(T), as.double(p), as.double(y), as.integer(icode))
- #    out <- list(Temperature=T, Pressure=p, dDdT=res[[3]], ErrorCode=res[[4]])
      options(digits=9)
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
        print(error)
      }
-#     class(out) <- "IAPWS95"
-     print(res[[3]])
+     return(res[[3]])
    }
 
 #' Isothermal Throttling Coefficient, Function of Tenoerature and Density
 #'
 #' @description The function \code{ThrcTD(T,D)} returns the Isothermal Throttling Coefficient, 
-#'     Thrc, for given T [K] and D [kg m-3]
+#'     Thrc, for given T [K] and D [kg m-3].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -253,7 +247,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' ThrcTD(T,D)
+#' Thrc <- ThrcTD(T,D)
+#' Thrc
 #' 
 #' @export
 #' 
@@ -261,20 +256,18 @@
      y <- 0.
      icode <- 0
      res <- .Fortran('ThrcTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
- #    out <- list(Temperature=T, Density=D, Thrc=res[[3]], ErrorCode=res[[4]])
      options(digits=9)
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
        print(error)
      }
- #    class(out) <- "IAPWS95"
-     print(res[[3]])
+     return(res[[3]])
    }
 
 #' Isothermal Compressibility, Function of Temperature and Density
 #'
 #' @description The function \code{KapaTD(T,D)} returns the Isothermal Compressibility, Kapa, 
-#'     for given T [K] and D [kg m-3]
+#'     for given T [K] and D [kg m-3].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -292,7 +285,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' KapaTD(T,D)
+#' Kapa <- KapaTD(T,D)
+#' Kapa
 #' 
 #' @export
 #' 
@@ -300,14 +294,12 @@ KapaTD <- function(T,D) {
   y <- 0.
   icode <- 0
   res <- .Fortran('kapaTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, Density=D, Kapa=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
 }
 
    

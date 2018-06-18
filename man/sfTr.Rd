@@ -10,10 +10,10 @@ sfTr()
 Triple Point Liquid Entropy: sfTr [ kJ kg-1 K-1]
 }
 \description{
-The function \code{sfTr()} returns the Water Liquid Entropy at Triple Point
+The function \code{sfTr()} returns the Water Liquid Entropy at Triple Point.
 }
 \examples{
-sfTr()
+sfTrip <- sfTr()
+sfTrip
 
 }
-

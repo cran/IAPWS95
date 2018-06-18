@@ -15,7 +15,7 @@ The saturated liquid density: Df [kg m-3] and an Error Message
 }
 \description{
 The function \code{Dfp(p)} returns the saturated liquid density [kg m-3], 
-    Df, for given p [ MPa ]
+    Df, for given p [ MPa ].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 p <- 0.932203564
-Dfp(p)
+Df <- Dfp(p)
+Df
 
 }
-

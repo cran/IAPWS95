@@ -15,7 +15,7 @@ The Saturation Temperature: Tsat [ K ] and an Error Message
 }
 \description{
 The function \code{TSatp(p)} returns the temperature [K], 
-    TSat, for given p [ MPa ]
+    TSat, for given p [ MPa ].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 p <- 0.932203564
-TSatp(p)
+T_Sat <- TSatp(p)
+T_Sat
 
 }
-

@@ -10,10 +10,10 @@ Rwater()
 Water Specific Gas Constant: R [ K-1 ]
 }
 \description{
-The function \code{Rwater()} returns the Water Specific Gas Constant
+The function \code{Rwater()} returns the Water Specific Gas Constant.
 }
 \examples{
-Rwater()
+Rw <- Rwater()
+Rw
 
 }
-

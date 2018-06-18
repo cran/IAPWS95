@@ -20,7 +20,7 @@ The Second Derivative of the Residual-Gas Part of the Dimensionless Helmholtz
 \description{
 The function \code{phirDT(T,D)} returns the Second Derivative of the 
     Residual-Gas Part of the Dimensionless Helmholtz Energy Equation with respect to D and T,
-    for given T [K] and D [kg/m3]
+    for given T [K] and D [kg/m3].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -33,7 +33,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 \examples{
 T <- 500.
 D <- 838.025
-phirDT(T,D)
+phir_DT <- phirDT(T,D)
+phir_DT
 
 }
-

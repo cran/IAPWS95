@@ -16,4 +16,3 @@ Error codes due values out of validity range, incorrect inputs,
     and/or convergence issues
 }
 \keyword{datasets}
-

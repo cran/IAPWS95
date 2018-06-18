@@ -15,7 +15,7 @@ The Isochoric Heat Capacity of GaS Phase: Cvg [kJ kg-1 K-1] and an Error
 }
 \description{
 The function \code{CvgT(T)} returns the Isochoric Heat Capacity 
-    of Gas Phase [kJ kg-1 K-1],  Cvg, for given T [K]
+    of Gas Phase [kJ kg-1 K-1],  Cvg, for given T [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 T <- 450.
-CvgT(T)
+Cvg <- CvgT(T)
+Cvg
 
 }
-

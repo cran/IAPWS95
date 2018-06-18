@@ -15,7 +15,7 @@ The saturated liquid entropy: sf [kJ kg-1 K-1] and an Error
 }
 \description{
 The function \code{sfT(T)} returns the saturated liquid entropy [kJ kg-1 K-1], 
-    sf, for given T [K]
+    sf, for given T [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 T <- 450.
-sfT(T)
+sf <- sfT(T)
+sf
 
 }
-

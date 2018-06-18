@@ -7,7 +7,7 @@
 DTpcteTab(T1, T2, dT, p)
 }
 \arguments{
-\item{T1}{initial Temperature [ K ]}
+\item{T1}{first Temperature value[ K ]}
 
 \item{T2}{final Temperature [ K ]}
 
@@ -20,7 +20,7 @@ A table of Densities for fixed p and a T Interval: T1:T2.
 }
 \description{
 The function \code{DTpcteTab(T1, T2, dT, p)} returns a table of 
-    densities [kg m-3] for a fixed p [MPa] within a range of T [K]: T1:T2 [K]
+    densities [kg m-3] for a fixed p [MPa] within a range of T [K]: T1:T2 [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -35,13 +35,14 @@ T1 <- 275.
 T2 <- 450.
 dT <- 5.
 p <- 5.
-DTpcteTab(T1, T2, dT, p)
+TabD <- DTpcteTab(T1, T2, dT, p)
+TabD
 
 T1 <- 300.
 T2 <- 500.
 dT <- 10.
 p <- 10.
 TabD <- DTpcteTab(T1, T2, dT, p)
+TabD
 
 }
-

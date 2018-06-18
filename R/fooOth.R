@@ -18,7 +18,8 @@
 #' @examples
 #' D <- 838.025
 #' p <- 10.0003858
-#' TDp(D,p)
+#' T_Dp <- TDp(D,p)
+#' T_Dp
 #' 
 #' @export
 #' 
@@ -26,14 +27,12 @@
     y <- 0.
   icode <- 0
   res <- .Fortran('TDp', as.double(D), as.double(p), as.double(y), as.integer(icode))
-#  out <- list(Density=D, Pressure=p, Temperature=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
   }
 
 #' Temperature, Function of Density and Entropy
@@ -56,7 +55,8 @@
 #' @examples
 #' D <- 838.025
 #' s <- 2.56690919
-#' TDs(D,s)
+#' T_Ds <- TDs(D,s)
+#' T_Ds
 #' 
 #' @export
 #' 
@@ -64,14 +64,12 @@ TDs <- function(D,s) {
   y <- 0.
   icode <- 0
   res <- .Fortran('TDs', as.double(D), as.double(s), as.double(y), as.integer(icode))
-#  out <- list(Density=D, Entropy=s, Temperature=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
 }
 
 #' Temperature, Function of Density and Enthalpy
@@ -94,7 +92,8 @@ TDs <- function(D,s) {
 #' @examples
 #' D <- 838.025
 #' h <- 977.181624
-#' TDh(D,h)
+#' T_Dh <- TDh(D,h)
+#' T_Dh
 #' 
 #' @export
 #' 
@@ -102,14 +101,12 @@ TDh <- function(D,h) {
   y <- 0.
   icode <- 0
   res <- .Fortran('TDh', as.double(D), as.double(h), as.double(y), as.integer(icode))
-#  out <- list(Density=D, Enthalpy=h, Temperature=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
 }
 
 #' Density, Function of Temperature and Enthalpy
@@ -134,7 +131,8 @@ TDh <- function(D,h) {
 #' @examples
 #' T <- 500.
 #' h <- 977.181624
-#' DTh(T,h)
+#' D_Th <- DTh(T,h)
+#' D_Th
 #' 
 #' @export
 #' 
@@ -148,8 +146,7 @@ DTh <- function(T,h) {
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[5]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(out)
+  return(out)
 }
 
 #' Temperature, Function of Pressure and Enthalpy
@@ -172,7 +169,8 @@ DTh <- function(T,h) {
 #' @examples
 #' p <- 10.0003858
 #' h <- 977.181624
-#' Tph(p,h)
+#' T_ph <- Tph(p,h)
+#' T_ph
 #' 
 #' @export
 #' 
@@ -180,14 +178,12 @@ Tph <- function(p,h) {
   y <- 0.
   icode <- 0
   res <- .Fortran('Tph', as.double(p), as.double(h), as.double(y), as.integer(icode))
-#  out <- list(Pressure=p, Enthalpy=h, Temperature=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
 }
 
 #' Density, Function of Pressure and Enthalpy
@@ -210,7 +206,8 @@ Tph <- function(p,h) {
 #' @examples
 #' p <- 10.0003858
 #' h <- 977.181624
-#' Dph(p,h)
+#' D_ph <- Dph(p,h)
+#' D_ph
 #' 
 #' @export
 #' 
@@ -218,13 +215,11 @@ Dph <- function(p,h) {
   y <- 0.
   icode <- 0
   res <- .Fortran('Dph', as.double(p), as.double(h), as.double(y), as.integer(icode))
-#  out <- list(Pressure=p, Enthalpy=h, Density=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
 }
 
 #' Entropy, Function of Pressure and Enthalpy
@@ -247,7 +242,8 @@ Dph <- function(p,h) {
 #' @examples
 #' p <- 10.0003858
 #' h <- 977.181624
-#' sph(p,h)
+#' s_ph <- sph(p,h)
+#' s_ph
 #' 
 #' @export
 #' 
@@ -255,14 +251,12 @@ sph <- function(p,h) {
   y <- 0.
   icode <- 0
   res <- .Fortran('sph', as.double(p), as.double(h), as.double(y), as.integer(icode))
-#  out <- list(Pressure=p, Enthalpy=h, Entropy=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
 }
 
 #' Density, Function of Temperature and Entropy
@@ -285,7 +279,10 @@ sph <- function(p,h) {
 #' @examples
 #' T <- 500.
 #' s <- 2.56690919
-#' DTs(T,s)
+#' D_Ts <- DTs(T,s)
+#' D_Ts
+#' 
+#' @export
 #' 
 #' @export
 #' 
@@ -293,14 +290,12 @@ DTs <- function(T,s) {
   y <- 0.
   icode <- 0
   res <- .Fortran('DTs', as.double(T), as.double(s), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, Entropy=s, Density=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
 }
 
 #' Temperature, Function of Enthalpy and Entropy
@@ -323,7 +318,8 @@ DTs <- function(T,s) {
 #' @examples
 #' h <- 977.181624
 #' s <- 2.56690919
-#' Ths(h,s)
+#' T_hs <- Ths(h,s)
+#' T_hs
 #' 
 #' @export
 #' 
@@ -331,14 +327,12 @@ Ths <- function(h,s) {
   y <- 0.
   icode <- 0
   res <- .Fortran('Ths', as.double(h), as.double(s), as.double(y), as.integer(icode))
-#  out <- list(Enthalpy=h, Entropy=s, Temperature=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
 }
 
 #' Density, Function of Enthalpy and Entropy
@@ -361,7 +355,8 @@ Ths <- function(h,s) {
 #' @examples
 #' h <- 977.181624
 #' s <- 2.56690919
-#' Dhs(h,s)
+#' D_hs <- Dhs(h,s)
+#' D_hs
 #' 
 #' @export
 #' 
@@ -369,14 +364,12 @@ Dhs <- function(h,s) {
   y <- 0.
   icode <- 0
   res <- .Fortran('Dhs', as.double(h), as.double(s), as.double(y), as.integer(icode))
-#  out <- list(Enthalpy=h, Entropy=s, Density=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
 }
 
 #' Temperature, Function of Pressure and Entropy
@@ -399,7 +392,8 @@ Dhs <- function(h,s) {
 #' @examples
 #' p <- 10.0003858
 #' s <- 2.56690919
-#' Tps(p,s)
+#' T_ps <- Tps(p,s)
+#' T_ps
 #' 
 #' @export
 #' 
@@ -407,14 +401,12 @@ Tps <- function(p,s) {
   y <- 0.
   icode <- 0
   res <- .Fortran('Tps', as.double(p), as.double(s), as.double(y), as.integer(icode))
-#  out <- list(Pressure=p, Entropy=s, Temperature=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
 }
 
 #' Density, Function of Pressure and Entropy
@@ -437,7 +429,8 @@ Tps <- function(p,s) {
 #' @examples
 #' p <- 10.0003858
 #' s <- 2.56690919
-#' Dps(p,s)
+#' D_ps <- Dps(p,s)
+#' D_ps
 #' 
 #' @export
 #' 
@@ -445,14 +438,12 @@ Dps <- function(p,s) {
   y <- 0.
   icode <- 0
   res <- .Fortran('Dps', as.double(p), as.double(s), as.double(y), as.integer(icode))
-#  out <- list(Pressure=p, Entropy=s, Density=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
 }
 
 #' Enthalpy, Function of Pressure and Entropy
@@ -475,7 +466,8 @@ Dps <- function(p,s) {
 #' @examples
 #' p <- 10.0003858
 #' s <- 2.56690919
-#' hps(p,s)
+#' h_ps <- hps(p,s)
+#' h_ps
 #' 
 #' @export
 #' 
@@ -483,20 +475,18 @@ hps <- function(p,s) {
   y <- 0.
   icode <- 0
   res <- .Fortran('hps', as.double(p), as.double(s), as.double(y), as.integer(icode))
-#  out <- list(Pressure=p, Entropy=s, Enthalpy=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
 }
 
 #' Melting Pressure, Function of Temperature
 #'
-#' @description The function \code{pMeltT(T)} returns the water melting pressur,
-#'      pMelt [ MPa ], for a given T [K]
+#' @description The function \code{pMeltT(T)} returns the water melting pressure,
+#'      pMelt [ MPa ], for a given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the equations given at the
 #'      Revised Release on the Pressure along the Melting and Sublimation Curves of
@@ -514,7 +504,8 @@ hps <- function(p,s) {
 #' 
 #' @examples
 #' T <- 275.
-#' pMeltT(T)
+#' p_Melt <- pMeltT(T)
+#' p_Melt
 #' 
 #' @export
 #' 
@@ -528,14 +519,13 @@ pMeltT <- function(T) {
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[5]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(out)
+  return(out)
 }
 
 #' Second Virial Coefficient (B), Function of Temperature
 #'
 #' @description The function \code{BT(T)} returns the second virial coefficient,
-#'      B [ m3 kg-1 ], for a given T [K]
+#'      B [ m3 kg-1 ], for a given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -551,7 +541,8 @@ pMeltT <- function(T) {
 #' 
 #' @examples
 #' T <- 500.
-#' BT(T)
+#' B_T <- BT(T)
+#' B_T
 #' 
 #' @export
 #' 
@@ -559,20 +550,18 @@ pMeltT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('BT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, B=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 }
 
 #' Third Virial Coefficient (C), Function of Temperature
 #'
 #' @description The function \code{CT(T)} returns the third virial coefficient,
-#'      C [ m3 kg-1 ]**2, for a given T [K]
+#'      C [ m3 kg-1 ]**2, for a given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -588,7 +577,8 @@ pMeltT <- function(T) {
 #' 
 #' @examples
 #' T <- 500.
-#' CT(T)
+#' C_T <- CT(T)
+#' C_T
 #' 
 #' @export
 #' 
@@ -596,12 +586,50 @@ CT <- function(T) {
   y <- 0.
   icode <- 0
   res <- .Fortran('CT', as.double(T), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, C=res[[2]], ErrorCode=res[[3]])
   options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[2]])
+  return(res[[2]])
 }
+#' Vapor pressure, Function of Temperature
+#'
+#' @description The function \code{Vp(T)} returns the vapor pressure,
+#'      Vp [ kPa ], for a given T [K]. 
+#'
+#' @details This function solves the Wagner Equation (Wagner and Pruss (1993))
+#'      which gives one of the best fits to experimental data. It expresses reduced
+#'      vapor pressure as a function of reduced temperature. This equation, for water,
+#'      is valid from the temperature of 273.16 K to the critical temperature (624.096 K).
+#'     
+#' @param T Temperature [K]
+#' 
+Vp <- function(T) {
+ # pCrit <- as.double(22.064): Critical Pressure
+ # TCrit <- as.double(647.096): Critical Temperature
+
+  TL <- 273.16  # Lower temperature limit
+  TH <- 647.096 # Upper temperature limit
+  if ( (T < TL) | (T > TH) ) { 
+    print("Temperature out of bounds")
+  }
+  
+ Tc1 <- 0.001545365757 # 1./Tc
+ Tr = T*Tc1 # T/Tc
+ Pc <- 22064. # kPa
+ 
+ a1 <- -7.85951783
+ a2 <- 1.84408259
+ a3 <- -11.7866497
+ a4 <- 22.6807411 
+ a5 <- -15.9618719
+ a6 <- 1.80122502
+ tal <- 1.-Tr
+ 
+ lnPr <- (a1*tal + a2*(tal^1.5) + a3*(tal^3) + a4*(tal^3.5) + a5*(tal^4) + a6*(tal^7.5))/Tr
+ 
+ Pr <- exp(lnPr)
+ Vp <- Pc * Pr
+ return(Vp)
+ }

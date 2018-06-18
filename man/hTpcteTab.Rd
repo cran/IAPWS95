@@ -7,7 +7,7 @@
 hTpcteTab(T1, T2, dT, p)
 }
 \arguments{
-\item{T1}{initial Temperature [ K ]}
+\item{T1}{first Temperature value [ K ]}
 
 \item{T2}{final Temperature [ K ]}
 
@@ -35,13 +35,14 @@ T1 <- 275.
 T2 <- 450.
 dT <- 5.
 p <- 5.
-hTpcteTab(T1, T2, dT, p)
+Tabh <-  hTpcteTab(T1, T2, dT, p)
+Tabh
 
 T1 <- 300.
 T2 <- 500.
 dT <- 10.
 p <- 10.
 Tabh <- hTpcteTab(T1, T2, dT, p)
+Tabh
 
 }
-

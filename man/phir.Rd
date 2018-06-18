@@ -18,7 +18,7 @@ The Residual-Gas Part of the Dimensionless Helmholtz Energy Equation: phir
 }
 \description{
 The function \code{phir(T,D)} returns the Residual-Gas Part of the Dimensionless 
-    Helmholtz Energy Equation for given T [K] and D [kg/m3]
+    Helmholtz Energy Equation for given T [K] and D [kg/m3].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -31,7 +31,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 \examples{
 T <- 500.
 D <- 838.025
-phir(T,D)
+phir_TD <- phir(T,D)
+phir_TD
 
 }
-

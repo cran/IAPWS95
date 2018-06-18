@@ -13,7 +13,7 @@ The Triple Point Temperature: TTr [ K ]
 The function \code{TTr()} returns the Water Temperature at Triple Point [K]
 }
 \examples{
-TTr()
+Ttrip <- TTr()
+Ttrip
 
 }
-

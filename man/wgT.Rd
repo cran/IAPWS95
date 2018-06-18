@@ -15,7 +15,7 @@ The Speed of Sound of Gas Phase: wg [ m s-1 ] and an Error
 }
 \description{
 The function \code{wgT(T)} returns the Speed 
-    of Sound of Gas Phase [m s-1],  wg, for given T [K]
+    of Sound of Gas Phase [m s-1],  wg, for given T [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 T <- 450.
-wgT(T)
+wg <- wgT(T)
+wg
 
 }
-

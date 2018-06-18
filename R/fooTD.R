@@ -1,8 +1,7 @@
 #' Pressure, Function of Temperature and Density
 #'
 #' @description The function \code{pTD(T,D)} returns the water pressure, p [ MPa ],
-#'      for given T [K] and D [kg/m3], returning also an error message, 
-#'      if any error occur. \link{errorCodes}
+#'      for given T [K] and D [kg/m3], returning also an error message, if any error occur.
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -21,11 +20,13 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' pTD(T,D)
+#' p <- pTD(T,D)
+#' p
 #' 
 #' T <- 647.096
 #' D <- 322.
-#' pTD(T,D)
+#' p <- pTD(T,D)
+#' p
 #' 
 #' @export
 #' 
@@ -33,21 +34,18 @@
   y <- 0.
   icode <- 0
   res <- .Fortran('pTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, Density=D, Pressure=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
   }
 
 #' Helmholtz Free Energy, Function of Temperature and Density
 #'
 #' @description The function \code{fTD(T,D)} returns the Helmholtz Free Energy, f [ kJ kg-1 ],
 #'      for given T [K] and D [kg/m3].
-#'      
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -59,35 +57,32 @@
 #' @param T Temperature [ K ]
 #' @param D Density [ kg m-3 ]
 #' 
-#' @return The Helmholtz Free Energy: f [ kJ kg-1 ] and an Error Message 
-#'     (if an error occur:  \link{errorCodes})
+#' @return The Helmholtz Free Energy: f [ kJ kg-1 ] and an Error Message if an error occur:
+#'   \link{errorCodes}
 #' 
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' fTD(T,D)
-#' 
+#' f <- fTD(T,D)
+#' f
 #' @export
 #' 
  fTD <- function(T,D) {
   y <- 0.
   icode <- 0
   res <- .Fortran('fTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#  out <- list(Temperature=T, Density=D, f=res[[3]], ErrorCode=res[[4]])
   options(digits=9)
   if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
   }
-#  class(out) <- "IAPWS95"
-  print(res[[3]])
+  return(res[[3]])
 } 
  
 #' Specific Enthalpy, Function of Temperature and Density
 #'
 #' @description The function \code{hTD(T,D)} returns the Specific Enthalpy, h [ kJ kg-1 ],
 #'      for given T [K] and D [kg/m3].
-#'      
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -105,7 +100,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' hTD(T,D)
+#' h <- hTD(T,D)
+#' h
 #' 
 #' @export
 #'  
@@ -113,14 +109,12 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('hTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, Enthalpy=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
-#   class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
  
 #' Specific Entropy, Function of Temperature and Density
@@ -144,7 +138,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' sTD(T,D)
+#' s <- sTD(T,D)
+#' s
 #' 
 #' @export
 #'  
@@ -152,14 +147,12 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('sTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, Entropy=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
-#   class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
  
 #' Specific Internal Energy, Function of Temperature and Density
@@ -183,7 +176,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' uTD(T,D)
+#' u <- uTD(T,D)
+#' u
 #' 
 #' @export
 #'  
@@ -191,14 +185,12 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('uTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, InternalEnergy=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
-#   class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
  
 #' Specific Isochoric Heat Capacity, Function of Temperature and Density
@@ -222,7 +214,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' CvTD(T,D)
+#' Cv <- CvTD(T,D)
+#' Cv
 #' 
 #' @export
 #'  
@@ -230,14 +223,12 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('CvTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, IsochoricHeatCapacity=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
-#   class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
  
 #' Specific Isobaric Heat Capacity, Function of Temperature and Density
@@ -261,7 +252,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' CpTD(T,D)
+#' Cp <- CpTD(T,D)
+#' Cp
 #' 
 #' @export
 #'  
@@ -269,14 +261,12 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('CpTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, IsobaricHeatCapacity=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
-#   class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
  
 #' Speed of Sound, Function of Temperature and Density
@@ -302,12 +292,9 @@
 #' 
 #' @examples
 #' T <- 500.
-#' D <- 838.025
-#' wTD(T,D)
-#' 
-#' T <- 500.
 #' D <- 0.435
-#' wTD(T,D)
+#' w <- wTD(T,D)
+#' w
 #' 
 #' @export
 #'  
@@ -315,14 +302,12 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('wTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, SoundSpeed=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
-#   class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
  
 #' Compressibility Factor, Function of Temperature and Density
@@ -346,7 +331,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' ZTD(T,D)
+#' z <- ZTD(T,D)
+#' z
 #' 
 #' @export
 #'  
@@ -354,21 +340,18 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('ZTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, CompFactor=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
-#   class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
  
 #' Joule-Thomson Coefficient, Function of Temperature and Density
 #'
 #' @description The function \code{JTcTD(T,D)} returns the Joule-Thomson coefficient 
 #'     for given T [K] and D [kg/m3].
-#'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
@@ -387,7 +370,8 @@
 #' @examples
 #' T <- 500.
 #' D <- 838.025
-#' JTcTD(T,D)
+#' JT <- JTcTD(T,D)
+#' JT
 #' 
 #' @export
 #'  
@@ -395,14 +379,12 @@
    y <- 0.
    icode <- 0
    res <- .Fortran('JTcTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
-#   out <- list(Temperature=T, Density=D, JouleThomson=res[[3]], ErrorCode=res[[4]])
    options(digits=9)
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
    }
- #  class(out) <- "IAPWS95"
-   print(res[[3]])
+   return(res[[3]])
  }
  
 #' Error Codes

@@ -30,7 +30,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 \examples{
 T <- 500.
 p <- 10.0003858
-wTp(T,p)
+w <- wTp(T,p)
+w
 
 }
-

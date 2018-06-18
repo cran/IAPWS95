@@ -1,7 +1,7 @@
 ---
 title: "IAPWS95"
 author: "Benedito Dias Baptista Filho"
-date: "31/08/2016"
+date: "18/04/2018"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{IAPWS95}
@@ -15,7 +15,7 @@ The name IAPWS95 comes from the "IAPWS Formulation 1995 for the Thermodynamic Pr
 
 IAPWS-95 formulation is based on the fundamental equation of Helmholtz free energy as a function of temperature and density, f = f(T, ρ). Other thermodynamic properties are obtained by differentiation and algebraic manipulation without the use of any other information. IAPWS-95 defines accurately the thermodynamic properties of the fluid phases of ordinary water substance, with complete thermodynamic consistency among these properties, over a wide range of states (pressures up to 1000 MPa and temperatures from the melting and sublimation temperatures to 1273 K). In this package the lower temperature limit is the triple point temperature, 273.16 K. The definition of properties includes those on the liquid–vapor equilibrium line.
 
-The transport properties programmed were based on different IAPWS Releases: "Release on the IAPWS Formulation 2011 for the Thermal Conductivity of Ordinary Water Substance"; "Release on the IAPWS Formulation 2008 for the Viscosity of Ordinary Water Substance"; "Revised Release on Surface Tension of Ordinary Water Substance" (2014). The melting pressure was based on the "Revised Release on the Pressure along the Melting and Sublimation Curves of Ordinary Water Substance" (2011).
+The transport properties programmed were based on different IAPWS Releases: "Release on the IAPWS Formulation 2011 for the Thermal Conductivity of Ordinary Water Substance"; "Release on the IAPWS Formulation 2008 for the Viscosity of Ordinary Water Substance"; "Revised Release on Surface Tension of Ordinary Water Substance" (2014). The melting pressure was based on the "Revised Release on the Pressure along the Melting and Sublimation Curves of Ordinary Water Substance" (2011). The vapor pressure function introduced in this version was based on the Wagner and Pru&#223; equation (1993).
 
 
 ## Organizations involved

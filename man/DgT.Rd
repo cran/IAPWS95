@@ -15,7 +15,7 @@ The saturated gas density: Dg [ kg m-3 ] and an Error
 }
 \description{
 The function \code{DgT(T)} returns the saturated gas density [kg m-3], 
-    Dg, for given T [K]
+    Dg, for given T [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 T <- 450.
-DgT(T)
+Dg <- DgT(T)
+Dg
 
 }
-

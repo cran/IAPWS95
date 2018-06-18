@@ -15,7 +15,7 @@ The saturated liquid enthalpy: hf [kJ kg-1] and an Error
 }
 \description{
 The function \code{hfT(T)} returns the saturated liquid enthalpy [kJ kg-1], 
-    hf, for given T [K]
+    hf, for given T [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 T <- 450.
-hfT(T)
+hf <- hfT(T)
+hf
 
 }
-

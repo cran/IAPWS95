@@ -33,12 +33,8 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 T <- 500.
-D <- 838.025
-wTD(T,D)
-
-T <- 500.
 D <- 0.435
-wTD(T,D)
+w <- wTD(T,D)
+w
 
 }
-

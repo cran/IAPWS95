@@ -30,7 +30,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 \examples{
 T <- 500.
 p <- 10.0003858
-uTp(T,p)
+u <- uTp(T,p)
+u
 
 }
-

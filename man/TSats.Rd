@@ -15,7 +15,7 @@ The Saturation Temperature: Tsat [ K ] and an Error Message
 }
 \description{
 The function \code{TSats(s)} returns the temperature [K], 
-    TSat, for given s [kJ kg-1 K-1]
+     TSat, for given s [kJ kg-1 K-1].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,7 +27,7 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 }
 \examples{
 s <- 2.10865845
-TSats(s)
+T_Sat <- TSats(s)
+T_Sat
 
 }
-

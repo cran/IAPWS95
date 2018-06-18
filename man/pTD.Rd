@@ -16,8 +16,7 @@ The Pressure: p [ MPa ] and an Error Message (if an error occur: \link{errorCode
 }
 \description{
 The function \code{pTD(T,D)} returns the water pressure, p [ MPa ],
-     for given T [K] and D [kg/m3], returning also an error message, 
-     if any error occur. \link{errorCodes}
+     for given T [K] and D [kg/m3], returning also an error message, if any error occur.
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -30,11 +29,12 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 \examples{
 T <- 500.
 D <- 838.025
-pTD(T,D)
+p <- pTD(T,D)
+p
 
 T <- 647.096
 D <- 322.
-pTD(T,D)
+p <- pTD(T,D)
+p
 
 }
-
