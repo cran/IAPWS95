@@ -4,18 +4,20 @@
 \alias{DfT}
 \title{Saturated Liquid Density, Function of Temperature}
 \usage{
-DfT(T)
+DfT(Temp, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The saturated liquid density: Df [ kg m-3 ] and an Error
      Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{DfT(T)} returns the saturated liquid density [kg m-3], 
-    Df, for given T [K].
+The function \code{DfT(Temp,digits=9)} returns the saturated liquid density [kg m-3], 
+    Df, for given Temp [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -26,8 +28,8 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 450.
-Df <- DfT(T)
+Temp <- 450.
+Df <- DfT(Temp)
 Df
 
 }

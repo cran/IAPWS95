@@ -4,7 +4,7 @@
 \alias{DpTcteTab}
 \title{Table of Densities, Function of Pressure for a Fixed Temperature}
 \usage{
-DpTcteTab(p1, p2, dp, T)
+DpTcteTab(p1, p2, dp, Temp)
 }
 \arguments{
 \item{p1}{first pressure value [ MPa ]}
@@ -13,17 +13,17 @@ DpTcteTab(p1, p2, dp, T)
 
 \item{dp}{Pressure increment [ MPa ]}
 
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 }
 \value{
 A table of Densities for fixed T and a p Interval: p1:p2.
 }
 \description{
-The function \code{DpTcteTab(p1, p2, dp, T)} returns a table of 
-    Densities [kg m-3] for a fixed T [K] within a range of p [MPa]: p1:p2 [MPa]
+The function \code{DpTcteTab(p1, p2, dp, Temp)} returns a table of 
+    Densities [kg m-3] for a fixed Temp [K] within a range of p [MPa]: p1:p2 [MPa]
 }
 \details{
-This function provides a table of the densities [kg m-3] for a given T [K] within a range of p [MPa]
+This function provides a table of the densities [kg m-3] for a given Temp [K] within a range of p [MPa]
 
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -36,15 +36,15 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 p1 <- 1.0
 p2 <- 10.
 dp <- 1.
-T <- 500.
-TabD <- DpTcteTab(p1, p2, dp, T)
+Temp <- 500.
+TabD <- DpTcteTab(p1, p2, dp, Temp)
 TabD
 
 p1 <- 10.
 p2 <- 100.
 dp <- 10.
-T <- 450.
-TabD <- DpTcteTab(p1, p2, dp, T)
+Temp <- 450.
+TabD <- DpTcteTab(p1, p2, dp, Temp)
 TabD
 
 }

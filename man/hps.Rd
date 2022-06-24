@@ -4,18 +4,20 @@
 \alias{hps}
 \title{Enthalpy, Function of Pressure and Entropy}
 \usage{
-hps(p, s)
+hps(p, s, digits = 9)
 }
 \arguments{
 \item{p}{Pressure [ MPa ]}
 
 \item{s}{Entropy [ kJ kg-1 K-1 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Enthalpy: h [ kJ kg-1 ] and an Error Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{hps(p,s)} returns the water enthalpy, h [ kJ kg-1 ],
+The function \code{hps(p,s,digits=9)} returns the water enthalpy, h [ kJ kg-1 ],
      for given p [MPa] and s [ kJ k-1 K-1 ].
 }
 \details{

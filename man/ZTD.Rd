@@ -4,20 +4,22 @@
 \alias{ZTD}
 \title{Compressibility Factor, Function of Temperature and Density}
 \usage{
-ZTD(T, D)
+ZTD(Temp, D, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{D}{Density [ kg m-3 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Compressibility Factor and an Error Message 
     (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{ZTD(T,D)} returns the Compressibility Factor, 
-    Z [ - ], for given T [K] and D [kg/m3].
+The function \code{ZTD(Temp,D,digits=9)} returns the Compressibility Factor, 
+    Z [ - ], for given Temp [K] and D [kg/m3].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -28,9 +30,9 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 500.
+Temp <- 500.
 D <- 838.025
-z <- ZTD(T,D)
+z <- ZTD(Temp,D)
 z
 
 }

@@ -4,18 +4,20 @@
 \alias{Dph}
 \title{Density, Function of Pressure and Enthalpy}
 \usage{
-Dph(p, h)
+Dph(p, h, digits = 9)
 }
 \arguments{
 \item{p}{Pressure [ MPa ]}
 
 \item{h}{Enthalpy [ kJ kg-1 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Density: D [ kg m-3 ] and an Error Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{Dph(p,h)} returns the water density, D [ kg m-3 ],
+The function \code{Dph(p,h,digits=9)} returns the water density, D [ kg m-3 ],
      for given p [MPa] and h [ kJ k-1 ].
 }
 \details{

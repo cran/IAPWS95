@@ -4,19 +4,21 @@
 \alias{pTD}
 \title{Pressure, Function of Temperature and Density}
 \usage{
-pTD(T, D)
+pTD(Temp, D, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{D}{Density [ kg m-3 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Pressure: p [ MPa ] and an Error Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{pTD(T,D)} returns the water pressure, p [ MPa ],
-     for given T [K] and D [kg/m3], returning also an error message, if any error occur.
+The function \code{pTD(T,D,digits=9)} returns the water pressure, p [ MPa ],
+     for given Temp [K] and D [kg/m3], returning also an error message, if any error occur.
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,14 +29,14 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 500.
+Temp <- 500.
 D <- 838.025
-p <- pTD(T,D)
+p <- pTD(Temp,D)
 p
 
-T <- 647.096
+Temp <- 647.096
 D <- 322.
-p <- pTD(T,D)
+p <- pTD(Temp,D)
 p
 
 }

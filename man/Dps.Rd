@@ -4,18 +4,20 @@
 \alias{Dps}
 \title{Density, Function of Pressure and Entropy}
 \usage{
-Dps(p, s)
+Dps(p, s, digits = 9)
 }
 \arguments{
 \item{p}{Pressure [ MPa ]}
 
 \item{s}{Entropy [ kJ kg-1 K-1 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Density: D [ kg m-3 ] and an Error Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{Dps(p,s)} returns the water density, D [ kg m-3 ],
+The function \code{Dps(p,s,digits=9)} returns the water density, D [ kg m-3 ],
      for given p [MPa] and s [ kJ k-1 K-1 ].
 }
 \details{

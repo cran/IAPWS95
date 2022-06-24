@@ -4,18 +4,20 @@
 \alias{pSatT}
 \title{Saturation Pressure, Function of Temperature}
 \usage{
-pSatT(T)
+pSatT(Temp, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The saturation pressure: pSat [ MPa ] and an Error
      Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{pSatT(T)} returns the saturation pressure [MPa], 
-    pSat, for given T [K].
+The function \code{pSatT(T,digits=9)} returns the saturation pressure [MPa], 
+    pSat, for given Temp [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -26,8 +28,8 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 450.
-p_Sat <- pSatT(T)
+Temp <- 450.
+p_Sat <- pSatT(Temp)
 p_Sat
 
 }

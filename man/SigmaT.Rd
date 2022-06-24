@@ -4,17 +4,19 @@
 \alias{SigmaT}
 \title{Surface Tension, Function of Temperature}
 \usage{
-SigmaT(T)
+SigmaT(Temp, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Surface Tension: Sigma [ mN m-1 ] and an Error Message (if an error occur)
 }
 \description{
-The function \code{SigmaT(T)} computes the Surface Tension [ mN m-1 ]
-     for a given T [K], returning the calculated Surface Tension and an 
+The function \code{SigmaT(Temp,digits=9)} computes the Surface Tension [ mN m-1 ]
+     for a given Temp [K], returning the calculated Surface Tension and an 
      error message, if an error occur. \link{errorCodes}
 }
 \details{
@@ -24,8 +26,8 @@ This function calls a Fortran DLL that solves the equations developed by
      \url{http://www.iapws.org/relguide/Surf-H2O.html}
 }
 \examples{
-T <- 500.
-Sig <- SigmaT(T)
+Temp <- 500.
+Sig <- SigmaT(Temp)
 Sig
 
 }

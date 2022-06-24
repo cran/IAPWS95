@@ -4,18 +4,20 @@
 \alias{sph}
 \title{Entropy, Function of Pressure and Enthalpy}
 \usage{
-sph(p, h)
+sph(p, h, digits = 9)
 }
 \arguments{
 \item{p}{Pressure [ MPa ]}
 
 \item{h}{Enthalpy [ kJ kg-1 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Entropy: s [ kJ kg-1 K-1 ] and an Error Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{sph(p,h)} returns the water entropy, s [ kJ kg-1 K-1 ],
+The function \code{sph(p,h,digits=9)} returns the water entropy, s [ kJ kg-1 K-1 ],
      for given p [MPa] and h [ kJ k-1 ].
 }
 \details{

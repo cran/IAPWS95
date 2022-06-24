@@ -4,18 +4,20 @@
 \alias{TDs}
 \title{Temperature, Function of Density and Entropy}
 \usage{
-TDs(D, s)
+TDs(D, s, digits = 9)
 }
 \arguments{
 \item{D}{Density [ kg m3 ]}
 
 \item{s}{Entropy in [ kJ kg-1 K-1 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
-The Temperature: T [ K ] and an Error Message (if an error occur: \link{errorCodes})
+The Temperature: Temp [ K ] and an Error Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{TDs(D,s)} returns the water temperature, T [ K ],
+The function \code{TDs(D,s,digits=9)} returns the water temperature, Temp [ K ],
      for given D [kg/m3] and s [ kJ kg-1 K-1 ].
 }
 \details{

@@ -4,19 +4,21 @@
 \alias{DTs}
 \title{Density, Function of Temperature and Entropy}
 \usage{
-DTs(T, s)
+DTs(Temp, s, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{s}{Entropy [ kJ kg-1 K-1 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Density: D [ kg m-3 ] and an Error Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{DTs(T,s)} returns the water density, D [ kg m-3 ],
-     for given T [K] and s [ kJ k-1 K-1 ].
+The function \code{DTs(Temp,s,digits=9)} returns the water density, D [ kg m-3 ],
+     for given Temp [K] and s [ kJ k-1 K-1 ].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -27,9 +29,9 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 500.
+Temp <- 500.
 s <- 2.56690919
-D_Ts <- DTs(T,s)
+D_Ts <- DTs(Temp,s)
 D_Ts
 
 }

@@ -2,19 +2,21 @@
 % Please edit documentation in R/fooSatpDs.R
 \name{Dgp}
 \alias{Dgp}
-\title{Saturated Gas Density, Funtion of Pressure}
+\title{Saturated Gas Density, Function of Pressure}
 \usage{
-Dgp(p)
+Dgp(p, digits = 9)
 }
 \arguments{
 \item{p}{Pressure [ MPa ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The saturated gas density: Dg [kg m-3] and an Error Message 
     (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{Dgp(p)} returns the saturated gas density [kg m-3], 
+The function \code{Dgp(p,digits=9)} returns the saturated gas density [kg m-3], 
     Dg, for given p [ MPa ].
 }
 \details{

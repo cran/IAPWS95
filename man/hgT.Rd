@@ -4,18 +4,20 @@
 \alias{hgT}
 \title{Saturated Gas Enthalpy, Function of Temperature}
 \usage{
-hgT(T)
+hgT(Temp, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The saturated gas enthalpy: hg [kJ kg-1] and an Error
      Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{hgT(T)} returns the saturated gas enthalpy [kJ kg-1], 
-    hg, for given T [K].
+The function \code{hgT(Temp,digits=9)} returns the saturated gas enthalpy [kJ kg-1], 
+    hg, for given Temp [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -26,8 +28,8 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 450.
-hg <- hgT(T)
+Temp <- 450.
+hg <- hgT(Temp)
 hg
 
 }

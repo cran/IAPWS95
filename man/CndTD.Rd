@@ -4,19 +4,21 @@
 \alias{CndTD}
 \title{Thermal Conductivity, Function of Temperature and Density}
 \usage{
-CndTD(T, D)
+CndTD(Temp, D, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{D}{Density [ kg m-3 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Thermal Conductivity: k [ W m-1 K-1 ] and an Error message if necessary
 }
 \description{
-The function \code{CndTD(T,D)} calculates the Thermal Conductivity,
-    k [ W m-1 K-1 ] for given T [K] and D [kg/m3], returning the computed
+The function \code{CndTD(Temp,D,digits=9)} calculates the Thermal Conductivity,
+    k [ W m-1 K-1 ] for given Temp [K] and D [kg/m3], returning the computed
      thermal conductivity and an error message if an error occur.
 }
 \details{
@@ -26,9 +28,9 @@ This function calls a Fortran DLL that solves the equations developed by
     \url{http://www.iapws.org/relguide/ThCond.html}
 }
 \examples{
-T <- 500.
+Temp <- 500.
 D <- 838.025
-Cond <- CndTD(T,D)
+Cond <- CndTD(Temp,D)
 Cond
 
 }

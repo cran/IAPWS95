@@ -4,18 +4,20 @@
 \alias{TDp}
 \title{Temperature, Function of Density and Pressure}
 \usage{
-TDp(D, p)
+TDp(D, p, digits = 9)
 }
 \arguments{
 \item{D}{Density [ kg m3 ]}
 
 \item{p}{Pressure [ MPa ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
-The Temperature: T [ K ] and an Error Message (if an error occur: \link{errorCodes})
+The Temperature: Temp [ K ] and an Error Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{TDp(D,p)} returns the water temperature, T [ K ],
+The function \code{TDp(D,p,digits=9)} returns the water temperature, Temp [ K ],
      for given D [kg/m3] and p [ MPa ].
 }
 \details{

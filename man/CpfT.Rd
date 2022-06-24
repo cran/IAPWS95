@@ -4,17 +4,19 @@
 \alias{CpfT}
 \title{Specific Isobaric Heat Capacity of Fluid Phase, Function of Temperature}
 \usage{
-CpfT(T)
+CpfT(Temp, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Isobaric Heat Capacity of Fluid Phase: Cpf [kJ kg-1 K-1] and an Error
      Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{CpfT(T)} returns the Isobaric Heat Capacity 
+The function \code{CpfT(Temp,digits=9)} returns the Isobaric Heat Capacity 
     of Fluid Phase [kJ kg-1 K-1],  Cpf, for given T [K].
 }
 \details{
@@ -26,8 +28,8 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 450.
-Cpf <- CpfT(T)
+Temp <- 450.
+Cpf <- CpfT(Temp)
 Cpf
 
 }

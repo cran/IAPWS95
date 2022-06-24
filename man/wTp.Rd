@@ -4,20 +4,22 @@
 \alias{wTp}
 \title{Speed of Sound, Function of Temperature and Pressure}
 \usage{
-wTp(T, p)
+wTp(Temp, p, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{p}{Pressure [ MPa ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Speed of Sound: w [ m s-1 ] and an 
     (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{wTp(T,p)} returns the Speed of Sound, [ m s-1 ], 
-     for given T [K] and D [kg/m3].
+The function \code{wTp(Temp,p,digits=9)} returns the Speed of Sound, [ m s-1 ], 
+     for given Temp [K] and D [kg/m3].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -28,9 +30,9 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 500.
+Temp <- 500.
 p <- 10.0003858
-w <- wTp(T,p)
+w <- wTp(Temp,p)
 w
 
 }

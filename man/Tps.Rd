@@ -4,18 +4,20 @@
 \alias{Tps}
 \title{Temperature, Function of Pressure and Entropy}
 \usage{
-Tps(p, s)
+Tps(p, s, digits = 9)
 }
 \arguments{
 \item{p}{Pressure [ MPa ]}
 
 \item{s}{Entropy [ kJ kg-1 K-1 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
-The Temperature: T [ K ] and an Error Message (if an error occur: \link{errorCodes})
+The Temperature: Temp [ K ] and an Error Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{Tps(p,s)} returns the water temperature, T [ K ],
+The function \code{Tps(p,s,digits=9)} returns the water temperature, Temp [ K ],
      for given p [MPa] and s [ kJ k-1 K-1 ].
 }
 \details{

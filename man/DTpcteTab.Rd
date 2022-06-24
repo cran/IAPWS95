@@ -20,7 +20,7 @@ A table of Densities for fixed p and a T Interval: T1:T2.
 }
 \description{
 The function \code{DTpcteTab(T1, T2, dT, p)} returns a table of 
-    densities [kg m-3] for a fixed p [MPa] within a range of T [K]: T1:T2 [K].
+    densities [kg m-3] for a fixed p [MPa] within a range of Temp [K]: T1:T2 [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 

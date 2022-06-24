@@ -5,17 +5,19 @@
 \title{First Derivative of the Ideal-Gas part of the Dimensionless Helmholtz Energy
      Equation with respect to Density, Function of Density}
 \usage{
-phi0D(D)
+phi0D(D, digits = 9)
 }
 \arguments{
-\item{D}{Density [ kg m-3 ]  #' @param Opt: Option to not print the computed value (Opt = 0)}
+\item{D}{Density [ kg m-3 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The First D Derivative of Ideal-gas part of the Helmholtz Energy: phi0D and an Error
      Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{phi0D(D)} returns the First Derivative of the
+The function \code{phi0D(D,digits=9)} returns the First Derivative of the
     Ideal-gas part of the dimensionless Helmholtz Energy Equation for a given D [kg/m3].
 }
 \details{

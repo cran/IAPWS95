@@ -4,18 +4,20 @@
 \alias{Dhs}
 \title{Density, Function of Enthalpy and Entropy}
 \usage{
-Dhs(h, s)
+Dhs(h, s, digits = 9)
 }
 \arguments{
 \item{h}{Enthalpy [ kJ kg-1 ]}
 
 \item{s}{Entropy [ kJ kg-1 K-1 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Density: D [ kg m-3 ] and an Error Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{Dhs(h,s)} returns the water density, D [ kg m-3 ],
+The function \code{Dhs(h,s,digits=9)} returns the water density, D [ kg m-3 ],
      for given h [kJ k-1] and s [ kJ k-1 K-1 ].
 }
 \details{

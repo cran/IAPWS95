@@ -4,18 +4,20 @@
 \alias{Ths}
 \title{Temperature, Function of Enthalpy and Entropy}
 \usage{
-Ths(h, s)
+Ths(h, s, digits = 9)
 }
 \arguments{
 \item{h}{Enthalpy [ kJ kg-1 ]}
 
 \item{s}{Entropy [ kJ kg-1 K-1 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
-The Temperature: T [ K ] and an Error Message (if an error occur: \link{errorCodes})
+The Temperature: Temp [ K ] and an Error Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{Ths(h,s)} returns the water Temperature, T [ K ],
+The function \code{Ths(h,s,digits=9)} returns the water Temperature, Temp [ K ],
      for given h [kJ k-1] and s [ kJ k-1 K-1 ].
 }
 \details{

@@ -5,20 +5,22 @@
 \title{Second Derivative of the Residual-Gas Part of the Dimensionless Helmholtz 
     Energy Equation with respect to Density, Function of Temperature and Density}
 \usage{
-phirDD(T, D)
+phirDD(Temp, D, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{D}{Density [ kg m-3 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Second Derivative of the Residual-Gas Part of the Dimensionless Helmholtz 
     Energy Equation: phirDD, and an Error Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{phirDD(T,D)} returns the Second Derivative of the 
-    Residual-Gas Part of the Dimensionless Helmholtz Energy Equation for given T [K] and D [kg/m3].
+The function \code{phirDD(Temp,D,digits=9)} returns the Second Derivative of the 
+    Residual-Gas Part of the Dimensionless Helmholtz Energy Equation for given Temp [K] and D [kg/m3].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -29,9 +31,9 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 500.
+Temp <- 500.
 D <- 838.025
-phir_DD <- phirDD(T,D)
+phir_DD <- phirDD(Temp,D)
 phir_DD
 
 }

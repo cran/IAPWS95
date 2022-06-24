@@ -5,17 +5,19 @@
 \title{Second Derivative of the Ideal-Gas Part of the Dimensionless Helmholtz Energy Equation
     with respect to Density, Function of Density}
 \usage{
-phi0DD(D)
+phi0DD(D, digits = 9)
 }
 \arguments{
 \item{D}{Density [ kg m-3 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Second D Derivative of Ideal-gas part of the Helmholtz Energy: phi0DD and an Error
      Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{phi0DD(D)} returns the Second Derivative of the
+The function \code{phi0DD(D,digits=9)} returns the Second Derivative of the
     Ideal-gas part of the dimensionless Helmholtz Energy Equation for a given D [kg/m3].
 }
 \details{

@@ -1,6 +1,6 @@
 #' Temperature, Function of Density and Pressure
 #'
-#' @description The function \code{TDp(D,p)} returns the water temperature, T [ K ],
+#' @description The function \code{TDp(D,p,digits=9)} returns the water temperature, Temp [ K ],
 #'      for given D [kg/m3] and p [ MPa ].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -12,8 +12,9 @@
 #'     
 #' @param D Density [ kg m3 ]
 #' @param p Pressure [ MPa ]
+#' @param digits Digits of results (optional)
 #' 
-#' @return The Temperature: T [ K ] and an Error Message (if an error occur: \link{errorCodes})
+#' @return The Temperature: Temp [ K ] and an Error Message (if an error occur: \link{errorCodes})
 #' 
 #' @examples
 #' D <- 838.025
@@ -23,21 +24,21 @@
 #' 
 #' @export
 #' 
-  TDp <- function(D,p) {
+  TDp <- function(D,p,digits=9) {
     y <- 0.
   icode <- 0
   res <- .Fortran('TDp', as.double(D), as.double(p), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
      print(error)
   }
-  return(res[[3]])
+  out <- round(res[[3]],digits)
+  return(out)
   }
 
 #' Temperature, Function of Density and Entropy
 #'
-#' @description The function \code{TDs(D,s)} returns the water temperature, T [ K ],
+#' @description The function \code{TDs(D,s,digits=9)} returns the water temperature, Temp [ K ],
 #'      for given D [kg/m3] and s [ kJ kg-1 K-1 ].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -49,8 +50,9 @@
 #'     
 #' @param D Density [ kg m3 ]
 #' @param s Entropy in [ kJ kg-1 K-1 ]
+#' @param digits Digits of results (optional)
 #' 
-#' @return The Temperature: T [ K ] and an Error Message (if an error occur: \link{errorCodes})
+#' @return The Temperature: Temp [ K ] and an Error Message (if an error occur: \link{errorCodes})
 #' 
 #' @examples
 #' D <- 838.025
@@ -60,21 +62,21 @@
 #' 
 #' @export
 #' 
-TDs <- function(D,s) {
+TDs <- function(D,s,digits=9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('TDs', as.double(D), as.double(s), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-  return(res[[3]])
+  out <- round(res[[3]],digits)
+  return(out)
 }
 
 #' Temperature, Function of Density and Enthalpy
 #'
-#' @description The function \code{TDh(D,h)} returns the water temperature, T [ K ],
+#' @description The function \code{TDh(D,h,digits=9)} returns the water temperature, Temp [ K ],
 #'      for given D [kg/m3] and h [ kJ kg-1 ].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -86,8 +88,9 @@ TDs <- function(D,s) {
 #'     
 #' @param D Density [ kg m3 ]
 #' @param h Enthaly in [ kJ kg-1 ]
+#' @param digits Digits of results (optional)
 #' 
-#' @return The Temperature: T [ K ] and an Error Message (if an error occur: \link{errorCodes})
+#' @return The Temperature: Temp [ K ] and an Error Message (if an error occur: \link{errorCodes})
 #' 
 #' @examples
 #' D <- 838.025
@@ -97,22 +100,22 @@ TDs <- function(D,s) {
 #' 
 #' @export
 #' 
-TDh <- function(D,h) {
+TDh <- function(D,h,digits=9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('TDh', as.double(D), as.double(h), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-  return(res[[3]])
+  out <- round(res[[3]],digits)
+  return(out)
 }
 
 #' Density, Function of Temperature and Enthalpy
 #'
-#' @description The function \code{DTh(T,h)} returns the water density, D [ kg m-3 ],
-#'      for given T [K] and h [ kJ kg-1 ] (it may have two solutions for Density).
+#' @description The function \code{DTh(Temp,h,digits=9)} returns the water density, D [ kg m-3 ],
+#'      for given Temp [K] and h [ kJ kg-1 ] (it may have two solutions for Density).
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -121,27 +124,27 @@ TDh <- function(D,h) {
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param T Temperature in Kelvin
-#' @param h Enthaly in [ kJ kg-1 ]
+#' @param Temp Temperature in Kelvin
+#' @param h Enthalpy in [ kJ kg-1 ]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The Density 1: Density_1 [ kg m-3 ]
 #' @return The Density 2: Density_2 [ kg m-3 ]
 #' @return Error Message (if an error occur: \link{errorCodes})
 #' 
 #' @examples
-#' T <- 500.
+#' Temp <- 500.
 #' h <- 977.181624
-#' D_Th <- DTh(T,h)
+#' D_Th <- DTh(Temp,h)
 #' D_Th
 #' 
 #' @export
 #' 
-DTh <- function(T,h) {
+DTh <- function(Temp,h,digits = 9) {
   y <- 0.
   icode <- 0
-  res <- .Fortran('DTh', as.double(T), as.double(h), as.double(y), as.double(y), as.integer(icode))
-  out <- list(Density_1=res[[3]], Density_2=res[[4]])
-  options(digits=9)
+  res <- .Fortran('DTh', as.double(Temp), as.double(h), as.double(y), as.double(y), as.integer(icode))
+  out <- list(Density_1=round(res[[3]],digits), Density_2=round(res[[4]],digits))
   if (res[[5]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[5]]),2])
     print(error)
@@ -151,7 +154,7 @@ DTh <- function(T,h) {
 
 #' Temperature, Function of Pressure and Enthalpy
 #' 
-#' @description The function \code{Tph(p,h)} returns the water temperature, T [ K ],
+#' @description The function \code{Tph(p,h,digits = 9)} returns the water temperature, Temp [ K ],
 #'      for given p [MPa] and h [ kJ k-1 ].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -163,8 +166,9 @@ DTh <- function(T,h) {
 #'     
 #' @param p Pressure [ MPa ]
 #' @param h Enthalpy [ kJ kg-1 ]
+#' @param digits Digits of results (optional)
 #' 
-#' @return The Temperature: T [ K ] and an Error Message (if an error occur: \link{errorCodes})
+#' @return The Temperature: Temp [ K ] and an Error Message (if an error occur: \link{errorCodes})
 #' 
 #' @examples
 #' p <- 10.0003858
@@ -174,21 +178,21 @@ DTh <- function(T,h) {
 #' 
 #' @export
 #' 
-Tph <- function(p,h) {
+Tph <- function(p,h,digits =9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('Tph', as.double(p), as.double(h), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-  return(res[[3]])
+  out <- round(res[[3]],digits)
+  return(out)
 }
 
 #' Density, Function of Pressure and Enthalpy
 #'
-#' @description The function \code{Dph(p,h)} returns the water density, D [ kg m-3 ],
+#' @description The function \code{Dph(p,h,digits=9)} returns the water density, D [ kg m-3 ],
 #'      for given p [MPa] and h [ kJ k-1 ].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -200,6 +204,7 @@ Tph <- function(p,h) {
 #'     
 #' @param p Pressure [ MPa ]
 #' @param h Enthalpy [ kJ kg-1 ]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The Density: D [ kg m-3 ] and an Error Message (if an error occur: \link{errorCodes})
 #' 
@@ -211,20 +216,20 @@ Tph <- function(p,h) {
 #' 
 #' @export
 #' 
-Dph <- function(p,h) {
+Dph <- function(p,h,digits=9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('Dph', as.double(p), as.double(h), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
   }
-  return(res[[3]])
+  out <- round(res[[3]],digits)
+  return(out)
 }
 
 #' Entropy, Function of Pressure and Enthalpy
 #'
-#' @description The function \code{sph(p,h)} returns the water entropy, s [ kJ kg-1 K-1 ],
+#' @description The function \code{sph(p,h,digits=9)} returns the water entropy, s [ kJ kg-1 K-1 ],
 #'      for given p [MPa] and h [ kJ k-1 ].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -236,6 +241,7 @@ Dph <- function(p,h) {
 #'     
 #' @param p Pressure [ MPa ]
 #' @param h Enthalpy [ kJ kg-1 ]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The Entropy: s [ kJ kg-1 K-1 ] and an Error Message (if an error occur: \link{errorCodes})
 #' 
@@ -247,22 +253,21 @@ Dph <- function(p,h) {
 #' 
 #' @export
 #' 
-sph <- function(p,h) {
+sph <- function(p,h,digits = 9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('sph', as.double(p), as.double(h), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-  return(res[[3]])
+  return(round(res[[3]],digits = digits))
 }
 
 #' Density, Function of Temperature and Entropy
 #'
-#' @description The function \code{DTs(T,s)} returns the water density, D [ kg m-3 ],
-#'      for given T [K] and s [ kJ k-1 K-1 ].
+#' @description The function \code{DTs(Temp,s,digits=9)} returns the water density, D [ kg m-3 ],
+#'      for given Temp [K] and s [ kJ k-1 K-1 ].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -271,36 +276,36 @@ sph <- function(p,h) {
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param T Temperature [ K ]
+#' @param Temp Temperature [ K ]
 #' @param s Entropy [ kJ kg-1 K-1 ]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The Density: D [ kg m-3 ] and an Error Message (if an error occur: \link{errorCodes})
 #' 
 #' @examples
-#' T <- 500.
+#' Temp <- 500.
 #' s <- 2.56690919
-#' D_Ts <- DTs(T,s)
+#' D_Ts <- DTs(Temp,s)
 #' D_Ts
 #' 
 #' @export
 #' 
 #' @export
 #' 
-DTs <- function(T,s) {
+DTs <- function(Temp,s,digits=9) {
   y <- 0.
   icode <- 0
-  res <- .Fortran('DTs', as.double(T), as.double(s), as.double(y), as.integer(icode))
-  options(digits=9)
+  res <- .Fortran('DTs', as.double(Temp), as.double(s), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-  return(res[[3]])
+  return(round(res[[3]],digits=digits))
 }
 
 #' Temperature, Function of Enthalpy and Entropy
 #'
-#' @description The function \code{Ths(h,s)} returns the water Temperature, T [ K ],
+#' @description The function \code{Ths(h,s,digits=9)} returns the water Temperature, Temp [ K ],
 #'      for given h [kJ k-1] and s [ kJ k-1 K-1 ].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -312,8 +317,9 @@ DTs <- function(T,s) {
 #'     
 #' @param h Enthalpy [ kJ kg-1 ]
 #' @param s Entropy [ kJ kg-1 K-1 ]
+#' @param digits Digits of results (optional)
 #' 
-#' @return The Temperature: T [ K ] and an Error Message (if an error occur: \link{errorCodes})
+#' @return The Temperature: Temp [ K ] and an Error Message (if an error occur: \link{errorCodes})
 #' 
 #' @examples
 #' h <- 977.181624
@@ -323,21 +329,20 @@ DTs <- function(T,s) {
 #' 
 #' @export
 #' 
-Ths <- function(h,s) {
+Ths <- function(h,s,digits=9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('Ths', as.double(h), as.double(s), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-  return(res[[3]])
+  return(round(res[[3]],digits=digits))
 }
 
 #' Density, Function of Enthalpy and Entropy
 #'
-#' @description The function \code{Dhs(h,s)} returns the water density, D [ kg m-3 ],
+#' @description The function \code{Dhs(h,s,digits=9)} returns the water density, D [ kg m-3 ],
 #'      for given h [kJ k-1] and s [ kJ k-1 K-1 ].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -349,6 +354,7 @@ Ths <- function(h,s) {
 #'     
 #' @param h Enthalpy [ kJ kg-1 ]
 #' @param s Entropy [ kJ kg-1 K-1 ]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The Density: D [ kg m-3 ] and an Error Message (if an error occur: \link{errorCodes})
 #' 
@@ -360,21 +366,20 @@ Ths <- function(h,s) {
 #' 
 #' @export
 #' 
-Dhs <- function(h,s) {
+Dhs <- function(h,s,digits=9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('Dhs', as.double(h), as.double(s), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-  return(res[[3]])
+  return(round(res[[3]],digits=digits))
 }
 
 #' Temperature, Function of Pressure and Entropy
 #'
-#' @description The function \code{Tps(p,s)} returns the water temperature, T [ K ],
+#' @description The function \code{Tps(p,s,digits=9)} returns the water temperature, Temp [ K ],
 #'      for given p [MPa] and s [ kJ k-1 K-1 ].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -386,8 +391,9 @@ Dhs <- function(h,s) {
 #'     
 #' @param p Pressure [ MPa ]
 #' @param s Entropy [ kJ kg-1 K-1 ]
+#' @param digits Digits of results (optional)
 #' 
-#' @return The Temperature: T [ K ] and an Error Message (if an error occur: \link{errorCodes})
+#' @return The Temperature: Temp [ K ] and an Error Message (if an error occur: \link{errorCodes})
 #' 
 #' @examples
 #' p <- 10.0003858
@@ -397,21 +403,20 @@ Dhs <- function(h,s) {
 #' 
 #' @export
 #' 
-Tps <- function(p,s) {
+Tps <- function(p,s,digits=9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('Tps', as.double(p), as.double(s), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-  return(res[[3]])
+  return(round(res[[3]],digits=digits))
 }
 
 #' Density, Function of Pressure and Entropy
 #'
-#' @description The function \code{Dps(p,s)} returns the water density, D [ kg m-3 ],
+#' @description The function \code{Dps(p,s,digits=9)} returns the water density, D [ kg m-3 ],
 #'      for given p [MPa] and s [ kJ k-1 K-1 ].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -423,6 +428,7 @@ Tps <- function(p,s) {
 #'     
 #' @param p Pressure [ MPa ]
 #' @param s Entropy [ kJ kg-1 K-1 ]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The Density: D [ kg m-3 ] and an Error Message (if an error occur: \link{errorCodes})
 #' 
@@ -434,21 +440,20 @@ Tps <- function(p,s) {
 #' 
 #' @export
 #' 
-Dps <- function(p,s) {
+Dps <- function(p,s,digits=9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('Dps', as.double(p), as.double(s), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-  return(res[[3]])
+  return(round(res[[3]],digits))
 }
 
 #' Enthalpy, Function of Pressure and Entropy
 #'
-#' @description The function \code{hps(p,s)} returns the water enthalpy, h [ kJ kg-1 ],
+#' @description The function \code{hps(p,s,digits=9)} returns the water enthalpy, h [ kJ kg-1 ],
 #'      for given p [MPa] and s [ kJ k-1 K-1 ].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -460,6 +465,7 @@ Dps <- function(p,s) {
 #'     
 #' @param p Pressure [ MPa ]
 #' @param s Entropy [ kJ kg-1 K-1 ]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The Enthalpy: h [ kJ kg-1 ] and an Error Message (if an error occur: \link{errorCodes})
 #' 
@@ -471,22 +477,21 @@ Dps <- function(p,s) {
 #' 
 #' @export
 #' 
-hps <- function(p,s) {
+hps <- function(p,s,digits=9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('hps', as.double(p), as.double(s), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
   }
-  return(res[[3]])
+  return(round(res[[3]],digits))
 }
 
 #' Melting Pressure, Function of Temperature
 #'
-#' @description The function \code{pMeltT(T)} returns the water melting pressure,
-#'      pMelt [ MPa ], for a given T [K].
+#' @description The function \code{pMeltT(Temp,digits=9)} returns the water melting pressure,
+#'      pMelt [ MPa ], for a given Temp [K].
 #'
 #' @details This function calls a Fortran DLL that solves the equations given at the
 #'      Revised Release on the Pressure along the Melting and Sublimation Curves of
@@ -495,7 +500,8 @@ hps <- function(p,s) {
 #'      \url{http://www.iapws.org/relguide/MeltSub.html}. It is valid from the 
 #'      Temperature of 256.164 [K] to the Temperature of 715 [K].
 #'     
-#' @param T Temperature [K]
+#' @param Temp Temperature [K]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The melting pressure: pMelt [ MPa ] for regions III, V , VI and VII
 #' @return The melting pressure: pMeltIh [ MPa ] for region Ih
@@ -503,18 +509,17 @@ hps <- function(p,s) {
 #' @return Error message (if an error occur)
 #' 
 #' @examples
-#' T <- 275.
-#' p_Melt <- pMeltT(T)
+#' Temp <- 275.
+#' p_Melt <- pMeltT(Temp)
 #' p_Melt
 #' 
 #' @export
 #' 
-pMeltT <- function(T) {
+pMeltT <- function(Temp,digits=9) {
   y <- 0.
   icode <- 0
-  res <- .Fortran('pMeltT', as.double(T), as.double(y), as.double(y), as.double(y), as.integer(icode))
-  out <- list(Temperature=T, pMelt=res[[2]], pMeltIh=res[[3]], pSubl=res[[4]])
-  options(digits=9)
+  res <- .Fortran('pMeltT', as.double(Temp), as.double(y), as.double(y), as.double(y), as.integer(icode))
+  out <- list(Temperature=Temp, pMelt=round(res[[2]],digits), pMeltIh=round(res[[3]],digits), pSubl=round(res[[4]],digits))
   if (res[[5]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[5]]),2])
     print(error)
@@ -524,7 +529,7 @@ pMeltT <- function(T) {
 
 #' Second Virial Coefficient (B), Function of Temperature
 #'
-#' @description The function \code{BT(T)} returns the second virial coefficient,
+#' @description The function \code{BT(Temp,digits=9)} returns the second virial coefficient,
 #'      B [ m3 kg-1 ], for a given T [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -534,34 +539,35 @@ pMeltT <- function(T) {
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param T Temperature [K]
+#' @param Temp Temperature [K]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The second virial coefficient: B [ m3 kg-1 ] and an Error Message 
 #'     (if an error occur: \link{errorCodes})
 #' 
 #' @examples
-#' T <- 500.
-#' B_T <- BT(T)
+#' Temp <- 500.
+#' B_T <- BT(Temp)
 #' B_T
 #' 
 #' @export
 #' 
-  BT <- function(T) {
+  BT <- function(Temp,digits=9) {
   y <- 0.
   icode <- 0
-  res <- .Fortran('BT', as.double(T), as.double(y), as.integer(icode))
-  options(digits=9)
+  res <- .Fortran('BT', as.double(Temp), as.double(y), as.integer(icode))
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-  return(res[[2]])
+  out <- round(res[[2]],digits)
+  return(out)
 }
 
 #' Third Virial Coefficient (C), Function of Temperature
 #'
-#' @description The function \code{CT(T)} returns the third virial coefficient,
-#'      C [ m3 kg-1 ]**2, for a given T [K].
+#' @description The function \code{CT(Temp,digits=9)} returns the third virial coefficient,
+#'      C [ m3 kg-1 ]**2, for a given Temp [K].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
@@ -570,48 +576,50 @@ pMeltT <- function(T) {
 #'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
-#' @param T Temperature [K]
+#' @param Temp Temperature [K]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The second virial coefficient: C [ m3 kg-1 ]**2 and an Error Message 
 #'     (if an error occur: \link{errorCodes})
 #' 
 #' @examples
-#' T <- 500.
-#' C_T <- CT(T)
+#' Temp <- 500.
+#' C_T <- CT(Temp)
 #' C_T
 #' 
 #' @export
 #' 
-CT <- function(T) {
+CT <- function(Temp,digits=9) {
   y <- 0.
   icode <- 0
-  res <- .Fortran('CT', as.double(T), as.double(y), as.integer(icode))
-  options(digits=9)
+  res <- .Fortran('CT', as.double(Temp), as.double(y), as.integer(icode))
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-  return(res[[2]])
+  out <- round(res[[2]],digits)
+  return(out)
 }
 #' Vapor pressure, Function of Temperature
 #'
-#' @description The function \code{Vp(T)} returns the vapor pressure,
-#'      Vp [ kPa ], for a given T [K]. 
+#' @description The function \code{Vp(Temp,digits=9)} returns the vapor pressure,
+#'      Vp [ kPa ], for a given Temp [K]. 
 #'
 #' @details This function solves the Wagner Equation (Wagner and Pruss (1993))
 #'      which gives one of the best fits to experimental data. It expresses reduced
 #'      vapor pressure as a function of reduced temperature. This equation, for water,
 #'      is valid from the temperature of 273.16 K to the critical temperature (624.096 K).
 #'     
-#' @param T Temperature [K]
+#' @param Temp Temperature [K]
+#' @param digits Digits of results (optional)
 #' 
-Vp <- function(T) {
+Vp <- function(Temp,digits=9) {
  # pCrit <- as.double(22.064): Critical Pressure
  # TCrit <- as.double(647.096): Critical Temperature
 
   TL <- 273.16  # Lower temperature limit
   TH <- 647.096 # Upper temperature limit
-  if ( (T < TL) | (T > TH) ) { 
+  if ( (Temp < TL) | (Temp > TH) ) { 
     print("Temperature out of bounds")
   }
   
@@ -631,5 +639,7 @@ Vp <- function(T) {
  
  Pr <- exp(lnPr)
  Vp <- Pc * Pr
- return(Vp)
+ out <- round(Vp,digits)
+return(out)
+
  }

@@ -1,7 +1,7 @@
 ---
 title: "IAPWS95"
-author: "Benedito Dias Baptista Filho"
-date: "18/04/2018"
+author: "Benedito Dias Baptista Filho, Shawn Way"
+date: "03/06/2022"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{IAPWS95}
@@ -20,9 +20,12 @@ The transport properties programmed were based on different IAPWS Releases: "Rel
 
 ## Organizations involved
 
-This package was developed under a research project on water properties conducted at the "Energetic and Nuclear Research Institute (IPEN-CNEN-SP: <https://www.ipen.br/portal_por/portal/default.php>)", a Research Institute of the "Brazilian Nuclear Energy Commission" (CNEN), by the author, who is the Representative of Brazil, an Associate Member of IAPWS.
+This package was developed under a research project on water properties conducted at the "Energetic and Nuclear Research Institute", a Research Institute of the "Brazilian Nuclear Energy Commission" (CNEN), by the author, who is the Representative of Brazil, an Associate Member of IAPWS.
 
 This project was possible with the assistance of Dr. Allan Harvey, of the National Institute of Standards and Technology (NIST) and Chair of the Working Group of "Thermophysical Properties of Water and Steam " of the IAPWS.
+
+After Dr. Benedito Dias Baptista Filho's passing in 2018, this package will be 
+maintained by Shawn Way.
 
 
 ## Example of a Table generating Function: spTcteTab(p1, p2, dp, T)
@@ -93,7 +96,7 @@ p <- 10.0003858
 uTp(T,p)
 
 # Specific Enthalpy [ kJ kg-1 ]
-hTp(T,p)
+#hTp(T,p)
 
 ```
 

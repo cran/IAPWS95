@@ -4,17 +4,19 @@
 \alias{pSats}
 \title{Saturation Pressure, Function of Entropy}
 \usage{
-pSats(s)
+pSats(s, digits = 9)
 }
 \arguments{
 \item{s}{Entropy [ kJ kg-1 K-1 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The saturation pressure: pSat [ MPa ] and an Error
      Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{pSats(s)} returns the saturation pressure [MPa], 
+The function \code{pSats(s,digits=9)} returns the saturation pressure [MPa], 
     pSat, for given s [kJ kg-1 K-1].
 }
 \details{

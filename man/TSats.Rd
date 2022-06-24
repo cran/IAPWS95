@@ -4,17 +4,19 @@
 \alias{TSats}
 \title{Saturation Temperature, Function of Entropy}
 \usage{
-TSats(s)
+TSats(s, digits = 9)
 }
 \arguments{
 \item{s}{Entropy [kJ kg-1 K-1]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Saturation Temperature: Tsat [ K ] and an Error Message 
     (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{TSats(s)} returns the temperature [K], 
+The function \code{TSats(s,digits=9)} returns the temperature [K], 
      TSat, for given s [kJ kg-1 K-1].
 }
 \details{

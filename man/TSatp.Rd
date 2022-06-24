@@ -4,17 +4,19 @@
 \alias{TSatp}
 \title{Saturation Temperature, Function of pressure}
 \usage{
-TSatp(p)
+TSatp(p, digits = 9)
 }
 \arguments{
 \item{p}{Pressure [ MPa ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Saturation Temperature: Tsat [ K ] and an Error Message 
     (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{TSatp(p)} returns the temperature [K], 
+The function \code{TSatp(p,digits=9)} returns the temperature [K], 
     TSat, for given p [ MPa ].
 }
 \details{

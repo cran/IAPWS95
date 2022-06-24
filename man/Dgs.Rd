@@ -4,17 +4,19 @@
 \alias{Dgs}
 \title{Saturated Gas Density, Function of Entropy}
 \usage{
-Dgs(s)
+Dgs(s, digits = 9)
 }
 \arguments{
 \item{s}{Entropy [kJ kg-1 K-1]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The saturated Gas density: Dg [kg m-3] and an Error Message 
     (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{Dgs(s)} returns the saturated gas density [kg m-3], 
+The function \code{Dgs(s,digits=9)} returns the saturated gas density [kg m-3], 
     Dg, for given s [kJ kg-1 K-1].
 }
 \details{

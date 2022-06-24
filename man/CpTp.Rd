@@ -4,20 +4,22 @@
 \alias{CpTp}
 \title{Specific Isobaric Heat Capacity, Function of Temperature and Pressure}
 \usage{
-CpTp(T, p)
+CpTp(Temp, p, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{p}{Pressure [ MPa ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Specific Isobaric Heat Capacity: Cp [ kJ kg-1 K-1 ] and an 
     (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{CpTp(T,p)} returns the Specific Isobaric Heat Capacity,
-     Cp [ kJ kg-1 K-1 ], for given T [K] and D [kg/m3].
+The function \code{CpTp(Temp,p,digits=9)} returns the Specific Isobaric Heat Capacity,
+     Cp [ kJ kg-1 K-1 ], for given Temp [K] and D [kg/m3].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -28,9 +30,9 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 500.
+Temp <- 500.
 p <- 10.0003858
-Cp <- CpTp(T,p)
+Cp <- CpTp(Temp,p)
 Cp
 
 }

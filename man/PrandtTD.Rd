@@ -4,12 +4,14 @@
 \alias{PrandtTD}
 \title{Prandt Number, Function of Temperature and Density}
 \usage{
-PrandtTD(T, D)
+PrandtTD(Temp, D, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{D}{Density [ kg m-3 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Prandt Number: Pr [ - ]
@@ -17,7 +19,7 @@ The Prandt Number: Pr [ - ]
 Error message (if an error occur)
 }
 \description{
-The function \code{PrandtTD(T,D)} computes the Prandt Number, i.e., 
+The function \code{PrandtTD(Temp,D,digits=9)} computes the Prandt Number, i.e., 
      the product of the dynamic viscosity by the specific isobaric heat capacity,
      divided by the thermal conductivity of water for given T [K] and D [kg/m3].
 }
@@ -26,9 +28,9 @@ This function calls a Fortran DLL that computes the Prandt Number, valid from
     the triple point to the pressure of 1000 MPa and temperature of 1173.15K.
 }
 \examples{
-T <- 500.
+Temp <- 500.
 D <- 838.025
-Pran <- PrandtTD(T,D)
+Pran <- PrandtTD(Temp,D)
 Pran
 
 }

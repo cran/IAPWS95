@@ -49,7 +49,6 @@ satTabT <- function(T1, T2, dT) {
   colnames(res[[3]]) <- c("T", "Df", "Dg", "hf", "hg", "sf", "sg")
   out <- res[[3]]
   return(out)
-#  options(digits=9)
 #  if (res[[3]] != 0) { 
 #    out[[4]] <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
 #  }
@@ -106,7 +105,6 @@ satTabp <- function(p1, p2, dp) {
   colnames(res[[3]]) <- c("p", "Df", "Dg", "hf", "hg", "sf", "sg")
   out <- res[[3]]
   return(out)
-  #  options(digits=9)
   #  if (res[[3]] != 0) { 
   #    out[[4]] <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
   #  }
@@ -163,7 +161,6 @@ satTabvT <- function(T1, T2, dT) {
   colnames(res[[3]]) <- c("T", "vf", "vg", "hf", "hg", "sf", "sg")
   out <- res[[3]]
   return(out)
-  #  options(digits=9)
   #  if (res[[3]] != 0) { 
   #    out[[4]] <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
   #  }
@@ -220,7 +217,6 @@ satTabvp <- function(p1, p2, dp) {
   colnames(res[[3]]) <- c("p", "vf", "vg", "hf", "hg", "sf", "sg")
   out <- res[[3]]
   return(out)
-  #  options(digits=9)
   #  if (res[[3]] != 0) { 
   #    out[[4]] <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
   #  }
@@ -272,7 +268,6 @@ satTabpT <- function(T1, T2, dT) {
   colnames(res[[3]]) <- c("T", "pSat")
   out <- res[[3]]
   return(out)
-  #  options(digits=9)
   #  if (res[[3]] != 0) { 
   #    out[[4]] <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
   #  }
@@ -324,7 +319,6 @@ satTabTp <- function(p1, p2, dp) {
   colnames(res[[3]]) <- c("p", "TSat")
   out <- res[[3]]
   return(out)
-  #  options(digits=9)
   #  if (res[[3]] != 0) { 
   #    out[[4]] <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
   #  }
@@ -375,7 +369,6 @@ satTabhT <- function(T1, T2, dT) {
   colnames(res[[3]]) <- c("T", "hf")
   out <- res[[3]]
   return(out)
-  #  options(digits=9)
   #  if (res[[3]] != 0) { 
   #    out[[4]] <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
   #  }

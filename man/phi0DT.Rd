@@ -5,14 +5,17 @@
 \title{Second Derivative of the Ideal-Gas Part of the Dimensionless Helmholtz Energy Equation
     with respect to Density and Temperature}
 \usage{
-phi0DT()
+phi0DT(digits = 9)
+}
+\arguments{
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Second DT Derivative of Ideal-gas Part of the Helmholtz Energy: phi0DT and an Error
      Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{phi0DT()} returns the Second Derivative of the
+The function \code{phi0DT(digits=9)} returns the Second Derivative of the
     Ideal-gas Part of the Dimensionless Helmholtz Energy Equation with respect to 
     Density and Temperature.
 }

@@ -4,30 +4,32 @@
 \alias{KViscTD}
 \title{Kinematic Viscosity, Function of Temperature and Density}
 \usage{
-KViscTD(T, D)
+KViscTD(Temp, D, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{D}{Density [ kg m-3 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Kinematic viscosity: [ m2 s-1 ] and an Error Message (if an error occur)
 }
 \description{
-The function \code{KViscTD(T,D)} computes the Kinematic Viscosity
+The function \code{KViscTD(Temp,D,digits=9)} computes the Kinematic Viscosity
      [ m2 s-1 ] for given T [K] and D [kg/m3], returning the calculated
      viscosity and an error message, if an error occur. \link{errorCodes}
 }
 \details{
 This function calculates the Kinematic Viscosity that is the relation
-     \code{ViscTD(D,T)/D}, valid from the triple point to the pressure of 1000 
+     \code{ViscTD(D,Temp)/D}, valid from the triple point to the pressure of 1000 
      MPa and temperature of 1173.15K.
 }
 \examples{
-T <- 500.
+Temp <- 500.
 D <- 838.025
-KVis <- KViscTD(T,D)
+KVis <- KViscTD(Temp,D)
 KVis
 
 }

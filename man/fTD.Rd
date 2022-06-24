@@ -4,20 +4,22 @@
 \alias{fTD}
 \title{Helmholtz Free Energy, Function of Temperature and Density}
 \usage{
-fTD(T, D)
+fTD(Temp, D, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{D}{Density [ kg m-3 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Helmholtz Free Energy: f [ kJ kg-1 ] and an Error Message if an error occur:
   \link{errorCodes}
 }
 \description{
-The function \code{fTD(T,D)} returns the Helmholtz Free Energy, f [ kJ kg-1 ],
-     for given T [K] and D [kg/m3].
+The function \code{fTD(T,D,digits=9)} returns the Helmholtz Free Energy, f [ kJ kg-1 ],
+     for given Temp [K] and D [kg/m3].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -28,8 +30,8 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 500.
+Temp <- 500.
 D <- 838.025
-f <- fTD(T,D)
+f <- fTD(Temp,D)
 f
 }

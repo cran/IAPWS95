@@ -4,18 +4,20 @@
 \alias{wfT}
 \title{Speed of Sound of Fluid Phase, Function of Temperature}
 \usage{
-wfT(T)
+wfT(Temp, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Speed of Sound of Fluid Phase: wf [ m s-1 ] and an Error
      Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{wfT(T)} returns the Speed 
-    of Sound of Fluid Phase [m s-1],  wf, for given T [K].
+The function \code{wfT(Temp,digits=9)} returns the Speed 
+    of Sound of Fluid Phase [m s-1],  wf, for given Temp [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -26,8 +28,8 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 450.
-wf <- wfT(T)
+Temp <- 450.
+wf <- wfT(Temp)
 wf
 
 }

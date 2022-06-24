@@ -4,7 +4,9 @@
 \name{errorCodes}
 \alias{errorCodes}
 \title{Error Codes}
-\format{An object of class \code{data.frame} with 21 rows and 2 columns.}
+\format{
+An object of class \code{data.frame} with 21 rows and 2 columns.
+}
 \source{
 errorCodes.rda
 }

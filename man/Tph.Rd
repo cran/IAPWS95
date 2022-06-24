@@ -4,18 +4,20 @@
 \alias{Tph}
 \title{Temperature, Function of Pressure and Enthalpy}
 \usage{
-Tph(p, h)
+Tph(p, h, digits = 9)
 }
 \arguments{
 \item{p}{Pressure [ MPa ]}
 
 \item{h}{Enthalpy [ kJ kg-1 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
-The Temperature: T [ K ] and an Error Message (if an error occur: \link{errorCodes})
+The Temperature: Temp [ K ] and an Error Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{Tph(p,h)} returns the water temperature, T [ K ],
+The function \code{Tph(p,h,digits = 9)} returns the water temperature, Temp [ K ],
      for given p [MPa] and h [ kJ k-1 ].
 }
 \details{

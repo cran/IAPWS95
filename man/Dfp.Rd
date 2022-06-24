@@ -4,17 +4,19 @@
 \alias{Dfp}
 \title{Saturated Liquid Density, Funtion of Pressure}
 \usage{
-Dfp(p)
+Dfp(p, digits = 9)
 }
 \arguments{
 \item{p}{Pressure [ MPa ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The saturated liquid density: Df [kg m-3] and an Error Message 
     (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{Dfp(p)} returns the saturated liquid density [kg m-3], 
+The function \code{Dfp(p,digits=9)} returns the saturated liquid density [kg m-3], 
     Df, for given p [ MPa ].
 }
 \details{

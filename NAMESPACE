@@ -1,3 +1,6 @@
+import(Rcpp)
+import(ggplot2)
+import(pander)
 export(BT)
 export(CT)
 export(CndTD)

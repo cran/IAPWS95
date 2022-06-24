@@ -20,7 +20,7 @@ A table of Enthalpies for fixed p and a T Interval: T1:T2.
 }
 \description{
 The function \code{hTpcteTab(T1, T2, dT, p)} returns a table of 
-    enthalpies [kJ kg-1] for a fixed p [MPa] within a range of T [K]: T1:T2 [K]
+    enthalpies [kJ kg-1] for a fixed p [MPa] within a range of Temp [K]: T1:T2 [K]
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 

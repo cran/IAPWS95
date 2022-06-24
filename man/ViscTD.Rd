@@ -4,19 +4,21 @@
 \alias{ViscTD}
 \title{Dynamic Viscosity, Function of Temperature and Density}
 \usage{
-ViscTD(T, D)
+ViscTD(Temp, D, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{D}{Density [ kg m-3 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Dynamic viscosity: [ Pa s ] and an Error Message (if an error occur)
 }
 \description{
-The function \code{ViscTD(T,D)} computes the Dynamic Viscosity
-     [ Pa s ] for given T [K] and D [kg/m3], returning the computed
+The function \code{ViscTD(Temp,D,digits=9)} computes the Dynamic Viscosity
+     [ Pa s ] for given Temp [K] and D [kg/m3], returning the computed
      viscosity and an error message, if an error occur. \link{errorCodes}
 }
 \details{
@@ -26,9 +28,9 @@ This function calls a Fortran DLL that solves the equations developed by
      \url{http://www.iapws.org/relguide/viscosity.html}
 }
 \examples{
-T <- 500.
+Temp <- 500.
 D <- 838.025
-Vis <- ViscTD(T,D)
+Vis <- ViscTD(Temp,D)
 Vis
 
 }

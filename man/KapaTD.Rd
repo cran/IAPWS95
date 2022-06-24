@@ -4,20 +4,22 @@
 \alias{KapaTD}
 \title{Isothermal Compressibility, Function of Temperature and Density}
 \usage{
-KapaTD(T, D)
+KapaTD(Temp, D, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{D}{Density [ kg m-3 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Isothermal Compressibility: Kapa [ MPa-1 ] and an Error
      Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{KapaTD(T,D)} returns the Isothermal Compressibility, Kapa, 
-    for given T [K] and D [kg m-3].
+The function \code{KapaTD(Temp,D,disgits=9)} returns the Isothermal Compressibility, Kapa, 
+    for given Temp [K] and D [kg m-3].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -28,9 +30,9 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 500.
+Temp <- 500.
 D <- 838.025
-Kapa <- KapaTD(T,D)
+Kapa <- KapaTD(Temp,D)
 Kapa
 
 }

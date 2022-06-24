@@ -4,18 +4,20 @@
 \alias{wgT}
 \title{Speed of Sound of Gas Phase, Function of Temperature}
 \usage{
-wgT(T)
+wgT(Temp, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Speed of Sound of Gas Phase: wg [ m s-1 ] and an Error
      Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{wgT(T)} returns the Speed 
-    of Sound of Gas Phase [m s-1],  wg, for given T [K].
+The function \code{wgT(Temp,digits=9)} returns the Speed 
+    of Sound of Gas Phase [m s-1],  wg, for given Temp [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -26,8 +28,8 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 450.
-wg <- wgT(T)
+Temp <- 450.
+wg <- wgT(Temp)
 wg
 
 }

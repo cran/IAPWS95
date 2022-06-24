@@ -4,10 +4,12 @@
 \alias{pSatD}
 \title{Saturation Pressure, Function of Density}
 \usage{
-pSatD(D)
+pSatD(D, digits = 9)
 }
 \arguments{
 \item{D}{Density [ kg m-3]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The first saturation pressure: pSat_1 [ MPa ]
@@ -17,7 +19,7 @@ The second saturation pressure: pSat_2 [ MPa ]
 An Error Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{pSatD(D)} returns the saturation pressure [MPa], 
+The function \code{pSatD(D,digits=9)} returns the saturation pressure [MPa], 
     pSat, for given D [ kg m-3 ]: it may have two different values!
 }
 \details{

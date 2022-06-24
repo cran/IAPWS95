@@ -4,20 +4,22 @@
 \alias{dpdTTp}
 \title{Pressure Derivative with respect to Temperature, Function of Temperature and Pressure}
 \usage{
-dpdTTp(T, p)
+dpdTTp(Temp, p, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{p}{Pressure [ MPa ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
-The pressure derivative with respect to T: dp/dT [ MPa K-1 ] and an Error
+The pressure derivative with respect to Temp: dp/dTemp [ MPa K-1 ] and an Error
      Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{dpdTTp(T,p)} returns the pressure derivative with 
-    respect to Temperature, dpdT, for given T [K] and p [MPa].
+The function \code{dpdTTp(Temp,p,digits=9)} returns the pressure derivative with 
+    respect to Temperature, dpdTemp, for given Temp [K] and p [MPa].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -28,9 +30,9 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 500.
+Temp <- 500.
 p <- 10.0003858
-dpdT <- dpdTTp(T,p)
-dpdT
+dpdTemp <- dpdTTp(Temp,p)
+dpdTemp
 
 }

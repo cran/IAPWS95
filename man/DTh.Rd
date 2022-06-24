@@ -4,12 +4,14 @@
 \alias{DTh}
 \title{Density, Function of Temperature and Enthalpy}
 \usage{
-DTh(T, h)
+DTh(Temp, h, digits = 9)
 }
 \arguments{
-\item{T}{Temperature in Kelvin}
+\item{Temp}{Temperature in Kelvin}
 
-\item{h}{Enthaly in [ kJ kg-1 ]}
+\item{h}{Enthalpy in [ kJ kg-1 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Density 1: Density_1 [ kg m-3 ]
@@ -19,8 +21,8 @@ The Density 2: Density_2 [ kg m-3 ]
 Error Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{DTh(T,h)} returns the water density, D [ kg m-3 ],
-     for given T [K] and h [ kJ kg-1 ] (it may have two solutions for Density).
+The function \code{DTh(Temp,h,digits=9)} returns the water density, D [ kg m-3 ],
+     for given Temp [K] and h [ kJ kg-1 ] (it may have two solutions for Density).
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -31,9 +33,9 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 500.
+Temp <- 500.
 h <- 977.181624
-D_Th <- DTh(T,h)
+D_Th <- DTh(Temp,h)
 D_Th
 
 }

@@ -1,4 +1,4 @@
-## ---- results = 'asis'---------------------------------------------------
+## ---- results = 'asis'--------------------------------------------------------
 # Entropy Function of Pressure, with Temperature Constant
 library(IAPWS95)
 library(pander)
@@ -13,7 +13,7 @@ T <- 450.
 capture.output( Tabs <- spTcteTab(p1, p2, dp, T), file='NUL')
 pander::pandoc.table(Tabs)
 
-## ---- results = 'asis'---------------------------------------------------
+## ---- results = 'asis'--------------------------------------------------------
 # Saturation Properties Function of Temperature
 library(IAPWS95)
 library(pander)
@@ -26,7 +26,7 @@ dT <- 10.
 capture.output( TabT <- satTabvT(T1, T2, dT), file='NUL')
 pander::pandoc.table(TabT)
 
-## ---- results = 'asis'---------------------------------------------------
+## ---- results = 'asis'--------------------------------------------------------
 # Dynamic Viscosity [ Pa s ]
 library(IAPWS95)
 # Temperature
@@ -43,7 +43,7 @@ pTD(T,D)
 
 
 
-## ---- results = 'asis'---------------------------------------------------
+## ---- results = 'asis'--------------------------------------------------------
 # Specific Internal Energy [ kJ kg-1 ]
 library(IAPWS95)
 # Temperature
@@ -53,10 +53,10 @@ p <- 10.0003858
 uTp(T,p)
 
 # Specific Enthalpy [ kJ kg-1 ]
-hTp(T,p)
+#hTp(T,p)
 
 
-## ---- results = 'asis'---------------------------------------------------
+## ---- results = 'asis'--------------------------------------------------------
 # Error Codes
 library(IAPWS95)
 library(pander)
@@ -64,7 +64,7 @@ capture.output( errorT <- errorCodes, file='NUL')
 pander::pandoc.table(errorT)
 
 
-## ---- fig.show='hold'----------------------------------------------------
+## ---- fig.show='hold'---------------------------------------------------------
 library(IAPWS95)
 library(ggplot2)
 # Initial Temperature

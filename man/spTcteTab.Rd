@@ -4,7 +4,7 @@
 \alias{spTcteTab}
 \title{Table of Entropies, Function of Pressure for Fixed Temperature}
 \usage{
-spTcteTab(p1, p2, dp, T)
+spTcteTab(p1, p2, dp, Temp)
 }
 \arguments{
 \item{p1}{"initial"first pressure value [ MPa ]}
@@ -13,14 +13,14 @@ spTcteTab(p1, p2, dp, T)
 
 \item{dp}{Pressure increment [ MPa ]}
 
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 }
 \value{
-A table of Entropies for fixed T and a p Interval: p1:p2.
+A table of Entropies for fixed Temp and a p Interval: p1:p2.
 }
 \description{
-The function \code{spTcteTab(p1, p2, dp, T)} returns a table of 
-    Entropies [kJ kg-1 K-1] for a fixed T [K] within a range of p [MPa]: p1:p2 [MPa]
+The function \code{spTcteTab(p1, p2, dp, Temp)} returns a table of 
+    Entropies [kJ kg-1 K-1] for a fixed Temp [K] within a range of p [MPa]: p1:p2 [MPa]
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -34,15 +34,15 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
 p1 <- 1.0
 p2 <- 10.
 dp <- 1.
-T <- 500.
-Tabs <- spTcteTab(p1, p2, dp, T)
+Temp <- 500.
+Tabs <- spTcteTab(p1, p2, dp, Temp)
 Tabs
 
 p1 <- 10.
 p2 <- 100.
 dp <- 10.
-T <- 450.
-Tabs <- spTcteTab(p1, p2, dp, T)
+Temp <- 450.
+Tabs <- spTcteTab(p1, p2, dp, Temp)
 Tabs
 
 }

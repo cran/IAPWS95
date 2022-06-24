@@ -4,17 +4,19 @@
 \alias{Dfs}
 \title{Saturated Liquid Density, Function of Entropy}
 \usage{
-Dfs(s)
+Dfs(s, digits = 9)
 }
 \arguments{
 \item{s}{Entropy [kJ kg-1 K-1]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The saturated Liquid density: Df [kg m-3] and an Error Message 
     (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{Dfs(s)} returns the saturated liquid density [kg m-3], 
+The function \code{Dfs(s,digits=9)} returns the saturated liquid density [kg m-3], 
     Df, for given s [kJ kg-1 K-1].
 }
 \details{

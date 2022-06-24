@@ -5,21 +5,23 @@
 \title{Second Derivative of the Ideal-Gas Part of the Dimensionless Helmholtz Energy Equation
     with respect to Temperature, Function of Temperature and Density}
 \usage{
-phi0TT(T, D)
+phi0TT(Temp, D, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{D}{Density [ kg m-3 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
-The Second T Derivative of Ideal-gas part of the Helmholtz Energy: phi0TT and an Error
+The Second Temp Derivative of Ideal-gas part of the Helmholtz Energy: phi0TT and an Error
      Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{phi0TT(T,D)} returns the Second Derivative of the
+The function \code{phi0TT(Temp,D,digits =9)} returns the Second Derivative of the
     Ideal-gas Part of the Dimensionless Helmholtz Energy Equation with respect to 
-    Temperature, for given T [K] and D [kg/m3].
+    Temperature, for given Temp [K] and D [kg/m3].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -30,9 +32,9 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 500.
+Temp <- 500.
 D <- 838.025
-phi0_TT <- phi0TT(T,D)
+phi0_TT <- phi0TT(Temp,D)
 phi0_TT
 
 }

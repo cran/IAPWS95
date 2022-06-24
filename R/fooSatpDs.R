@@ -1,6 +1,6 @@
 #' Saturation Pressure, Function of Entropy
 #'
-#' @description The function \code{pSats(s)} returns the saturation pressure [MPa], 
+#' @description The function \code{pSats(s,digits=9)} returns the saturation pressure [MPa], 
 #'     pSat, for given s [kJ kg-1 K-1].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -11,6 +11,7 @@
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param s Entropy [ kJ kg-1 K-1 ]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The saturation pressure: pSat [ MPa ] and an Error
 #'      Message (if an error occur: \link{errorCodes})
@@ -22,21 +23,20 @@
 #' 
 #' @export
 #' 
-pSats <- function(s) {
+pSats <- function(s,digits=9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('pSats', as.double(s), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-  return(res[[2]])
+  return(round(res[[2]],digits = digits))
 } 
 
 #' Saturation Pressure, Function of Density
 #'
-#' @description The function \code{pSatD(D)} returns the saturation pressure [MPa], 
+#' @description The function \code{pSatD(D,digits=9)} returns the saturation pressure [MPa], 
 #'     pSat, for given D [ kg m-3 ]: it may have two different values!
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -47,6 +47,7 @@ pSats <- function(s) {
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param D Density [ kg m-3]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The first saturation pressure: pSat_1 [ MPa ]
 #' @return The second saturation pressure: pSat_2 [ MPa ]
@@ -63,12 +64,11 @@ pSats <- function(s) {
 #' 
 #' @export
 #' 
-pSatD <- function(D) {
+pSatD <- function(D,digits=9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('pSatD', as.double(D), as.double(y), as.double(y), as.integer(icode))
-  out <- list(pSa_1t=res[[2]], pSat_2=res[[3]])
-  options(digits=9)
+  out <- list(pSa_1t=round(res[[2]],digits), pSat_2=round(res[[3]],digits))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
@@ -78,7 +78,7 @@ pSatD <- function(D) {
 
 #' Saturation Temperature, Function of Entropy
 #'
-#' @description The function \code{TSats(s)} returns the temperature [K], 
+#' @description The function \code{TSats(s,digits=9)} returns the temperature [K], 
 #'      TSat, for given s [kJ kg-1 K-1].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -89,6 +89,7 @@ pSatD <- function(D) {
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param s Entropy [kJ kg-1 K-1]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The Saturation Temperature: Tsat [ K ] and an Error Message 
 #'     (if an error occur: \link{errorCodes})
@@ -100,21 +101,20 @@ pSatD <- function(D) {
 #' 
 #' @export
 #' 
-TSats <- function(s) {
+TSats <- function(s,digits=9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('TSats', as.double(s), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-  return(res[[2]])
+  return(round(res[[2]],digits = digits))
 } 
 
 #' Saturation Temperature, Function of Density
 #'
-#' @description The function \code{TsatD(D)} returns the temperature [K], 
+#' @description The function \code{TsatD(D,digits=9)} returns the temperature [K], 
 #'     TSat, for given D [ kg m-3 ]: it may have two different values!
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -125,6 +125,7 @@ TSats <- function(s) {
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param D Density [ kg m-3 ]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The first saturation Temperature: TSat_1 [ K ]
 #' @return The second saturation pressure: TSat_2 [ K ]
@@ -141,12 +142,11 @@ TSats <- function(s) {
 #' 
 #' @export
 #' 
-TSatD <- function(D) {
+TSatD <- function(D,digits=9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('TSatD', as.double(D), as.double(y), as.double(y), as.integer(icode))
-  out <- list(TSat_1=res[[2]], TSat_2=res[[3]])
-  options(digits=5)
+  out <- list(TSat_1=round(res[[2]],digits), TSat_2=round(res[[3]],digits))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
     print(error)
@@ -156,7 +156,7 @@ TSatD <- function(D) {
 
 #' Saturation Temperature, Function of pressure
 #'
-#' @description The function \code{TSatp(p)} returns the temperature [K], 
+#' @description The function \code{TSatp(p,digits=9)} returns the temperature [K], 
 #'     TSat, for given p [ MPa ].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -167,6 +167,7 @@ TSatD <- function(D) {
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param p Pressure [ MPa ]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The Saturation Temperature: Tsat [ K ] and an Error Message 
 #'     (if an error occur: \link{errorCodes})
@@ -178,21 +179,20 @@ TSatD <- function(D) {
 #' 
 #' @export
 #' 
-TSatp <- function(p) {
+TSatp <- function(p,digits=9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('TSatp', as.double(p), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-  return(res[[2]])
+  return(round(res[[2]],digits = digits))
 } 
 
 #' Saturated Liquid Density, Funtion of Pressure
 #'
-#' @description The function \code{Dfp(p)} returns the saturated liquid density [kg m-3], 
+#' @description The function \code{Dfp(p,digits=9)} returns the saturated liquid density [kg m-3], 
 #'     Df, for given p [ MPa ].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -203,6 +203,7 @@ TSatp <- function(p) {
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param p Pressure [ MPa ]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The saturated liquid density: Df [kg m-3] and an Error Message 
 #'     (if an error occur: \link{errorCodes})
@@ -214,21 +215,20 @@ TSatp <- function(p) {
 #' 
 #' @export
 #' 
-Dfp <- function(p) {
+Dfp <- function(p,digits = 9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('Dfp', as.double(p), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-  return(res[[2]])
+  return(round(res[[2]],digits = digits))
 } 
 
-#' Saturated Gas Density, Funtion of Pressure
+#' Saturated Gas Density, Function of Pressure
 #'
-#' @description The function \code{Dgp(p)} returns the saturated gas density [kg m-3], 
+#' @description The function \code{Dgp(p,digits=9)} returns the saturated gas density [kg m-3], 
 #'     Dg, for given p [ MPa ].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -239,6 +239,7 @@ Dfp <- function(p) {
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param p Pressure [ MPa ]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The saturated gas density: Dg [kg m-3] and an Error Message 
 #'     (if an error occur: \link{errorCodes})
@@ -250,21 +251,20 @@ Dfp <- function(p) {
 #' 
 #' @export
 #' 
-Dgp <- function(p) {
+Dgp <- function(p,digits=9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('Dgp', as.double(p), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-  return(res[[2]])
+  return(round(res[[2]],digits = digits))
 } 
 
 #' Saturated Liquid Density, Function of Entropy
 #'
-#' @description The function \code{Dfs(s)} returns the saturated liquid density [kg m-3], 
+#' @description The function \code{Dfs(s,digits=9)} returns the saturated liquid density [kg m-3], 
 #'     Df, for given s [kJ kg-1 K-1].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -275,6 +275,7 @@ Dgp <- function(p) {
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param s Entropy [kJ kg-1 K-1]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The saturated Liquid density: Df [kg m-3] and an Error Message 
 #'     (if an error occur: \link{errorCodes})
@@ -286,21 +287,20 @@ Dgp <- function(p) {
 #' 
 #' @export
 #' 
-Dfs <- function(s) {
+Dfs <- function(s,digits=9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('Dfs', as.double(s), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-  return(res[[2]])
+  return(round(res[[2]],digits = digits))
 } 
 
 #' Saturated Gas Density, Function of Entropy
 #'
-#' @description The function \code{Dgs(s)} returns the saturated gas density [kg m-3], 
+#' @description The function \code{Dgs(s,digits=9)} returns the saturated gas density [kg m-3], 
 #'     Dg, for given s [kJ kg-1 K-1].
 #'
 #' @details This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -311,6 +311,7 @@ Dfs <- function(s) {
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param s Entropy [kJ kg-1 K-1]
+#' @param digits Digits of results (optional)
 #' 
 #' @return The saturated Gas density: Dg [kg m-3] and an Error Message 
 #'     (if an error occur: \link{errorCodes})
@@ -322,14 +323,13 @@ Dfs <- function(s) {
 #' 
 #' @export
 #' 
-Dgs <- function(s) {
+Dgs <- function(s,digits=9) {
   y <- 0.
   icode <- 0
   res <- .Fortran('Dgs', as.double(s), as.double(y), as.integer(icode))
-  options(digits=9)
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
     print(error)
   }
-  return(res[[2]])
+  return(round(res[[2]],digits= digits))
 } 

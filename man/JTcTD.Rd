@@ -4,20 +4,22 @@
 \alias{JTcTD}
 \title{Joule-Thomson Coefficient, Function of Temperature and Density}
 \usage{
-JTcTD(T, D)
+JTcTD(Temp, D, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{D}{Density [ kg m-3 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Joule-Thomson coefficient and an Error Message 
     (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{JTcTD(T,D)} returns the Joule-Thomson coefficient 
-    for given T [K] and D [kg/m3].
+The function \code{JTcTD(Temp,D,digits=9)} returns the Joule-Thomson coefficient 
+    for given Temp [K] and D [kg/m3].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -30,9 +32,9 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     the Joule-Thomson coefficient, which may be positive (cooling) or negative (heating).
 }
 \examples{
-T <- 500.
+Temp <- 500.
 D <- 838.025
-JT <- JTcTD(T,D)
+JT <- JTcTD(Temp,D)
 JT
 
 }

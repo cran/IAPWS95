@@ -4,17 +4,19 @@
 \alias{BT}
 \title{Second Virial Coefficient (B), Function of Temperature}
 \usage{
-BT(T)
+BT(Temp, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [K]}
+\item{Temp}{Temperature [K]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The second virial coefficient: B [ m3 kg-1 ] and an Error Message 
     (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{BT(T)} returns the second virial coefficient,
+The function \code{BT(Temp,digits=9)} returns the second virial coefficient,
      B [ m3 kg-1 ], for a given T [K].
 }
 \details{
@@ -26,8 +28,8 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 500.
-B_T <- BT(T)
+Temp <- 500.
+B_T <- BT(Temp)
 B_T
 
 }

@@ -4,10 +4,12 @@
 \alias{pMeltT}
 \title{Melting Pressure, Function of Temperature}
 \usage{
-pMeltT(T)
+pMeltT(Temp, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [K]}
+\item{Temp}{Temperature [K]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The melting pressure: pMelt [ MPa ] for regions III, V , VI and VII
@@ -19,8 +21,8 @@ The sublimation pressure: pSubl [ MPa ], below triple point Temperature
 Error message (if an error occur)
 }
 \description{
-The function \code{pMeltT(T)} returns the water melting pressure,
-     pMelt [ MPa ], for a given T [K].
+The function \code{pMeltT(Temp,digits=9)} returns the water melting pressure,
+     pMelt [ MPa ], for a given Temp [K].
 }
 \details{
 This function calls a Fortran DLL that solves the equations given at the
@@ -31,8 +33,8 @@ This function calls a Fortran DLL that solves the equations given at the
      Temperature of 256.164 [K] to the Temperature of 715 [K].
 }
 \examples{
-T <- 275.
-p_Melt <- pMeltT(T)
+Temp <- 275.
+p_Melt <- pMeltT(Temp)
 p_Melt
 
 }

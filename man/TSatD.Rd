@@ -4,10 +4,12 @@
 \alias{TSatD}
 \title{Saturation Temperature, Function of Density}
 \usage{
-TSatD(D)
+TSatD(D, digits = 9)
 }
 \arguments{
 \item{D}{Density [ kg m-3 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The first saturation Temperature: TSat_1 [ K ]
@@ -17,7 +19,7 @@ The second saturation pressure: TSat_2 [ K ]
 An Error Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{TsatD(D)} returns the temperature [K], 
+The function \code{TsatD(D,digits=9)} returns the temperature [K], 
     TSat, for given D [ kg m-3 ]: it may have two different values!
 }
 \details{

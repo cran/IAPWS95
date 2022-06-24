@@ -4,20 +4,22 @@
 \alias{sTD}
 \title{Specific Entropy, Function of Temperature and Density}
 \usage{
-sTD(T, D)
+sTD(Temp, D, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{D}{Density [ kg m-3 ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Specific Entropy: s [ kJ kg-1 K-1 ] and an Error Message 
     (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{sTD(T,D)} returns the Specific Entropy, h [ kJ kg-1 k-1 ],
-     for given T [K] and D [kg/m3].
+The function \code{sTD(Temp,D,digits=9)} returns the Specific Entropy, h [ kJ kg-1 k-1 ],
+     for given Temp [K] and D [kg/m3].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -28,9 +30,9 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 500.
+Temp <- 500.
 D <- 838.025
-s <- sTD(T,D)
+s <- sTD(Temp,D)
 s
 
 }

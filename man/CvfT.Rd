@@ -4,18 +4,20 @@
 \alias{CvfT}
 \title{Specific Isochoric Heat Capacity of Fluid Phase, Function of Temperature}
 \usage{
-CvfT(T)
+CvfT(Temp, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Isochoric Heat Capacity of Fluid Phase: Cvf [kJ kg-1 K-1] and an Error
      Message (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{CvfT(T)} returns the Isochoric Heat Capacity 
-    of Fluid Phase [kJ kg-1 K-1],  Cvf, for given T [K].
+The function \code{CvfT(Temp,digits=9)} returns the Isochoric Heat Capacity 
+    of Fluid Phase [kJ kg-1 K-1],  Cvf, for given Temp [K].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -26,8 +28,8 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 450.
-Cvf <- CvfT(T)
+Temp <- 450.
+Cvf <- CvfT(Temp)
 Cvf
 
 }

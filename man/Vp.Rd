@@ -4,14 +4,16 @@
 \alias{Vp}
 \title{Vapor pressure, Function of Temperature}
 \usage{
-Vp(T)
+Vp(Temp, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [K]}
+\item{Temp}{Temperature [K]}
+
+\item{digits}{Digits of results (optional)}
 }
 \description{
-The function \code{Vp(T)} returns the vapor pressure,
-     Vp [ kPa ], for a given T [K].
+The function \code{Vp(Temp,digits=9)} returns the vapor pressure,
+     Vp [ kPa ], for a given Temp [K].
 }
 \details{
 This function solves the Wagner Equation (Wagner and Pruss (1993))

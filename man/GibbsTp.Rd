@@ -4,20 +4,22 @@
 \alias{GibbsTp}
 \title{Specific Gibbs Energy, Function of Temperature and Pressure}
 \usage{
-GibbsTp(T, p)
+GibbsTp(Temp, p, digits = 9)
 }
 \arguments{
-\item{T}{Temperature [ K ]}
+\item{Temp}{Temperature [ K ]}
 
 \item{p}{Pressure [ MPa ]}
+
+\item{digits}{Digits of results (optional)}
 }
 \value{
 The Specific Gibbs Energy: Gibbs [ MPa ] and an 
     (if an error occur: \link{errorCodes})
 }
 \description{
-The function \code{GibbsTp(T,p)} returns the Specific Gibbs Energy, [ MPa ], 
-     for given T [K] and D [kg/m3].
+The function \code{GibbsTp(Temp,p,digits=9)} returns the Specific Gibbs Energy, [ MPa ], 
+     for given Temp [K] and D [kg/m3].
 }
 \details{
 This function calls a Fortran DLL that solves the Helmholtz Energy Equation. 
@@ -28,9 +30,9 @@ This function calls a Fortran DLL that solves the Helmholtz Energy Equation.
     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 }
 \examples{
-T <- 500.
+Temp <- 500.
 p <- 10.0003858
-Gibbs <- GibbsTp(T,p)
+Gibbs <- GibbsTp(Temp,p)
 Gibbs
 
 }
