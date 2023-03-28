@@ -1,9 +1,17 @@
 ---
 title: "NEWS"
 author: "Shawn Way"
-date: "23Jun2022"
+date: "28Mar2023"
 output: html_document
 ---
+
+# IAPWS95 1.2.1
+
+Updated Data location to make it consistent with standard package design.
+
+Removed  R_forceSymbols(dll, TRUE) requirement to allow the Linux versions to
+compile correctly.
+
 
 # IAPWS95 1.2.0
 
