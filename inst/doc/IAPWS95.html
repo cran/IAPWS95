@@ -395,19 +395,19 @@ package will be maintained by Shawn Way.</p>
 <div id="example-of-a-table-generating-function-sptctetabp1-p2-dp-t" class="section level2">
 <h2>Example of a Table generating Function: spTcteTab(p1, p2, dp,
 T)</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Entropy Function of Pressure, with Temperature Constant</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(IAPWS95)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pander)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial Pressure</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fl">10.</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Final Pressure</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fl">100.</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Pressure increment</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fl">10.</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Temperature</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>T <span class="ot">&lt;-</span> <span class="fl">450.</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">capture.output</span>( Tabs <span class="ot">&lt;-</span> <span class="fu">spTcteTab</span>(p1, p2, dp, T), <span class="at">file=</span><span class="st">&#39;NUL&#39;</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pandoc.table</span>(Tabs)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># Entropy Function of Pressure, with Temperature Constant</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(IAPWS95)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(pander)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co"># Initial Pressure</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fl">10.</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co"># Final Pressure</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fl">100.</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co"># Pressure increment</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="fl">10.</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co"># Temperature</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>T <span class="ot">&lt;-</span> <span class="fl">450.</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="fu">capture.output</span>( Tabs <span class="ot">&lt;-</span> <span class="fu">spTcteTab</span>(p1, p2, dp, T), <span class="at">file=</span><span class="st">&#39;NUL&#39;</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pandoc.table</span>(Tabs)</span></code></pre></div>
 <table style="width:51%;">
 <colgroup>
 <col width="15%" />
@@ -477,17 +477,17 @@ T)</h2>
 </div>
 <div id="table-of-saturation-properties-sattabvtt1-t2-dt" class="section level2">
 <h2>Table of Saturation Properties: satTabvT(T1, T2, dT)</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Saturation Properties Function of Temperature</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(IAPWS95)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pander)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial Temperature</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>T1 <span class="ot">&lt;-</span> <span class="fl">300.</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Final Temperature</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>T2 <span class="ot">&lt;-</span> <span class="fl">400.</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Temperature increment</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>dT <span class="ot">&lt;-</span> <span class="fl">10.</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">capture.output</span>( TabT <span class="ot">&lt;-</span> <span class="fu">satTabvT</span>(T1, T2, dT), <span class="at">file=</span><span class="st">&#39;NUL&#39;</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pandoc.table</span>(TabT)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Saturation Properties Function of Temperature</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">library</span>(IAPWS95)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">library</span>(pander)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co"># Initial Temperature</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>T1 <span class="ot">&lt;-</span> <span class="fl">300.</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co"># Final Temperature</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>T2 <span class="ot">&lt;-</span> <span class="fl">400.</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co"># Temperature increment</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>dT <span class="ot">&lt;-</span> <span class="fl">10.</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="fu">capture.output</span>( TabT <span class="ot">&lt;-</span> <span class="fu">satTabvT</span>(T1, T2, dT), <span class="at">file=</span><span class="st">&#39;NUL&#39;</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pandoc.table</span>(TabT)</span></code></pre></div>
 <table style="width:82%;">
 <colgroup>
 <col width="8%" />
@@ -614,33 +614,33 @@ T)</h2>
 </div>
 <div id="functions-of-temperature-and-density" class="section level2">
 <h2>Functions of Temperature and Density</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dynamic Viscosity [ Pa s ]</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(IAPWS95)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Temperature</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>T <span class="ot">&lt;-</span> <span class="fl">500.</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Density</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fl">838.025</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ViscTD</span>(T,D)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Dynamic Viscosity [ Pa s ]</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">library</span>(IAPWS95)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co"># Temperature</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>T <span class="ot">&lt;-</span> <span class="fl">500.</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co"># Density</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fl">838.025</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="fu">ViscTD</span>(T,D)</span></code></pre></div>
 <p>[1] 0.000119828</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific Enthalpy [ kJ kg-1 ]</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hTD</span>(T,D)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Specific Enthalpy [ kJ kg-1 ]</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">hTD</span>(T,D)</span></code></pre></div>
 <p>[1] 977.1816</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pressure [ MPa ]</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pTD</span>(T,D)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Pressure [ MPa ]</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">pTD</span>(T,D)</span></code></pre></div>
 <p>[1] 10.00039</p>
 </div>
 <div id="functions-of-temperature-and-pressure" class="section level2">
 <h2>Functions of Temperature and Pressure</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific Internal Energy [ kJ kg-1 ]</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(IAPWS95)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Temperature</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>T <span class="ot">&lt;-</span> <span class="fl">500.</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Pressure</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">10.0003858</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">uTp</span>(T,p)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Specific Internal Energy [ kJ kg-1 ]</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">library</span>(IAPWS95)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co"># Temperature</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>T <span class="ot">&lt;-</span> <span class="fl">500.</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co"># Pressure</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">10.0003858</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="fu">uTp</span>(T,p)</span></code></pre></div>
 <p>[1] 965.2483</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific Enthalpy [ kJ kg-1 ]</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#hTp(T,p)</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># Specific Enthalpy [ kJ kg-1 ]</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co">#hTp(T,p)</span></span></code></pre></div>
 </div>
 <div id="error-codes" class="section level2">
 <h2>Error Codes</h2>
@@ -648,11 +648,11 @@ T)</h2>
 represent incorrect inputs, or generate convergence problems, an error
 message is printed. The errors are defined in the table listed as:
 <code>errorCodes</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Error Codes</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(IAPWS95)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pander)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">capture.output</span>( errorT <span class="ot">&lt;-</span> errorCodes, <span class="at">file=</span><span class="st">&#39;NUL&#39;</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pandoc.table</span>(errorT)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Error Codes</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">library</span>(IAPWS95)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">library</span>(pander)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="fu">capture.output</span>( errorT <span class="ot">&lt;-</span> errorCodes, <span class="at">file=</span><span class="st">&#39;NUL&#39;</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pandoc.table</span>(errorT)</span></code></pre></div>
 <table style="width:64%;">
 <colgroup>
 <col width="18%" />
@@ -761,28 +761,28 @@ pressure)</td>
 <h2>Graphics: An example of h-s Diagram for saturation line</h2>
 <p>This package does not have any graphics function yet, but you can
 make use of any R graphic function or package.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(IAPWS95)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial Temperature</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>T1 <span class="ot">&lt;-</span> <span class="fl">275.</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Final Temperature</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>T2 <span class="ot">&lt;-</span> <span class="fl">647.</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Temperature increment</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>dT <span class="ot">&lt;-</span> <span class="fl">3.</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">capture.output</span>( Tab <span class="ot">&lt;-</span> <span class="fu">satTabT</span>(T1, T2, dT), <span class="at">file=</span><span class="st">&#39;NUL&#39;</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> Tab[,<span class="dv">6</span>]</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">rev</span>(Tab[,<span class="dv">7</span>])</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">append</span>(x1, x2)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> Tab[,<span class="dv">4</span>]</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> <span class="fu">rev</span>(Tab[,<span class="dv">5</span>])</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">append</span>(y1, y2)</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co"># h- Graph</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(s,h, <span class="at">type =</span> <span class="st">&quot;o&quot;</span>, <span class="at">pch=</span><span class="dv">20</span>)</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>()</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(s)</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>h <span class="ot">&lt;-</span> h</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(dados, ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x=</span>s, <span class="at">y=</span>h)) <span class="sc">+</span> ggplot2<span class="sc">::</span><span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">library</span>(IAPWS95)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co"># Initial Temperature</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>T1 <span class="ot">&lt;-</span> <span class="fl">275.</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co"># Final Temperature</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>T2 <span class="ot">&lt;-</span> <span class="fl">647.</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co"># Temperature increment</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>dT <span class="ot">&lt;-</span> <span class="fl">3.</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="fu">capture.output</span>( Tab <span class="ot">&lt;-</span> <span class="fu">satTabT</span>(T1, T2, dT), <span class="at">file=</span><span class="st">&#39;NUL&#39;</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> Tab[,<span class="dv">6</span>]</span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">rev</span>(Tab[,<span class="dv">7</span>])</span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">append</span>(x1, x2)</span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> Tab[,<span class="dv">4</span>]</span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> <span class="fu">rev</span>(Tab[,<span class="dv">5</span>])</span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">append</span>(y1, y2)</span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="co"># h- Graph</span></span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a><span class="fu">plot</span>(s,h, <span class="at">type =</span> <span class="st">&quot;o&quot;</span>, <span class="at">pch=</span><span class="dv">20</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a><span class="fu">grid</span>()</span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(s)</span>
+<span id="cb9-21"><a href="#cb9-21" tabindex="-1"></a>dados<span class="sc">$</span>h <span class="ot">&lt;-</span> h</span>
+<span id="cb9-22"><a href="#cb9-22" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(dados, ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x=</span>s, <span class="at">y=</span>h)) <span class="sc">+</span> ggplot2<span class="sc">::</span><span class="fu">geom_line</span>()</span></code></pre></div>
 <p><img src="data:image/png;base64,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" /><img src="data:image/png;base64,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ucaUgCZudjs/QBGa/mca0wIaKHSxCGjSRU4bIyBgERCwJgG0l/aYWplLGSMgIAICIiCgUu+1TSYCAiIgIAICIiCgMED9uf3gLB9q83G1Wnd/3axW7Th4fupnlpRrU7tyompbBQHqv+MYftuB1F6T3HzqrkterQX19jPLytXbS8XSalsFAeqvLw6vNCLdt6+tW9jnv76gmXv1M8vK1S9XiUXVdgoC1F+hHl6r9tF27mZTednYPCL7maXldmubqNpOQYD67ziG33Z4qL1226jd0Lzf135mYbmXWUXVdjJag54uL/p/5PshYbn7wx26cD9ksg9qPsUOl1IOSFju6uLwn4SA+u84ht92IPV82vf2+W/PV9rPLCu336pE1Xaa4jioGytSchy0OzJpc82f7703le3M4nK7vYC02lY8kgYiICACAiIgIAICIiAgAgIiICACAioF0MO7qqrODQoXAujhhz9bSOfpK5cC6MevRpULAVT/W1VvTQqXAqiuH8+qNwarUTmAWkTn6YsWAuiuXXm6PXVqFQKovms+5b8z4FMMIDMREBABAREQEAEBERAQAQEREBABAREQ0P/qPRrksb+qnwAAAABJRU5ErkJggg==" /></p>
 </div>
 

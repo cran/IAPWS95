@@ -755,7 +755,7 @@
           if (T .gt. Tlim(2)) icode = -1212
        end if
      end if
-     CNDTD = DFLOAT(icode)
+     CNDTD = DBLE(icode)
      if (icode .eq. 0) then
      Tbar  = T / TC
      Dbar  = D / DC
@@ -879,7 +879,7 @@
           if (T .gt. Tlim(1)) icode = -1212
        end if
      end if
-     VISCTD = DFLOAT(icode)
+     VISCTD = DBLE(icode)
      if (icode .eq. 0) then
 
       Tbar  = T / TC
@@ -1017,7 +1017,7 @@
      if (icode .eq. 0) then
         PrandtTD = Visc*Cp/Cndt
      else
-        PrandtTD = DFLOAT(icode)
+        PrandtTD = DBLE(icode)
      end if
      Prandt= PrandtTD
 
@@ -1051,7 +1051,7 @@
         icode  = 0
      else
         icode  = -1001
-       SigmaT = DFLOAT(icode)
+       SigmaT = DBLE(icode)
      end if
      
      Sigma  = SigmaT
