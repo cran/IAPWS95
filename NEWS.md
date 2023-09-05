@@ -5,6 +5,11 @@ date: "11Jul2023"
 output: html_document
 ---
 
+# IAPWS95 1.2.3
+
+Updated KIND=8 to KIND=KIND(0.0d0) for greater compatibility.
+
+
 # IAPSW 1.2.2
 
 Updated DFLOAT to DBLE in Fortran code to meet current compiler requirements.

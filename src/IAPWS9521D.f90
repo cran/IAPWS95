@@ -2,15 +2,16 @@
 ! BD                           B L O C K D A T A    W A T E R                          DB
 ! BDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB
 
+  
 ! ---------------------------------------------------------------------------------------------
       BLOCK DATA WATER
 ! ---------------------------------------------------------------------------------------------
-      IMPLICIT REAL(KIND=8) (A-H,O-Z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (A-H,O-Z)
       DOUBLEPRECISION TNORAUX(3),YNORAUX(3),G(20,3),TPOTAUX(20,3)
       INTEGER ISL(3),ISN(3),ISR(3),IMAXAUX(3),ISU
-     REAL(KIND=8) ::  Lij, Lk
-     REAL(KIND=8) ::  Hij, Hi
-     REAL(KIND=8) ::  Lambdao, qD1, Nicr, Gamacr, Csi0, Gamao0, TRbar, xMi, qC1, qD1v
+     REAL(KIND=KIND(0.0d0)) ::  Lij, Lk
+     REAL(KIND=KIND(0.0d0)) ::  Hij, Hi
+     REAL(KIND=KIND(0.0d0)) ::  Lambdao, Qd1, Nicr, Gamacr, Csi0, Gamao0, Trbar, Xmi, qC1, qD1v
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / EQUI / BNULL,BZ,B1,B2,B(18),TPOTI(18),NPOLI,NPEI,NI
@@ -313,119 +314,119 @@
 !F                     OUTPUT FUNCTIONS                                       F
 !FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 ! -----------------------------------------------------
-      REAL(KIND=8) function pcrit(pc)
+      REAL(KIND=KIND(0.0d0)) function pcrit(pc)
 ! -----------------------------------------------------
 !      Critical Pressure [ Mpa ]
 ! -----------------------------------------------------
       implicit none
-      REAL(KIND=8) ::  pc
+      REAL(KIND=KIND(0.0d0)) ::  pc
 
       pc = 0.220640000D+02
       pcrit = pc
       return
       end
 ! -----------------------------------------------------
-      REAL(KIND=8) function Tcrit(Tc)
+      REAL(KIND=KIND(0.0d0)) function Tcrit(Tc)
 ! -----------------------------------------------------
 !      Critical Temperature  [ K ]
 ! -----------------------------------------------------
       implicit none
-      REAL(KIND=8) ::  tc
+      REAL(KIND=KIND(0.0d0)) ::  tc
 
       Tc = 0.647096000D+03 
       Tcrit = Tc
       return
       end
 ! -----------------------------------------------------
-      REAL(KIND=8) function Dcrit(Dc)
+      REAL(KIND=KIND(0.0d0)) function Dcrit(Dc)
 ! -----------------------------------------------------
 !      Critical Density [ kg / m**3 ]
 ! -----------------------------------------------------
       implicit none
-      REAL(KIND=8) ::  Dc
+      REAL(KIND=KIND(0.0d0)) ::  Dc
 
       Dc = 0.322000000D+03
       Dcrit = Dc
       return
       end
 ! -----------------------------------------------------
-      REAL(KIND=8) function scrit(sc)
+      REAL(KIND=KIND(0.0d0)) function scrit(sc)
 ! -----------------------------------------------------
 !      Critical Entropy [ kJ / (kg K) ]
 ! -----------------------------------------------------
       implicit none
-      REAL(KIND=8) ::  sc
+      REAL(KIND=KIND(0.0d0)) ::  sc
 
       sc = 4.40696189237D+0
       scrit = sc
       return
       end
 ! -----------------------------------------------------
-      REAL(KIND=8) function hcrit(hc)
+      REAL(KIND=KIND(0.0d0)) function hcrit(hc)
 ! -----------------------------------------------------
 !      Critical Entalphy [ kJ / kg ]
 ! -----------------------------------------------------
       implicit none
-      REAL(KIND=8) ::  hc
+      REAL(KIND=KIND(0.0d0)) ::  hc
 
       hc = 2084.25625591D+0
       hcrit = hc
       return
       end
 ! -----------------------------------------------------      
-      REAL(KIND=8) function tripT(Ttrip)
+      REAL(KIND=KIND(0.0d0)) function tripT(Ttrip)
 ! -----------------------------------------------------
 !      Temperature at the Triple Point [ K ]
 ! -----------------------------------------------------
       implicit none
-      REAL(KIND=8) ::  Ttrip
+      REAL(KIND=KIND(0.0d0)) ::  Ttrip
 
       Ttrip = 0.273160000D+03 
       tripT = Ttrip
       return
       end
 ! -----------------------------------------------------      
-      REAL(KIND=8) function tripp(ptrip)
+      REAL(KIND=KIND(0.0d0)) function tripp(ptrip)
 ! -----------------------------------------------------
 !      Pressure at the Triple Point [ K ]
 ! -----------------------------------------------------
       implicit none
-      REAL(KIND=8) ::  ptrip
+      REAL(KIND=KIND(0.0d0)) ::  ptrip
 
       ptrip = 0.6116547711D-03
       tripp = ptrip
       return
       end
 ! -----------------------------------------------------      
-       REAL(KIND=8) function tripDf(Dfr)
+       REAL(KIND=KIND(0.0d0)) function tripDf(Dfr)
 ! -----------------------------------------------------
 !      Fluid Density at Triple Point [ kg / m**3 ]
 ! -----------------------------------------------------
       implicit none
-      REAL(KIND=8) ::  Dfr
+      REAL(KIND=KIND(0.0d0)) ::  Dfr
 
       Dfr = 0.999792520186D+03
       tripDf = Dfr
       return
       end
 ! -----------------------------------------------------      
-        REAL(KIND=8) function tripDg(Dgr)
+        REAL(KIND=KIND(0.0d0)) function tripDg(Dgr)
 ! -----------------------------------------------------
 !      Gas Density at the Triple Point [ kg / m**3 ]
 ! -----------------------------------------------------
       implicit none
-      REAL(KIND=8) ::  Dgr
+      REAL(KIND=KIND(0.0d0)) ::  Dgr
       Dgr = 0.485457572553D-02
       tripDg = Dgr
       return
       end
 ! -----------------------------------------------------      
-        REAL(KIND=8) function critPt(R, Tc, pc, Dc, hc, sc)
+        REAL(KIND=KIND(0.0d0)) function critPt(R, Tc, pc, Dc, hc, sc)
 ! -----------------------------------------------------
 !      R and T, p and Density at Critical Point
 ! -----------------------------------------------------
       implicit none
-      REAL(KIND=8) ::  R, Tc, pc, Dc, hc, sc
+      REAL(KIND=KIND(0.0d0)) ::  R, Tc, pc, Dc, hc, sc
         R    = 0.461518050D+00
         Tc   = 0.647096000D+03 
         pc   = 0.220640000D+02
@@ -436,12 +437,12 @@
       return
       end
 ! -----------------------------------------------------      
-        REAL(KIND=8) function tripPt(Ttr, ptr, Dftr, Dgtr)
+        REAL(KIND=KIND(0.0d0)) function tripPt(Ttr, ptr, Dftr, Dgtr)
 ! -----------------------------------------------------
 !      Temp., pressure, fluid and gas densities at triple point
 ! -----------------------------------------------------
       implicit none
-      REAL(KIND=8) ::  Ttr, ptr, Dftr, Dgtr
+      REAL(KIND=KIND(0.0d0)) ::  Ttr, ptr, Dftr, Dgtr
         Ttr  = 0.273160000D+03 
         ptr  = 0.6116547711D-03      ! Rev
         Dftr = 0.999792520186D+03
@@ -456,7 +457,7 @@
 ! Table of pSat function of T
 ! -----------------------------------------------------------------------------      
       integer n, i, icode
-      REAL(KIND=8) ::  T(n), pSat(n,2), pSatT, p
+      REAL(KIND=KIND(0.0d0)) ::  T(n), pSat(n,2), pSatT, p
 
       do 100 i = 1, n
           pSat(i,1) = T(i)                                        
@@ -470,7 +471,7 @@
 ! Table of TSat function of p
 ! -----------------------------------------------------------------------------      
       integer n, i, icode
-      REAL(KIND=8) ::  p(n), TSat(n,2), TSatp, T
+      REAL(KIND=KIND(0.0d0)) ::  p(n), TSat(n,2), TSatp, T
 
       do 100 i = 1, n
           TSat(i,1) = p(i)                                        
@@ -484,7 +485,7 @@
 ! Table of hf function of T
 ! -----------------------------------------------------------------------------      
       integer n, i, icode
-      REAL(KIND=8) ::  T(n), hf(n,2), hfT, h
+      REAL(KIND=KIND(0.0d0)) ::  T(n), hf(n,2), hfT, h
 
       do 100 i = 1, n
           hf(i,1) = T(i)                                        
@@ -498,7 +499,7 @@
 ! Table of Sat Properties with Density function of T
 ! -----------------------------------------------------------------------------      
       integer n, i, icode
-      REAL(KIND=8) ::  T(n), satDhs(n,7), DfT, DgT, hfT, hgT, sfT, sgT, y
+      REAL(KIND=KIND(0.0d0)) ::  T(n), satDhs(n,7), DfT, DgT, hfT, hgT, sfT, sgT, y
 
       do 100 i = 1, n
           satDhs(i,1) = T(i)                                        
@@ -517,7 +518,7 @@
 ! Table of Sat Properties with Specif volume function of T
 ! -----------------------------------------------------------------------------      
       integer n, i, icode
-      REAL(KIND=8) ::  T(n), satvhs(n,7), DfT, DgT, hfT, hgT, sfT, sgT, y, um=1.0d0
+      REAL(KIND=KIND(0.0d0)) ::  T(n), satvhs(n,7), DfT, DgT, hfT, hgT, sfT, sgT, y, um=1.0d0
 
       do 100 i = 1, n
           satvhs(i,1) = T(i)                                        
@@ -536,7 +537,7 @@
 ! Table of Sat Properties with Density function of p
 ! -----------------------------------------------------------------------------      
       integer n, i, icode
-      REAL(KIND=8) ::  p(n), T, Tsat, Tsatp, satDhs(n,7), DfT, DgT, &
+      REAL(KIND=KIND(0.0d0)) ::  p(n), T, Tsat, Tsatp, satDhs(n,7), DfT, DgT, &
                   hfT, hgT, sfT, sgT, y
 
       do 100 i = 1, n
@@ -557,7 +558,7 @@
 ! Table of Sat Properties with Specif volume function of p
 ! -----------------------------------------------------------------------------      
       integer n, i, icode
-      REAL(KIND=8) ::  p(n), T, Tsat, Tsatp, satvhs(n,7), DfT, DgT, &
+      REAL(KIND=KIND(0.0d0)) ::  p(n), T, Tsat, Tsatp, satvhs(n,7), DfT, DgT, &
                   hfT, hgT, sfT, sgT, y, um = 1.0d0
 
       do 100 i = 1, n
@@ -579,7 +580,7 @@
 ! Table of v function of T, p
 ! -----------------------------------------------------------------------------      
       integer nT, i, icode
-      REAL(KIND=8) ::  p, T(nT), y(nT,2), vTp, v
+      REAL(KIND=KIND(0.0d0)) ::  p, T(nT), y(nT,2), vTp, v
 
       do 100 i = 1, nT
           y(i,1) = T(i)                                        
@@ -593,7 +594,7 @@
 ! Table of v function of T, p
 ! -----------------------------------------------------------------------------      
       integer np, i, icode
-      REAL(KIND=8) ::  p(np), T, y(np,2), vTp, v
+      REAL(KIND=KIND(0.0d0)) ::  p(np), T, y(np,2), vTp, v
 
       do 100 i = 1, np
           y(i,1) = p(i)                                        
@@ -607,7 +608,7 @@
 ! Table of D function of T, p
 ! -----------------------------------------------------------------------------      
       integer nT, i, icode
-      REAL(KIND=8) ::  p, T(nT), y(nT,2), DTp, D
+      REAL(KIND=KIND(0.0d0)) ::  p, T(nT), y(nT,2), DTp, D
 
       do 100 i = 1, nT
           y(i,1) = T(i)                                        
@@ -621,7 +622,7 @@
 ! Table of D function of T, p
 ! -----------------------------------------------------------------------------      
       integer np, i, icode
-      REAL(KIND=8) ::  p(np), T, y(np,2), DTp, D
+      REAL(KIND=KIND(0.0d0)) ::  p(np), T, y(np,2), DTp, D
 
       do 100 i = 1, np
           y(i,1) = p(i)                                        
@@ -635,7 +636,7 @@
 ! Table of h function of T, p
 ! -----------------------------------------------------------------------------      
       integer nT, i, icode
-      REAL(KIND=8) ::  p, T(nT), y(nT,2), hTp, h
+      REAL(KIND=KIND(0.0d0)) ::  p, T(nT), y(nT,2), hTp, h
 
       do 100 i = 1, nT
           y(i,1) = T(i)                                        
@@ -649,7 +650,7 @@
 ! Table of h function of T, p
 ! -----------------------------------------------------------------------------      
       integer np, i, icode
-      REAL(KIND=8) ::  p(np), T, y(np,2), hTp, h
+      REAL(KIND=KIND(0.0d0)) ::  p(np), T, y(np,2), hTp, h
 
       do 100 i = 1, np
           y(i,1) = p(i)                                        
@@ -663,7 +664,7 @@
 ! Table of s function of T, p
 ! -----------------------------------------------------------------------------      
       integer nT, i, icode
-      REAL(KIND=8) ::  p, T(nT), y(nT,2), sTp, s
+      REAL(KIND=KIND(0.0d0)) ::  p, T(nT), y(nT,2), sTp, s
 
       do 100 i = 1, nT
           y(i,1) = T(i)                                        
@@ -677,7 +678,7 @@
 ! Table of s function of T, p
 ! -----------------------------------------------------------------------------      
       integer np, i, icode
-      REAL(KIND=8) ::  p(np), T, y(np,2), sTp, s
+      REAL(KIND=KIND(0.0d0)) ::  p(np), T, y(np,2), sTp, s
 
       do 100 i = 1, np
           y(i,1) = p(i)                                        
@@ -691,7 +692,7 @@
 ! Table of u function of T, p
 ! -----------------------------------------------------------------------------      
       integer nT, i, icode
-      REAL(KIND=8) ::  p, T(nT), y(nT,2), uTp, u
+      REAL(KIND=KIND(0.0d0)) ::  p, T(nT), y(nT,2), uTp, u
 
       do 100 i = 1, nT
           y(i,1) = T(i)                                        
@@ -705,7 +706,7 @@
 ! Table of u function of T, p
 ! -----------------------------------------------------------------------------      
       integer np, i, icode
-      REAL(KIND=8) ::  p(np), T, y(np,2), uTp, u
+      REAL(KIND=KIND(0.0d0)) ::  p(np), T, y(np,2), uTp, u
 
       do 100 i = 1, np
           y(i,1) = p(i)                                        
@@ -714,7 +715,7 @@
       end
 
 !----------------------------------------------------------------------------------------
-     REAL(KIND=8) function CNDTD( T, D, Cdty, icode )
+     REAL(KIND=KIND(0.0d0)) function CNDTD( T, D, Cdty, icode )
 !----------------------------------------------------------------------------------------
 !
 !  THERMAL CONDUCTIVITY FUNCTION OF T AND D
@@ -726,16 +727,16 @@
 !           icode (error code)
 !
 ! -----------------------------------------------------------------------------      
-     Implicit REAL(KIND=8) (a-h, o-z)
+     Implicit REAL(KIND=KIND(0.0d0)) (a-h, o-z)
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / CND  /  Lij(5,6), Lk(5)
       COMMON / CND2 /  Lambdao, qD1, Nicr, Gamacr, Csi0, Gamao0, TRbar, xMi, qC1, qD1v
 
-     REAL(KIND=8) ::  Lambdao, qD1, Nicr, Gamacr, Csi0, Gamao0, TRbar, xMi, qC1, qD1v
-     REAL(KIND=8) ::  Lij, Lk, numT
-     REAL(KIND=8) ::  pLim(5), Tlim(5)
-     REAL(KIND=8) ::  TbarE(5), TbarI(5), rhobar1(6), um = 1.0d+0
+     REAL(KIND=KIND(0.0d0)) ::  Lambdao, qD1, Nicr, Gamacr, Csi0, Gamao0, TRbar, xMi, qC1, qD1v
+     REAL(KIND=KIND(0.0d0)) ::  Lij, Lk, numT
+     REAL(KIND=KIND(0.0d0)) ::  pLim(5), Tlim(5)
+     REAL(KIND=KIND(0.0d0)) ::  TbarE(5), TbarI(5), rhobar1(6), um = 1.0d+0
      data Pi/3.1415926535d+0/
      data pLim/100.d0, 250.d0, 687.d0, 785.d0, 1000.d0/
      data TLim/1173.15d0, 874.d0, 573.d0, 403.d0, 348.d0/
@@ -834,7 +835,7 @@
      end      
 
 !----------------------------------------------------------------------------------------
-     REAL(KIND=8) function VISCTD( T, D, Vscty, icode )
+     REAL(KIND=KIND(0.0d0)) function VISCTD( T, D, Vscty, icode )
 !----------------------------------------------------------------------------------------
 !
 !  DYNAMIC VISCOSITY FUNCTION OF T AND D
@@ -846,21 +847,21 @@
 !           icode (error code)
 !
 ! -----------------------------------------------------------------------------      
-     Implicit REAL(KIND=8) (a-h, o-z)
+     Implicit REAL(KIND=KIND(0.0d0)) (a-h, o-z)
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / CND  /  Lij(5,6), Lk(5)
       COMMON / VISC /  Hij(6,7), Hi(4)
       COMMON / CND2 /  Lambdao, qD1, Nicr, Gamacr, Csi0, Gamao0, TRbar, xMi, qC1, qD1v
 
-     REAL(KIND=8) ::  Lambdao, qD1, Nicr, Gamacr, Csi0, Gamao0, TRbar, xMi, qC1, qD1v
-     REAL(KIND=8) ::  Lij, Lk, Lw
-     REAL(KIND=8) ::  TbarE(5), TbarI(6), rhobar1(7), um=1.0d+0
-     REAL(KIND=8) ::  shij(6,7), stb1(6)
+     REAL(KIND=KIND(0.0d0)) ::  Lambdao, qD1, Nicr, Gamacr, Csi0, Gamao0, TRbar, xMi, qC1, qD1v
+     REAL(KIND=KIND(0.0d0)) ::  Lij, Lk, Lw
+     REAL(KIND=KIND(0.0d0)) ::  TbarE(5), TbarI(6), rhobar1(7), um=1.0d+0
+     REAL(KIND=KIND(0.0d0)) ::  shij(6,7), stb1(6)
      data Pi/3.1415926535d+0/
      data CsiL/0.3817016416d0/
 
-     REAL(KIND=8) ::  pLim(4), Tlim(4)
+     REAL(KIND=KIND(0.0d0)) ::  pLim(4), Tlim(4)
      data pLim/300.d0, 350.d0, 500.d0, 1000.d0/
      data TLim/1173.15d0, 873.15d0, 433.15d0, 373.15d0/
 
@@ -970,7 +971,7 @@
      end      
 
 !----------------------------------------------------------------------------------------
-     REAL(KIND=8) function KVISCTD( T, D, KVscty, icode )
+     REAL(KIND=KIND(0.0d0)) function KVISCTD( T, D, KVscty, icode )
 !----------------------------------------------------------------------------------------
 !
 !  KINEMATIC VISCOSITY FUNCTION OF T AND D
@@ -982,8 +983,8 @@
 !           icode (error code)
 !
 ! -----------------------------------------------------------------------------      
-     Implicit REAL(KIND=8) (a-h, o-z)
-     REAL(KIND=8) ::  KVscty
+     Implicit REAL(KIND=KIND(0.0d0)) (a-h, o-z)
+     REAL(KIND=KIND(0.0d0)) ::  KVscty
      integer icode
 
      KVISCTD = VISCTD( T, D, Vscty, icode )/D
@@ -992,7 +993,7 @@
      end
 
 !----------------------------------------------------------------------------------------
-     REAL(KIND=8) function PrandtTD( T, D, Prandt, icode )
+     REAL(KIND=KIND(0.0d0)) function PrandtTD( T, D, Prandt, icode )
 !----------------------------------------------------------------------------------------
 !
 !  PRANDT NUMBER FUNCTION OF T AND D
@@ -1004,7 +1005,7 @@
 !           icode (error code)
 !
 ! -----------------------------------------------------------------------------      
-     Implicit REAL(KIND=8) (a-h, o-z)
+     Implicit REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
      Cp    = 1.0d3*CpTD(T, D, Cp, icode)
@@ -1025,7 +1026,7 @@
      end
 
 !----------------------------------------------------------------------------------------
-     REAL(KIND=8) function SigmaT( T, Sigma, icode )
+     REAL(KIND=KIND(0.0d0)) function SigmaT( T, Sigma, icode )
 !----------------------------------------------------------------------------------------
 !
 !  SURFACE TENSION FUNCTION OF T
@@ -1039,9 +1040,9 @@
 ! -----------------------------------------------------------------------------      
      Implicit none
      integer icode
-     REAL(KIND=8) ::  BG=235.8d0, bp=-0.625d0, mi=1.256d0, um=1.0d0
-     REAL(KIND=8) ::  T, Sigma, Tal
-      REAL(KIND=8) :: R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+     REAL(KIND=KIND(0.0d0)) ::  BG=235.8d0, bp=-0.625d0, mi=1.256d0, um=1.0d0
+     REAL(KIND=KIND(0.0d0)) ::  T, Sigma, Tal
+      REAL(KIND=KIND(0.0d0)) :: R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -1066,7 +1067,7 @@
 ! H           PARTS OF THE DIMENSIONLESS Helmholtz FREE ENERGY                 H
 ! HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 ! -----------------------------------------------------------------------------      
-      REAL(KIND=8) function PHI0TD(T, D, fhiztd, icode )
+      REAL(KIND=KIND(0.0d0)) function PHI0TD(T, D, fhiztd, icode )
 ! -----------------------------------------------------------------------------      
 !
 !  IDEL-GAS PART OF THE DIMENSIONLESS Helmholtz FREE ENERGY FOR GIVEN T AND D
@@ -1079,7 +1080,7 @@
 !
 ! -----------------------------------------------------------------------------      
 
-      IMPLICIT REAL(KIND=8) (A-H,O-Z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (A-H,O-Z)
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
      integer icode
 
@@ -1108,7 +1109,7 @@
       RETURN
       END
 ! -----------------------------------------------------------------------------      
-      REAL(KIND=8) function PHI0DD(D, fhizd, icode)
+      REAL(KIND=KIND(0.0d0)) function PHI0DD(D, fhizd, icode)
 ! -----------------------------------------------------------------------------      
 !
 !  FIRST DERIVATIVE OF THE IDEAL GAS PART OF THE DIMENSIONLESS   Helmholtz
@@ -1121,7 +1122,7 @@
 !
 ! -----------------------------------------------------------------------------      
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
 
       icode = 0
 
@@ -1141,7 +1142,7 @@
       END
 
 ! -----------------------------------------------------------------------------      
-      REAL(KIND=8) function PHI0DDD(D, fhizdd, icode)
+      REAL(KIND=KIND(0.0d0)) function PHI0DDD(D, fhizdd, icode)
 ! -----------------------------------------------------------------------------      
 !
 !  SECOND DERIVATIVE OF THE IDEAL GAS PART OF THE DIMENSIONLESS   Helmholtz 
@@ -1153,7 +1154,7 @@
 !
 ! -----------------------------------------------------------------------------      
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       icode = 0
@@ -1172,7 +1173,7 @@
       RETURN
       END
 ! -----------------------------------------------------------------------------      
-      REAL(KIND=8) function PHI0TTD(T, D, fhizttd, icode)
+      REAL(KIND=KIND(0.0d0)) function PHI0TTD(T, D, fhizttd, icode)
 ! -----------------------------------------------------------------------------      
 !
 !  FUNCTION FOR THE CALCULATION OF THE FIRST DERIVATIVE OF THE IDEAL GAS PART 
@@ -1186,7 +1187,7 @@
 !
 ! -----------------------------------------------------------------------------      
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
       COMMON / CRTR /   R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       IF ( T .LT. TTR ) THEN
@@ -1209,7 +1210,7 @@
       END
 
 ! -----------------------------------------------------------------------------      
-      REAL(KIND=8) function PHI0TTTD(T, D, fhiztttd, icode)
+      REAL(KIND=KIND(0.0d0)) function PHI0TTTD(T, D, fhiztttd, icode)
 ! -----------------------------------------------------------------------------      
 !
 !  SECOND DERIVATIVE OF THE IDEAL GAS PART OF THE DIMENSIONLESS
@@ -1222,7 +1223,7 @@
 !           icode (error code)
 ! -----------------------------------------------------------------------------      
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
       COMMON / CRTR /   R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       IF ( T .LT. TTR ) THEN
@@ -1247,7 +1248,7 @@
       END
 
 ! -----------------------------------------------------------------------------      
-      REAL(KIND=8) function PHI0DT(fhizdt, icode)
+      REAL(KIND=KIND(0.0d0)) function PHI0DT(fhizdt, icode)
 ! -----------------------------------------------------------------------------      
 !
 !  DERIVATIVE OF THE IDEAL GAS PART OF THE DIMENSIONLESS
@@ -1259,7 +1260,7 @@
 !
 ! -----------------------------------------------------------------------------      
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       icode = 0
@@ -1271,7 +1272,7 @@
 
 
 ! -----------------------------------------------------------------------------      
-      REAL(KIND=8) function PHIRTD( T, D, fhirtd, icode)
+      REAL(KIND=KIND(0.0d0)) function PHIRTD( T, D, fhirtd, icode)
 ! -----------------------------------------------------------------------------      
 !
 !  RESIDUAL-GAS PART OF THE DIMENSIONLESS
@@ -1284,7 +1285,7 @@
 !
 ! -----------------------------------------------------------------------------      
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
       COMMON / CRTR /   R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
      integer icode
 
@@ -1310,7 +1311,7 @@
       END
 
 ! -----------------------------------------------------------------------------      
-      REAL(KIND=8) function PHIRDTD( T, D, fhird, icode)
+      REAL(KIND=KIND(0.0d0)) function PHIRDTD( T, D, fhird, icode)
 ! -----------------------------------------------------------------------------      
 !
 !   FIRST DERIVATIVE OF THE RESIDUAL PART OF THE REDUCED HELMHOLTZ ENERGY 
@@ -1323,7 +1324,7 @@
 !
 ! -----------------------------------------------------------------------------      
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
       COMMON / CRTR /   R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
      integer icode
 
@@ -1348,7 +1349,7 @@
       END
 
 ! -----------------------------------------------------------------------------      
-      REAL(KIND=8) function PHIRDDTD( T, D, fhirdd, icode)
+      REAL(KIND=KIND(0.0d0)) function PHIRDDTD( T, D, fhirdd, icode)
 ! -----------------------------------------------------------------------------      
 !
 !  SECOND DERIVATIVE OF THE RESIDUAL PART OF THE REDUCED HELMHOLTZ ENERGY 
@@ -1361,7 +1362,7 @@
 !
 ! -----------------------------------------------------------------------------      
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
       COMMON / CRTR /   R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
      integer icode
 
@@ -1387,7 +1388,7 @@
       END
 
 ! -----------------------------------------------------------------------------      
-      REAL(KIND=8) function PHIRTTD( T, D, fhirt, icode)
+      REAL(KIND=KIND(0.0d0)) function PHIRTTD( T, D, fhirt, icode)
 ! -----------------------------------------------------------------------------      
 !
 !  FIRST DERIVATIVE OF THE RESIDUAL PART OF THE REDUCED HELMHOLTZ ENERGY 
@@ -1400,7 +1401,7 @@
 !
 ! -----------------------------------------------------------------------------      
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
       COMMON / CRTR /   R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -1425,7 +1426,7 @@
       END
 
 ! -----------------------------------------------------------------------------      
-      REAL(KIND=8) function PHIRTTTD( T, D, fhirtt, icode)
+      REAL(KIND=KIND(0.0d0)) function PHIRTTTD( T, D, fhirtt, icode)
 ! -----------------------------------------------------------------------------      
 !
 !  SECOND DERIVATIVE OF THE RESIDUAL PART OF THE REDUCED HELMHOLTZ ENERGY
@@ -1438,7 +1439,7 @@
 !
 ! -----------------------------------------------------------------------------      
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
       COMMON / CRTR /   R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
      integer icode
 
@@ -1463,7 +1464,7 @@
       END
 
 ! -----------------------------------------------------------------------------      
-      REAL(KIND=8) function PHIRDTTD( T, D, fhirdt, icode)
+      REAL(KIND=KIND(0.0d0)) function PHIRDTTD( T, D, fhirdt, icode)
 ! -----------------------------------------------------------------------------      
 !
 !   SECOND DERIVATIVE OF THE RESIDUAL PART OF THE REDUCED HELMHOLTZ ENERGY 
@@ -1476,7 +1477,7 @@
 !
 ! -----------------------------------------------------------------------------      
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
       COMMON / CRTR /   R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
      integer icode
 
@@ -1502,7 +1503,7 @@
 ! HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
   
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function pMeltT(T, pMelt, pMeltIh, pSubl, icode)
+      REAL(KIND=KIND(0.0d0)) function pMeltT(T, pMelt, pMeltIh, pSubl, icode)
 ! -----------------------------------------------------------------------------
 !
 !  MELTING PRESSURE   AS FUNCTION OF T (256.164K < T < 715K)
@@ -1515,21 +1516,21 @@
 ! -----------------------------------------------------------------------------
 
       IMPLICIT NONE
-     REAL(KIND=8) ::  T, pSubl, pMelt, pMeltIh, um=1.0d0, pi, teta
-     REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-     REAL(KIND=8) ::  Ts0=50.d0, Tah=273.16d0,T0=273.16d0, T3=251.165d0, T4=256.164,      &
+     REAL(KIND=KIND(0.0d0)) ::  T, pSubl, pMelt, pMeltIh, um=1.0d0, pi, teta
+     REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+     REAL(KIND=KIND(0.0d0)) ::  Ts0=50.d0, Tah=273.16d0,T0=273.16d0, T3=251.165d0, T4=256.164,      &
                       T5=273.31D0, T6=355.D0, T7=715.D0
-     REAL(KIND=8) ::  Ta3=251.165d0,Ta5=256.164d0, Ta6=273.31d0, Ta7=355.d0
-     REAL(KIND=8) ::  pah=611.657d-6, pa3=208.566d0, pa5=350.1d0, pa6=632.4d0, pa7=2216.d0
-     REAL(KIND=8) ::  ah(3), bh(3)
+     REAL(KIND=KIND(0.0d0)) ::  Ta3=251.165d0,Ta5=256.164d0, Ta6=273.31d0, Ta7=355.d0
+     REAL(KIND=KIND(0.0d0)) ::  pah=611.657d-6, pa3=208.566d0, pa5=350.1d0, pa6=632.4d0, pa7=2216.d0
+     REAL(KIND=KIND(0.0d0)) ::  ah(3), bh(3)
      data ah/0.119539337d+7, 0.808183159d+5, 0.333826860d+4/
      data bh/0.300000d+1, 0.257500d+2, 0.1037250d+3/
-     REAL(KIND=8) ::  as(3), bs(3), tlnpi
+     REAL(KIND=KIND(0.0d0)) ::  as(3), bs(3), tlnpi
      data as/-0.212144006d+2, 0.273203819d+2, -0.610598130d+1/
      data bs/0.333333333d-2, 0.120666667d+1, 0.170333333d+1/
-     REAL(KIND=8) ::  a31=-0.299948d0, a51=- 1.18721d0, a61=-1.07476d0
-     REAL(KIND=8) ::  a71=0.173683d+1, a72=-0.544606d-1, a73=0.806106d-7
-     REAL(KIND=8) ::  e61=4.6d0
+     REAL(KIND=KIND(0.0d0)) ::  a31=-0.299948d0, a51=- 1.18721d0, a61=-1.07476d0
+     REAL(KIND=KIND(0.0d0)) ::  a71=0.173683d+1, a72=-0.544606d-1, a73=0.806106d-7
+     REAL(KIND=KIND(0.0d0)) ::  e61=4.6d0
 
      integer :: e31=60, e51=8, e72=5, e73=22                                           
      integer icode, i
@@ -1597,7 +1598,7 @@
 
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function pTD(T, D, p, icode)
+      REAL(KIND=KIND(0.0d0)) function pTD(T, D, p, icode)
 ! -----------------------------------------------------------------------------
 !
 !  PRESSURE   AS FUNCTION OF T AND D
@@ -1610,7 +1611,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -1646,7 +1647,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function hTD(T, D, h, icode)
+      REAL(KIND=KIND(0.0d0)) function hTD(T, D, h, icode)
 ! -----------------------------------------------------------------------------
 ! 
 !  SPECIFIC ENTHALPY FUNCTION OF T AND D
@@ -1658,7 +1659,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -1693,7 +1694,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function sTD( T, D, s, icode )
+      REAL(KIND=KIND(0.0d0)) function sTD( T, D, s, icode )
 ! -----------------------------------------------------------------------------
 !  
 !  SPECIFIC ENTROPY   FUNCTION OF T AND D
@@ -1705,7 +1706,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
       integer icode
 
       COMMON / CRTR /   R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -1740,7 +1741,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function fTD(T, D, f, icode)
+      REAL(KIND=KIND(0.0d0)) function fTD(T, D, f, icode)
 ! -----------------------------------------------------------------------------
 !
 !  HELMHOLTZ ENERGY AS FUNCTION OF T AND D
@@ -1752,7 +1753,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
       integer icode
 
       COMMON / CRTR /   R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -1784,7 +1785,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function fTp( T, p, f, icode)
+      REAL(KIND=KIND(0.0d0)) function fTp( T, p, f, icode)
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC HELMHOLTZ ENERGY AS FUNCTION OF T AND P
@@ -1797,7 +1798,7 @@
 !   (DO NOT TEST ICE REGIONS)
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /   R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -1826,7 +1827,7 @@
 
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function uTD( T, D, u, icode )
+      REAL(KIND=KIND(0.0d0)) function uTD( T, D, u, icode )
 ! -----------------------------------------------------------------------------
 !
 !  INTERNAL ENERGY AS FUNCTION OF T AND D
@@ -1838,7 +1839,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
 
       COMMON / CRTR /   R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -1868,7 +1869,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function CvTD( T, D, Cv, icode )
+      REAL(KIND=KIND(0.0d0)) function CvTD( T, D, Cv, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC ISOCHORIC HEAT CAPACITY FUNCTION OF T AND D
@@ -1880,7 +1881,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
 
       COMMON / CRTR /   R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -1909,7 +1910,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function CpTD( T, D, Cp, icode )
+      REAL(KIND=KIND(0.0d0)) function CpTD( T, D, Cp, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC ISOBARIC HEAT CAPACITY AS FUNCTION OF T AND D
@@ -1921,7 +1922,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
 
       COMMON / CRTR /   R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -1950,7 +1951,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function wTD( T, D, w, icode )
+      REAL(KIND=KIND(0.0d0)) function wTD( T, D, w, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPEED OF SOUND FUNCTION OF T AND D
@@ -1962,7 +1963,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -1992,7 +1993,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function vTp( T, p, v, icode )
+      REAL(KIND=KIND(0.0d0)) function vTp( T, p, v, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC VOLUME AS FUNCTION OF T AND P
@@ -2005,7 +2006,7 @@
 !   (DO NOT TEST ICE REGIONS)
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       if ( T .LT. TTR ) then
@@ -2024,7 +2025,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function DTp( T, p, D, icode )
+      REAL(KIND=KIND(0.0d0)) function DTp( T, p, D, icode )
 ! -----------------------------------------------------------------------------
 !
 !  DENSITY AS FUNCTION OF T AND P
@@ -2037,7 +2038,7 @@
 !   (DO NOT TEST ICE REGIONS)
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -2063,7 +2064,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function hTp( T, p, h, icode )
+      REAL(KIND=KIND(0.0d0)) function hTp( T, p, h, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC ENTHALPY AS FUNCTION OF T AND P
@@ -2076,7 +2077,7 @@
 !   (DO NOT TEST ICE REGIONS)
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -2103,7 +2104,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function sTp( T, p, s, icode )
+      REAL(KIND=KIND(0.0d0)) function sTp( T, p, s, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC ENTROPY AS FUNCTION OF T AND P
@@ -2116,7 +2117,7 @@
 !   (DO NOT TEST ICE REGIONS)
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -2145,7 +2146,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function uTp( T, p, u, icode)
+      REAL(KIND=KIND(0.0d0)) function uTp( T, p, u, icode)
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC INTERNAL ENERGY AS FUNCTION OF T AND P
@@ -2158,7 +2159,7 @@
 !   (DO NOT TEST ICE REGIONS)
 ! -----------------------------------------------------------------------------
 !
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -2184,7 +2185,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function CvTP( T, p, Cv, icode )
+      REAL(KIND=KIND(0.0d0)) function CvTP( T, p, Cv, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC ISOCHORIC HEAT CAPACITY AS FUNCTION OF T AND P
@@ -2197,7 +2198,7 @@
 !   (DO NOT TEST ICE REGIONS)
 ! -----------------------------------------------------------------------------
 !
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
      integer icode
 
@@ -2223,7 +2224,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function CpTP( T, p, Cp, icode )
+      REAL(KIND=KIND(0.0d0)) function CpTP( T, p, Cp, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC ISOBARIC HEAT CAPACITY AS FUNCTION OF T AND P
@@ -2236,7 +2237,7 @@
 !   (DO NOT TEST ICE REGIONS)
 ! -----------------------------------------------------------------------------
 !
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -2263,7 +2264,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function wTp( T, p, w, icode )
+      REAL(KIND=KIND(0.0d0)) function wTp( T, p, w, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPEED OF SOUND AS FUNCTION OF T AND P
@@ -2275,7 +2276,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -2302,7 +2303,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function DTs( T, s, D, icode)
+      REAL(KIND=KIND(0.0d0)) function DTs( T, s, D, icode)
 ! -----------------------------------------------------------------------------
 !
 !  DENSITYAS FUNCTION OF T AND s
@@ -2314,7 +2315,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -2341,7 +2342,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function DTh( T, h, D, Dupp, icode)
+      REAL(KIND=KIND(0.0d0)) function DTh( T, h, D, Dupp, icode)
 ! -----------------------------------------------------------------------------
 !
 !  DENSITY AS FUNCTION OF T AND H
@@ -2357,7 +2358,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -2396,7 +2397,7 @@
 
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function TDp( D, p, T, icode)
+      REAL(KIND=KIND(0.0d0)) function TDp( D, p, T, icode)
 ! -----------------------------------------------------------------------------
 !
 !  TEMPERATURE   AS FUNCTION OF D AND P
@@ -2408,7 +2409,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
      if ( D .LE. 0.D0 ) then
@@ -2433,7 +2434,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function TDs( D, s, T, icode)
+      REAL(KIND=KIND(0.0d0)) function TDs( D, s, T, icode)
 ! -----------------------------------------------------------------------------
 !
 !  TEMPERATURE as function OF D AND s
@@ -2445,7 +2446,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
      if ( D .LE. 0.D0 ) then
@@ -2470,7 +2471,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function TDh( D, h, T, icode)
+      REAL(KIND=KIND(0.0d0)) function TDh( D, h, T, icode)
 ! -----------------------------------------------------------------------------
 !
 !  TEMPERATURE AS FUNCTION OF D AND h 
@@ -2482,7 +2483,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
      if ( D .LE. 0.D0 ) then
@@ -2507,7 +2508,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function Tps( p, s, T, icode)
+      REAL(KIND=KIND(0.0d0)) function Tps( p, s, T, icode)
 ! -----------------------------------------------------------------------------
 !
 !  TEMPERATURE AS FUNCTION OF p AND s
@@ -2519,7 +2520,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
      if ( p .LE. 0.D0 ) then
@@ -2544,7 +2545,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function Dps( p, s, D, icode)
+      REAL(KIND=KIND(0.0d0)) function Dps( p, s, D, icode)
 ! -----------------------------------------------------------------------------
 !
 !  DENSITY AS FUNCTION OF p AND s
@@ -2556,7 +2557,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
      if ( p .LE. 0.D0 ) then
@@ -2581,7 +2582,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function hps( p, s, h, icode)
+      REAL(KIND=KIND(0.0d0)) function hps( p, s, h, icode)
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC ENTHALPY AS FUNCTIONOF p AND s
@@ -2593,7 +2594,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -2630,7 +2631,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function Tph( p, h, T, icode )
+      REAL(KIND=KIND(0.0d0)) function Tph( p, h, T, icode )
 ! -----------------------------------------------------------------------------
 !
 !  TEMPERATURE   AS FUNCTION OF p AND h
@@ -2642,7 +2643,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
      if ( p .LE. 0.D0 ) then
@@ -2667,7 +2668,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function Dph( p, h, D, icode )
+      REAL(KIND=KIND(0.0d0)) function Dph( p, h, D, icode )
 ! -----------------------------------------------------------------------------
 !
 !  DENSITY AS FUNCTION OF P AND H
@@ -2679,7 +2680,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
      if ( p .LE. 0.D0 ) then
@@ -2704,7 +2705,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function sph( p, h, s, icode )
+      REAL(KIND=KIND(0.0d0)) function sph( p, h, s, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC ENTROPY AS FUNCTION OF p AND h
@@ -2716,7 +2717,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -2753,7 +2754,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function Ths( h, s, T, icode)
+      REAL(KIND=KIND(0.0d0)) function Ths( h, s, T, icode)
 ! -----------------------------------------------------------------------------
 !
 !  TEMPERATURE AS FUNCTION OF h AND s
@@ -2765,9 +2766,9 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
       integer :: icode, imax=200
-      REAL(KIND=8) ::  EPS= 1.0D-9
+      REAL(KIND=KIND(0.0d0)) ::  EPS= 1.0D-9
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
      COMMON / ChsMax  / ChsMax1(4), ChsMax2(7)
@@ -2898,7 +2899,7 @@
 
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function Dhs( h, s, D, icode )
+      REAL(KIND=KIND(0.0d0)) function Dhs( h, s, D, icode )
 ! -----------------------------------------------------------------------------
 !
 !  DENSITY   AS FUNCTION OF h AND s
@@ -2910,7 +2911,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
      ! #######################
      EPS = 1.D-08
@@ -2962,7 +2963,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function pSatT( T, pSat, icode)
+      REAL(KIND=KIND(0.0d0)) function pSatT( T, pSat, icode)
 ! -----------------------------------------------------------------------------
 !
 !  VAPOR PRESSURE AS FUNCTION OF T
@@ -2973,7 +2974,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -2991,7 +2992,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function DfT( T, Df, icode)
+      REAL(KIND=KIND(0.0d0)) function DfT( T, Df, icode)
 ! -----------------------------------------------------------------------------
 !
 !  SATURATED LIQUID DENSITY AS FUNCTION OF T
@@ -3002,7 +3003,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3020,7 +3021,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function DgT( T, Dg, icode )
+      REAL(KIND=KIND(0.0d0)) function DgT( T, Dg, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SATURATED VAPOR DENSITY AS FUNCTION OF T
@@ -3029,7 +3030,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3047,7 +3048,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function hfT( T, hf, icode )
+      REAL(KIND=KIND(0.0d0)) function hfT( T, hf, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC ENTHALPY OF SATURATED LIQUID AS FUNCTION OF T
@@ -3061,7 +3062,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3084,7 +3085,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function hgT( T, hg, icode )
+      REAL(KIND=KIND(0.0d0)) function hgT( T, hg, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC ENTHALPY OF THE SATURATED VAPOR AS FUNCTION OF T
@@ -3095,7 +3096,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3118,7 +3119,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function sfT( T, sf, icode)
+      REAL(KIND=KIND(0.0d0)) function sfT( T, sf, icode)
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC ENTROPY OF SATURATED LIQUID AS FUNCTION OF T
@@ -3129,7 +3130,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3152,7 +3153,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function sgT( T, sg, icode)
+      REAL(KIND=KIND(0.0d0)) function sgT( T, sg, icode)
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC ENTROPY OF SATURATED VAPOR FUNCTION OF T
@@ -3164,7 +3165,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3187,7 +3188,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function ufT( T, uf, icode )
+      REAL(KIND=KIND(0.0d0)) function ufT( T, uf, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC INTERNAL ENERGY OF SATURATED LIQUID FUNCTION OF T
@@ -3199,7 +3200,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3222,7 +3223,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function ugT( T, ug, icode )
+      REAL(KIND=KIND(0.0d0)) function ugT( T, ug, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC INTERNAL ENERGY OF SATURATED VAPOR FUNCTION OF T
@@ -3233,7 +3234,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3256,7 +3257,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function CvfT( T, Cvf, icode )
+      REAL(KIND=KIND(0.0d0)) function CvfT( T, Cvf, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC ISOCHORIC HEAT CAPACITY OF SATURATED LIQUID FUNCTION OF T
@@ -3268,7 +3269,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3291,7 +3292,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function CvgT( T, Cvg, icode )
+      REAL(KIND=KIND(0.0d0)) function CvgT( T, Cvg, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC ISOCHORIC HEAT CAPACITY OF SATURATED VAPOR FUNCTION OF T
@@ -3302,7 +3303,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3325,7 +3326,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function CpfT( T, Cpf, icode )
+      REAL(KIND=KIND(0.0d0)) function CpfT( T, Cpf, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC ISOBARIC HEAT CAPACITY OF SATURATED LIQUID FUNCTION OF T
@@ -3336,7 +3337,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3359,7 +3360,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function CpgT( T, Cpg, icode )
+      REAL(KIND=KIND(0.0d0)) function CpgT( T, Cpg, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC ISOBARIC HEAT CAPACITY OF SATURATED VAPOR FUNCTION OF T
@@ -3370,7 +3371,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3393,7 +3394,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function wfT( T, wf, icode)
+      REAL(KIND=KIND(0.0d0)) function wfT( T, wf, icode)
 ! -----------------------------------------------------------------------------
 !
 !  SPEED OF SOUND OF SATURATED LIQUID FUNCTION OF T
@@ -3404,7 +3405,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3427,7 +3428,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function wgT( T, wg, icode )
+      REAL(KIND=KIND(0.0d0)) function wgT( T, wg, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SPEED OF SOUND OF SATURATED VAPOR FUNCTION OF T
@@ -3438,7 +3439,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3462,7 +3463,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function Tsatp( p, Tsat, icode )
+      REAL(KIND=KIND(0.0d0)) function Tsatp( p, Tsat, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SATURATION TEMPERATURE FUNCTION OF p
@@ -3473,7 +3474,7 @@
 !                         
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -3490,7 +3491,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function Dfp( p, Df, icode )
+      REAL(KIND=KIND(0.0d0)) function Dfp( p, Df, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SATURATED LIQUID DENSITY FUNCTION OF p
@@ -3501,7 +3502,7 @@
 !                         
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3519,7 +3520,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function Dgp( p, Dg, icode )
+      REAL(KIND=KIND(0.0d0)) function Dgp( p, Dg, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SATURATED VAPOR DENSITY FUNCTION OF p
@@ -3530,7 +3531,7 @@
 !                         
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3548,7 +3549,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function TsatD( D, Tsat1, Tsat2, icode )
+      REAL(KIND=KIND(0.0d0)) function TsatD( D, Tsat1, Tsat2, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SATURATION TEMPERATURE FUNCTION OF D
@@ -3559,7 +3560,7 @@
 !                         
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3604,7 +3605,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function pSatD( D, pSat1, pSat2, icode )
+      REAL(KIND=KIND(0.0d0)) function pSatD( D, pSat1, pSat2, icode )
 ! -----------------------------------------------------------------------------
 !
 !  VAPOR PRESSURE FUNCTION OF D
@@ -3615,7 +3616,7 @@
 !                        
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3661,7 +3662,7 @@
 !                        
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -3680,7 +3681,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function Dgs( s, Dg, icode )
+      REAL(KIND=KIND(0.0d0)) function Dgs( s, Dg, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SATURATED VAPOUR DENSITY FUNCTION Of s
@@ -3691,7 +3692,7 @@
 !                        
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3724,7 +3725,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function pSats( s, pSat, icode )
+      REAL(KIND=KIND(0.0d0)) function pSats( s, pSat, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SATURATED VAPOUR PRESSURE FUNCTION Of s
@@ -3735,7 +3736,7 @@
 !                        
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3770,7 +3771,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function TSats( s, Tsat, icode )
+      REAL(KIND=KIND(0.0d0)) function TSats( s, Tsat, icode )
 ! -----------------------------------------------------------------------------
 !
 !  SATURATED VAPOUR TEMPERATURE FUNCTION Of s
@@ -3781,7 +3782,7 @@
 !                        
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3817,7 +3818,7 @@
      END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function FugaTp( T, p, Fuga, icode )
+      REAL(KIND=KIND(0.0d0)) function FugaTp( T, p, Fuga, icode )
 ! -----------------------------------------------------------------------------
 !
 !  FFUGACITY AS FUNCTION OF T AND p
@@ -3830,7 +3831,7 @@
 !   (DO NOT TEST FOR ICE REGIONS)
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3858,7 +3859,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function GibbsTp( T, p, Gibbs, icode)
+      REAL(KIND=KIND(0.0d0)) function GibbsTp( T, p, Gibbs, icode)
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC GIBBS ENERGY FUNCTION OF T AND p 
@@ -3871,7 +3872,7 @@
 !   (DO NOT TEST FOR ICE REGIONS)
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3898,7 +3899,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function JTcTD( T, D, JTc, icode )
+      REAL(KIND=KIND(0.0d0)) function JTcTD( T, D, JTc, icode )
 ! -----------------------------------------------------------------------------
 !
 !  JOULE-THOMSON COEFFICIENT FUNCTION OF T AND D
@@ -3910,9 +3911,9 @@
 !
 ! -----------------------------------------------------------------------------
 !
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
-     REAL(KIND=8) ::  JTc
+     REAL(KIND=KIND(0.0d0)) ::  JTc
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -3942,7 +3943,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function ThrcTD( T, D, Thrc, icode )
+      REAL(KIND=KIND(0.0d0)) function ThrcTD( T, D, Thrc, icode )
 ! -----------------------------------------------------------------------------
 !
 !  THROTTLING COEFFICIENT FUNCTION OF T AND D
@@ -3954,7 +3955,7 @@
 !
 ! -----------------------------------------------------------------------------
 !
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -3985,7 +3986,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function BT( T, B, icode)
+      REAL(KIND=KIND(0.0d0)) function BT( T, B, icode)
 ! -----------------------------------------------------------------------------
 !
 !  SECOND VIRIAL COEFFICIENT FUNCTION OF T
@@ -3996,7 +3997,7 @@
 !
 ! -----------------------------------------------------------------------------
 !
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -4016,7 +4017,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function CT( T, C, icode )
+      REAL(KIND=KIND(0.0d0)) function CT( T, C, icode )
 ! -----------------------------------------------------------------------------
 !
 !  THIRD VIRIAL COEFFICIENT
@@ -4027,7 +4028,7 @@
 !
 ! -----------------------------------------------------------------------------
 !
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -4047,7 +4048,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function BetasTD( T, D, Beta, icode )
+      REAL(KIND=KIND(0.0d0)) function BetasTD( T, D, Beta, icode )
 ! -----------------------------------------------------------------------------
 !
 !  ISENTROPIC TEMPERATURE-PRESSURE COEFFICIENT FUNCTION OF T AND D
@@ -4059,7 +4060,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -4080,7 +4081,7 @@
       END
 
  ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function kapaTD( T, D, kapa, icode )
+      REAL(KIND=KIND(0.0d0)) function kapaTD( T, D, kapa, icode )
 ! -----------------------------------------------------------------------------
 !
 !  ISOTHERMAL COMPRESSIBILITY FACTOR FUNCTION OF T AND D
@@ -4092,9 +4093,9 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
-     REAL(KIND=8) ::  kapa
+     REAL(KIND=KIND(0.0d0)) ::  kapa
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -4114,7 +4115,7 @@
       END
 
  ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function ZTD( T, D, Z, icode )
+      REAL(KIND=KIND(0.0d0)) function ZTD( T, D, Z, icode )
 ! -----------------------------------------------------------------------------
 !
 !  COMPRESSIBILITY FACTOR FUNCTION OF T AND D
@@ -4126,9 +4127,9 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
-     REAL(KIND=8) ::  Z
+     REAL(KIND=KIND(0.0d0)) ::  Z
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -4153,7 +4154,7 @@
 !DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function dpdTTD( T, D, dpdT, icode )
+      REAL(KIND=KIND(0.0d0)) function dpdTTD( T, D, dpdT, icode )
 ! -----------------------------------------------------------------------------
 !
 !  FIRST DERIVATIVE OF THE PRESSURE WITH RESPECT TO THE TEMPERATURE
@@ -4166,7 +4167,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -4195,7 +4196,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function dpdDTD( T, D, dpdD, icode )
+      REAL(KIND=KIND(0.0d0)) function dpdDTD( T, D, dpdD, icode )
 ! -----------------------------------------------------------------------------
 !
 !  FIRST DERIVATIVE OF PRESSURE WITH RESPECT TO DENSITY
@@ -4209,7 +4210,7 @@
 !                        
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -4239,7 +4240,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function dDdTTD( T, D, dDdT, icode )
+      REAL(KIND=KIND(0.0d0)) function dDdTTD( T, D, dDdT, icode )
 ! -----------------------------------------------------------------------------
 !
 !  FIRST DERIVATIVE OF DENSITY WITH RESPECT TO TEMPERATURE
@@ -4252,7 +4253,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -4282,7 +4283,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function dpdDTp( T, p, dpdD, icode )
+      REAL(KIND=KIND(0.0d0)) function dpdDTp( T, p, dpdD, icode )
 ! -----------------------------------------------------------------------------
 !
 ! FIRST DERIVATIVE OF PRESSURE WITH RESPECT TO DENSITY 
@@ -4297,7 +4298,7 @@
 !   (DO NOT TEST FOR ICE REGIONS)
 ! -----------------------------------------------------------------------------
 !
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -4324,7 +4325,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function dDdTTp( T, p, dDdT, icode )
+      REAL(KIND=KIND(0.0d0)) function dDdTTp( T, p, dDdT, icode )
 ! -----------------------------------------------------------------------------
 !
 !  FIRST DERIVATIVE OF DENSITY WITH RESPECT TO TEMPERATURE 
@@ -4339,7 +4340,7 @@
 !   (DO NOT TEST FOR ICE REGIONS)
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -4366,7 +4367,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function dpdTTp( T, p, dpdT, icode )
+      REAL(KIND=KIND(0.0d0)) function dpdTTp( T, p, dpdT, icode )
 ! -----------------------------------------------------------------------------
 !
 !  FFIRST DERIVATIVE OF PRESSURE WITH RESPECT TO TEMPERATURE 
@@ -4381,7 +4382,7 @@
 !   (DO NOT TEST FOR ICE REGIONS)
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -4415,7 +4416,7 @@
 !AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calcB(T)
+      REAL(KIND=KIND(0.0d0)) function calcB(T)
 ! -----------------------------------------------------------------------------
 !
 !  SECOND VIRIAL COEFFICIENT FUNCTION OF T
@@ -4427,7 +4428,7 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,PhirD,T,D
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,PhirD,T,D
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       D = 1.0D-10
@@ -4441,7 +4442,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calcC(T)
+      REAL(KIND=KIND(0.0d0)) function calcC(T)
 ! -----------------------------------------------------------------------------
 !
 !  THIRD VIRIAL COEFFICIENT FUNCTION OF T
@@ -4453,7 +4454,7 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,PhirDD,T,D
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,PhirDD,T,D
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       D = 1.0D-10
@@ -4467,7 +4468,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calcJTc(T,D)
+      REAL(KIND=KIND(0.0d0)) function calcJTc(T,D)
 ! -----------------------------------------------------------------------------
 !
 !  JOULE-THOMSON COEFFICIENT FUNCTION OF T AND D
@@ -4480,8 +4481,8 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D,TAU,DELTA,PhirD,PhirDD,PhioTT,PhirTT,PhirDT
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T,D,TAU,DELTA,PhirD,PhirDD,PhioTT,PhirTT,PhirDT
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
 !      if ( T .LE. 0.D0 ) then
@@ -4506,7 +4507,7 @@
       END
 !XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calcBeta(T,D)
+      REAL(KIND=KIND(0.0d0)) function calcBeta(T,D)
 ! -----------------------------------------------------------------------------
 !
 !  ISENTROPIC TEMPERATURE-PRESSURE COEFFICIENT FUNCTION OF T AND D
@@ -4519,8 +4520,8 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D,TAU,DELTA,PhirD,PhirDD,PhioTT,PhirTT,PhirDT
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF, num, den1, den2
+      REAL(KIND=KIND(0.0d0)) ::  T,D,TAU,DELTA,PhirD,PhirDD,PhioTT,PhirTT,PhirDT
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF, num, den1, den2
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       calcBeta = 0.D0
@@ -4542,7 +4543,7 @@
 
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calcG(T,D)
+      REAL(KIND=KIND(0.0d0)) function calcG(T,D)
 ! -----------------------------------------------------------------------------
 !
 !  SPECIFIC GIBBS ENERGY FUNCTION OF T AND D
@@ -4554,7 +4555,7 @@
 !
 ! -----------------------------------------------------------------------------
 !
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -4565,7 +4566,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calcp(T,D)
+      REAL(KIND=KIND(0.0d0)) function calcp(T,D)
 ! -----------------------------------------------------------------------------
 !
 !  CALCULATION OF THE PRESSURE FUNCTION OF T AND D
@@ -4578,8 +4579,8 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D,DELTA,PhirD
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T,D,DELTA,PhirD
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF                     !rev
 
       IF ((T .LE. 0.D0) .OR. (D .LE. 0.D0)) THEN
@@ -4593,7 +4594,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calcs(T,D)
+      REAL(KIND=KIND(0.0d0)) function calcs(T,D)
 ! -----------------------------------------------------------------------------
 !
 !  CALCULATION OF THE SPECIFIC ENTROPY FUNCTION OF T AND D 
@@ -4606,8 +4607,8 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D,TAU,Phio,Phir,PhioT,PhirT
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T,D,TAU,Phio,Phir,PhioT,PhirT
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       IF ((T .LE. 0.D0) .OR. (D .LE. 0.D0)) THEN
@@ -4621,7 +4622,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calch(T,D)
+      REAL(KIND=KIND(0.0d0)) function calch(T,D)
 ! -----------------------------------------------------------------------------
 !
 !  CALCULATION OF THE SPECIFIC ENTHALPY FUNCTION OF T AND D
@@ -4635,8 +4636,8 @@
 !
       IMPLICIT NONE
 
-      REAL(KIND=8) ::  T,D,TAU,DELTA,PhirD,PhioT,PhirT
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T,D,TAU,DELTA,PhirD,PhioT,PhirT
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -4652,7 +4653,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calcf(T,D)
+      REAL(KIND=KIND(0.0d0)) function calcf(T,D)
 ! -----------------------------------------------------------------------------
 !
 !  CALCULATION OF THE SPECIFIC HELMHOLTZ ENERGY FUNCTION OF T AND D
@@ -4665,8 +4666,8 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D,Phir,Phio
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T,D,Phir,Phio
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       IF ((T .LE. 0.D0) .OR. (D .LE. 0.D0)) THEN
@@ -4679,7 +4680,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calcu(T,D)
+      REAL(KIND=KIND(0.0d0)) function calcu(T,D)
 ! -----------------------------------------------------------------------------
 !
 !
@@ -4693,8 +4694,8 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D,TAU,PhioT,PhirT
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T,D,TAU,PhioT,PhirT
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       IF ((T .LE. 0.D0) .OR. (D .LE. 0.D0)) THEN
@@ -4708,7 +4709,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calcCv(T,D)
+      REAL(KIND=KIND(0.0d0)) function calcCv(T,D)
 ! -----------------------------------------------------------------------------
 !
 !  CALCULATION OF THE SPECIFIC ISOCHORIC HEAT CAPACITY FUNCTION OF T AND D
@@ -4721,8 +4722,8 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D,TAU,PhioTT,PhirTT
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T,D,TAU,PhioTT,PhirTT
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       IF ((T .LE. 0.D0) .OR. (D .LE. 0.D0)) THEN
@@ -4736,7 +4737,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calcCp(T,D)
+      REAL(KIND=KIND(0.0d0)) function calcCp(T,D)
 ! -----------------------------------------------------------------------------
 !
 !  CALCULATION OF THE SPECIFIC ISOBARIC HEAT CAPACITY FUNCTION OF T AND D
@@ -4749,8 +4750,8 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D,TAU,DELTA,PhirD,PhirDD,PhirDT,PhioTT,PhirTT
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T,D,TAU,DELTA,PhirD,PhirDD,PhirDT,PhioTT,PhirTT
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       IF ((T .LE. 0.D0) .OR. (D .LE. 0.D0)) THEN
@@ -4769,7 +4770,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calcw(T,D)
+      REAL(KIND=KIND(0.0d0)) function calcw(T,D)
 ! -----------------------------------------------------------------------------
 !
 !  CALCULATION OF THE SPEED OF SOUND FUNCTION OF T AND D 
@@ -4783,8 +4784,8 @@
 !
       IMPLICIT NONE
    
-      REAL(KIND=8) ::  T,D,TAU,DELTA,PhirD,PhirDD,PhioTT,PhirTT,PhirDT,WB2
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T,D,TAU,DELTA,PhirD,PhirDD,PhioTT,PhirTT,PhirDT,WB2
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       IF ((T .LE. 0.D0) .OR. (D .LE. 0.D0)) THEN
@@ -4807,7 +4808,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calcFuga(T,D)
+      REAL(KIND=KIND(0.0d0)) function calcFuga(T,D)
 ! -----------------------------------------------------------------------------
 !
 !  CALCULATION OF THE FUGACITY FUNCTION OF T AND D
@@ -4820,8 +4821,8 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D,DELTA,Phir,PhirD,ZB,PB,F
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T,D,DELTA,Phir,PhirD,ZB,PB,F
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       IF ((T .LE. 0.D0) .OR. (D .LE. 0.D0)) THEN
@@ -4846,7 +4847,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calcTHC(T,D)
+      REAL(KIND=KIND(0.0d0)) function calcTHC(T,D)
 ! -----------------------------------------------------------------------------
 !
 !  ISOTHERMAL THROTTLING COEFFICIENT FUNCTION OF T AND D
@@ -4859,8 +4860,8 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D,TAU,DELTA,PhirD,PhirDD,PhirDT
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T,D,TAU,DELTA,PhirD,PhirDD,PhirDT
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       IF ((T .LE. 0.D0) .OR. (D .LE. 0.D0)) THEN
@@ -4879,7 +4880,7 @@
 
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function DLEQN(T)
+      REAL(KIND=KIND(0.0d0)) function DLEQN(T)
 ! -----------------------------------------------------------------------------
 !
 ! FUNCTION FOR CALCULATING saturated liquid density   function of T
@@ -4889,9 +4890,9 @@
 !  OUTPUT:    DLEQN     DENSITY [KG / M ** 3] 
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  TNORAUX(3),YNORAUX(3),G(20,3),TPOTAUX(20,3),B(20)
-      REAL(KIND=8) ::  T,TAU,SR
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  TNORAUX(3),YNORAUX(3),G(20,3),TPOTAUX(20,3),B(20)
+      REAL(KIND=KIND(0.0d0)) ::  T,TAU,SR
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       INTEGER ISL(3),ISN(3),ISR(3),IMAXAUX(3),KEND,I,K
       COMMON / EQUAUX / TNORAUX,YNORAUX,G,TPOTAUX,ISL,ISN,ISR,IMAXAUX
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -4938,7 +4939,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function DVEQN(T)
+      REAL(KIND=KIND(0.0d0)) function DVEQN(T)
 ! -----------------------------------------------------------------------------
 !
 !  CALCULATION OF VAPOUR DENSITY FROM A EQUATION BASED ON TAU
@@ -4948,9 +4949,9 @@
 !  OUTPUT:    DVEQN     DENSITY [KG / M ** 3] 
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  TNORAUX(3),YNORAUX(3),G(20,3),TPOTAUX(20,3),B(20)
-      REAL(KIND=8) ::  T,TAU,SR
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  TNORAUX(3),YNORAUX(3),G(20,3),TPOTAUX(20,3),B(20)
+      REAL(KIND=KIND(0.0d0)) ::  T,TAU,SR
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       INTEGER ISL(3),ISN(3),ISR(3),IMAXAUX(3),KEND,I,K
       COMMON / EQUAUX / TNORAUX,YNORAUX,G,TPOTAUX,ISL,ISN,ISR,IMAXAUX
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -4996,7 +4997,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function VPEQN(T)
+      REAL(KIND=KIND(0.0d0)) function VPEQN(T)
 ! -----------------------------------------------------------------------------
 !
 ! VAPOR PRESSURE CALC. FUNCTION OF T
@@ -5008,9 +5009,9 @@
 ! -----------------------------------------------------------------------------
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  TNORAUX(3),YNORAUX(3),G(20,3),TPOTAUX(20,3),B(20)
-      REAL(KIND=8) ::  T,TAU,SR
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  TNORAUX(3),YNORAUX(3),G(20,3),TPOTAUX(20,3),B(20)
+      REAL(KIND=KIND(0.0d0)) ::  T,TAU,SR
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       INTEGER ISL(3),ISN(3),ISR(3),IMAXAUX(3),KEND,I,K
       COMMON / EQUAUX / TNORAUX,YNORAUX,G,TPOTAUX,ISL,ISN,ISR,IMAXAUX
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -5057,7 +5058,7 @@
 
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calcdpdT(T,D)
+      REAL(KIND=KIND(0.0d0)) function calcdpdT(T,D)
 ! -----------------------------------------------------------------------------
 !
 !  DERIVATIVE OF THE PRESSURE WITH RESPECT TO THE REDUCED DENSITY
@@ -5071,8 +5072,8 @@
 ! -----------------------------------------------------------------------------
 !   
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D,DELTA,TAU, PhirD, PhirDT
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T,D,DELTA,TAU, PhirD, PhirDT
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       calcdpdT = 0.D0
@@ -5093,7 +5094,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function calcdpDD(T,D)
+      REAL(KIND=KIND(0.0d0)) function calcdpDD(T,D)
 ! -----------------------------------------------------------------------------
 !
 !  DERIVATIVE OF THE PRESSURE WITH RESPECT TO THE REDUCED DENSITY F(T, D)
@@ -5107,8 +5108,8 @@
 ! -----------------------------------------------------------------------------
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D,DELTA,PhirD,PhirDD
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T,D,DELTA,PhirD,PhirDD
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       calcdpDD = 0.D0
@@ -5128,7 +5129,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function ABLRES(D,T)
+      REAL(KIND=KIND(0.0d0)) function ABLRES(D,T)
 ! -----------------------------------------------------------------------------
 !
 ! EXTERNAL FUNCTION TO CALCULATE Dp/dT DURING ITERATIONS
@@ -5139,7 +5140,7 @@
 !  OUTPUT:    ABLRES    CONNECTION TO DENSITY [(MPa * M **3) / KG ]
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  calcdpdD, D, T
+      REAL(KIND=KIND(0.0d0)) ::  calcdpdD, D, T
       ABLRES = 0.0D+0
 
       ABLRES = calcdpdD(T,D)
@@ -5155,7 +5156,7 @@
 !PHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPHPH
 
 ! ---------------------------------------------------------------------------------------------
-      REAL(KIND=8) function Phio(T,D)
+      REAL(KIND=KIND(0.0d0)) function Phio(T,D)
 ! ---------------------------------------------------------------------------------------------
 !
 !  CALCULATION OF THE IDEAL GAS PART OF THE REDUCED HELMHOLTZ ENERGY FUNCTION OF T AN D
@@ -5172,10 +5173,10 @@
       COMMON / EQUI / BNULL,BZ,B1,B2,B(18),TPOTI(18),NPOLI,NPEI,NI
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
-      REAL(KIND=8) ::  T,D
-      REAL(KIND=8) ::  BNULL,BZ,B1,B2,B,TPOTI
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  DELTA,TAU
+      REAL(KIND=KIND(0.0d0)) ::  T,D
+      REAL(KIND=KIND(0.0d0)) ::  BNULL,BZ,B1,B2,B,TPOTI
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  DELTA,TAU
       INTEGER NI,NPOLI,NPEI,NSTART,I
 
       DELTA = D / DC
@@ -5211,7 +5212,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function PhioT(T)
+      REAL(KIND=KIND(0.0d0)) function PhioT(T)
 ! -----------------------------------------------------------------------------
 !
 !  CALCULATION OF THE FIRST DERIVATIVE OF THE IDEAL GAS PART OF THE REDUCED 
@@ -5227,10 +5228,10 @@
       IMPLICIT NONE
       COMMON / EQUI / BNULL,BZ,B1,B2,B(18),TPOTI(18),NPOLI,NPEI,NI
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  T
-      REAL(KIND=8) ::  BNULL,BZ,B1,B2,B,TPOTI
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  TAU
+      REAL(KIND=KIND(0.0d0)) ::  T
+      REAL(KIND=KIND(0.0d0)) ::  BNULL,BZ,B1,B2,B,TPOTI
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  TAU
       INTEGER NI,NPOLI,NPEI,NSTART,I
 
       TAU   = TC / T
@@ -5266,7 +5267,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function PhioTT(T)
+      REAL(KIND=KIND(0.0d0)) function PhioTT(T)
 ! -----------------------------------------------------------------------------
 !
 !  CALCULATION OF THE SECOND DERIVATIVE OF THE IDEAL GAS PART OF THE REDUCED 
@@ -5283,10 +5284,10 @@
       COMMON / EQUI / BNULL,BZ,B1,B2,B(18),TPOTI(18),NPOLI,NPEI,NI
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
-      REAL(KIND=8) ::  T, tpt
-      REAL(KIND=8) ::  BNULL,BZ,B1,B2,B,TPOTI
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  TAU
+      REAL(KIND=KIND(0.0d0)) ::  T, tpt
+      REAL(KIND=KIND(0.0d0)) ::  BNULL,BZ,B1,B2,B,TPOTI
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  TAU
       INTEGER NI,NPOLI,NPEI,I
 
       TAU   = TC / T
@@ -5302,7 +5303,7 @@
       END
 
 ! --------------------------------------------------------------------------------------
-      REAL(KIND=8) function Phir(T,D)
+      REAL(KIND=KIND(0.0d0)) function Phir(T,D)
 ! --------------------------------------------------------------------------------------
 !
 !  CALCULATION OF THE RESIDUAL PART OF THE REDUCED HELMHOLTZ ENERGY FUNCTION OF T AND D
@@ -5315,14 +5316,14 @@
 ! --------------------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D
-      REAL(KIND=8) ::  A,DPOT,TPOT,GAMMA,ETA,EPSI,BETA,ALPHA
-      REAL(KIND=8) ::  DELTA,TAU
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  GBSTERM,AI,BETI,BI,CI,DI,EI,FI
-      REAL(KIND=8) ::  DELNA1,DELNA2,DELNA,PSINA,DELM1,TAUM1
-     REAL(KIND=8) ::  delta2, delta3, delta4, delta5, delta6
-     REAL(KIND=8) ::  ex1, ex2, ex3, ex4, ex5, ex6
+      REAL(KIND=KIND(0.0d0)) ::  T,D
+      REAL(KIND=KIND(0.0d0)) ::  A,DPOT,TPOT,GAMMA,ETA,EPSI,BETA,ALPHA
+      REAL(KIND=KIND(0.0d0)) ::  DELTA,TAU
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  GBSTERM,AI,BETI,BI,CI,DI,EI,FI
+      REAL(KIND=KIND(0.0d0)) ::  DELNA1,DELNA2,DELNA,PSINA,DELM1,TAUM1
+     REAL(KIND=KIND(0.0d0)) ::  delta2, delta3, delta4, delta5, delta6
+     REAL(KIND=KIND(0.0d0)) ::  ex1, ex2, ex3, ex4, ex5, ex6
       INTEGER N,NPOL,NE1,NE2,NE3,NE4,NE5,NE6,NMBWR,NGBS,NNA,NASSO,I
 
       COMMON / EQUR / A(60),TPOT(60),DPOT(60),GAMMA(60),ETA(60),     &
@@ -5482,7 +5483,7 @@
       END
 
 ! -------------------------------------------------------------------------------------------
-      REAL(KIND=8) function PhirD(T,D)
+      REAL(KIND=KIND(0.0d0)) function PhirD(T,D)
 ! -------------------------------------------------------------------------------------------
 !
 !  CALCULATION OF THE FIRST DERIVATIVE OF THE RESIDUAL PART OF THE REDUCED HELMHOLTZ ENERGY
@@ -5497,17 +5498,17 @@
 ! -------------------------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D
-      REAL(KIND=8) ::  A,DPOT,TPOT,GAMMA,ETA,EPSI,BETA,ALPHA
-      REAL(KIND=8) ::  DELTA,TAU
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  EX,EXPTERM,GBS1TERM,GBS2TERM
-      REAL(KIND=8) ::  AI,BETI,BI,CI,DI,EI,FI
-      REAL(KIND=8) ::  DELNA1,DELNA2,DELNA,PSINA,DELM1,DDDD,DDBDD,DPSDD
+      REAL(KIND=KIND(0.0d0)) ::  T,D
+      REAL(KIND=KIND(0.0d0)) ::  A,DPOT,TPOT,GAMMA,ETA,EPSI,BETA,ALPHA
+      REAL(KIND=KIND(0.0d0)) ::  DELTA,TAU
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  EX,EXPTERM,GBS1TERM,GBS2TERM
+      REAL(KIND=KIND(0.0d0)) ::  AI,BETI,BI,CI,DI,EI,FI
+      REAL(KIND=KIND(0.0d0)) ::  DELNA1,DELNA2,DELNA,PSINA,DELM1,DDDD,DDBDD,DPSDD
 
-!     REAL(KIND=8) ::  PhirD
-     REAL(KIND=8) ::  delta2, delta3, delta4, delta5, delta6
-     REAL(KIND=8) ::  delna11, delna12
+!     REAL(KIND=KIND(0.0d0)) ::  PhirD
+     REAL(KIND=KIND(0.0d0)) ::  delta2, delta3, delta4, delta5, delta6
+     REAL(KIND=KIND(0.0d0)) ::  delna11, delna12
       INTEGER N,NPOL,NE1,NE2,NE3,NE4,NE5,NE6,NMBWR,NGBS,NNA,NASSO,I
 
       COMMON / EQUR / A(60),TPOT(60),DPOT(60),GAMMA(60),ETA(60),   &
@@ -5668,7 +5669,7 @@
       END
 
 ! ----------------------------------------------------------------------------------------
-      REAL(KIND=8) function PhirDD(T,D)
+      REAL(KIND=KIND(0.0d0)) function PhirDD(T,D)
 ! ----------------------------------------------------------------------------------------
 !
 !  SECOND DERIVATIVE OF THE RESIDUAL PART OF THE REDUCED HELMHOLTZ ENERGY
@@ -5683,15 +5684,15 @@
 ! ----------------------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D
-      REAL(KIND=8) ::  A,DPOT,TPOT,GAMMA,ETA,EPSI,BETA,ALPHA
-      REAL(KIND=8) ::  DELTA,TAU
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  delta2, delta3, delta4, delta5, delta6
-      REAL(KIND=8) ::  EX,EXPTERM,GBS1TERM,GBS2TERM,GBS3TERM
-      REAL(KIND=8) ::  AI,BETI,BI,CI,DI,EI,FI
-      REAL(KIND=8) ::  DELNA1,DELNA2,DELNA,PSINA,DELM1,DDDD,DDBDD,DPSDD
-      REAL(KIND=8) ::  DDDD2,DDBDD2,DPSDD2
+      REAL(KIND=KIND(0.0d0)) ::  T,D
+      REAL(KIND=KIND(0.0d0)) ::  A,DPOT,TPOT,GAMMA,ETA,EPSI,BETA,ALPHA
+      REAL(KIND=KIND(0.0d0)) ::  DELTA,TAU
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  delta2, delta3, delta4, delta5, delta6
+      REAL(KIND=KIND(0.0d0)) ::  EX,EXPTERM,GBS1TERM,GBS2TERM,GBS3TERM
+      REAL(KIND=KIND(0.0d0)) ::  AI,BETI,BI,CI,DI,EI,FI
+      REAL(KIND=KIND(0.0d0)) ::  DELNA1,DELNA2,DELNA,PSINA,DELM1,DDDD,DDBDD,DPSDD
+      REAL(KIND=KIND(0.0d0)) ::  DDDD2,DDBDD2,DPSDD2
       INTEGER N,NPOL,NE1,NE2,NE3,NE4,NE5,NE6,NMBWR,NGBS,NNA,NASSO,I
 
       COMMON / EQUR / A(60),TPOT(60),DPOT(60),GAMMA(60),ETA(60),   &
@@ -5898,7 +5899,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function PhirT(T,D)
+      REAL(KIND=KIND(0.0d0)) function PhirT(T,D)
 ! -----------------------------------------------------------------------------
 !  
 !  CALCULATION OF THE FIRST DERIVATIVE OF THE RESIDUAL PART OF THE REDUCED 
@@ -5917,15 +5918,15 @@
                      EPSI(60),BETA(60),ALPHA(60),    &
                     N,NPOL,NE1,NE2,NE3,NE4,NE5,NE6,NGBS,NNA,NASSO
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  T,D
-      REAL(KIND=8) ::  A,DPOT,TPOT,GAMMA,ETA,EPSI,BETA,ALPHA
-      REAL(KIND=8) ::  DELTA,TAU
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  GBS1TERM,GBS2TERM
-      REAL(KIND=8) ::  AI,BETI,BI,CI,DI,EI,FI
-      REAL(KIND=8) ::  DELNA1,DELNA2,DELNA,PSINA,DELM1,DDBDT,DPSDT,TAUM1
-     REAL(KIND=8) ::  delta2, delta3, delta4, delta5, delta6
-     REAL(KIND=8) ::  ex1, ex2, ex3, ex4, ex5, ex6
+      REAL(KIND=KIND(0.0d0)) ::  T,D
+      REAL(KIND=KIND(0.0d0)) ::  A,DPOT,TPOT,GAMMA,ETA,EPSI,BETA,ALPHA
+      REAL(KIND=KIND(0.0d0)) ::  DELTA,TAU
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  GBS1TERM,GBS2TERM
+      REAL(KIND=KIND(0.0d0)) ::  AI,BETI,BI,CI,DI,EI,FI
+      REAL(KIND=KIND(0.0d0)) ::  DELNA1,DELNA2,DELNA,PSINA,DELM1,DDBDT,DPSDT,TAUM1
+     REAL(KIND=KIND(0.0d0)) ::  delta2, delta3, delta4, delta5, delta6
+     REAL(KIND=KIND(0.0d0)) ::  ex1, ex2, ex3, ex4, ex5, ex6
       INTEGER N,NPOL,NE1,NE2,NE3,NE4,NE5,NE6,NMBWR,NGBS,NNA,NASSO,I
 
       PhirT = -0.D0
@@ -6074,7 +6075,7 @@
       END
 
 ! ---------------------------------------------------------------------------------------------
-      REAL(KIND=8) function PhirTT(T,D)
+      REAL(KIND=KIND(0.0d0)) function PhirTT(T,D)
 ! ---------------------------------------------------------------------------------------------
 !
 !  CALCULATION OF THE SECOND DERIVATIVE OF THE RESIDUAL PART OF THE REDUCED 
@@ -6094,15 +6095,15 @@
                       N,NPOL,NE1,NE2,NE3,NE4,NE5,NE6,NGBS,NNA,NASSO
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
-      REAL(KIND=8) ::  T,D
-      REAL(KIND=8) ::  A,DPOT,TPOT,GAMMA,ETA,EPSI,BETA,ALPHA
-      REAL(KIND=8) ::  DELTA,TAU
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  EX,GBS1TERM,GBS2TERM,GBS3TERM
-      REAL(KIND=8) ::  AI,BETI,BI,CI,DI,EI,FI
-      REAL(KIND=8) ::  DELNA1,DELNA2,DELNA,PSINA,DELM1,DDBDT,DPSDT
-      REAL(KIND=8) ::  DDBDTT,DPSDTT,TAUM1
-     REAL(KIND=8) ::  delta2, delta3, delta4, delta5, delta6
+      REAL(KIND=KIND(0.0d0)) ::  T,D
+      REAL(KIND=KIND(0.0d0)) ::  A,DPOT,TPOT,GAMMA,ETA,EPSI,BETA,ALPHA
+      REAL(KIND=KIND(0.0d0)) ::  DELTA,TAU
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  EX,GBS1TERM,GBS2TERM,GBS3TERM
+      REAL(KIND=KIND(0.0d0)) ::  AI,BETI,BI,CI,DI,EI,FI
+      REAL(KIND=KIND(0.0d0)) ::  DELNA1,DELNA2,DELNA,PSINA,DELM1,DDBDT,DPSDT
+      REAL(KIND=KIND(0.0d0)) ::  DDBDTT,DPSDTT,TAUM1
+     REAL(KIND=KIND(0.0d0)) ::  delta2, delta3, delta4, delta5, delta6
       INTEGER N,NPOL,NE1,NE2,NE3,NE4,NE5,NE6,NMBWR,NGBS,NNA,NASSO,I
 
       PhirTT = 0.D0
@@ -6278,7 +6279,7 @@
       END
 
 ! ----------------------------------------------------------------------------------------
-      REAL(KIND=8) function PhirDT(T,D)
+      REAL(KIND=KIND(0.0d0)) function PhirDT(T,D)
 ! ----------------------------------------------------------------------------------------
 !
 !  CALCULATION OF THE DERIVATIVE OF THE RESIDUAL PART OF THE REDUCED HELMHOLTZ ENERGY WITH
@@ -6298,15 +6299,15 @@
                       N,NPOL,NE1,NE2,NE3,NE4,NE5,NE6,NGBS,NNA,NASSO
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
-      REAL(KIND=8) ::  T,D
-      REAL(KIND=8) ::  A,DPOT,TPOT,GAMMA,ETA,EPSI,BETA,ALPHA
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  DELTA,TAU
-      REAL(KIND=8) ::  delta2, delta3, delta4, delta5, delta6
-      REAL(KIND=8) ::  EX,EXPTERM,GBS1TERM,GBS2TERM,GBS3TERM
-      REAL(KIND=8) ::  AI,BETI,BI,CI,DI,EI,FI
-      REAL(KIND=8) ::  DELNA1,DELNA2,DELNA,PSINA,DELM1,DDDD,DDBDD,DPSDD
-      REAL(KIND=8) ::  DDBDT,DDBDDT,DPSDT,DPSDDT,TAUM1
+      REAL(KIND=KIND(0.0d0)) ::  T,D
+      REAL(KIND=KIND(0.0d0)) ::  A,DPOT,TPOT,GAMMA,ETA,EPSI,BETA,ALPHA
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  DELTA,TAU
+      REAL(KIND=KIND(0.0d0)) ::  delta2, delta3, delta4, delta5, delta6
+      REAL(KIND=KIND(0.0d0)) ::  EX,EXPTERM,GBS1TERM,GBS2TERM,GBS3TERM
+      REAL(KIND=KIND(0.0d0)) ::  AI,BETI,BI,CI,DI,EI,FI
+      REAL(KIND=KIND(0.0d0)) ::  DELNA1,DELNA2,DELNA,PSINA,DELM1,DDDD,DDBDD,DPSDD
+      REAL(KIND=KIND(0.0d0)) ::  DDBDT,DDBDDT,DPSDT,DPSDDT,TAUM1
       INTEGER N,NPOL,NE1,NE2,NE3,NE4,NE5,NE6,NMBWR,NGBS,NNA,NASSO,I
 
       IF ((T .LE. 0.D0) .OR. (D .LE. 0.D0)) THEN
@@ -6524,18 +6525,18 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,DV,DL,P,EPS
-      REAL(KIND=8) ::    R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  DVMAX,DLMIN,DITPRES,CRMXWRES,ABLRES
-      REAL(KIND=8) ::  VPEQN,DLEQN,DVEQN,calcp,Phir,calcdpdD
-      REAL(KIND=8) ::  TCE,DCE,PCE,PSOLD,DLOLD,DVOLD,PDVOLD,PMOLD
-      REAL(KIND=8) ::  DVN,DLN,PDVN,PDLN,PMN,ALPADL,ALPADV,DLV,PLV
-      REAL(KIND=8) ::  AAA,BBB,CCC,EEE,VZTEST,VZW,DELTAL,DELTAV
-      REAL(KIND=8) ::  T1,P1,D1,ABLTEST,DVMA,DVMB,DLMA,DLMB,X,PA,PB
-      REAL(KIND=8) ::  DVAT,DV1A,DV1B,DV1,DLAT,DL1A,DL1B,DL1
-      REAL(KIND=8) ::  P2,DV2A,DV2B,DL2A,DL2B,DV2,DL2,F1,F2,RES,DVITOLD
-      REAL(KIND=8) ::  P3,DV3A,DV3B,DL3A,DL3B,DV3,DL3,F3,DDV,DDL,DD,PTEST
-      REAL(KIND=8) ::  DPS,EPSCR,DVA,DVB,DLA,DLB,TSOLD,VPITOLD,DLITOLD
+      REAL(KIND=KIND(0.0d0)) ::  T,DV,DL,P,EPS
+      REAL(KIND=KIND(0.0d0)) ::    R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  DVMAX,DLMIN,DITPRES,CRMXWRES,ABLRES
+      REAL(KIND=KIND(0.0d0)) ::  VPEQN,DLEQN,DVEQN,calcp,Phir,calcdpdD
+      REAL(KIND=KIND(0.0d0)) ::  TCE,DCE,PCE,PSOLD,DLOLD,DVOLD,PDVOLD,PMOLD
+      REAL(KIND=KIND(0.0d0)) ::  DVN,DLN,PDVN,PDLN,PMN,ALPADL,ALPADV,DLV,PLV
+      REAL(KIND=KIND(0.0d0)) ::  AAA,BBB,CCC,EEE,VZTEST,VZW,DELTAL,DELTAV
+      REAL(KIND=KIND(0.0d0)) ::  T1,P1,D1,ABLTEST,DVMA,DVMB,DLMA,DLMB,X,PA,PB
+      REAL(KIND=KIND(0.0d0)) ::  DVAT,DV1A,DV1B,DV1,DLAT,DL1A,DL1B,DL1
+      REAL(KIND=KIND(0.0d0)) ::  P2,DV2A,DV2B,DL2A,DL2B,DV2,DL2,F1,F2,RES,DVITOLD
+      REAL(KIND=KIND(0.0d0)) ::  P3,DV3A,DV3B,DL3A,DL3B,DV3,DL3,F3,DDV,DDL,DD,PTEST
+      REAL(KIND=KIND(0.0d0)) ::  DPS,EPSCR,DVA,DVB,DLA,DLB,TSOLD,VPITOLD,DLITOLD
       INTEGER I,IX,ISTART,ITCM,ISUBAKT,ISUBOLD,IEQUAL,ISTARTL
       INTEGER IPCE
       integer imax, imax2, imax3
@@ -7291,16 +7292,16 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,DV,DL,P,EPS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  DITPRES,MXWPRES,DLEQN,DVEQN,VPEQN,TVPIT,calcdpdD
-      REAL(KIND=8) ::  Phir,TCE,DCE,PCE,T1,TG,DVG,DLG,PG,DVAT,DV1A,DV1B
-      REAL(KIND=8) ::  X,ABLTEST,DV1,DLAT,DL1A,DL1B,DL1,T2,DV2A,DV2B
-      REAL(KIND=8) ::  DV2,DL2A,DL2B,DL2,F1,F2,T3,DV3A,DV3B,DV3,DL3A
-      REAL(KIND=8) ::  DL3B,DL3,F3,DDL,DDV,DD,DTS,TMH,DVMH,DLMH,PMH,TOH
-      REAL(KIND=8) ::  DVOH,DLOH,POH,TS1,TS2,TOH2,DVOH2,DLOH2,POH2,TUH
-      REAL(KIND=8) ::  DVUH,DLUH,PUH,XT,TH,DVH,DLH,PH,RES,PSOLD,TSOLD
-      REAL(KIND=8) ::  DVOLD,DLOLD,PDIFF
+      REAL(KIND=KIND(0.0d0)) ::  T,DV,DL,P,EPS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  DITPRES,MXWPRES,DLEQN,DVEQN,VPEQN,TVPIT,calcdpdD
+      REAL(KIND=KIND(0.0d0)) ::  Phir,TCE,DCE,PCE,T1,TG,DVG,DLG,PG,DVAT,DV1A,DV1B
+      REAL(KIND=KIND(0.0d0)) ::  X,ABLTEST,DV1,DLAT,DL1A,DL1B,DL1,T2,DV2A,DV2B
+      REAL(KIND=KIND(0.0d0)) ::  DV2,DL2A,DL2B,DL2,F1,F2,T3,DV3A,DV3B,DV3,DL3A
+      REAL(KIND=KIND(0.0d0)) ::  DL3B,DL3,F3,DDL,DDV,DD,DTS,TMH,DVMH,DLMH,PMH,TOH
+      REAL(KIND=KIND(0.0d0)) ::  DVOH,DLOH,POH,TS1,TS2,TOH2,DVOH2,DLOH2,POH2,TUH
+      REAL(KIND=KIND(0.0d0)) ::  DVUH,DLUH,PUH,XT,TH,DVH,DLH,PH,RES,PSOLD,TSOLD
+      REAL(KIND=KIND(0.0d0)) ::  DVOLD,DLOLD,PDIFF
       INTEGER I,IX,ISUBOLD,ISUBAKT
 
       EXTERNAL DITPRES,MXWPRES
@@ -7714,18 +7715,18 @@
 !--------------------------------------------------------------------------------------------
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,DV,DL,P,EPS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  DVMAX,DLMIN,DITPRES,CRMXWRES,ABLRES
-      REAL(KIND=8) ::  VPEQN,DLEQN,DVEQN,calcp,Phir,calcdpdD,PDEV
-      REAL(KIND=8) ::  TCE,DCE,PCE,PSOLD,DLOLD,DVOLD,PDVOLD,PMOLD
-      REAL(KIND=8) ::  DVN,DLN,PDVN,PDLN,PMN,ALPADL,ALPADV,DLV,PLV
-      REAL(KIND=8) ::  AAA,BBB,CCC,EEE,VZTEST,VZW,DELTAL,DELTAV
-      REAL(KIND=8) ::  T1,P1,D1,ABLTEST,DVMA,DVMB,DLMA,DLMB,X,PA,PB
-      REAL(KIND=8) ::  DVAT,DV1A,DV1B,PTEST,DV1,DLAT,DL1A,DL1B,DL1
-      REAL(KIND=8) ::  P2,DV2A,DV2B,DL2A,DL2B,DV2,DL2,F1,F2,RES
-      REAL(KIND=8) ::  P3,DV3A,DV3B,DL3A,DL3B,DV3,DL3,F3,DDV,DDL,DD
-      REAL(KIND=8) ::  DPS,EPSCR,DVA,DVB,DLA,DLB,X1,X2,P2OLD
+      REAL(KIND=KIND(0.0d0)) ::  T,DV,DL,P,EPS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  DVMAX,DLMIN,DITPRES,CRMXWRES,ABLRES
+      REAL(KIND=KIND(0.0d0)) ::  VPEQN,DLEQN,DVEQN,calcp,Phir,calcdpdD,PDEV
+      REAL(KIND=KIND(0.0d0)) ::  TCE,DCE,PCE,PSOLD,DLOLD,DVOLD,PDVOLD,PMOLD
+      REAL(KIND=KIND(0.0d0)) ::  DVN,DLN,PDVN,PDLN,PMN,ALPADL,ALPADV,DLV,PLV
+      REAL(KIND=KIND(0.0d0)) ::  AAA,BBB,CCC,EEE,VZTEST,VZW,DELTAL,DELTAV
+      REAL(KIND=KIND(0.0d0)) ::  T1,P1,D1,ABLTEST,DVMA,DVMB,DLMA,DLMB,X,PA,PB
+      REAL(KIND=KIND(0.0d0)) ::  DVAT,DV1A,DV1B,PTEST,DV1,DLAT,DL1A,DL1B,DL1
+      REAL(KIND=KIND(0.0d0)) ::  P2,DV2A,DV2B,DL2A,DL2B,DV2,DL2,F1,F2,RES
+      REAL(KIND=KIND(0.0d0)) ::  P3,DV3A,DV3B,DL3A,DL3B,DV3,DL3,F3,DDV,DDL,DD
+      REAL(KIND=KIND(0.0d0)) ::  DPS,EPSCR,DVA,DVB,DLA,DLB,X1,X2,P2OLD
       COMMON / DEXTREM / DVMAX,DLMIN
 
       INTEGER I,IX,ISTART,ITCM,IEQUAL,ISTARTL
@@ -8452,14 +8453,14 @@
       SUBROUTINE DLSATIT(T,DV,DL,P,EPS)
 !---------------------------------------------------------------------
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,DV,DL,P,EPS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  DITPRES,TIPDRES,MXWDLRES,VPEQN,DVEQN,DLEQN
-      REAL(KIND=8) ::  TDLIT,calcp,calcdpdD,TCE,PCE,DCE,T1,TG,DVG,DLG,PG
-      REAL(KIND=8) ::  X,P1,DVAT,DV1A,DV1B,DV1M,ABLTEST,DV1,RES,T2
-      REAL(KIND=8) ::  P2,DV2A,DV2B,DV2,T2A,T2B,F1,F2,DV3A,DV3B,DV3
-      REAL(KIND=8) ::  T3,P3,F3,G,DTS,DPS,DDV,TS1,TS2,TH,DVH,DLH,PH
-      REAL(KIND=8) ::  DL1,DL2,DL3,XT,TSOLD,PSOLD,DLOLD,DVOLD
+      REAL(KIND=KIND(0.0d0)) ::  T,DV,DL,P,EPS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  DITPRES,TIPDRES,MXWDLRES,VPEQN,DVEQN,DLEQN
+      REAL(KIND=KIND(0.0d0)) ::  TDLIT,calcp,calcdpdD,TCE,PCE,DCE,T1,TG,DVG,DLG,PG
+      REAL(KIND=KIND(0.0d0)) ::  X,P1,DVAT,DV1A,DV1B,DV1M,ABLTEST,DV1,RES,T2
+      REAL(KIND=KIND(0.0d0)) ::  P2,DV2A,DV2B,DV2,T2A,T2B,F1,F2,DV3A,DV3B,DV3
+      REAL(KIND=KIND(0.0d0)) ::  T3,P3,F3,G,DTS,DPS,DDV,TS1,TS2,TH,DVH,DLH,PH
+      REAL(KIND=KIND(0.0d0)) ::  DL1,DL2,DL3,XT,TSOLD,PSOLD,DLOLD,DVOLD
       INTEGER I,IX
       INTEGER ISUBAKT,ISUBOLD
 
@@ -8878,7 +8879,7 @@
 
 
 ! ---------------------------------------------------------------------------------------
-      REAL(KIND=8) function TDLIT(D)
+      REAL(KIND=KIND(0.0d0)) function TDLIT(D)
 ! ---------------------------------------------------------------------------------------
 !
 !  ITERATION DER TEMPERATUR FROM A SAT. DENSITY EQUATION
@@ -8890,8 +8891,8 @@
 ! ---------------------------------------------------------------------------------------
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  D,DH,TH,DLEQN,DLHRES,X,T1,T2
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  D,DH,TH,DLEQN,DLHRES,X,T1,T2
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       INTEGER IX
       EXTERNAL DLHRES
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -8933,15 +8934,15 @@
       SUBROUTINE DVSATIT(T,DV,DL,P,EPS)
 !----------------------------------------------------------------------
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,DV,DL,P,EPS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  DITPRES,MXWDVRES,VPEQN,DVEQN,DLEQN,calcp,calcdpdD
-      REAL(KIND=8) ::  Phir,TDVIT,TCE,DCE,PCE,T1,TG,DVG,DLG,PG,P1,DLAT
-      REAL(KIND=8) ::  DL1A,DL1B,X,ABLTEST,DL1,T2,P2,DL2A,DL2B,DL2,RES
-      REAL(KIND=8) ::  F1,F2,T3,P3,DL3A,DL3B,DL3,F3,DPS,DTS,DDL,TMH,DVMH
-      REAL(KIND=8) ::  DLMH,PMH,TOH,DVOH,DLOH,POH,TOH2,DVOH2,DLOH2,POH2
-      REAL(KIND=8) ::  TUH,DVUH,DLUH,PUH,TS1,TS2,XT,TH,DVH,DLH,PH
-      REAL(KIND=8) ::  TSOLD,PSOLD,DVOLD,DLOLD
+      REAL(KIND=KIND(0.0d0)) ::  T,DV,DL,P,EPS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  DITPRES,MXWDVRES,VPEQN,DVEQN,DLEQN,calcp,calcdpdD
+      REAL(KIND=KIND(0.0d0)) ::  Phir,TDVIT,TCE,DCE,PCE,T1,TG,DVG,DLG,PG,P1,DLAT
+      REAL(KIND=KIND(0.0d0)) ::  DL1A,DL1B,X,ABLTEST,DL1,T2,P2,DL2A,DL2B,DL2,RES
+      REAL(KIND=KIND(0.0d0)) ::  F1,F2,T3,P3,DL3A,DL3B,DL3,F3,DPS,DTS,DDL,TMH,DVMH
+      REAL(KIND=KIND(0.0d0)) ::  DLMH,PMH,TOH,DVOH,DLOH,POH,TOH2,DVOH2,DLOH2,POH2
+      REAL(KIND=KIND(0.0d0)) ::  TUH,DVUH,DLUH,PUH,TS1,TS2,XT,TH,DVH,DLH,PH
+      REAL(KIND=KIND(0.0d0)) ::  TSOLD,PSOLD,DVOLD,DLOLD
       INTEGER I,IX,ISUBAKT,ISUBOLD
 
       EXTERNAL DITPRES,MXWDVRES
@@ -9285,7 +9286,7 @@
 !
 !   STEAM QUALITY
 !
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
 
       XTP = 2.D0
 
@@ -9311,7 +9312,7 @@
 
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function CRMXWRES(PM,TM)
+      REAL(KIND=KIND(0.0d0)) function CRMXWRES(PM,TM)
 ! -----------------------------------------------------------------------------
 !
 ! ROUTINE FOR DETERMINING THE DIFFERENCE BETWEEN FUGACITY ON BOILING
@@ -9325,8 +9326,8 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  DVMAX,DLMIN,DVM,TM,DLM,PM,calcp,PTEST,calcFuga
-      REAL(KIND=8) ::  DVM1,DVM2,DLM1,DLM2,DITPRES,X,FUG1,FUG2
+      REAL(KIND=KIND(0.0d0)) ::  DVMAX,DLMIN,DVM,TM,DLM,PM,calcp,PTEST,calcFuga
+      REAL(KIND=KIND(0.0d0)) ::  DVM1,DVM2,DLM1,DLM2,DITPRES,X,FUG1,FUG2
       INTEGER IX
       EXTERNAL DITPRES
       COMMON / DEXTREM / DVMAX,DLMIN
@@ -9396,8 +9397,8 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  DVM,TM,RES,DLM,PM
-      REAL(KIND=8) ::  Phir, R,TC,PC,DC,HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR,FL,FV, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  DVM,TM,RES,DLM,PM
+      REAL(KIND=KIND(0.0d0)) ::  Phir, R,TC,PC,DC,HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR,FL,FV, CNDRF, VISRF
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       FL = Phir(TM,DLM)
@@ -9410,7 +9411,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function TVPIT(P)
+      REAL(KIND=KIND(0.0d0)) function TVPIT(P)
 ! -----------------------------------------------------------------------------
 !
 !  VAPOR TEMPERATURE FROM A VAPOR PRESSURE EQUATION   FUNCTION OF P
@@ -9421,9 +9422,9 @@
 ! -----------------------------------------------------------------------------
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  P,PH,TH,VPEQN,VPHRES,X,T1,T2
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  PCE,TCE
+      REAL(KIND=KIND(0.0d0)) ::  P,PH,TH,VPEQN,VPHRES,X,T1,T2
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  PCE,TCE
       INTEGER IX
 
       EXTERNAL VPHRES
@@ -9468,7 +9469,7 @@
 
 
 ! ---------------------------------------------------------------------------------------
-      REAL(KIND=8) function MXWPRES(T,P)
+      REAL(KIND=KIND(0.0d0)) function MXWPRES(T,P)
 ! ---------------------------------------------------------------------------------------
 !
 !   DIFFERENCE BETWEEN A GIVEN AND A CALCULATED VAPOR PRESSURE FROM TSATITZ
@@ -9479,7 +9480,7 @@
 !  OUTPUT:    MXWPRES   DIFFERENCE OF PRESSURES [MPa]
 ! ---------------------------------------------------------------------------------------
       IMPLICIT NONE
-      REAL(KIND=8) ::  DVM,T,DLM,PM,P
+      REAL(KIND=KIND(0.0d0)) ::  DVM,T,DLM,PM,P
 
       CALL TSATITZ(T,DVM,DLM,PM,1.D-9)
 
@@ -9489,7 +9490,7 @@
       END
 
 ! ---------------------------------------------------------------------------------------
-      REAL(KIND=8) function TIDH2RES(TZ,D,H)
+      REAL(KIND=KIND(0.0d0)) function TIDH2RES(TZ,D,H)
 ! ---------------------------------------------------------------------------------------
 !
 !  DIFFERENCE BETWEEN A   GIVEN AND A CALCULATED VALUE OF ENTHALPY IN TWO PHASE REGION
@@ -9498,7 +9499,7 @@
 ! ---------------------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  TZ,D,H,DV,DL,V1,V2,V,X,HL,HV,HH,calch,P
+      REAL(KIND=KIND(0.0d0)) ::  TZ,D,H,DV,DL,V1,V2,V,X,HL,HV,HH,calch,P
 
       CALL TSATIT(TZ,DV,DL,P,1.D-6)
       V1 = 1.D0 / DL
@@ -9515,7 +9516,7 @@
       END
 
 ! ---------------------------------------------------------------------------------------
-      REAL(KIND=8) function TDVIT(D)
+      REAL(KIND=KIND(0.0d0)) function TDVIT(D)
 ! ---------------------------------------------------------------------------------------
 !
 ! SAT. TEMPERATUREFUNCTION OF VAPOR DENSITY
@@ -9527,8 +9528,8 @@
 ! ---------------------------------------------------------------------------------------
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  D,DH,TH,DVEQN,DVHRES,X,T1,T2
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  D,DH,TH,DVEQN,DVHRES,X,T1,T2
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       INTEGER IX
       EXTERNAL DVHRES
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -9566,7 +9567,7 @@
       END
 
 !---------------------------------------------------------------------
-      REAL(KIND=8) function TIDS2RES(TZ,D,S)
+      REAL(KIND=KIND(0.0d0)) function TIDS2RES(TZ,D,S)
 !---------------------------------------------------------------------
 !
 !  DIFFERENCE BETWEEN A GIVEN AND A CALCULATED VALUE FOR ENTROPY IN
@@ -9575,7 +9576,7 @@
 !---------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  TZ,D,S,DV,DL,V1,V2,V,X,SL,SV,SH,calcs,P
+      REAL(KIND=KIND(0.0d0)) ::  TZ,D,S,DV,DL,V1,V2,V,X,SL,SV,SH,calcs,P
 
       CALL TSATIT(TZ,DV,DL,P,1.D-6)
       V1 = 1.D0 / DL
@@ -9592,7 +9593,7 @@
       END
 
 !---------------------------------------------------------------------
-      REAL(KIND=8) function DVHRES(T,D)
+      REAL(KIND=KIND(0.0d0)) function DVHRES(T,D)
 !---------------------------------------------------------------------
 !
 !  DIFFERENCE BETWEEN A GIVEN AND A CALCULATED VALUE FOR VAPOR DENSITY,
@@ -9603,8 +9604,8 @@
       IMPLICIT NONE
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
-      REAL(KIND=8) ::  T,D,DV,DVEQN
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T,D,DV,DVEQN
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
       DV = DVEQN(T)
       IF ((DV .LT. 0.0D+0) .AND. (DABS(T-TC) .LT. 1.D-06)) THEN
@@ -9617,7 +9618,7 @@
       END
 
 !---------------------------------------------------------------------
-      REAL(KIND=8) function DLHRES(T,D)
+      REAL(KIND=KIND(0.0d0)) function DLHRES(T,D)
 !---------------------------------------------------------------------
 !
 !  DIFFERENCE BETWEEN A GIVEN AND A CALCULATED VALUE FOR SATURATED LIQUID
@@ -9626,7 +9627,7 @@
 !---------------------------------------------------------------------
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,D,DL,DLEQN
+      REAL(KIND=KIND(0.0d0)) ::  T,D,DL,DLEQN
 
       DL = DLEQN(T)
       DLHRES = D - DL
@@ -9635,7 +9636,7 @@
       END
 
 !---------------------------------------------------------------------
-      REAL(KIND=8) function MXWDLRES(T,DL)
+      REAL(KIND=KIND(0.0d0)) function MXWDLRES(T,DL)
 !---------------------------------------------------------------------
 !
 !  DIFFERENCE BETWEEN A   GIVEN AND A CALCULATED VALUE FOR 
@@ -9650,7 +9651,7 @@
 !---------------------------------------------------------------------
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  DVM,T,DLM,PM,DL
+      REAL(KIND=KIND(0.0d0)) ::  DVM,T,DLM,PM,DL
 
 ! ITERATION OF PHASE LIMITS FOR GIVEN TEMPERATURE
 
@@ -9662,7 +9663,7 @@
       END
 
 !---------------------------------------------------------------------
-      REAL(KIND=8) function MXWDVRES(T,DV)
+      REAL(KIND=KIND(0.0d0)) function MXWDVRES(T,DV)
 !---------------------------------------------------------------------
 !
 !  DIFFERENCE BETWEEN A   GIVEN AND A CALCULATED VALUE FOR 
@@ -9677,7 +9678,7 @@
 !---------------------------------------------------------------------
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  DVM,T,DLM,PM,DV
+      REAL(KIND=KIND(0.0d0)) ::  DVM,T,DLM,PM,DV
 
 ! ITERATION PHASE LIMIT FOR GIVEN TEMPERATURE
 
@@ -9707,11 +9708,11 @@
 ! ---------------------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  S,T,DV,DL,P,EPS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  SCRIT
-      REAL(KIND=8) ::  T1,T2,SVSATRES,X,TSOLD,PSOLD,DLOLD,DVOLD,SOLD,calcs
-      REAL(KIND=8) ::  TSTART,SVSTART,DLSTART,PSTART,DVSTART,TOLD,SVOLD
+      REAL(KIND=KIND(0.0d0)) ::  S,T,DV,DL,P,EPS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  SCRIT
+      REAL(KIND=KIND(0.0d0)) ::  T1,T2,SVSATRES,X,TSOLD,PSOLD,DLOLD,DVOLD,SOLD,calcs
+      REAL(KIND=KIND(0.0d0)) ::  TSTART,SVSTART,DLSTART,PSTART,DVSTART,TOLD,SVOLD
       INTEGER IT
 
       EXTERNAL SVSATRES
@@ -9811,11 +9812,11 @@
 ! ---------------------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  S,T,DV,DL,P,EPS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,TINOLD,TIN2OLD
-      REAL(KIND=8) ::  TIN,SDIFF1,SDIFF2,TIN2
-      REAL(KIND=8) ::  T1,T2,SVSATRES,X,TSOLD,PSOLD,DLOLD,DVOLD,SOLD,calcs
-      REAL(KIND=8) ::  TSTART,SVSTART,DLSTART,PSTART,DVSTART,TOLD,SVOLD
+      REAL(KIND=KIND(0.0d0)) ::  S,T,DV,DL,P,EPS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,TINOLD,TIN2OLD
+      REAL(KIND=KIND(0.0d0)) ::  TIN,SDIFF1,SDIFF2,TIN2
+      REAL(KIND=KIND(0.0d0)) ::  T1,T2,SVSATRES,X,TSOLD,PSOLD,DLOLD,DVOLD,SOLD,calcs
+      REAL(KIND=KIND(0.0d0)) ::  TSTART,SVSTART,DLSTART,PSTART,DVSTART,TOLD,SVOLD
       INTEGER IT
 
       EXTERNAL SVSATRES
@@ -9898,7 +9899,7 @@
       END
 
 ! ---------------------------------------------------------------------------------------
-      REAL(KIND=8) function SVSATRES(TZ,S)
+      REAL(KIND=KIND(0.0d0)) function SVSATRES(TZ,S)
 ! ---------------------------------------------------------------------------------------
 !
 !   DIFFERENCE BETWEEN A GIVEN AND A CALCULATED VALUE FOR ENTROPY ON SATURATION
@@ -9912,7 +9913,7 @@
 ! ---------------------------------------------------------------------------------------
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  TZ,S,calcs,DV,DL,P
+      REAL(KIND=KIND(0.0d0)) ::  TZ,S,calcs,DV,DL,P
 
 ! ITERATION PHASE LIMIT FOR GIVEN TEMPERATURE
 
@@ -9924,7 +9925,7 @@
       END
 
 ! ---------------------------------------------------------------------------------------
-      REAL(KIND=8) function TDIHS2RES(TZ,H,S)
+      REAL(KIND=KIND(0.0d0)) function TDIHS2RES(TZ,H,S)
 ! ---------------------------------------------------------------------------------------
 !
 !   DIFFERENCE BETWEEN A GIVEN AND A CALCULATED VALUE OF ENTHALPY IM TWO PHASE REGION
@@ -9933,7 +9934,7 @@
 ! ---------------------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  TZ,H,S,calch,calcs,SL,SV,HL,HV,XZ,DLZ,DVZ,HBER,PZ
+      REAL(KIND=KIND(0.0d0)) ::  TZ,H,S,calch,calcs,SL,SV,HL,HV,XZ,DLZ,DVZ,HBER,PZ
 
       CALL TSATIT(TZ,DVZ,DLZ,PZ,1.D-9)
       SL = calcs(TZ,DLZ)
@@ -9965,12 +9966,12 @@
 ! ---------------------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  S,T,DV,DL,P,EPS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  T1,T2,SVSATRES,X,TSOLD,PSOLD,DLOLD,DVOLD,SOLD,calcs
-      REAL(KIND=8) ::  TSTART,SVSTART,DLSTART,PSTART,DVSTART,TOLD,SVOLD
-      REAL(KIND=8) ::  HHMAX,SHMAX,HSMAX,SSMAX,HSMIN,SSMIN,TSMIN,TSMAX
-      REAL(KIND=8) ::  TNEU,DVNEU,DLNEU,PNEU,SVNEU
+      REAL(KIND=KIND(0.0d0)) ::  S,T,DV,DL,P,EPS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T1,T2,SVSATRES,X,TSOLD,PSOLD,DLOLD,DVOLD,SOLD,calcs
+      REAL(KIND=KIND(0.0d0)) ::  TSTART,SVSTART,DLSTART,PSTART,DVSTART,TOLD,SVOLD
+      REAL(KIND=KIND(0.0d0)) ::  HHMAX,SHMAX,HSMAX,SSMAX,HSMIN,SSMIN,TSMIN,TSMAX
+      REAL(KIND=KIND(0.0d0)) ::  TNEU,DVNEU,DLNEU,PNEU,SVNEU
       INTEGER IT,IHS
       EXTERNAL SVSATRES
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -10066,9 +10067,9 @@
 ! ---------------------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  S,T,DV,DL,P,EPS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  T1,T2,SLSATRES,X,TSOLD,PSOLD,DLOLD,DVOLD,SOLD
+      REAL(KIND=KIND(0.0d0)) ::  S,T,DV,DL,P,EPS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T1,T2,SLSATRES,X,TSOLD,PSOLD,DLOLD,DVOLD,SOLD
       INTEGER IT
 
       EXTERNAL SLSATRES
@@ -10111,7 +10112,7 @@
       END
 
 ! ---------------------------------------------------------------------------------------
-      REAL(KIND=8) function SLSATRES(TZ,S)
+      REAL(KIND=KIND(0.0d0)) function SLSATRES(TZ,S)
 ! ---------------------------------------------------------------------------------------
 !
 ! DIFFERENCE BETWEEN A GIVEN AND A CALCULATED VALUE OF ENTROPY ON SATURATION
@@ -10125,7 +10126,7 @@
 ! ---------------------------------------------------------------------------------------
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  TZ,S,calcs,DV,DL,P
+      REAL(KIND=KIND(0.0d0)) ::  TZ,S,calcs,DV,DL,P
 
 ! ITERATION FOR PHASE LIMIT FOR GIVEN TEMP.
 
@@ -10154,11 +10155,11 @@
 ! ---------------------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  S,T,DV,DL,P,EPS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  SCRIT
-      REAL(KIND=8) ::  T1,T2,SVSATRES,X,TSOLD,PSOLD,DLOLD,DVOLD,SOLD,calcs
-      REAL(KIND=8) ::  TSTART,SVSTART,DLSTART,PSTART,DVSTART,TOLD,SVOLD
+      REAL(KIND=KIND(0.0d0)) ::  S,T,DV,DL,P,EPS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  SCRIT
+      REAL(KIND=KIND(0.0d0)) ::  T1,T2,SVSATRES,X,TSOLD,PSOLD,DLOLD,DVOLD,SOLD,calcs
+      REAL(KIND=KIND(0.0d0)) ::  TSTART,SVSTART,DLSTART,PSTART,DVSTART,TOLD,SVOLD
       INTEGER IT
       EXTERNAL SVSATRES
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -10265,7 +10266,7 @@
 !
 ! -----------------------------------------------------------------------------
 
-      IMPLICIT REAL(KIND=8) (a-h, o-z)
+      IMPLICIT REAL(KIND=KIND(0.0d0)) (a-h, o-z)
      integer icode
 
      COMMON / ChsMax  / ChsMax1(4), ChsMax2(7)
@@ -10349,13 +10350,13 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,P,D,EPS
-      REAL(KIND=8) ::  DL,DV,DEST,D1,D2,DFAK,PS,P1,P2,PDIFF1,PDIFF2
-      REAL(KIND=8) ::  DSOAVE,calcp,VPEQN,DLEQN,DVEQN,DITPRES,X,PS1,PS2
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,PTEST
-      REAL(KIND=8) ::  TCE,PCE,DCE,TOLD,POLD,DOLD
-      REAL(KIND=8) ::  ABLTEST,calcdpdD,DLTEST,DVABLTEST
-      REAL(KIND=8) ::  DLABLTEST,PABLTEST
+      REAL(KIND=KIND(0.0d0)) ::  T,P,D,EPS
+      REAL(KIND=KIND(0.0d0)) ::  DL,DV,DEST,D1,D2,DFAK,PS,P1,P2,PDIFF1,PDIFF2
+      REAL(KIND=KIND(0.0d0)) ::  DSOAVE,calcp,VPEQN,DLEQN,DVEQN,DITPRES,X,PS1,PS2
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,PTEST
+      REAL(KIND=KIND(0.0d0)) ::  TCE,PCE,DCE,TOLD,POLD,DOLD
+      REAL(KIND=KIND(0.0d0)) ::  ABLTEST,calcdpdD,DLTEST,DVABLTEST
+      REAL(KIND=KIND(0.0d0)) ::  DLABLTEST,PABLTEST
       INTEGER IX,ISUBAKT,ISUBOLD
       EXTERNAL DITPRES
 
@@ -10545,7 +10546,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function DSOAVE(T,P,IREG)
+      REAL(KIND=KIND(0.0d0)) function DSOAVE(T,P,IREG)
 ! -----------------------------------------------------------------------------
 !
 ! DENSITY FROM CUBIC STATE EQUATION   OF SOAVE (1972) FOR VALUES OF T AND P 
@@ -10562,10 +10563,10 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,P
-      REAL(KIND=8) ::  TAFRED,PAF,AF,EM,AK,BK,AG,BG,RK,QK,DG
-      REAL(KIND=8) ::  UK,EINDRITT,Y1,Y2,Y3,TETA,PHI,PI,VPEQN,PS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,VALUE1
+      REAL(KIND=KIND(0.0d0)) ::  T,P
+      REAL(KIND=KIND(0.0d0)) ::  TAFRED,PAF,AF,EM,AK,BK,AG,BG,RK,QK,DG
+      REAL(KIND=KIND(0.0d0)) ::  UK,EINDRITT,Y1,Y2,Y3,TETA,PHI,PI,VPEQN,PS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,VALUE1
       INTEGER IREG,NREG
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -10664,8 +10665,8 @@
 ! -----------------------------------------------------------------------------
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  XA,XB,RES,Y,EPS,X
-      REAL(KIND=8) ::  X1,X2,F1,F2,S12,X3,F3,G
+      REAL(KIND=KIND(0.0d0)) ::  XA,XB,RES,Y,EPS,X
+      REAL(KIND=KIND(0.0d0)) ::  X1,X2,F1,F2,S12,X3,F3,G
       INTEGER IX,I
       EXTERNAL RES
 
@@ -10771,8 +10772,8 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  XA,ZA,XB,ZB,RES,Y1,Y2,EPS,X,Z
-      REAL(KIND=8) ::  X1,X2,F1,F2,S12,X3,F3,G,SZ,Z1,Z2,Z3,Z1IT,Z2IT,Z3IT
+      REAL(KIND=KIND(0.0d0)) ::  XA,ZA,XB,ZB,RES,Y1,Y2,EPS,X,Z
+      REAL(KIND=KIND(0.0d0)) ::  X1,X2,F1,F2,S12,X3,F3,G,SZ,Z1,Z2,Z3,Z1IT,Z2IT,Z3IT
       INTEGER IX,I
       EXTERNAL RES
 
@@ -10896,9 +10897,9 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  XA,XB,RES,Y,EPS,X
-      REAL(KIND=8) ::  X1,X2,F1,F2,S12,X3,F3,G
-      REAL(KIND=8) ::  TC,PC,DC,HC, SC,R,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  XA,XB,RES,Y,EPS,X
+      REAL(KIND=KIND(0.0d0)) ::  X1,X2,F1,F2,S12,X3,F3,G
+      REAL(KIND=KIND(0.0d0)) ::  TC,PC,DC,HC, SC,R,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
       INTEGER IX,I
 
       EXTERNAL RES
@@ -11013,8 +11014,8 @@
 ! -----------------------------------------------------------------------------
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  XA,XB,RES,Y1,Y2,EPS,X
-      REAL(KIND=8) ::  X1,X2,F1,F2,S12,X3,F3,G
+      REAL(KIND=KIND(0.0d0)) ::  XA,XB,RES,Y1,Y2,EPS,X
+      REAL(KIND=KIND(0.0d0)) ::  X1,X2,F1,F2,S12,X3,F3,G
       INTEGER IX,I
       EXTERNAL RES
 
@@ -11102,7 +11103,7 @@
 
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function DITPRES(D,T,P)
+      REAL(KIND=KIND(0.0d0)) function DITPRES(D,T,P)
 ! -----------------------------------------------------------------------------
 !
 !  DIFFERENCE (RESIDUAL) BETWEEN GIVEN AND CALCULATED VAPOR DENSITY.
@@ -11110,7 +11111,7 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  D,T,P,calcp
+      REAL(KIND=KIND(0.0d0)) ::  D,T,P,calcp
       DITPRES = 0.0D+0
 
       DITPRES = P - calcp(T,D)
@@ -11135,8 +11136,8 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  XA,XB,RES,Y1,Y2,EPS,X
-      REAL(KIND=8) ::  X1,X2,F1,F2,S12,X3,F3,G
+      REAL(KIND=KIND(0.0d0)) ::  XA,XB,RES,Y1,Y2,EPS,X
+      REAL(KIND=KIND(0.0d0)) ::  X1,X2,F1,F2,S12,X3,F3,G
       INTEGER IX,I,REP
       EXTERNAL RES
 
@@ -11244,11 +11245,11 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,S,D,EPS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  D1,S1,calcs,DFAK,SDIFF1,D2,S2,SDIFF2,DVEQN,DLEQN
-      REAL(KIND=8) ::  DV,DL,SV,SL,DIT,DITSRES,V,X,P,TCE,DCE
-      REAL(KIND=8) ::  SLTEST,SVTEST,TOLD,SOLD,DOLD
+      REAL(KIND=KIND(0.0d0)) ::  T,S,D,EPS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  D1,S1,calcs,DFAK,SDIFF1,D2,S2,SDIFF2,DVEQN,DLEQN
+      REAL(KIND=KIND(0.0d0)) ::  DV,DL,SV,SL,DIT,DITSRES,V,X,P,TCE,DCE
+      REAL(KIND=KIND(0.0d0)) ::  SLTEST,SVTEST,TOLD,SOLD,DOLD
       INTEGER IX,ISUBAKT,ISUBOLD
 
       EXTERNAL DITSRES
@@ -11396,7 +11397,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function DITSRES(DZ,T,S)
+      REAL(KIND=KIND(0.0d0)) function DITSRES(DZ,T,S)
 ! -----------------------------------------------------------------------------
 !
 !  RESIDUAL OBTAINED BETWEEN s AND s AS FUNCTION OF T, D
@@ -11404,7 +11405,7 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  DZ,T,S,calcs
+      REAL(KIND=KIND(0.0d0)) ::  DZ,T,S,calcs
 
       DITSRES = calcs(T,DZ) - S
 
@@ -11427,14 +11428,14 @@
 !
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,H,D,EPS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  D1,H1,calch,DFAK,HDIFF1,D2,H2,HDIFF2,calcTHC
-      REAL(KIND=8) ::  DV,DL,HV,HL,DIT,DITHRES,V,X,P,ABLTEST,THCRES
-      REAL(KIND=8) ::  DTEST,HTEST,DEXTR,TCE,DCE,TOLD,HOLD,DOLD,DFAK1
+      REAL(KIND=KIND(0.0d0)) ::  T,H,D,EPS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  D1,H1,calch,DFAK,HDIFF1,D2,H2,HDIFF2,calcTHC
+      REAL(KIND=KIND(0.0d0)) ::  DV,DL,HV,HL,DIT,DITHRES,V,X,P,ABLTEST,THCRES
+      REAL(KIND=KIND(0.0d0)) ::  DTEST,HTEST,DEXTR,TCE,DCE,TOLD,HOLD,DOLD,DFAK1
       INTEGER IX,ISUBAKT,ISUBOLD,IREPEAT,IABLTEST
      integer imax
-      REAL(KIND=8) ::  HDIFF1BEGIN,D1BEGIN
+      REAL(KIND=KIND(0.0d0)) ::  HDIFF1BEGIN,D1BEGIN
 
       EXTERNAL DITHRES,THCRES
 
@@ -11673,10 +11674,10 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function THCRES(DZ,T)
+      REAL(KIND=KIND(0.0d0)) function THCRES(DZ,T)
 ! -----------------------------------------------------------------------------
       IMPLICIT NONE
-      REAL(KIND=8) ::  DZ,T,calcTHC
+      REAL(KIND=KIND(0.0d0)) ::  DZ,T,calcTHC
 
       THCRES = calcTHC(T,DZ)
 
@@ -11684,13 +11685,13 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function DITHRES(DZ,T,H)
+      REAL(KIND=KIND(0.0d0)) function DITHRES(DZ,T,H)
 ! -----------------------------------------------------------------------------
 !  RESIDUAL: DIFFERENCE BETWEEN CALCULATED AND GIVEN ENTALPHY
 ! -----------------------------------------------------------------------------
 
       IMPLICIT NONE
-      REAL(KIND=8) ::  DZ,T,H,calch
+      REAL(KIND=KIND(0.0d0)) ::  DZ,T,H,calch
 
       DITHRES = calch(T,DZ) - H
 
@@ -11712,12 +11713,12 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,H,D,EPS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  D1,H1,calch,DFAK,HDIFF1,D2,H2,HDIFF2,calcTHC
-      REAL(KIND=8) ::  DV,DL,HL,DIT,DITHRES,P,ABLTEST,TOLD,HOLD,DOLD
-      REAL(KIND=8) ::  DTEST,DEXTR,HTEST,TCE,DCE,THCRES
-      REAL(KIND=8) ::  ABLTEST2,calcdpdD,ABLTEST1
+      REAL(KIND=KIND(0.0d0)) ::  T,H,D,EPS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  D1,H1,calch,DFAK,HDIFF1,D2,H2,HDIFF2,calcTHC
+      REAL(KIND=KIND(0.0d0)) ::  DV,DL,HL,DIT,DITHRES,P,ABLTEST,TOLD,HOLD,DOLD
+      REAL(KIND=KIND(0.0d0)) ::  DTEST,DEXTR,HTEST,TCE,DCE,THCRES
+      REAL(KIND=KIND(0.0d0)) ::  ABLTEST2,calcdpdD,ABLTEST1
       INTEGER IX,ISUBAKT,ISUBOLD
       EXTERNAL DITHRES,THCRES
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -11936,12 +11937,12 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,P,D,EPS
-      REAL(KIND=8) ::  DPDTTEST,TEST,T1,T2,TFAK,TS,P1,P2,PDIFF1,PDIFF2
-      REAL(KIND=8) ::  TVDW,calcp,DLEQN,DVEQN,TIPDRES,X,DLH,DVH
-      REAL(KIND=8) ::  TSR,DVR,DLR,PTEST,TCE,PCE,DCE
-      REAL(KIND=8) ::  calcdpdT
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,TVPIT,DOLD,POLD,TOLD
+      REAL(KIND=KIND(0.0d0)) ::  T,P,D,EPS
+      REAL(KIND=KIND(0.0d0)) ::  DPDTTEST,TEST,T1,T2,TFAK,TS,P1,P2,PDIFF1,PDIFF2
+      REAL(KIND=KIND(0.0d0)) ::  TVDW,calcp,DLEQN,DVEQN,TIPDRES,X,DLH,DVH
+      REAL(KIND=KIND(0.0d0)) ::  TSR,DVR,DLR,PTEST,TCE,PCE,DCE
+      REAL(KIND=KIND(0.0d0)) ::  calcdpdT
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,TVPIT,DOLD,POLD,TOLD
       INTEGER IX,ISUBAKT,ISUBOLD
 
       EXTERNAL TIPDRES
@@ -12117,7 +12118,7 @@
       END
 
  ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function TIPDRES(T,P,D)
+      REAL(KIND=KIND(0.0d0)) function TIPDRES(T,P,D)
 ! -----------------------------------------------------------------------------
 !
 !  DIFFERENCE BETWEEN A GIVEN AND A CALCULATED VALUE OF PRESSURE.
@@ -12126,7 +12127,7 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,P,D,calcp
+      REAL(KIND=KIND(0.0d0)) ::  T,P,D,calcp
 
       TIPDRES = P - calcp(T,D)
 
@@ -12134,7 +12135,7 @@
       END
 
 ! -----------------------------------------------------------------------------
-      REAL(KIND=8) function TVDW(P,D)
+      REAL(KIND=KIND(0.0d0)) function TVDW(P,D)
 ! -----------------------------------------------------------------------------
 !
 !  START VALUE OF TEMPERATURE FROM van der Waals EQUATION
@@ -12148,7 +12149,7 @@
 ! -----------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  P,D,  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF, A,B,V
+      REAL(KIND=KIND(0.0d0)) ::  P,D,  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF, A,B,V
 
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
 
@@ -12162,13 +12163,13 @@
       END
 
 ! ---------------------------------------------------------------------------------------
-      REAL(KIND=8) function VPHRES(T,P)
+      REAL(KIND=KIND(0.0d0)) function VPHRES(T,P)
 ! ---------------------------------------------------------------------------------------
 !
 !   DIFFERENCE BETWEEN A GIVEN AND A CALCULATED VAPOR PRESSURE FROM FPEQN
 ! ---------------------------------------------------------------------------------------
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,P,PS,VPEQN
+      REAL(KIND=KIND(0.0d0)) ::  T,P,PS,VPEQN
 
       PS = VPEQN(T)
       VPHRES = P - PS
@@ -12191,13 +12192,13 @@
 ! ---------------------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,S,D,EPS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC, TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  T1,S1, calcs,TFAK,SDIFF1,T2,S2,SDIFF2
-      REAL(KIND=8) ::  DV,DL,SV,SL,TIT,TIDSRES,TIDS2RES,V,X,P
-      REAL(KIND=8) ::  TSAT,SSAT,STR,V1,V2,TDLIT,TDVIT, SCD
-      REAL(KIND=8) ::  TCE,DCE,STEST,TOLD,DOLD,SOLD,STEST1
-      REAL(KIND=8) ::  SLTEST,SVTEST,XTP,PTP,DVTP,DLTP
+      REAL(KIND=KIND(0.0d0)) ::  T,S,D,EPS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC, TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T1,S1, calcs,TFAK,SDIFF1,T2,S2,SDIFF2
+      REAL(KIND=KIND(0.0d0)) ::  DV,DL,SV,SL,TIT,TIDSRES,TIDS2RES,V,X,P
+      REAL(KIND=KIND(0.0d0)) ::  TSAT,SSAT,STR,V1,V2,TDLIT,TDVIT, SCD
+      REAL(KIND=KIND(0.0d0)) ::  TCE,DCE,STEST,TOLD,DOLD,SOLD,STEST1
+      REAL(KIND=KIND(0.0d0)) ::  SLTEST,SVTEST,XTP,PTP,DVTP,DLTP
       INTEGER IX,ISUBAKT,ISUBOLD,ITTR, icode
 
       EXTERNAL TIDSRES,TIDS2RES
@@ -12477,13 +12478,13 @@
 ! ---------------------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  T,H,D,EPS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  T1,H1,calch,TFAK,HDIFF1,T2,H2,HDIFF2,HTEST
-      REAL(KIND=8) ::  DV,DL,HV,HL,TIT,TIDHRES,TIDH2RES,V,X,P
-      REAL(KIND=8) ::  TSAT,HSAT,HTR,V1,V2,TDLIT,TDVIT,HLTR,HVTR
-      REAL(KIND=8) ::  TCE,DCE,TOLD,DOLD,HOLD,HTEST1
-      REAL(KIND=8) ::  HLTEST,HVTEST,XTP,PTP,DLTP,DVTP
+      REAL(KIND=KIND(0.0d0)) ::  T,H,D,EPS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  T1,H1,calch,TFAK,HDIFF1,T2,H2,HDIFF2,HTEST
+      REAL(KIND=KIND(0.0d0)) ::  DV,DL,HV,HL,TIT,TIDHRES,TIDH2RES,V,X,P
+      REAL(KIND=KIND(0.0d0)) ::  TSAT,HSAT,HTR,V1,V2,TDLIT,TDVIT,HLTR,HVTR
+      REAL(KIND=KIND(0.0d0)) ::  TCE,DCE,TOLD,DOLD,HOLD,HTEST1
+      REAL(KIND=KIND(0.0d0)) ::  HLTEST,HVTEST,XTP,PTP,DLTP,DVTP
       INTEGER IX,ISUBAKT,ISUBOLD
       EXTERNAL TIDHRES,TIDH2RES
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -12744,12 +12745,12 @@
 ! ---------------------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  P,S,T,D,EPSS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,DLEQN
-      REAL(KIND=8) ::  D1,TH,T1,S1,calcs,TFAK,SDIFF1,T2,D2,S2,DH,SDIFF2
-      REAL(KIND=8) ::  TS,DV,DL,SV,SL,DIT,TIT,TDIPSRES,V,X,TVPIT,DVEQN
-      REAL(KIND=8) ::  calcCp,CPTEST,P1
-      REAL(KIND=8) ::  TCE,PCE,DCE,SLTEST,SVTEST,TOLD,DOLD,POLD,SOLD
+      REAL(KIND=KIND(0.0d0)) ::  P,S,T,D,EPSS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,DLEQN
+      REAL(KIND=KIND(0.0d0)) ::  D1,TH,T1,S1,calcs,TFAK,SDIFF1,T2,D2,S2,DH,SDIFF2
+      REAL(KIND=KIND(0.0d0)) ::  TS,DV,DL,SV,SL,DIT,TIT,TDIPSRES,V,X,TVPIT,DVEQN
+      REAL(KIND=KIND(0.0d0)) ::  calcCp,CPTEST,P1
+      REAL(KIND=KIND(0.0d0)) ::  TCE,PCE,DCE,SLTEST,SVTEST,TOLD,DOLD,POLD,SOLD
       INTEGER IX,ISUBAKT,ISUBOLD
       EXTERNAL TDIPSRES
       COMMON / CRTR /  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
@@ -13012,7 +13013,7 @@
       END
 
 ! ---------------------------------------------------------------------------------------
-      REAL(KIND=8) function TIDHRES(TZ,D,H)
+      REAL(KIND=KIND(0.0d0)) function TIDHRES(TZ,D,H)
 ! ---------------------------------------------------------------------------------------
 !
 !  DIFFERENCE BETWEEN A GIVEN AND A CALCULATED ENTHALPY, FUNCTION OF D AND H
@@ -13020,7 +13021,7 @@
 ! ---------------------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  TZ,D,H,calch
+      REAL(KIND=KIND(0.0d0)) ::  TZ,D,H,calch
 
       TIDHRES = calch(TZ,D) - H
 
@@ -13029,7 +13030,7 @@
 
 
 !---------------------------------------------------------------------
-      REAL(KIND=8) function TIDSRES(TZ,D,S)
+      REAL(KIND=KIND(0.0d0)) function TIDSRES(TZ,D,S)
 !---------------------------------------------------------------------
 !
 !  DIFFERENCE BETWEEN A   GIVEN AND A CALCULATED VALUE FOR ENTROPY.
@@ -13038,7 +13039,7 @@
 !---------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  TZ,D,S,calcs
+      REAL(KIND=KIND(0.0d0)) ::  TZ,D,S,calcs
 !
       TIDSRES = calcs(TZ,D) - S
 
@@ -13047,7 +13048,7 @@
 
 
 !---------------------------------------------------------------------
-      REAL(KIND=8) function TDIPSRES(TZ,DZ,DIT,P,S)
+      REAL(KIND=KIND(0.0d0)) function TDIPSRES(TZ,DZ,DIT,P,S)
 !---------------------------------------------------------------------
 !
 !  DIFFERENCE BETWEEN A   GIVEN AND A CALCULATED VALUE FOR ENTROPY.
@@ -13057,7 +13058,7 @@
 !---------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  TZ,DZ,P,S,D1,D2,DITPRES,XD,D,calcs,DIT
+      REAL(KIND=KIND(0.0d0)) ::  TZ,DZ,P,S,D1,D2,DITPRES,XD,D,calcs,DIT
       INTEGER IXD
       EXTERNAL DITPRES
 
@@ -13090,11 +13091,11 @@
 !---------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  P,H,T,D,EPSH
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,TVPIT
-      REAL(KIND=8) ::  D1,TH,T1,H1,calch,TFAK,HDIFF1,T2,D2,H2,DH,HDIFF2
-      REAL(KIND=8) ::  TS,DV,DL,HV,HL,DIT,TIT,TDIPHRES,V,X,DLEQN,DVEQN
-      REAL(KIND=8) ::  TCE,PCE,DCE,HLTEST,HVTEST,TOLD,DOLD,POLD,HOLD
+      REAL(KIND=KIND(0.0d0)) ::  P,H,T,D,EPSH
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF,TVPIT
+      REAL(KIND=KIND(0.0d0)) ::  D1,TH,T1,H1,calch,TFAK,HDIFF1,T2,D2,H2,DH,HDIFF2
+      REAL(KIND=KIND(0.0d0)) ::  TS,DV,DL,HV,HL,DIT,TIT,TDIPHRES,V,X,DLEQN,DVEQN
+      REAL(KIND=KIND(0.0d0)) ::  TCE,PCE,DCE,HLTEST,HVTEST,TOLD,DOLD,POLD,HOLD
       INTEGER IX,ISUBAKT,ISUBOLD
       INTEGER ITLTTTR
       EXTERNAL TDIPHRES
@@ -13332,7 +13333,7 @@
       END
 
 !---------------------------------------------------------------------
-      REAL(KIND=8) function TDIPHRES(TZ,DZ,DIT,P,H)
+      REAL(KIND=KIND(0.0d0)) function TDIPHRES(TZ,DZ,DIT,P,H)
 !---------------------------------------------------------------------
 !
 !  DIFFERENCE BETWEEN A   GIVEN AND A CALCULATED VALUE FOR ENTHALPY
@@ -13342,7 +13343,7 @@
 !---------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  TZ,DZ,P,H,D1,D2,DITPRES,XD,D,calch,DIT
+      REAL(KIND=KIND(0.0d0)) ::  TZ,DZ,P,H,D1,D2,DITPRES,XD,D,calch,DIT
       INTEGER IXD
       EXTERNAL DITPRES
 
@@ -13375,17 +13376,17 @@
 !---------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  H,T,S,D,EPS
-      REAL(KIND=8) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
-      REAL(KIND=8) ::  calcs,DV,DL,P,calch,T2TEST
-      REAL(KIND=8) ::  D1,T1,D2,T2,DFAK,HDIFF1,HDIFF2,H1,H2,TDIHS2RES
-      REAL(KIND=8) ::  TH,TDIHSRES,TIT,DIT,TFAK,DV2,DL2,P2,HL,HV,HOLD
-      REAL(KIND=8) ::  SL,SV,X2,VV,VL,V,X,TCE,DCE,TOLD,DOLD,SOLD,TSMAX,TSMIN
-      REAL(KIND=8) ::  ABLTEST,calcdpdD,HSAT2,TS2,HSAT3,HSAT1,P3,DL3,DV3
-      REAL(KIND=8) ::  TS3,P1,DL1,DV1,TS1,HSAT4,DL4,DV4,P4,TS4
-      REAL(KIND=8) ::  SDIFF1,SDIFF2,S1,S2,HDIFF3,HSAT5,DL5,DV5,P5,TS5
-      REAL(KIND=8) ::  TS8,D8,DLV8,P8
-      REAL(KIND=8) ::  HHMAX,SHMAX,HSMAX,SSMAX,HSMIN,SSMIN,DSTART,HSTART,TSTART
+      REAL(KIND=KIND(0.0d0)) ::  H,T,S,D,EPS
+      REAL(KIND=KIND(0.0d0)) ::  R,TC,PC,DC, HC, SC,TTR,PTR,DLTR,DVTR, SLTR, SVTR, CNDRF, VISRF
+      REAL(KIND=KIND(0.0d0)) ::  calcs,DV,DL,P,calch,T2TEST
+      REAL(KIND=KIND(0.0d0)) ::  D1,T1,D2,T2,DFAK,HDIFF1,HDIFF2,H1,H2,TDIHS2RES
+      REAL(KIND=KIND(0.0d0)) ::  TH,TDIHSRES,TIT,DIT,TFAK,DV2,DL2,P2,HL,HV,HOLD
+      REAL(KIND=KIND(0.0d0)) ::  SL,SV,X2,VV,VL,V,X,TCE,DCE,TOLD,DOLD,SOLD,TSMAX,TSMIN
+      REAL(KIND=KIND(0.0d0)) ::  ABLTEST,calcdpdD,HSAT2,TS2,HSAT3,HSAT1,P3,DL3,DV3
+      REAL(KIND=KIND(0.0d0)) ::  TS3,P1,DL1,DV1,TS1,HSAT4,DL4,DV4,P4,TS4
+      REAL(KIND=KIND(0.0d0)) ::  SDIFF1,SDIFF2,S1,S2,HDIFF3,HSAT5,DL5,DV5,P5,TS5
+      REAL(KIND=KIND(0.0d0)) ::  TS8,D8,DLV8,P8
+      REAL(KIND=KIND(0.0d0)) ::  HHMAX,SHMAX,HSMAX,SSMAX,HSMIN,SSMIN,DSTART,HSTART,TSTART
       INTEGER IX,ISUBAKT,ISUBOLD,ILAUF,IHS,IPHASE,IFAK
       INTEGER IDFAK, icode
 
@@ -13894,7 +13895,7 @@
       END
 
 ! ---------------------------------------------------------------------------------------
-      REAL(KIND=8) function TDIHSRES(DZ,TZ,TIT,H,S)
+      REAL(KIND=KIND(0.0d0)) function TDIHSRES(DZ,TZ,TIT,H,S)
 ! ---------------------------------------------------------------------------------------
 !
 !  RDIFFERENCE BETWEEN A GIVEN AND A CALCULATED VALUE FOR ENTHALPY
@@ -13903,7 +13904,7 @@
 ! ---------------------------------------------------------------------------------------
 !
       IMPLICIT NONE
-      REAL(KIND=8) ::  TZ,DZ,H,S,T1,T2,TIDSRES,XT,T,calch,TIT
+      REAL(KIND=KIND(0.0d0)) ::  TZ,DZ,H,S,T1,T2,TIDSRES,XT,T,calch,TIT
       INTEGER IXT
       EXTERNAL TIDSRES
 

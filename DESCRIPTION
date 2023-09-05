@@ -1,6 +1,6 @@
 Package: IAPWS95
 Title: Thermophysical Properties of Water and Steam
-Version: 1.2.2
+Version: 1.2.3
 Authors@R: c(person("Benedito", "Baptista", role = c("aut")),
              person("Shawn", "Way", email = "shawnway@yahoo.com", role = c("cre")))
 Description: Functions for Water and Steam Properties based on the
@@ -18,9 +18,9 @@ Encoding: UTF-8
 Suggests: knitr, rmarkdown, testthat
 VignetteBuilder: knitr,rmarkdown
 NeedsCompilation: yes
-Packaged: 2023-07-10 17:04:16 UTC; SWay
+Packaged: 2023-09-05 12:40:03 UTC; SWay
 Repository: CRAN
-Date/Publication: 2023-07-11 12:00:34 UTC
+Date/Publication: 2023-09-05 13:00:09 UTC
 Author: Benedito Baptista [aut],
   Shawn Way [cre]
 Maintainer: Shawn Way <shawnway@yahoo.com>
