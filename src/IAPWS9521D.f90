@@ -8225,14 +8225,14 @@
       ENDIF
       IF (P3 .GT. P2) THEN
          DV3A = DV2 * 0.98999D+0
-         DV3B = DV2 * (1.03D0 + dfloat(I - 1) * 0.001D+0)
+         DV3B = DV2 * (1.03D0 + dble(I - 1) * 0.001D+0)
 !         DV3B = DV2 * 1.02D0
          DL3A = DL2 * 0.98999D+0
-         DL3B = DL2 * (1.02D0 + dfloat(I - 1) * 0.001D+0)
+         DL3B = DL2 * (1.02D0 + dble(I - 1) * 0.001D+0)
       ELSE
-         DV3A = DV2 * (0.98D0 - dfloat(I - 1) * 0.001D+0)
+         DV3A = DV2 * (0.98D0 - dble(I - 1) * 0.001D+0)
          DV3B = DV2 * 1.00001D+0
-         DL3A = DL2 * (0.99D0 - dfloat(I - 1) * 0.001D+0)
+         DL3A = DL2 * (0.99D0 - dble(I - 1) * 0.001D+0)
          DL3B = DL2 * 1.00001D+0
       ENDIF
 

@@ -29,7 +29,7 @@ pSats <- function(s,digits=9) {
   res <- .Fortran('pSats', as.double(s), as.double(y), as.integer(icode))
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[2]],digits = digits))
 } 
@@ -71,7 +71,7 @@ pSatD <- function(D,digits=9) {
   out <- list(pSa_1t=round(res[[2]],digits), pSat_2=round(res[[3]],digits))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   return(out)
 } 
@@ -107,7 +107,7 @@ TSats <- function(s,digits=9) {
   res <- .Fortran('TSats', as.double(s), as.double(y), as.integer(icode))
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[2]],digits = digits))
 } 
@@ -149,7 +149,7 @@ TSatD <- function(D,digits=9) {
   out <- list(TSat_1=round(res[[2]],digits), TSat_2=round(res[[3]],digits))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   return(out)
 } 
@@ -185,7 +185,7 @@ TSatp <- function(p,digits=9) {
   res <- .Fortran('TSatp', as.double(p), as.double(y), as.integer(icode))
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[2]],digits = digits))
 } 
@@ -221,7 +221,7 @@ Dfp <- function(p,digits = 9) {
   res <- .Fortran('Dfp', as.double(p), as.double(y), as.integer(icode))
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[2]],digits = digits))
 } 
@@ -257,7 +257,7 @@ Dgp <- function(p,digits=9) {
   res <- .Fortran('Dgp', as.double(p), as.double(y), as.integer(icode))
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[2]],digits = digits))
 } 
@@ -293,7 +293,7 @@ Dfs <- function(s,digits=9) {
   res <- .Fortran('Dfs', as.double(s), as.double(y), as.integer(icode))
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[2]],digits = digits))
 } 
@@ -329,7 +329,7 @@ Dgs <- function(s,digits=9) {
   res <- .Fortran('Dgs', as.double(s), as.double(y), as.integer(icode))
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[2]],digits= digits))
 } 

@@ -29,7 +29,7 @@ CndTD <- function(Temp,D,digits=9) {
   res <- .Fortran('CNDTD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[3]],digits = digits))
 }
@@ -65,7 +65,7 @@ ViscTD <- function(Temp,D,digits=9) {
   res <- .Fortran('VISCTD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[3]],digits = digits))
 }
@@ -100,7 +100,7 @@ KViscTD <- function(Temp,D,digits=9) {
   res <- .Fortran('KVISCTD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[3]],digits = digits))
 }
@@ -134,7 +134,7 @@ SigmaT <- function(Temp,digits=9) {
   res <- .Fortran('SigmaT', as.double(Temp), as.double(y), as.integer(icode))
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[2]],digits = digits))
 }
@@ -169,7 +169,7 @@ PrandtTD <- function(Temp,D,digits=9) {
   res <- .Fortran('PrandtTD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[3]],digits = digits))
 }

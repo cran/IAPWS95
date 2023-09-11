@@ -31,7 +31,7 @@
   res <- .Fortran('phi0TD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-     print(error)
+     warning(error)
   }
   return(round(res[[3]],digits=digits))
   }
@@ -68,7 +68,7 @@
   res <- .Fortran('phi0DD', as.double(D), as.double(y), as.integer(icode))
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[2]],digits=digits))
 } 
@@ -105,7 +105,7 @@
     res <- .Fortran('phi0DDD', as.double(D), as.double(y), as.integer(icode))
     if (res[[3]] != 0) { 
       error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
-      print(error)
+      warning(error)
     }
     return(round(res[[2]],digits=digits))
   } 
@@ -145,7 +145,7 @@
    res <- .Fortran('phi0TTD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-     print(error)
+     warning(error)
    }
    return(round(res[[3]],digits = digits))
  }
@@ -185,7 +185,7 @@
      res <- .Fortran('phi0TTTD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-       print(error)
+       warning(error)
      }
      return(round(res[[3]],digits = digits))
    }
@@ -221,7 +221,7 @@
      res <- .Fortran('phi0DT', as.double(y), as.integer(icode))
      if (res[[2]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[2]]),2])
-       print(error)
+       warning(error)
      }
      return(round(res[[1]],digits = digits))
   }
@@ -260,7 +260,7 @@
      res <- .Fortran('phiRTD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-       print(error)
+       warning(error)
      }
      return(round(res[[3]],digits = digits))
    }
@@ -299,7 +299,7 @@
      res <- .Fortran('phiRDTD', as.double(T), as.double(D), as.double(y), as.integer(icode))
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-       print(error)
+       warning(error)
      }
      return(round(res[[3]],digits))
    }
@@ -338,7 +338,7 @@
      res <- .Fortran('phiRDDTD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-       print(error)
+       warning(error)
      }
      return(round(res[[3]],digits = digits))
    }
@@ -378,7 +378,7 @@
      res <- .Fortran('phiRTTD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-       print(error)
+       warning(error)
      }
      return(round(res[[3]],digits = digits))
   }
@@ -419,7 +419,7 @@
      res <- .Fortran('phiRTTTD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-       print(error)
+       warning(error)
      }
      return(round(res[[3]],digits = digits))
   }
@@ -460,7 +460,7 @@
     res <- .Fortran('phiRDTTD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
     if (res[[4]] != 0) { 
       error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-      print(error)
+      warning(error)
     }
     return(round(res[[3]],digits = digits))
   }

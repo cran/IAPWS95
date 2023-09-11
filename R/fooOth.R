@@ -30,7 +30,7 @@
   res <- .Fortran('TDp', as.double(D), as.double(p), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-     print(error)
+     warning(error)
   }
   out <- round(res[[3]],digits)
   return(out)
@@ -68,7 +68,7 @@ TDs <- function(D,s,digits=9) {
   res <- .Fortran('TDs', as.double(D), as.double(s), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   out <- round(res[[3]],digits)
   return(out)
@@ -106,7 +106,7 @@ TDh <- function(D,h,digits=9) {
   res <- .Fortran('TDh', as.double(D), as.double(h), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   out <- round(res[[3]],digits)
   return(out)
@@ -147,7 +147,7 @@ DTh <- function(Temp,h,digits = 9) {
   out <- list(Density_1=round(res[[3]],digits), Density_2=round(res[[4]],digits))
   if (res[[5]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[5]]),2])
-    print(error)
+    warning(error)
   }
   return(out)
 }
@@ -184,7 +184,7 @@ Tph <- function(p,h,digits =9) {
   res <- .Fortran('Tph', as.double(p), as.double(h), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   out <- round(res[[3]],digits)
   return(out)
@@ -259,7 +259,7 @@ sph <- function(p,h,digits = 9) {
   res <- .Fortran('sph', as.double(p), as.double(h), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[3]],digits = digits))
 }
@@ -298,7 +298,7 @@ DTs <- function(Temp,s,digits=9) {
   res <- .Fortran('DTs', as.double(Temp), as.double(s), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[3]],digits=digits))
 }
@@ -335,7 +335,7 @@ Ths <- function(h,s,digits=9) {
   res <- .Fortran('Ths', as.double(h), as.double(s), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[3]],digits=digits))
 }
@@ -372,7 +372,7 @@ Dhs <- function(h,s,digits=9) {
   res <- .Fortran('Dhs', as.double(h), as.double(s), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[3]],digits=digits))
 }
@@ -409,7 +409,7 @@ Tps <- function(p,s,digits=9) {
   res <- .Fortran('Tps', as.double(p), as.double(s), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[3]],digits=digits))
 }
@@ -446,7 +446,7 @@ Dps <- function(p,s,digits=9) {
   res <- .Fortran('Dps', as.double(p), as.double(s), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[3]],digits))
 }
@@ -483,7 +483,7 @@ hps <- function(p,s,digits=9) {
   res <- .Fortran('hps', as.double(p), as.double(s), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[3]],digits))
 }
@@ -522,7 +522,7 @@ pMeltT <- function(Temp,digits=9) {
   out <- list(Temperature=Temp, pMelt=round(res[[2]],digits), pMeltIh=round(res[[3]],digits), pSubl=round(res[[4]],digits))
   if (res[[5]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[5]]),2])
-    print(error)
+    warning(error)
   }
   return(out)
 }
@@ -558,7 +558,7 @@ pMeltT <- function(Temp,digits=9) {
   res <- .Fortran('BT', as.double(Temp), as.double(y), as.integer(icode))
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
-    print(error)
+    warning(error)
   }
   out <- round(res[[2]],digits)
   return(out)
@@ -595,7 +595,7 @@ CT <- function(Temp,digits=9) {
   res <- .Fortran('CT', as.double(Temp), as.double(y), as.integer(icode))
   if (res[[3]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[3]]),2])
-    print(error)
+    warning(error)
   }
   out <- round(res[[2]],digits)
   return(out)
@@ -620,7 +620,7 @@ Vp <- function(Temp,digits=9) {
   TL <- 273.16  # Lower temperature limit
   TH <- 647.096 # Upper temperature limit
   if ( (Temp < TL) | (Temp > TH) ) { 
-    print("Temperature out of bounds")
+    warning("Temperature out of bounds")
   }
   
  Tc1 <- 0.001545365757 # 1./Tc

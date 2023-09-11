@@ -30,7 +30,7 @@
   res <- .Fortran('DTp', as.double(Temp), as.double(p), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-     print(error)
+     warning(error)
   }
   return(round(res[[3]],digits = digits))
   }
@@ -68,7 +68,7 @@
   res <- .Fortran('fTp', as.double(Temp), as.double(p), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-     print(error)
+     warning(error)
   }
   return(round(res[[3]],digits = digits))
 } 
@@ -106,7 +106,7 @@
    res <- .Fortran('hTp', as.double(Temp), as.double(p), as.double(y), as.integer(icode))
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-     print(error)
+     warning(error)
    }
    return(round(res[[3]],digits = digits))
  }
@@ -144,7 +144,7 @@
    res <- .Fortran('sTp', as.double(Temp), as.double(p), as.double(y), as.integer(icode))
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-     print(error)
+     warning(error)
    }
    return(round(res[[3]],digits = digits))
  }
@@ -182,7 +182,7 @@
    res <- .Fortran('uTp', as.double(Temp), as.double(p), as.double(y), as.integer(icode))
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-     print(error)
+     warning(error)
    }
    return(round(res[[3]],digits = digits))
  }
@@ -220,7 +220,7 @@
    res <- .Fortran('CvTp', as.double(Temp), as.double(p), as.double(y), as.integer(icode))
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-     print(error)
+     warning(error)
    }
    return(round(res[[3]],digits = digits))
  }
@@ -258,7 +258,7 @@
    res <- .Fortran('CpTp', as.double(Temp), as.double(p), as.double(y), as.integer(icode))
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-     print(error)
+     warning(error)
    }
    return(round(res[[3]],digits = digits))
  }
@@ -296,7 +296,7 @@
    res <- .Fortran('wTp', as.double(Temp), as.double(p), as.double(y), as.integer(icode))
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-     print(error)
+     warning(error)
    }
    return(round(res[[3]],digits = digits))
  }
@@ -334,7 +334,7 @@
    res <- .Fortran('GibbsTp', as.double(Temp), as.double(p), as.double(y), as.integer(icode))
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-     print(error)
+     warning(error)
    }
    return(round(res[[3]],digits = digits))
  }
@@ -372,7 +372,7 @@
    res <- .Fortran('FugaTp', as.double(Temp), as.double(p), as.double(y), as.integer(icode))
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-     print(error)
+     warning(error)
    }
    return(round(res[[3]],digits = digits))
  }
@@ -410,7 +410,7 @@
    res <- .Fortran('vTp', as.double(Temp), as.double(p), as.double(y), as.integer(icode))
    if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-     print(error)
+     warning(error)
    }
    return(round(res[[3]],digits = digits))
  }

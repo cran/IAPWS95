@@ -31,7 +31,7 @@
   res <- .Fortran('dpdTTD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
      error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-     print(error)
+     warning(error)
   }
   return(round(res[[3]],digits=digits))
   }
@@ -69,7 +69,7 @@
     res <- .Fortran('dpdTTp', as.double(Temp), as.double(p), as.double(y), as.integer(icode))
     if (res[[4]] != 0) { 
       error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-      print(error)
+      warning(error)
     }
     return(round(res[[3]],digits=digits))
   }
@@ -106,7 +106,7 @@
     res <- .Fortran('dpdDTD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
     if (res[[4]] != 0) { 
       error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-      print(error)
+      warning(error)
     }
     return(round(res[[3]],digits=digits))
   }
@@ -144,7 +144,7 @@
      res <- .Fortran('dpdDTp', as.double(Temp), as.double(p), as.double(y), as.integer(icode))
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-       print(error)
+       warning(error)
      }
      return(round(res[[3]],digits=digits))
    }
@@ -182,7 +182,7 @@
      res <- .Fortran('dDdTTD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-       print(error)
+       warning(error)
      }
      return(round(res[[3]],digits=digits))
    }
@@ -220,7 +220,7 @@
      res <- .Fortran('dDdTTp', as.double(Temp), as.double(p), as.double(y), as.integer(icode))
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-       print(error)
+       warning(error)
      }
      return(round(res[[3]],digits=digits))
    }
@@ -258,7 +258,7 @@
      res <- .Fortran('ThrcTD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
      if (res[[4]] != 0) { 
        error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-       print(error)
+       warning(error)
      }
      return(round(res[[3]],digits=digits))
    }
@@ -296,7 +296,7 @@ KapaTD <- function(Temp,D,digits=9) {
   res <- .Fortran('kapaTD', as.double(Temp), as.double(D), as.double(y), as.integer(icode))
   if (res[[4]] != 0) { 
     error <-  as.character(errorCodes[which(errorCodes[,1]==res[[4]]),2])
-    print(error)
+    warning(error)
   }
   return(round(res[[3]],digits=digits))
 }
