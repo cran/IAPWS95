@@ -7,7 +7,7 @@
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param T1 first Temperature value[ K ]
@@ -60,7 +60,7 @@ DTpcteTab <- function(T1, T2, dT, p) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param T1 first Temperature value [ K ]
@@ -113,7 +113,7 @@ hTpcteTab <- function(T1, T2, dT, p) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param T1 first Temperature value [ K ]
@@ -168,7 +168,7 @@ sTpcteTab <- function(T1, T2, dT, p) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param p1 first pressure value [ MPa ]
@@ -221,7 +221,7 @@ DpTcteTab <- function(p1, p2, dp, Temp) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param p1 first pressure value [ MPa ]
@@ -274,7 +274,7 @@ hpTcteTab <- function(p1, p2, dp, Temp) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param p1 "initial"first pressure value [ MPa ]

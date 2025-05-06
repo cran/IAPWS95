@@ -25,7 +25,7 @@ The function \code{ViscTD(Temp,D,digits=9)} computes the Dynamic Viscosity
 This function calls a Fortran DLL that solves the equations developed by
     the International Association for the Properties of Water and Steam, valid from 
     the triple point to the pressure of 1000 MPa and temperature of 1173.15K.
-     \url{http://www.iapws.org/relguide/viscosity.html}
+     \url{https://iapws.org/relguide/viscosity.html}
 }
 \examples{
 Temp <- 500.

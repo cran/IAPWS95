@@ -7,7 +7,7 @@
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param s Entropy [ kJ kg-1 K-1 ]
@@ -43,7 +43,7 @@ pSats <- function(s,digits=9) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param D Density [ kg m-3]
@@ -85,7 +85,7 @@ pSatD <- function(D,digits=9) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param s Entropy [kJ kg-1 K-1]
@@ -121,7 +121,7 @@ TSats <- function(s,digits=9) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param D Density [ kg m-3 ]
@@ -163,7 +163,7 @@ TSatD <- function(D,digits=9) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param p Pressure [ MPa ]
@@ -199,7 +199,7 @@ TSatp <- function(p,digits=9) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param p Pressure [ MPa ]
@@ -235,7 +235,7 @@ Dfp <- function(p,digits = 9) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param p Pressure [ MPa ]
@@ -271,7 +271,7 @@ Dgp <- function(p,digits=9) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param s Entropy [kJ kg-1 K-1]
@@ -307,7 +307,7 @@ Dfs <- function(s,digits=9) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param s Entropy [kJ kg-1 K-1]

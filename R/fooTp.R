@@ -7,7 +7,7 @@
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param Temp Temperature [ K ]
@@ -44,7 +44,7 @@
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param Temp Temperature [ K ]
@@ -82,7 +82,7 @@
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param Temp Temperature [ K ]
@@ -120,7 +120,7 @@
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param Temp Temperature [ K ]
@@ -158,7 +158,7 @@
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param Temp Temperature [ K ]
@@ -196,7 +196,7 @@
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param Temp Temperature [ K ]
@@ -234,7 +234,7 @@
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param Temp Temperature [ K ]
@@ -272,7 +272,7 @@
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param Temp Temperature [ K ]
@@ -310,7 +310,7 @@
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param Temp Temperature [ K ]
@@ -348,7 +348,7 @@
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param Temp Temperature [ K ]
@@ -386,7 +386,7 @@
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param Temp Temperature [ K ]

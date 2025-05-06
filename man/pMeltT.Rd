@@ -29,7 +29,7 @@ This function calls a Fortran DLL that solves the equations given at the
      Revised Release on the Pressure along the Melting and Sublimation Curves of
      Ordinary Water Substance (September 2011), developed by the International 
      Association for the Properties of Water and Steam, 
-     \url{http://www.iapws.org/relguide/MeltSub.html}. It is valid from the 
+     \url{https://iapws.org/relguide/MeltSub.html}. It is valid from the 
      Temperature of 256.164 [K] to the Temperature of 715 [K].
 }
 \examples{

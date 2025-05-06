@@ -1,9 +1,14 @@
 ---
 title: "NEWS"
 author: "Shawn Way"
-date: "08Sep2023"
+date: "06May2025"
 output: html_document
 ---
+
+# IAPW95 1.2.5
+
+Removed unused ISU variable to meet current compiler requirements.
+
 
 # IAPWS95 1.2.4
 

@@ -7,7 +7,7 @@
 #' @details This function calls a Fortran DLL that solves the equations developed by
 #'     the International Association for the Properties of Water and Steam, valid from 
 #'     the triple point to the pressure of 1000 MPa and temperature of 1173.15K. 
-#'     \url{http://www.iapws.org/relguide/ThCond.html}
+#'     \url{https://iapws.org/relguide/ThCond.html}
 #'     
 #' @param Temp Temperature [ K ]
 #' @param D Density [ kg m-3 ]
@@ -43,7 +43,7 @@ CndTD <- function(Temp,D,digits=9) {
 #' @details This function calls a Fortran DLL that solves the equations developed by
 #'     the International Association for the Properties of Water and Steam, valid from 
 #'     the triple point to the pressure of 1000 MPa and temperature of 1173.15K.
-#'      \url{http://www.iapws.org/relguide/viscosity.html}
+#'      \url{https://iapws.org/relguide/viscosity.html}
 #' 
 #' @param Temp Temperature [ K ]
 #' @param D Density [ kg m-3 ]
@@ -114,7 +114,7 @@ KViscTD <- function(Temp,D,digits=9) {
 #' @details This function calls a Fortran DLL that solves the equations developed by
 #'     the International Association for the Properties of Water and Steam, valid from 
 #'     the triple point to the critical temperature [ 273.13K to 647.096K].
-#'      \url{http://www.iapws.org/relguide/Surf-H2O.html}
+#'      \url{https://iapws.org/relguide/Surf-H2O.html}
 #' 
 #' @param Temp Temperature [ K ]
 #' @param digits Digits of results (optional)

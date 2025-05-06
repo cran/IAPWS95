@@ -8,7 +8,7 @@
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param T1 First Temperature value [K]
@@ -64,7 +64,7 @@ satTabT <- function(T1, T2, dT) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param p1 First Pressure value [MPa]
@@ -120,7 +120,7 @@ satTabp <- function(p1, p2, dp) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param T1 First Temperature value [K]
@@ -176,7 +176,7 @@ satTabvT <- function(T1, T2, dT) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param p1 First Pressure value [MPa]
@@ -231,7 +231,7 @@ satTabvp <- function(p1, p2, dp) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param T1 First Temperature value [K]
@@ -282,7 +282,7 @@ satTabpT <- function(T1, T2, dT) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param p1 First Pressure value [MPa]
@@ -333,7 +333,7 @@ satTabTp <- function(p1, p2, dp) {
 #'     in accordance with the Revised Release on the IAPWS Formulation 1995 for the 
 #'     Thermodynamic Properties of Ordinary Water Substance for General and Scientific
 #'     Use (June 2014) developed by the International Association for the Properties of
-#'     Water and Steam,  \url{http://www.iapws.org/relguide/IAPWS-95.html}. It is valid  
+#'     Water and Steam,  \url{https://iapws.org/relguide/IAPWS-95.html}. It is valid  
 #'     from the triple point to the pressure of 1000 MPa and temperature of 1273.
 #'     
 #' @param T1 First Temperature value [K]

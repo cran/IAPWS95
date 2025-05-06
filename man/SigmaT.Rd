@@ -23,7 +23,7 @@ The function \code{SigmaT(Temp,digits=9)} computes the Surface Tension [ mN m-1 
 This function calls a Fortran DLL that solves the equations developed by
     the International Association for the Properties of Water and Steam, valid from 
     the triple point to the critical temperature [ 273.13K to 647.096K].
-     \url{http://www.iapws.org/relguide/Surf-H2O.html}
+     \url{https://iapws.org/relguide/Surf-H2O.html}
 }
 \examples{
 Temp <- 500.

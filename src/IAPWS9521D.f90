@@ -8,7 +8,7 @@
 ! ---------------------------------------------------------------------------------------------
       IMPLICIT REAL(KIND=KIND(0.0d0)) (A-H,O-Z)
       DOUBLEPRECISION TNORAUX(3),YNORAUX(3),G(20,3),TPOTAUX(20,3)
-      INTEGER ISL(3),ISN(3),ISR(3),IMAXAUX(3),ISU
+      INTEGER ISL(3),ISN(3),ISR(3),IMAXAUX(3)
      REAL(KIND=KIND(0.0d0)) ::  Lij, Lk
      REAL(KIND=KIND(0.0d0)) ::  Hij, Hi
      REAL(KIND=KIND(0.0d0)) ::  Lambdao, Qd1, Nicr, Gamacr, Csi0, Gamao0, Trbar, Xmi, qC1, qD1v
